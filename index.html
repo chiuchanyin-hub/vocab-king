@@ -50,23 +50,23 @@
     .dash-underline.focusing { border-bottom: 4px solid #4f46e5 !important; background: rgba(79, 70, 229, 0.05); border-radius: 6px 6px 0 0; }
     .dash-underline.char-wrong { color: #ef4444 !important; border-bottom: 4px solid #ef4444 !important; background: rgba(239, 68, 68, 0.08); border-radius: 6px 6px 0 0; }
     .dash-underline.char-right { color: #10b981 !important; border-bottom: 4px solid #10b981 !important; background: rgba(16, 185, 129, 0.08); border-radius: 6px 6px 0 0; }
-    .dash-gap { width: 18px; }
     .ghost-input { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0 !important; cursor: text; }
     .btn-primary { width: 100%; padding: 13px; background: var(--primary); color: white; border: none; border-radius: 14px; font-size: 1rem; font-weight: 800; cursor: pointer; }
     .btn-next-action { flex: 1; padding: 14px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-size: 1.05rem; font-weight: 800; cursor: pointer; }
-    .feedback-box { margin-top: 14px; padding: 12px 16px; border-radius: 12px; font-weight: 700; display: none; justify-content: space-between; align-items: center; }
+    .feedback-box { margin-top: 14px; padding: 12px 16px; border-radius: 12px; font-weight: 700; display: none; justify-content: space-between; align-items: center; text-align:center; }
     .feedback-box.success { background: #ecfdf5; color: #065f46; display: flex; }
     .feedback-box.error { background: #fef2f2; color: #991b1b; display: flex; }
     .admin-input-full { width: 100%; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; margin-bottom: 8px; outline: none; }
-    .mistake-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; background: white; }
-    .arena-bg { background: radial-gradient(circle at top, #1e293b 0%, #090d16 100%) !important; color: #ffffff; justify-content: space-between; }
-    .cloze-top-control { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-    .chapter-select-dark { background: #1e293b; color: #f8fafc; border: 1px solid #475569; padding: 4px 10px; border-radius: 8px; font-weight: 600; outline: none; }
-    .answers-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 6px; }
-    .choice-btn { width: 100%; padding: 15px 16px; background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%); border: none; border-radius: 14px; font-size: 1.15rem; font-weight: 800; color: #1e293b; cursor: pointer; }
+    
+    /* 克漏字對戰專用 CSS */
+    .arena-bg { background: radial-gradient(circle at top, #1e293b 0%, #090d16 100%) !important; color: #ffffff; justify-content: flex-start; }
+    .cloze-top-control { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .chapter-select-dark { background: #1e293b; color: #f8fafc; border: 1px solid #475569; padding: 8px 10px; border-radius: 8px; font-weight: 600; outline: none; flex:1; margin-left:8px; }
+    .answers-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+    .choice-btn { width: 100%; padding: 15px 16px; background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%); border: none; border-radius: 14px; font-size: 1.15rem; font-weight: 800; color: #1e293b; cursor: pointer; text-align:left; transition: all 0.2s; }
+    .choice-btn:hover { background: #e0e7ff; }
     .choice-btn.correct { background: linear-gradient(180deg, #34d399 0%, #059669 100%) !important; color: #fff !important; }
     .choice-btn.wrong { background: linear-gradient(180deg, #f87171 0%, #dc2626 100%) !important; color: #fff !important; }
-    .battle-toast { text-align: center; font-weight: 800; min-height: 22px; }
   </style>
 </head>
 <body>
@@ -76,57 +76,57 @@
       <div style="font-size:3.5rem; margin-bottom:10px;">👑</div>
       <h2 style="color:#0f172a; margin-bottom:6px;">高中單字挑戰王</h2>
       <p style="color:#10b981; font-size:0.85rem; margin-bottom:20px; font-weight:700;">系統就緒 🟢 (動態題庫同步)</p>
-      
       <div style="width:100%; max-width:340px;">
-        <input type="text" id="student-acc-input" placeholder="學生帳號 (例如: Roger)" class="admin-input-full" />
-        <input type="password" id="student-pwd-input" placeholder="密碼 (例如: 1209)" class="admin-input-full" />
-        <button id="student-login-btn" class="btn-primary" style="margin-top:6px;">進入系統挑戰 ➔</button>
+        <input type="text" id="student-acc-input" placeholder="學生帳號 (例如: Roger)" class="admin-input-full" style="padding:12px; font-size:1rem;" />
+        <input type="password" id="student-pwd-input" placeholder="密碼 (例如: 1209)" class="admin-input-full" style="padding:12px; font-size:1rem;" />
+        <button id="student-login-btn" class="btn-primary" style="margin-top:6px; padding:12px; font-size:1.1rem;">進入系統挑戰 ➔</button>
         <p id="student-login-err" style="color:var(--danger); font-size:0.85rem; margin-top:10px; display:none;">帳號或密碼錯誤！</p>
       </div>
     </div>
 
-    <!-- ==================== 學生大廳介面 ==================== -->
+    <!-- 學生大廳 -->
     <div id="view-student-lobby" style="display:none; flex-direction:column; padding: 30px 24px; flex:1; align-items:center; justify-content:center;">
       <h2 style="color:#0f172a; margin-bottom:8px; font-size:1.8rem;">👋 歡迎，<span id="lobby-student-name" style="color:var(--primary);"></span></h2>
       <p id="lobby-perm-tag" style="color:#10b981; font-weight:700; font-size:0.95rem; margin-bottom: 24px;"></p>
       
       <div class="card" style="width:100%; text-align:left; padding: 24px;">
-        <h3 style="color:#1e293b; margin-bottom:16px; font-size:1.1rem; text-align:center;">🎯 請選擇訓練範圍</h3>
-        
+        <h3 style="color:#1e293b; margin-bottom:16px; font-size:1.1rem; text-align:center;">🎯 請選擇題庫範圍</h3>
         <label style="font-weight:800; font-size:0.95rem; color:#334155; margin-bottom:6px; display:block;">1. 單字庫大分類：</label>
         <select id="lobby-category-select" class="admin-input-full" style="font-size:1rem; padding:12px;"></select>
-
         <label style="font-weight:800; font-size:0.95rem; color:#334155; margin-bottom:6px; display:block; margin-top:16px;">2. 章節 / 資料夾：</label>
         <select id="lobby-folder-select" class="admin-input-full" style="font-size:1rem; padding:12px;"></select>
+        <label style="font-weight:800; font-size:0.95rem; color:#334155; margin-bottom:6px; display:block; margin-top:16px;">3. 選擇訓練模式：</label>
+        <select id="lobby-mode-select" class="admin-input-full" style="font-size:1rem; padding:12px;">
+          <option value="view-game">👑 單字挑戰 (拼寫作答)</option>
+          <option value="view-cloze">⚔️ 克漏字對戰 (依據 AI 例句)</option>
+        </select>
         
         <button id="lobby-start-btn" class="btn-primary" style="margin-top: 24px; font-size:1.1rem; padding:14px; background:#10b981;">🚀 進入訓練區</button>
       </div>
       <button id="lobby-logout-btn" class="btn-secondary" style="margin-top: 20px; width:100%; padding:12px;">登出換人</button>
     </div>
 
-    <!-- ==================== 學生主操作畫面 ==================== -->
+    <!-- 學生主操作畫面 (含頁籤切換) -->
     <div id="view-student-main" style="display:none; flex-direction:column; flex:1;">
-      
-      <!-- 保留你原本設計的上方導覽列 -->
       <header class="app-nav">
         <div class="nav-tabs-group">
-          <button class="nav-btn active" id="tab-game-btn">👑 單字挑戰</button>
-          <button class="nav-btn" id="tab-phrase-btn">🧩 片語特訓</button>
-          <button class="nav-btn" id="tab-cloze-btn">⚔️ 克漏字對戰</button>
-          <button class="nav-btn" id="tab-mistakes-btn">📖 不熟區 <span id="mistake-badge" class="badge">0</span></button>
+          <button class="nav-btn active" data-target="view-game" id="tab-game-btn">👑 單字挑戰</button>
+          <button class="nav-btn" data-target="view-phrase" id="tab-phrase-btn">🧩 片語特訓</button>
+          <button class="nav-btn" data-target="view-cloze" id="tab-cloze-btn">⚔️ 克漏字對戰</button>
+          <button class="nav-btn" data-target="view-mistakes" id="tab-mistakes-btn">📖 不熟區 <span id="mistake-badge" class="badge">0</span></button>
         </div>
       </header>
 
       <div style="background:#f1f5f9; padding:6px 14px; font-size:0.8rem; font-weight:700; color:#475569; display:flex; justify-content:space-between; align-items:center;">
-        <span>👤 目前學生：<b id="cur-student-name" style="color:#4338ca;">學生</b></span>
+        <span>👤 學生：<b id="cur-student-name" style="color:#4338ca;">學生</b></span>
+        <span id="cur-category-tag" style="color:#10b981; font-weight:800;">高中學測</span>
       </div>
 
-      <!-- 頁籤 1：單字挑戰王 -->
+      <!-- ================= 頁籤 1：單字挑戰王 (拼字遊戲) ================= -->
       <main id="view-game" class="view-panel active">
         <div class="chapter-selector-bar">
-          <button id="btn-back-lobby" class="btn-secondary" style="padding:6px 10px; font-size:0.75rem; background:#cbd5e1; color:#334155; margin-right:8px; border-radius:8px;">🏠 回大廳</button>
-          
-          <label for="game-chapter-filter" style="margin-left:auto;">🎯 單字範圍：</label>
+          <button class="btn-back-lobby btn-secondary" style="padding:6px 10px; font-size:0.75rem; background:#cbd5e1; color:#334155; margin-right:8px; border-radius:8px;">🏠 回大廳</button>
+          <label for="game-chapter-filter" style="margin-left:auto;">🎯 單元：</label>
           <select id="game-chapter-filter" class="chapter-dropdown"></select>
         </div>
 
@@ -134,13 +134,12 @@
           <span id="game-progress-tag" class="pill pill-level">進度：0 / 0</span>
           <span id="score-display" class="pill pill-score">積分：0</span>
           <div class="timer-wrapper">
-            <span>⏱️</span>
-            <span id="timer-count">15</span>s
+            <span>⏱️</span><span id="game-timer-count">15</span>s
           </div>
         </div>
         
         <div class="timer-progress-bar">
-          <div id="timer-progress-fill" class="timer-fill"></div>
+          <div id="game-timer-fill" class="timer-fill"></div>
         </div>
 
         <div class="card quiz-card">
@@ -151,7 +150,6 @@
           <h2 id="quiz-chinese" class="chinese-prompt">題目載入中...</h2>
           <div class="hint-audio-bar">
             <span id="quiz-hint" class="hint-text">提示資訊</span>
-            <button type="button" id="game-sound-btn" class="btn-sound-hint">🔊 聽發音</button>
           </div>
         </div>
 
@@ -168,44 +166,102 @@
 
         <div id="game-feedback" class="feedback-box"></div>
       </main>
+
+      <!-- ================= 頁籤 2：片語特訓 (待建置) ================= -->
+      <main id="view-phrase" class="view-panel">
+        <div class="chapter-selector-bar">
+          <button class="btn-back-lobby btn-secondary" style="padding:6px 10px; font-size:0.75rem; border-radius:8px;">🏠 回大廳</button>
+        </div>
+        <div style="text-align:center; padding:60px 20px; color:#64748b;">
+          <h2 style="margin-bottom:10px;">🧩 片語特訓</h2>
+          <p>此功能建置中，敬請期待！</p>
+        </div>
+      </main>
+
+      <!-- ================= 頁籤 3：克漏字對戰 (AI 句子填空) ================= -->
+      <main id="view-cloze" class="view-panel arena-bg">
+        <div class="cloze-top-control">
+          <button class="btn-back-lobby btn-secondary" style="padding:6px 10px; font-size:0.75rem; background:#cbd5e1; color:#334155; border-radius:8px;">🏠 回大廳</button>
+          <select id="cloze-chapter-filter" class="chapter-select-dark"></select>
+        </div>
+
+        <div class="game-status-bar" style="color:white; margin-top:4px;">
+          <span id="cloze-progress-tag" class="pill" style="background:rgba(255,255,255,0.2); color:white;">進度：0 / 0</span>
+          <span id="cloze-score-display" class="pill" style="background:var(--danger); color:white;">積分：0</span>
+          <div class="timer-wrapper" style="color:white;">
+            <span>⏱️</span><span id="cloze-timer-count">15</span>s
+          </div>
+        </div>
+        
+        <div class="timer-progress-bar" style="background:rgba(255,255,255,0.2);">
+          <div id="cloze-timer-fill" class="timer-fill" style="background:var(--success);"></div>
+        </div>
+
+        <!-- 例句題目區 -->
+        <div class="card" style="background:#1e293b; border-color:#334155; margin-bottom:20px; text-align:left;">
+          <div style="margin-bottom:12px; display:flex; justify-content:space-between;">
+             <span id="cloze-chapter-tag" class="chapter-tag" style="background:#334155; color:#cbd5e1;">Unit 1</span>
+             <span id="cloze-pos-tag" class="pos-tag" style="background:#312e81; color:#a5b4fc;">n.</span>
+          </div>
+          <h2 id="cloze-sentence" style="font-size:1.35rem; line-height:1.6; color:#f8fafc; font-weight:800;">題目載入中...</h2>
+          <p id="cloze-zh" style="color:#94a3b8; font-weight:700; margin-top:14px; font-size:1.1rem;"></p>
+        </div>
+
+        <!-- 4 個選項按鈕區 -->
+        <div id="cloze-options-container" class="answers-stack"></div>
+
+        <button id="next-cloze-btn" class="btn-next-action" style="display:none; margin-top:10px; width:100%;">NEXT 下一題 ➔</button>
+      </main>
+
+      <!-- ================= 頁籤 4：不熟區 (待建置) ================= -->
+      <main id="view-mistakes" class="view-panel">
+        <div class="chapter-selector-bar">
+          <button class="btn-back-lobby btn-secondary" style="padding:6px 10px; font-size:0.75rem; border-radius:8px;">🏠 回大廳</button>
+        </div>
+        <div style="text-align:center; padding:60px 20px; color:#64748b;">
+          <h2 style="margin-bottom:10px;">📖 不熟區</h2>
+          <p>此功能建置中，敬請期待！</p>
+        </div>
+      </main>
+
     </div>
   </div>
 
   <script>
     const DEFAULT_BASE_QUESTIONS = [
-      {"id": 1, "category": "高中學測", "chapter": "Unit 1", "word": "cue", "pos": "n.", "isPhrase": false, "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
-      {"id": 2, "category": "高中學測", "chapter": "Unit 1", "word": "declare", "pos": "v.", "isPhrase": false, "zh": "宣布；宣稱；申報", "sentence": "The government decided to ___ the day a public holiday.", "options": ["declare", "divorce", "disappoint", "finance"]}
+      {"id": 1, "category": "高中學測", "folder": "Unit 1", "word": "cue", "pos": "n.", "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
+      {"id": 2, "category": "高中學測", "folder": "Unit 1", "word": "declare", "pos": "v.", "zh": "宣布；宣稱", "sentence": "The government decided to ___ the day a public holiday.", "options": ["declare", "divorce", "disappoint", "finance"]}
     ];
 
     let loggedInStudent = null;
+    let currentLobbyCategory = "高中學測";
+    
     let activeWordList = [];
     let currentWordIndex = 0;
     let wordScore = 0;
-    let currentLobbyCategory = "高中學測";
+
+    // 計時器變數
+    let timerInterval;
+    let timeLeft = 15;
+    let isTimeUp = false;
 
     window.addEventListener('DOMContentLoaded', () => {
       
+      // 1. 學生登入
       document.getElementById('student-login-btn').addEventListener('click', () => {
         const acc = document.getElementById('student-acc-input').value.trim().toLowerCase();
         const pwd = document.getElementById('student-pwd-input').value.trim();
-
         const studentAccounts = JSON.parse(localStorage.getItem('student_accounts') || JSON.stringify([
-          { acc: "Roger", pwd: "1209", name: "羅傑", perm: "高中" },
-          { acc: "student1", pwd: "1234", name: "示範生小明", perm: "國中" }
+          { acc: "Roger", pwd: "1209", name: "羅傑", perm: "高中" }
         ]));
 
-        const found = studentAccounts.find(s => 
-          String(s.acc || '').trim().toLowerCase() === acc && 
-          String(s.pwd || '').trim() === pwd
-        );
-
+        const found = studentAccounts.find(s => String(s.acc || '').trim().toLowerCase() === acc && String(s.pwd || '').trim() === pwd);
         if (found) {
           loggedInStudent = found;
           loggedInStudent.perm = loggedInStudent.perm || "高中"; 
           
           document.getElementById('view-student-login').style.display = 'none';
           document.getElementById('view-student-lobby').style.display = 'flex';
-          
           document.getElementById('lobby-student-name').innerText = found.name;
           document.getElementById('lobby-perm-tag').innerText = `權限範圍：${loggedInStudent.perm === '國中' ? '📚 國中專用' : '📖 高中與進階題庫'}`;
           document.getElementById('student-login-err').style.display = 'none';
@@ -216,37 +272,7 @@
         }
       });
 
-      function initLobbyCategories() {
-        const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
-        const allCats = [...new Set(allQuestions.map(q => q.category || "高中學測"))];
-        
-        let allowedCats = [];
-        if (loggedInStudent.perm === '國中') {
-          allowedCats = allCats.filter(c => c === '國中');
-          if (allowedCats.length === 0) allowedCats = ['國中'];
-        } else {
-          allowedCats = allCats.filter(c => c !== '國中');
-          if (allowedCats.length === 0) allowedCats = ['高中學測', 'Level 4'];
-        }
-
-        const catSelect = document.getElementById('lobby-category-select');
-        catSelect.innerHTML = allowedCats.map(c => `<option value="${c}">${c}</option>`).join('');
-        
-        updateLobbyFolders();
-      }
-
-      function updateLobbyFolders() {
-        const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
-        const cat = document.getElementById('lobby-category-select').value;
-        const filtered = allQuestions.filter(q => (q.category || "高中學測") === cat);
-        
-        const folders = ["全部章節", ...new Set(filtered.map(q => q.folder || q.chapter || "Unit 1"))];
-        const folderSelect = document.getElementById('lobby-folder-select');
-        folderSelect.innerHTML = folders.map(f => `<option value="${f}">${f}</option>`).join('');
-      }
-
-      document.getElementById('lobby-category-select').addEventListener('change', updateLobbyFolders);
-
+      // 2. 登出
       document.getElementById('lobby-logout-btn').addEventListener('click', () => {
         loggedInStudent = null;
         document.getElementById('view-student-lobby').style.display = 'none';
@@ -255,202 +281,332 @@
         document.getElementById('student-pwd-input').value = '';
       });
 
+      // 3. 初始化大廳下拉選單
+      function initLobbyCategories() {
+        const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
+        const allCats = [...new Set(allQuestions.map(q => q.category || "高中學測"))];
+        let allowedCats = loggedInStudent.perm === '國中' ? allCats.filter(c => c === '國中') : allCats.filter(c => c !== '國中');
+        if (allowedCats.length === 0) allowedCats = loggedInStudent.perm === '國中' ? ['國中'] : ['高中學測'];
+
+        const catSelect = document.getElementById('lobby-category-select');
+        catSelect.innerHTML = allowedCats.map(c => `<option value="${c}">${c}</option>`).join('');
+        updateLobbyFolders();
+      }
+
+      function updateLobbyFolders() {
+        const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
+        const cat = document.getElementById('lobby-category-select').value;
+        const filtered = allQuestions.filter(q => (q.category || "高中學測") === cat);
+        const folders = ["全部章節", ...new Set(filtered.map(q => q.folder || q.chapter || "Unit 1"))];
+        document.getElementById('lobby-folder-select').innerHTML = folders.map(f => `<option value="${f}">${f}</option>`).join('');
+      }
+      document.getElementById('lobby-category-select').addEventListener('change', updateLobbyFolders);
+
+      // 4. 點擊「進入訓練區」進入遊戲
       document.getElementById('lobby-start-btn').addEventListener('click', () => {
         currentLobbyCategory = document.getElementById('lobby-category-select').value;
         const selectedFolder = document.getElementById('lobby-folder-select').value;
+        const selectedModeId = document.getElementById('lobby-mode-select').value; // view-game 或 view-cloze
         
         document.getElementById('view-student-lobby').style.display = 'none';
         document.getElementById('view-student-main').style.display = 'flex';
         document.getElementById('cur-student-name').innerText = loggedInStudent.name;
+        document.getElementById('cur-category-tag').innerText = currentLobbyCategory;
 
+        // 同步子選單
         updateChapterDropdowns();
-        const mainDropdown = document.getElementById('game-chapter-filter');
-        if ([...mainDropdown.options].some(o => o.value === selectedFolder)) {
-          mainDropdown.value = selectedFolder;
+        ['game-chapter-filter', 'cloze-chapter-filter'].forEach(id => {
+          const dd = document.getElementById(id);
+          if (dd && [...dd.options].some(o => o.value === selectedFolder)) dd.value = selectedFolder;
+        });
+
+        // 觸發頁籤切換
+        const targetTabBtn = document.querySelector(`.nav-btn[data-target="${selectedModeId}"]`);
+        if (targetTabBtn) targetTabBtn.click();
+      });
+
+      // 5. 綁定「回大廳」按鈕
+      document.querySelectorAll('.btn-back-lobby').forEach(btn => {
+        btn.addEventListener('click', () => {
+          clearInterval(timerInterval); // 停止計時
+          document.getElementById('view-student-main').style.display = 'none';
+          document.getElementById('view-student-lobby').style.display = 'flex';
+          initLobbyCategories();
+        });
+      });
+
+      // ==========================================
+      // 頁籤切換邏輯 (上方導覽列)
+      // ==========================================
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+          
+          btn.classList.add('active');
+          const targetId = btn.getAttribute('data-target');
+          document.getElementById(targetId).classList.add('active');
+
+          clearInterval(timerInterval); // 切換頁籤重置時間
+          filterWordList();
+
+          if (targetId === 'view-game') startNewWordSession();
+          if (targetId === 'view-cloze') startNewClozeSession();
+        });
+      });
+
+      // 單元篩選連動
+      document.getElementById('game-chapter-filter').addEventListener('change', () => { filterWordList(); startNewWordSession(); });
+      document.getElementById('cloze-chapter-filter').addEventListener('change', () => { filterWordList(); startNewClozeSession(); });
+
+      // ==========================================
+      // 計時器倒數邏輯
+      // ==========================================
+      function startTimer(mode) {
+        clearInterval(timerInterval);
+        timeLeft = 15;
+        isTimeUp = false;
+        updateTimerDisplay(mode);
+        
+        timerInterval = setInterval(() => {
+          timeLeft--;
+          updateTimerDisplay(mode);
+          if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            isTimeUp = true;
+            if (mode === 'game') submitWordAnswer();
+            if (mode === 'cloze') handleClozeTimeout();
+          }
+        }, 1000);
+      }
+
+      function updateTimerDisplay(mode) {
+        let countEl, fillEl;
+        if (mode === 'game') {
+          countEl = document.getElementById('game-timer-count');
+          fillEl = document.getElementById('game-timer-fill');
+        } else if (mode === 'cloze') {
+          countEl = document.getElementById('cloze-timer-count');
+          fillEl = document.getElementById('cloze-timer-fill');
         }
+        if (countEl) countEl.innerText = timeLeft;
+        if (fillEl) fillEl.style.width = (timeLeft / 15 * 100) + '%';
+      }
 
-        filterWordList();
-        startNewWordSession();
-      });
-
-      document.getElementById('btn-back-lobby').addEventListener('click', () => {
-        document.getElementById('view-student-main').style.display = 'none';
-        document.getElementById('view-student-lobby').style.display = 'flex';
-        initLobbyCategories();
-      });
-
-      document.getElementById('game-chapter-filter').addEventListener('change', () => {
-        filterWordList();
-        startNewWordSession();
-      });
-
-      document.getElementById('next-question-btn').addEventListener('click', () => {
-        currentWordIndex++;
-        loadWordQuestion();
-      });
-
-      // 綁定輸入框事件以動態更新格子
+      // ==========================================
+      // 【頁籤 1】單字挑戰邏輯 (拼寫)
+      // ==========================================
+      document.getElementById('next-question-btn').addEventListener('click', () => { currentWordIndex++; loadWordQuestion(); });
+      document.getElementById('submit-btn').addEventListener('click', submitWordAnswer);
       document.getElementById('answer-input').addEventListener('input', updateSlotsDisplay);
       document.getElementById('answer-input').addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
-          if (document.getElementById('submit-btn').style.display !== 'none') {
-            submitWordAnswer();
-          } else {
-            document.getElementById('next-question-btn').click();
-          }
+          if (document.getElementById('submit-btn').style.display !== 'none') submitWordAnswer();
+          else document.getElementById('next-question-btn').click();
         }
       });
-      document.getElementById('submit-btn').addEventListener('click', submitWordAnswer);
-    });
 
-    function updateChapterDropdowns() {
-      const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
-      const filtered = allQuestions.filter(q => (q.category || "高中學測") === currentLobbyCategory);
-      const chapters = ["全部章節", ...new Set(filtered.map(q => q.folder || q.chapter || "Unit 1"))];
-      
-      const wordSelect = document.getElementById('game-chapter-filter');
-      if (wordSelect) {
-        const cur = wordSelect.value;
-        wordSelect.innerHTML = chapters.map(c => `<option value="${c}">${c}</option>`).join('');
-        if (chapters.includes(cur)) wordSelect.value = cur;
+      function startNewWordSession() {
+        currentWordIndex = 0; wordScore = 0;
+        document.getElementById('score-display').innerText = `積分：0`;
+        loadWordQuestion();
       }
-      filterWordList();
-    }
 
-    function filterWordList() {
-      const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
-      const f = document.getElementById('game-chapter-filter')?.value || "全部章節";
-      
-      const base = allQuestions.filter(q => 
-        !q.isPhrase && 
-        !q.word.trim().includes(' ') && 
-        (q.category || "高中學測") === currentLobbyCategory
-      );
-      
-      activeWordList = f === "全部章節" ? [...base] : base.filter(q => (q.folder || q.chapter || "Unit 1") === f);
-    }
-
-    function startNewWordSession() {
-      currentWordIndex = 0;
-      wordScore = 0;
-      document.getElementById('score-display').innerText = `積分：0`;
-      loadWordQuestion();
-    }
-
-    function loadWordQuestion() {
-      if (!activeWordList.length) {
-        document.getElementById('quiz-chinese').innerText = "此章節無單字題目";
-        document.getElementById('letter-slots-container').innerHTML = '';
-        return;
-      }
-      if (currentWordIndex >= activeWordList.length) currentWordIndex = 0;
-
-      const q = activeWordList[currentWordIndex];
-      
-      document.getElementById('game-progress-tag').innerText = `進度：${currentWordIndex + 1} / ${activeWordList.length}`;
-      document.getElementById('quiz-chapter').innerText = q.folder || q.chapter || "Unit 1";
-      document.getElementById('quiz-pos').innerText = q.pos;
-      document.getElementById('quiz-chinese').innerText = q.zh;
-      document.getElementById('quiz-hint').innerText = `長度：${q.word.length} 字母・首字 [ ${q.word[0]} ]`;
-
-      const input = document.getElementById('answer-input');
-      input.value = '';
-      input.disabled = false;
-      input.maxLength = q.word.length;
-      input.focus();
-
-      // 呼叫更新格子函數
-      updateSlotsDisplay();
-
-      document.getElementById('game-feedback').style.display = 'none';
-      document.getElementById('submit-btn').style.display = 'block';
-      document.getElementById('next-question-btn').style.display = 'none';
-    }
-
-    // ==========================================
-    // 核心邏輯還原：動態生成與更新輸入格子
-    // ==========================================
-    function updateSlotsDisplay() {
-      const input = document.getElementById('answer-input');
-      if (!input) return;
-      
-      const val = input.value;
-      const q = activeWordList[currentWordIndex];
-      if (!q || !q.word) return;
-
-      const targetWord = q.word;
-      const container = document.getElementById('letter-slots-container');
-      container.innerHTML = '';
-
-      for (let i = 0; i < targetWord.length; i++) {
-        const unit = document.createElement('div');
-        unit.className = 'slot-cell-unit';
-
-        const top = document.createElement('div');
-        top.className = 'correction-slot-top';
-
-        const dash = document.createElement('div');
-        dash.className = 'dash-underline';
-
-        // 顯示已經輸入的字母
-        if (i < val.length) {
-          dash.innerText = val[i];
+      function loadWordQuestion() {
+        if (!activeWordList.length) {
+          document.getElementById('quiz-chinese').innerText = "此單元無單字";
+          document.getElementById('letter-slots-container').innerHTML = '';
+          clearInterval(timerInterval);
+          return;
         }
+        if (currentWordIndex >= activeWordList.length) currentWordIndex = 0;
 
-        // 當前輸入焦點的閃爍底線特效
-        if (i === val.length && !input.disabled) {
-          dash.classList.add('focusing');
-        }
+        const q = activeWordList[currentWordIndex];
+        document.getElementById('game-progress-tag').innerText = `進度：${currentWordIndex + 1} / ${activeWordList.length}`;
+        document.getElementById('quiz-chapter').innerText = q.folder || q.chapter || "Unit 1";
+        document.getElementById('quiz-pos').innerText = q.pos;
+        document.getElementById('quiz-chinese').innerText = q.zh;
+        document.getElementById('quiz-hint').innerText = `長度：${q.word.length} 字母・首字 [ ${q.word[0]} ]`;
 
-        // 送出後（disabled 狀態），比對對錯並顯示綠色或紅色特效
-        if (input.disabled) {
-          if (val[i] && val[i].toLowerCase() === targetWord[i].toLowerCase()) {
-            dash.classList.add('char-right');
-          } else {
-            dash.classList.add('char-wrong');
-            // 若錯誤，在上方顯示正確的綠色字母 Badge
-            top.innerHTML = `<div class="correct-letter-badge">${targetWord[i]}</div>`;
-          }
-        }
+        const input = document.getElementById('answer-input');
+        input.value = '';
+        input.disabled = false;
+        input.maxLength = q.word.length;
+        input.focus();
 
-        unit.appendChild(top);
-        unit.appendChild(dash);
-        container.appendChild(unit);
-      }
-    }
-
-    function submitWordAnswer() {
-      if (!activeWordList.length) return;
-      const input = document.getElementById('answer-input');
-      const userAns = input.value.trim().toLowerCase();
-      const target = activeWordList[currentWordIndex].word.trim().toLowerCase();
-      const fb = document.getElementById('game-feedback');
-
-      input.disabled = true; // 鎖定輸入框，觸發 updateSlotsDisplay 結算特效
-
-      if (userAns === target) {
-        wordScore += 100;
-        document.getElementById('score-display').innerText = `積分：${wordScore}`;
-        fb.className = 'feedback-box success';
-        fb.innerHTML = `🎉 完全正確！`;
-      } else {
-        fb.className = 'feedback-box error';
-        fb.innerHTML = `❌ 錯誤！正解是：${target}`;
-      }
-
-      updateSlotsDisplay(); // 結算紅綠字特效
-
-      document.getElementById('submit-btn').style.display = 'none';
-      document.getElementById('next-question-btn').style.display = 'block';
-    }
-
-    window.focusHiddenInput = function() {
-      const inp = document.getElementById('answer-input');
-      if (inp && !inp.disabled) {
-        inp.focus();
         updateSlotsDisplay();
+        document.getElementById('game-feedback').style.display = 'none';
+        document.getElementById('submit-btn').style.display = 'block';
+        document.getElementById('next-question-btn').style.display = 'none';
+
+        startTimer('game'); // 啟動計時
       }
-    };
+
+      function updateSlotsDisplay() {
+        const input = document.getElementById('answer-input');
+        if (!input) return;
+        const val = input.value;
+        const q = activeWordList[currentWordIndex];
+        if (!q || !q.word) return;
+
+        const targetWord = q.word;
+        const container = document.getElementById('letter-slots-container');
+        container.innerHTML = '';
+
+        for (let i = 0; i < targetWord.length; i++) {
+          const unit = document.createElement('div'); unit.className = 'slot-cell-unit';
+          const top = document.createElement('div'); top.className = 'correction-slot-top';
+          const dash = document.createElement('div'); dash.className = 'dash-underline';
+
+          if (i < val.length) dash.innerText = val[i];
+          if (i === val.length && !input.disabled) dash.classList.add('focusing');
+
+          if (input.disabled) {
+            if (val[i] && val[i].toLowerCase() === targetWord[i].toLowerCase()) {
+              dash.classList.add('char-right');
+            } else {
+              dash.classList.add('char-wrong');
+              top.innerHTML = `<div class="correct-letter-badge">${targetWord[i]}</div>`;
+            }
+          }
+          unit.appendChild(top); unit.appendChild(dash); container.appendChild(unit);
+        }
+      }
+
+      function submitWordAnswer() {
+        if (!activeWordList.length) return;
+        clearInterval(timerInterval); // 停止計時
+
+        const input = document.getElementById('answer-input');
+        const userAns = input.value.trim().toLowerCase();
+        const target = activeWordList[currentWordIndex].word.trim().toLowerCase();
+        const fb = document.getElementById('game-feedback');
+
+        input.disabled = true;
+
+        if (userAns === target && !isTimeUp) {
+          wordScore += 100;
+          document.getElementById('score-display').innerText = `積分：${wordScore}`;
+          fb.className = 'feedback-box success';
+          fb.innerHTML = `🎉 完全正確！`;
+        } else {
+          fb.className = 'feedback-box error';
+          fb.innerHTML = isTimeUp ? `⏰ 時間到！正解：${target}` : `❌ 錯誤！正解：${target}`;
+        }
+
+        updateSlotsDisplay();
+        document.getElementById('submit-btn').style.display = 'none';
+        document.getElementById('next-question-btn').style.display = 'block';
+      }
+
+      window.focusHiddenInput = function() {
+        const inp = document.getElementById('answer-input');
+        if (inp && !inp.disabled) { inp.focus(); updateSlotsDisplay(); }
+      };
+
+      // ==========================================
+      // 【頁籤 3】克漏字對戰 (AI 句子與選項)
+      // ==========================================
+      document.getElementById('next-cloze-btn').addEventListener('click', () => { currentWordIndex++; loadClozeQuestion(); });
+
+      function startNewClozeSession() {
+        currentWordIndex = 0; wordScore = 0;
+        document.getElementById('cloze-score-display').innerText = `積分：0`;
+        loadClozeQuestion();
+      }
+
+      function loadClozeQuestion() {
+        if (!activeWordList.length) {
+          document.getElementById('cloze-sentence').innerText = "此單元無克漏字題目";
+          document.getElementById('cloze-zh').innerText = "";
+          document.getElementById('cloze-options-container').innerHTML = '';
+          clearInterval(timerInterval);
+          return;
+        }
+        if (currentWordIndex >= activeWordList.length) currentWordIndex = 0;
+
+        const q = activeWordList[currentWordIndex];
+        document.getElementById('cloze-progress-tag').innerText = `進度：${currentWordIndex + 1} / ${activeWordList.length}`;
+        document.getElementById('cloze-chapter-tag').innerText = q.folder || q.chapter || "Unit 1";
+        document.getElementById('cloze-pos-tag').innerText = q.pos;
+
+        // 顯示來自 AI 的 sentence (如果沒有就自己組)
+        let sentenceText = q.sentence || `The meaning of this word is ___ .`;
+        document.getElementById('cloze-sentence').innerHTML = sentenceText.replace('___', '<span style="color:var(--danger);">___</span>');
+        document.getElementById('cloze-zh').innerText = `中文提示：${q.zh}`;
+
+        // 處理 4 個選項
+        const box = document.getElementById('cloze-options-container');
+        box.innerHTML = '';
+        let opts = q.options && q.options.length >= 4 ? [...q.options] : [q.word, "option A", "option B", "option C"];
+        if (!opts.includes(q.word)) opts[0] = q.word; // 保證有正確答案
+        opts = opts.sort(() => 0.5 - Math.random()); // 隨機打亂
+
+        opts.forEach(opt => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.innerText = opt;
+          btn.onclick = () => handleClozeClick(opt, q.word, btn, box);
+          box.appendChild(btn);
+        });
+
+        document.getElementById('next-cloze-btn').style.display = 'none';
+        startTimer('cloze');
+      }
+
+      function handleClozeClick(selected, correctWord, clickedBtn, box) {
+        clearInterval(timerInterval);
+        const allBtns = box.querySelectorAll('button');
+        allBtns.forEach(b => b.disabled = true);
+
+        if (selected === correctWord) {
+          clickedBtn.classList.add('correct');
+          wordScore += 100;
+          document.getElementById('cloze-score-display').innerText = `積分：${wordScore}`;
+        } else {
+          clickedBtn.classList.add('wrong');
+          allBtns.forEach(b => { if (b.innerText === correctWord) b.classList.add('correct'); });
+        }
+        document.getElementById('next-cloze-btn').style.display = 'block';
+      }
+
+      function handleClozeTimeout() {
+        const box = document.getElementById('cloze-options-container');
+        const allBtns = box.querySelectorAll('button');
+        allBtns.forEach(b => b.disabled = true);
+        const q = activeWordList[currentWordIndex];
+        
+        allBtns.forEach(b => { if (b.innerText === q.word) b.classList.add('correct'); });
+        document.getElementById('next-cloze-btn').style.display = 'block';
+      }
+
+      // 共用：更新選單內容
+      function updateChapterDropdowns() {
+        const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
+        const filtered = allQuestions.filter(q => (q.category || "高中學測") === currentLobbyCategory);
+        const chapters = ["全部章節", ...new Set(filtered.map(q => q.folder || q.chapter || "Unit 1"))];
+        
+        ['game-chapter-filter', 'cloze-chapter-filter'].forEach(id => {
+          const sel = document.getElementById(id);
+          if (sel) {
+            const cur = sel.value;
+            sel.innerHTML = chapters.map(c => `<option value="${c}">${c}</option>`).join('');
+            if (chapters.includes(cur)) sel.value = cur;
+          }
+        });
+      }
+
+      function filterWordList() {
+        const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
+        const viewId = document.querySelector('.view-panel.active').id;
+        const filterId = viewId === 'view-game' ? 'game-chapter-filter' : 'cloze-chapter-filter';
+        const f = document.getElementById(filterId)?.value || "全部章節";
+        
+        const base = allQuestions.filter(q => !q.isPhrase && !q.word.trim().includes(' ') && (q.category || "高中學測") === currentLobbyCategory);
+        activeWordList = f === "全部章節" ? [...base] : base.filter(q => (q.folder || q.chapter || "Unit 1") === f);
+      }
+
+    });
   </script>
 </body>
 </html>
