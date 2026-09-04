@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>高中單字挑戰王 - 雙模實戰 APP</title>
+  <!-- 引入文字辨識 Tesseract.js -->
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <!-- 引入 Excel 匯出套件 SheetJS -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <style>
     :root {
       --primary: #4338ca;
@@ -220,8 +223,6 @@
       row-gap: 18px;
       pointer-events: none;
     }
-
-    /* 每個字母欄位的直向容器 */
     .slot-cell-unit {
       display: flex;
       flex-direction: column;
@@ -229,8 +230,6 @@
       justify-content: flex-end;
       width: 34px;
     }
-
-    /* 上方固定高度的正確字母提示框 */
     .correction-slot-top {
       height: 26px;
       display: flex;
@@ -239,8 +238,6 @@
       margin-bottom: 4px;
       width: 100%;
     }
-
-    /* 醒目的綠底白字正確字母小標籤 */
     .correct-letter-badge {
       background: #10b981;
       color: #ffffff;
@@ -255,12 +252,10 @@
       box-shadow: 0 2px 4px rgba(16, 185, 129, 0.4);
       text-transform: lowercase;
     }
-
-    /* 下方灰色實線槽 */
     .dash-underline {
       width: 100%;
       height: 48px;
-      border-bottom: 4px solid #94a3b8 !important; /* 灰色實線 */
+      border-bottom: 4px solid #94a3b8 !important;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -288,9 +283,7 @@
       background: rgba(16, 185, 129, 0.08);
       border-radius: 6px 6px 0 0;
     }
-    .dash-gap { 
-      width: 18px; 
-    }
+    .dash-gap { width: 18px; }
 
     @keyframes blinkLine {
       from { border-bottom-color: #4f46e5; }
@@ -575,6 +568,7 @@
     .form-row { display: flex; gap: 8px; }
     .admin-list-container { max-height: 220px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
     .btn-secondary-sm { background: #e2e8f0; border: none; padding: 6px 10px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+    .btn-excel { background: #10b981; color: white; border: none; padding: 6px 10px; border-radius: 8px; font-weight: 700; cursor: pointer; }
     .btn-sound { background: #f1f5f9; border: 1px solid var(--border); padding: 4px 10px; border-radius: 8px; cursor: pointer; font-weight: 700; }
   </style>
 </head>
@@ -621,7 +615,6 @@
         </div>
       </div>
 
-      <!-- 實線填空區 -->
       <div class="pure-dashed-zone" onclick="focusHiddenInput('word')">
         <div id="letter-slots-container" class="slots-flex-row"></div>
         <input type="text" id="answer-input" class="ghost-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
@@ -754,7 +747,10 @@
     <main id="view-mistakes" class="view-panel">
       <div class="mistake-header">
         <h3>待加強字庫與片語</h3>
-        <button id="clear-mistakes-btn" class="btn-danger-outline">全部清空</button>
+        <div>
+          <button id="export-mistakes-excel-quick-btn" class="btn-excel" style="margin-right:6px;">📊 匯出錯題 Excel</button>
+          <button id="clear-mistakes-btn" class="btn-danger-outline">全部清空</button>
+        </div>
       </div>
       <div id="mistakes-list" class="mistake-cards-container"></div>
     </main>
@@ -773,9 +769,10 @@
       <div id="admin-main-panel" style="display:none;">
         <div class="admin-header">
           <h3>⚙️ 章節與題庫管理</h3>
-          <div>
-            <button id="admin-logout-btn" class="btn-danger-outline" style="margin-right:6px;">登出</button>
-            <button id="export-json-btn" class="btn-secondary-sm">📥 匯出全部 JSON</button>
+          <div style="display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end;">
+            <button id="export-mistakes-excel-btn" class="btn-excel">📊 匯出錯題 Excel</button>
+            <button id="export-json-btn" class="btn-secondary-sm">📥 匯出題庫 JSON</button>
+            <button id="admin-logout-btn" class="btn-danger-outline">登出</button>
           </div>
         </div>
 
@@ -936,10 +933,9 @@
       return res;
     }
 
-    // 🔥 核心發音：先取消所有正在唸或排隊中的舊語音，確保發音絕對屬於當前題目
     function playSound(text) {
       if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel(); // 立即中斷上一題殘留發音
+        window.speechSynthesis.cancel();
         setTimeout(() => {
           const utter = new SpeechSynthesisUtterance(text);
           utter.lang = 'en-US';
@@ -1029,7 +1025,7 @@
       }
     }
 
-    // 核心渲染：固定雙層架構，錯字上方浮現綠底白字正確字母
+    // 核心渲染：灰色實線 + 錯字正上方浮現綠底正確字母
     function renderUnderlineSlots(containerId, targetWord, currentVal = '', isEvaluated = false) {
       const container = document.getElementById(containerId);
       if (!container) return;
@@ -1096,7 +1092,7 @@
     }
 
     function loadWordQuestion() {
-      stopAnySpeech(); // 換題時立刻中止前題發音
+      stopAnySpeech();
 
       if (!activeWordList.length) {
         document.getElementById('quiz-chinese').innerText = "此章節無單字題目";
@@ -1129,12 +1125,10 @@
       document.getElementById('submit-btn').style.display = 'block';
       document.getElementById('next-question-btn').style.display = 'none';
 
-      // 🔥 關鍵設定：按 NEXT 進入新題目後，足足延遲 2 秒（2000毫秒）再發音
       autoPronounceTimeout = setTimeout(() => {
         playSound(q.word);
       }, 2000);
 
-      // 每字母 5 秒
       const lettersCount = q.word.replace(/[^a-zA-Z]/g, '').length;
       currentWordTotalTime = Math.max(10, lettersCount * 5);
       wordTimeLeft = currentWordTotalTime;
@@ -1251,7 +1245,7 @@
     }
 
     function loadPhraseQuestion() {
-      stopAnySpeech(); // 換題時立刻中止前題發音
+      stopAnySpeech();
 
       if (!activePhraseList.length) {
         document.getElementById('phrase-chinese').innerText = "此章節無片語題目";
@@ -1280,7 +1274,6 @@
       document.getElementById('phrase-submit-btn').style.display = 'block';
       document.getElementById('phrase-next-btn').style.display = 'none';
 
-      // 🔥 關鍵設定：按 NEXT 進入片語題目後，足足延遲 2 秒再發音
       phrasePronounceTimeout = setTimeout(() => {
         playSound(q.word);
       }, 2000);
@@ -1524,6 +1517,49 @@
       });
     }
 
+    // 🔥 核心功能：匯出錯題為 Excel (.xlsx)
+    function exportMistakesToExcel() {
+      if (mistakeIds.size === 0) {
+        alert("目前沒有任何不熟或答錯的題目可供匯出！");
+        return;
+      }
+
+      const badQuestions = allQuestions.filter(q => mistakeIds.has(q.id));
+      
+      // 整理 Excel 表格內容與標題列
+      const excelData = badQuestions.map((q, index) => ({
+        "項次": index + 1,
+        "章節": q.chapter || "Unit 1",
+        "類型": q.isPhrase ? "片語/詞組" : "單字",
+        "英文詞彙": q.word,
+        "詞性": q.pos,
+        "中文釋義": q.zh,
+        "大考例句": (q.sentence || "").replace('___', `[ ${q.word} ]`)
+      }));
+
+      // 使用 SheetJS 產生工作表與活頁簿
+      const worksheet = XLSX.utils.json_to_sheet(excelData);
+
+      // 自動設定欄寬
+      worksheet['!cols'] = [
+        { wch: 6 },  // 項次
+        { wch: 12 }, // 章節
+        { wch: 12 }, // 類型
+        { wch: 22 }, // 英文詞彙
+        { wch: 10 }, // 詞性
+        { wch: 26 }, // 中文釋義
+        { wch: 45 }  // 例句
+      ];
+
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, "錯題複習庫");
+
+      // 下載 .xlsx 檔案（檔名標註當前日期與時間）
+      const now = new Date();
+      const dateStr = `${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}_${String(now.getHours()).padStart(2,'0')}${String(now.getMinutes()).padStart(2,'0')}`;
+      XLSX.writeFile(workbook, `單字挑戰王_錯題精選_${dateStr}.xlsx`);
+    }
+
     // 初始化與事件掛載
     window.addEventListener('DOMContentLoaded', () => {
       refreshTotalQuestions();
@@ -1587,7 +1623,7 @@
 
       // 單字區操作
       document.getElementById('next-question-btn').addEventListener('click', () => {
-        stopAnySpeech(); // 按 NEXT 先靜音
+        stopAnySpeech();
         currentWordIndex++;
         loadWordQuestion();
       });
@@ -1613,7 +1649,7 @@
 
       // 片語區操作
       document.getElementById('phrase-next-btn').addEventListener('click', () => {
-        stopAnySpeech(); // 按 NEXT 先靜音
+        stopAnySpeech();
         currentPhraseIndex = (currentPhraseIndex + 1) % activePhraseList.length;
         loadPhraseQuestion();
       });
@@ -1648,6 +1684,11 @@
         updateMistakeBadge();
       });
 
+      // 🔥 綁定錯題 Excel 匯出按鈕（後台與不熟區各有一個快速匯出按鈕）
+      document.getElementById('export-mistakes-excel-btn').addEventListener('click', exportMistakesToExcel);
+      document.getElementById('export-mistakes-excel-quick-btn').addEventListener('click', exportMistakesToExcel);
+
+      // 後台驗證
       document.getElementById('admin-login-btn').addEventListener('click', () => {
         if (document.getElementById('admin-pwd-input').value === ADMIN_PASSWORD) {
           isAdminAuthenticated = true;
