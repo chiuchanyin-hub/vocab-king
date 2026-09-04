@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>單字挑戰王 - 雲端即時管理控制台</title>
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <title>單字挑戰王 - 獨立管理控制台</title>
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <style>
@@ -23,13 +20,15 @@
     .section-card { background: white; border: 1.5px solid var(--border); border-radius: 16px; padding: 18px; margin-bottom: 18px; }
     .section-card h3 { font-size: 1.05rem; color: #1e293b; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
     .btn-primary { background: var(--primary); color: white; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 800; cursor: pointer; }
-    .btn-excel { background: #10b981; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; }
+    .btn-excel { background: #10b981; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3); }
     .btn-secondary { background: #e2e8f0; color: #334155; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; }
-    .btn-ai { background: linear-gradient(135deg, #6366f1, #a855f7); color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; }
+    .btn-ai { background: linear-gradient(135deg, #6366f1, #a855f7); color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; box-shadow: 0 2px 8px rgba(168, 85, 247, 0.35); }
     .form-row { display: flex; gap: 8px; margin-bottom: 8px; }
     .form-control { width: 100%; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; outline: none; margin-bottom: 8px; font-size: 0.9rem; }
-    .item-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; background: #ffffff; }
-    .btn-del { border: none; background: #fee2e2; color: #ef4444; border-radius: 6px; padding: 6px 12px; font-weight: 800; cursor: pointer; }
+    .item-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; background: #ffffff; transition: background 0.15s; }
+    .item-card:hover { background: #f1f5f9; }
+    .btn-del { border: none; background: #fee2e2; color: #ef4444; border-radius: 6px; padding: 6px 12px; font-weight: 800; cursor: pointer; transition: all 0.15s; }
+    .btn-del:hover { background: #ef4444; color: white; }
     .tag { background: #e0e7ff; color: #4338ca; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
     .tag-pos { background: #fef3c7; color: #b45309; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
     .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid #ffffff; border-radius: 50%; border-top-color: transparent; animation: spin 0.8s linear infinite; }
@@ -54,8 +53,8 @@
     <div id="dashboard-panel" style="display:none;">
       <div class="nav-bar">
         <div>
-          <h2 style="font-size:1.3rem;">⚙️ 單字挑戰王 - 雲端即時控制台</h2>
-          <span id="cloud-sync-status" style="font-size:0.8rem; color:#10b981; font-weight:700;">🟢 雲端資料同步中...</span>
+          <h2 style="font-size:1.3rem;">⚙️ 單字挑戰王 - 獨立管理控制台</h2>
+          <span style="font-size:0.8rem; color:#10b981; font-weight:700;">🟢 本機控制台模式</span>
         </div>
         <button id="logout-btn" class="btn-secondary" style="background:#334155; color:white;">登出</button>
       </div>
@@ -63,6 +62,10 @@
       <!-- 區塊 0：✨ Gemini API Key -->
       <div class="section-card" style="border:2px solid #a855f7; background:#faf5ff;">
         <h3 style="color:#6b21a8;">✨ Google Gemini 智慧視覺辨識設定</h3>
+        <p style="font-size:0.82rem; color:#7e22ce; margin-bottom:10px;">
+          填入免費的 Gemini API Key，即可直接精準看懂整頁課本照片。
+          （至 <a href="https://aistudio.google.com/" target="_blank" style="color:#4338ca; font-weight:800;">Google AI Studio</a> 免費申請）
+        </p>
         <div class="form-row" style="margin-bottom:0;">
           <input type="password" id="gemini-api-key" placeholder="請在此貼上 Gemini API Key" class="form-control" style="margin-bottom:0;" />
           <button id="save-api-key-btn" class="btn-ai" style="white-space:nowrap;">儲存 Key</button>
@@ -72,96 +75,116 @@
 
       <!-- 區塊 1：📸 拍照 AI 建題 -->
       <div class="section-card" style="border:2px dashed #6366f1;">
-        <h3 style="color:#4338ca;">📸 課本照片智慧辨識（自動同步至雲端）</h3>
+        <h3 style="color:#4338ca;">📸 課本照片智慧辨識（拍照自動建題）</h3>
         <div class="form-row">
           <input type="text" id="ocr-chapter" placeholder="設定匯入章節 (如: Unit 2)" value="Unit 2" class="form-control" style="flex:1; margin-bottom:0;" />
           <input type="file" id="ocr-file" accept="image/*" class="form-control" style="flex:2; margin-bottom:0;" />
         </div>
         <div id="ocr-status" style="display:none; color:#4338ca; font-weight:800; font-size:0.9rem; margin:10px 0;"></div>
         <div id="ocr-preview-box" style="display:none; margin-top:10px;">
-          <div style="font-size:0.8rem; font-weight:700; color:#334155; margin-bottom:4px;">預覽解析結果：</div>
+          <div style="font-size:0.8rem; font-weight:700; color:#334155; margin-bottom:4px;">預覽解析結果（可手動修改）：</div>
           <textarea id="ocr-json" style="width:100%; height:160px; font-family:monospace; padding:8px; border-radius:8px; border:1.5px solid #cbd5e1; font-size:0.85rem;"></textarea>
           <div style="display:flex; gap:8px; margin-top:6px;">
-            <button id="import-ocr-btn" class="btn-primary" style="background:#10b981; flex:1;">✅ 確認將題目加入雲端題庫</button>
+            <button id="import-ocr-btn" class="btn-primary" style="background:#10b981; flex:1;">✅ 確認將題目加入題庫</button>
             <button id="cancel-ocr-btn" class="btn-secondary" style="flex:0.3;">取消</button>
           </div>
         </div>
       </div>
 
-      <!-- 區塊 2：🗑️ 題目管理 -->
+      <!-- 區塊 2：📊 匯出 Excel -->
+      <div class="section-card" style="border:2px solid #10b981; background:#f0fdf4;">
+        <h3 style="color:#065f46;">📊 錯題報表與題庫資料匯出</h3>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <button id="export-excel-btn" class="btn-excel">📊 匯出【錯題 EXCEL 檔】(.xlsx)</button>
+          <button id="export-json-btn" class="btn-secondary">📥 匯出【完整題庫 JSON】(.json)</button>
+        </div>
+      </div>
+
+      <!-- 區塊 3：🗑️ 題目管理 -->
       <div class="section-card" style="border:2px solid #6366f1;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
-          <h3 style="margin-bottom:0; color:#4338ca;">🗑️ 雲端題庫管理 (<span id="total-count-text">0</span> 題)</h3>
-          <button id="btn-restore-default" class="btn-secondary" style="font-size:0.8rem; padding:6px 10px;">↺ 恢復預設題庫</button>
+          <h3 style="margin-bottom:0; color:#4338ca;">🗑️ 題庫管理與刪除 (<span id="total-count-text">0</span> 題)</h3>
+          <div style="display:flex; gap:8px;">
+            <button id="btn-batch-del" class="btn-del" style="background:#fee2e2; border:1px solid #f87171; display:none;">批量刪除選取題 (<span id="selected-count">0</span>)</button>
+            <button id="btn-restore-default" class="btn-secondary" style="font-size:0.8rem; padding:6px 10px;">↺ 恢復預設題庫</button>
+          </div>
         </div>
         <div class="form-row">
-          <input type="text" id="search-word-input" placeholder="🔍 搜尋題庫單字..." class="form-control" style="margin-bottom:10px;" />
+          <input type="text" id="search-word-input" placeholder="🔍 搜尋欲刪除的單字、片語或中文釋義..." class="form-control" style="margin-bottom:10px;" />
           <select id="filter-chapter-select" class="form-control" style="flex:0.6; margin-bottom:10px; font-weight:700;">
             <option value="全部章節">全部章節</option>
           </select>
         </div>
-        <div id="word-table-list" style="max-height:350px; overflow-y:auto; padding-right:4px;"></div>
+        <div id="word-table-list" style="max-height:420px; overflow-y:auto; padding-right:4px;"></div>
       </div>
 
-      <!-- 區塊 3：👥 學生帳密雲端管理 -->
+      <!-- 區塊 4：👥 學生帳密建立與管理 -->
       <div class="section-card">
-        <h3>👥 學生帳號雲端同步管理</h3>
+        <h3>👥 學生帳號密碼管理</h3>
         <form id="add-student-form" class="form-row" style="flex-wrap:wrap; margin-bottom:10px;">
           <input type="text" id="stu-acc" placeholder="帳號 (例如: Roger)" required style="flex:1.2;" class="form-control" />
           <input type="password" id="stu-pwd" placeholder="密碼 (例如: 1209)" required style="flex:1.2;" class="form-control" />
           <input type="text" id="stu-name" placeholder="學生姓名 (例如: 羅傑)" required style="flex:1.2;" class="form-control" />
-          <button type="submit" class="btn-primary" style="flex:1; height:42px;">➕ 建立並同步雲端</button>
+          <button type="submit" class="btn-primary" style="flex:1; height:42px;">➕ 建立帳號</button>
         </form>
         <div id="student-list" style="max-height:160px; overflow-y:auto;"></div>
+      </div>
+
+      <!-- 區塊 5：🔐 修改管理員密碼 -->
+      <div class="section-card">
+        <h3>🔐 修改管理員後台密碼</h3>
+        <div class="form-row">
+          <input type="password" id="new-admin-pwd" placeholder="請輸入新的管理密碼" class="form-control" style="margin-bottom:0;" />
+          <button id="save-pwd-btn" class="btn-primary" style="white-space:nowrap;">儲存新密碼</button>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyAsIcTNN77iuoK2UuWePMZX_zf3tFhUHEw",
-      authDomain: "vocab-king-1209.firebaseapp.com",
-      databaseURL: "https://vocab-king-1209-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "vocab-king-1209",
-      storageBucket: "vocab-king-1209.firebasestorage.app",
-      messagingSenderId: "476030693466",
-      appId: "1:476030693466:web:7199ea3c8a70a0b6906863"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-
     const DEFAULT_BASE_QUESTIONS = [
       {"id": 1, "chapter": "Unit 1", "word": "cue", "pos": "n.", "isPhrase": false, "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
-      {"id": 2, "chapter": "Unit 1", "word": "declare", "pos": "v.", "isPhrase": false, "zh": "宣布；宣稱；申報", "sentence": "The government decided to ___ the day a public holiday.", "options": ["declare", "divorce", "disappoint", "finance"]}
+      {"id": 2, "chapter": "Unit 1", "word": "declare", "pos": "v.", "isPhrase": false, "zh": "宣布；宣稱；申報", "sentence": "The government decided to ___ the day a public holiday.", "options": ["declare", "divorce", "disappoint", "finance"]},
+      {"id": 3, "chapter": "Unit 1", "word": "declaration", "pos": "n.", "isPhrase": false, "zh": "宣告；聲明；申報", "sentence": "The man made a formal ___ that he had nothing to do with the robbery.", "options": ["declaration", "percentage", "rebellion", "insurance"]},
+      {"id": 4, "chapter": "Unit 1", "word": "disappoint", "pos": "v.", "isPhrase": false, "zh": "使失望；使沮喪", "sentence": "I didn't want to ___ Lydia, so I went to her party even though I felt ill.", "options": ["disappoint", "declare", "insure", "finance"]},
+      {"id": 5, "chapter": "Unit 1", "word": "disappointment", "pos": "n.", "isPhrase": false, "zh": "失望；掃興", "sentence": "You can see the ___ in her eyes as she heard the bad news.", "options": ["disappointment", "rebellion", "percentage", "declaration"]},
+      {"id": 6, "chapter": "Unit 1", "word": "divorce", "pos": "v.", "isPhrase": false, "zh": "離婚；使分離", "sentence": "Fredrick's parents decided to ___ five years ago.", "options": ["divorce", "declare", "insure", "reject"]},
+      {"id": 7, "chapter": "Unit 1", "word": "finance", "pos": "v./n.", "isPhrase": false, "zh": "資助；提供資金 / 財務；金融", "sentence": "Several experts in ___ predicted the collapse of the housing market.", "options": ["finance", "insurance", "intellect", "rebellion"]},
+      {"id": 8, "chapter": "Unit 1", "word": "financial", "pos": "adj.", "isPhrase": false, "zh": "財務的；金融的", "sentence": "Fred is having ___ problems right now, so don't ask him for money.", "options": ["financial", "rebellious", "divorced", "intellectual"]},
+      {"id": 9, "chapter": "Unit 1", "word": "insurance", "pos": "n.", "isPhrase": false, "zh": "保險；保險業", "sentence": "Doug's ___ will pay for some of the repairs to his car.", "options": ["insurance", "declaration", "rejection", "finance"]},
+      {"id": 10, "chapter": "Unit 1", "word": "insure", "pos": "v.", "isPhrase": false, "zh": "為……投保", "sentence": "It is important to ___ your valuable jewelry against theft.", "options": ["insure", "divorce", "disappoint", "declare"]},
+      {"id": 11, "chapter": "Unit 1", "word": "intellectual", "pos": "adj./n.", "isPhrase": false, "zh": "智力的；智能的 / 知識分子", "sentence": "This is an ___ game that challenges players' critical thinking.", "options": ["intellectual", "financial", "rebellious", "divorced"]},
+      {"id": 12, "chapter": "Unit 1", "word": "intellect", "pos": "n.", "isPhrase": false, "zh": "思維能力；理解力；智力", "sentence": "A person of great ___ can easily analyze complex social problems.", "options": ["intellect", "insurance", "rebellion", "percentage"]},
+      {"id": 13, "chapter": "Unit 1", "word": "percent", "pos": "n.", "isPhrase": false, "zh": "百分之……", "sentence": "About twenty ___ of the world's population lives in China.", "options": ["percent", "rebel", "cue", "prime"]},
+      {"id": 14, "chapter": "Unit 1", "word": "percentage", "pos": "n.", "isPhrase": false, "zh": "百分比；比率", "sentence": "He spends a large ___ of his income on apartment rent.", "options": ["percentage", "insurance", "rebellion", "declaration"]},
+      {"id": 15, "chapter": "Unit 1", "word": "prime", "pos": "adj.", "isPhrase": false, "zh": "首要的；最具代表性的", "sentence": "Our ___ concern is making sure that our customers are happy.", "options": ["prime", "intellectual", "rebellious", "financial"]},
+      {"id": 16, "chapter": "Unit 1", "word": "rebel", "pos": "v./n.", "isPhrase": false, "zh": "反抗；造反 / 反抗者", "sentence": "Teenagers sometimes ___ against their parents.", "options": ["rebel", "insure", "finance", "declare"]},
+      {"id": 17, "chapter": "Unit 1", "word": "rebellion", "pos": "n.", "isPhrase": false, "zh": "反叛；叛亂", "sentence": "The army suppressed the armed ___ in the northern province.", "options": ["rebellion", "percentage", "declaration", "disappointment"]},
+      {"id": 18, "chapter": "Unit 1", "word": "rebellious", "pos": "adj.", "isPhrase": false, "zh": "叛逆的", "sentence": "She has a ___ attitude toward outdated social rules.", "options": ["rebellious", "intellectual", "financial", "intelligent"]},
+      {"id": 19, "chapter": "Unit 1", "word": "rejection", "pos": "n.", "isPhrase": false, "zh": "拒絕", "sentence": "Although I was hopeful, I received a letter of ___ for my application.", "options": ["rejection", "insurance", "declaration", "percentage"]},
+      {"id": 20, "chapter": "Unit 1", "word": "reject", "pos": "v.", "isPhrase": false, "zh": "拒絕；不接受", "sentence": "The committee decided to ___ the proposal due to lack of merit.", "options": ["reject", "divorce", "declare", "finance"]}
     ];
 
-    let adminPwd = localStorage.getItem('app_admin_pwd') || "ning0908";
+    let adminPwd = localStorage.getItem('app_admin_pwd') || "admin888";
     let questions = [];
-    let students = [];
+    let students = JSON.parse(localStorage.getItem('student_accounts') || JSON.stringify([
+      { acc: "Roger", pwd: "1209", name: "羅傑" },
+      { acc: "student1", pwd: "1234", name: "示範生小明" }
+    ]));
+    let selectedIds = new Set();
 
-    // 即時從雲端同步題庫與學生名單
-    db.ref('questions').on('value', (snap) => {
-      const val = snap.val();
-      if (val) {
-        questions = Array.isArray(val) ? val : Object.values(val);
-      } else {
-        questions = [...DEFAULT_BASE_QUESTIONS];
-        db.ref('questions').set(questions);
+    function getSavedQuestions() {
+      const saved = localStorage.getItem('app_all_questions');
+      if (saved) {
+        try { return JSON.parse(saved); } catch(e) { return [...DEFAULT_BASE_QUESTIONS]; }
       }
-      renderAllDashboard();
-    });
+      return [...DEFAULT_BASE_QUESTIONS];
+    }
 
-    db.ref('students').on('value', (snap) => {
-      const val = snap.val();
-      if (val) {
-        students = Array.isArray(val) ? val : Object.values(val);
-      } else {
-        students = [{ acc: "Roger", pwd: "1209", name: "羅傑" }];
-        db.ref('students').set(students);
-      }
-      renderStudents();
-    });
+    function saveQuestions(newQuestions) {
+      questions = newQuestions;
+      localStorage.setItem('app_all_questions', JSON.stringify(questions));
+    }
 
     document.getElementById('auth-login-btn').addEventListener('click', () => {
       const input = document.getElementById('admin-pwd-input').value.trim();
@@ -169,6 +192,8 @@
         document.getElementById('auth-panel').style.display = 'none';
         document.getElementById('dashboard-panel').style.display = 'block';
         document.getElementById('auth-err').style.display = 'none';
+        questions = getSavedQuestions();
+        renderAllDashboard();
         checkApiKeyStatus();
       } else {
         document.getElementById('auth-err').style.display = 'block';
@@ -187,6 +212,7 @@
 
     function renderAllDashboard() {
       updateChapterOptions();
+      renderStudents();
       renderQuestions();
     }
 
@@ -211,7 +237,6 @@
       checkApiKeyStatus();
     });
 
-    // AI 辨識
     function fileToBase64(file) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
