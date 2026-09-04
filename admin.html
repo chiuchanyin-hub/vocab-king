@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>單字挑戰王 - 獨立管理控制台</title>
+  <title>單字挑戰王 - 雲端即時管理控制台</title>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <style>
@@ -20,15 +23,13 @@
     .section-card { background: white; border: 1.5px solid var(--border); border-radius: 16px; padding: 18px; margin-bottom: 18px; }
     .section-card h3 { font-size: 1.05rem; color: #1e293b; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
     .btn-primary { background: var(--primary); color: white; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 800; cursor: pointer; }
-    .btn-excel { background: #10b981; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3); }
+    .btn-excel { background: #10b981; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; }
     .btn-secondary { background: #e2e8f0; color: #334155; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; }
-    .btn-ai { background: linear-gradient(135deg, #6366f1, #a855f7); color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; box-shadow: 0 2px 8px rgba(168, 85, 247, 0.35); }
+    .btn-ai { background: linear-gradient(135deg, #6366f1, #a855f7); color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; }
     .form-row { display: flex; gap: 8px; margin-bottom: 8px; }
     .form-control { width: 100%; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; outline: none; margin-bottom: 8px; font-size: 0.9rem; }
-    .item-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; background: #ffffff; transition: background 0.15s; }
-    .item-card:hover { background: #f1f5f9; }
-    .btn-del { border: none; background: #fee2e2; color: #ef4444; border-radius: 6px; padding: 6px 12px; font-weight: 800; cursor: pointer; transition: all 0.15s; }
-    .btn-del:hover { background: #ef4444; color: white; }
+    .item-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; background: #ffffff; }
+    .btn-del { border: none; background: #fee2e2; color: #ef4444; border-radius: 6px; padding: 6px 12px; font-weight: 800; cursor: pointer; }
     .tag { background: #e0e7ff; color: #4338ca; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
     .tag-pos { background: #fef3c7; color: #b45309; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
     .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid #ffffff; border-radius: 50%; border-top-color: transparent; animation: spin 0.8s linear infinite; }
@@ -43,7 +44,7 @@
       <h2 style="color:#0f172a; margin-bottom:8px;">後台管理平台驗證</h2>
       <p style="color:#64748b; font-size:0.85rem; margin-bottom:20px;">請輸入管理員密碼以進入專屬管理平台</p>
       <div style="max-width:320px; margin:0 auto;">
-        <input type="password" id="admin-pwd-input" placeholder="請輸入管理密碼 (預設: admin888)" class="form-control" />
+        <input type="password" id="admin-pwd-input" placeholder="請輸入管理密碼 (預設: ning0908)" class="form-control" />
         <button id="auth-login-btn" class="btn-primary" style="width:100%; margin-top:6px;">登入後台 ➔</button>
         <p id="auth-err" style="color:var(--danger); font-size:0.85rem; margin-top:10px; display:none;">密碼錯誤！</p>
       </div>
@@ -53,8 +54,8 @@
     <div id="dashboard-panel" style="display:none;">
       <div class="nav-bar">
         <div>
-          <h2 style="font-size:1.3rem;">⚙️ 單字挑戰王 - 獨立管理控制台</h2>
-          <span style="font-size:0.8rem; color:#94a3b8;">AI 視覺建題 / 題庫管理 / 學生帳密 / 報表匯出</span>
+          <h2 style="font-size:1.3rem;">⚙️ 單字挑戰王 - 雲端即時控制台</h2>
+          <span id="cloud-sync-status" style="font-size:0.8rem; color:#10b981; font-weight:700;">🟢 雲端資料同步中...</span>
         </div>
         <button id="logout-btn" class="btn-secondary" style="background:#334155; color:white;">登出</button>
       </div>
@@ -62,10 +63,6 @@
       <!-- 區塊 0：✨ Gemini API Key -->
       <div class="section-card" style="border:2px solid #a855f7; background:#faf5ff;">
         <h3 style="color:#6b21a8;">✨ Google Gemini 智慧視覺辨識設定</h3>
-        <p style="font-size:0.82rem; color:#7e22ce; margin-bottom:10px;">
-          填入免費的 Gemini API Key，即可直接精準看懂整頁課本照片。
-          （至 <a href="https://aistudio.google.com/" target="_blank" style="color:#4338ca; font-weight:800;">Google AI Studio</a> 免費申請）
-        </p>
         <div class="form-row" style="margin-bottom:0;">
           <input type="password" id="gemini-api-key" placeholder="請在此貼上 Gemini API Key" class="form-control" style="margin-bottom:0;" />
           <button id="save-api-key-btn" class="btn-ai" style="white-space:nowrap;">儲存 Key</button>
@@ -75,116 +72,96 @@
 
       <!-- 區塊 1：📸 拍照 AI 建題 -->
       <div class="section-card" style="border:2px dashed #6366f1;">
-        <h3 style="color:#4338ca;">📸 課本照片智慧辨識（拍照自動建題）</h3>
+        <h3 style="color:#4338ca;">📸 課本照片智慧辨識（自動同步至雲端）</h3>
         <div class="form-row">
           <input type="text" id="ocr-chapter" placeholder="設定匯入章節 (如: Unit 2)" value="Unit 2" class="form-control" style="flex:1; margin-bottom:0;" />
           <input type="file" id="ocr-file" accept="image/*" class="form-control" style="flex:2; margin-bottom:0;" />
         </div>
         <div id="ocr-status" style="display:none; color:#4338ca; font-weight:800; font-size:0.9rem; margin:10px 0;"></div>
         <div id="ocr-preview-box" style="display:none; margin-top:10px;">
-          <div style="font-size:0.8rem; font-weight:700; color:#334155; margin-bottom:4px;">預覽解析結果（可手動修改）：</div>
+          <div style="font-size:0.8rem; font-weight:700; color:#334155; margin-bottom:4px;">預覽解析結果：</div>
           <textarea id="ocr-json" style="width:100%; height:160px; font-family:monospace; padding:8px; border-radius:8px; border:1.5px solid #cbd5e1; font-size:0.85rem;"></textarea>
           <div style="display:flex; gap:8px; margin-top:6px;">
-            <button id="import-ocr-btn" class="btn-primary" style="background:#10b981; flex:1;">✅ 確認將題目加入題庫</button>
+            <button id="import-ocr-btn" class="btn-primary" style="background:#10b981; flex:1;">✅ 確認將題目加入雲端題庫</button>
             <button id="cancel-ocr-btn" class="btn-secondary" style="flex:0.3;">取消</button>
           </div>
         </div>
       </div>
 
-      <!-- 區塊 2：📊 匯出 Excel -->
-      <div class="section-card" style="border:2px solid #10b981; background:#f0fdf4;">
-        <h3 style="color:#065f46;">📊 錯題報表與題庫資料匯出</h3>
-        <div style="display:flex; gap:12px; flex-wrap:wrap;">
-          <button id="export-excel-btn" class="btn-excel">📊 匯出【錯題 EXCEL 檔】(.xlsx)</button>
-          <button id="export-json-btn" class="btn-secondary">📥 匯出【完整題庫 JSON】(.json)</button>
-        </div>
-      </div>
-
-      <!-- 區塊 3：🗑️ 題目管理 -->
+      <!-- 區塊 2：🗑️ 題目管理 -->
       <div class="section-card" style="border:2px solid #6366f1;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
-          <h3 style="margin-bottom:0; color:#4338ca;">🗑️ 題庫管理與刪除 (<span id="total-count-text">0</span> 題)</h3>
-          <div style="display:flex; gap:8px;">
-            <button id="btn-batch-del" class="btn-del" style="background:#fee2e2; border:1px solid #f87171; display:none;">批量刪除選取題 (<span id="selected-count">0</span>)</button>
-            <button id="btn-restore-default" class="btn-secondary" style="font-size:0.8rem; padding:6px 10px;">↺ 恢復預設題庫</button>
-          </div>
+          <h3 style="margin-bottom:0; color:#4338ca;">🗑️ 雲端題庫管理 (<span id="total-count-text">0</span> 題)</h3>
+          <button id="btn-restore-default" class="btn-secondary" style="font-size:0.8rem; padding:6px 10px;">↺ 恢復預設題庫</button>
         </div>
         <div class="form-row">
-          <input type="text" id="search-word-input" placeholder="🔍 搜尋欲刪除的單字、片語或中文釋義..." class="form-control" style="margin-bottom:10px;" />
+          <input type="text" id="search-word-input" placeholder="🔍 搜尋題庫單字..." class="form-control" style="margin-bottom:10px;" />
           <select id="filter-chapter-select" class="form-control" style="flex:0.6; margin-bottom:10px; font-weight:700;">
             <option value="全部章節">全部章節</option>
           </select>
         </div>
-        <div id="word-table-list" style="max-height:420px; overflow-y:auto; padding-right:4px;"></div>
+        <div id="word-table-list" style="max-height:350px; overflow-y:auto; padding-right:4px;"></div>
       </div>
 
-      <!-- 區塊 4：👥 學生帳密建立與管理 -->
+      <!-- 區塊 3：👥 學生帳密雲端管理 -->
       <div class="section-card">
-        <h3>👥 學生帳號密碼管理</h3>
+        <h3>👥 學生帳號雲端同步管理</h3>
         <form id="add-student-form" class="form-row" style="flex-wrap:wrap; margin-bottom:10px;">
           <input type="text" id="stu-acc" placeholder="帳號 (例如: Roger)" required style="flex:1.2;" class="form-control" />
           <input type="password" id="stu-pwd" placeholder="密碼 (例如: 1209)" required style="flex:1.2;" class="form-control" />
           <input type="text" id="stu-name" placeholder="學生姓名 (例如: 羅傑)" required style="flex:1.2;" class="form-control" />
-          <button type="submit" class="btn-primary" style="flex:1; height:42px;">➕ 建立帳號</button>
+          <button type="submit" class="btn-primary" style="flex:1; height:42px;">➕ 建立並同步雲端</button>
         </form>
         <div id="student-list" style="max-height:160px; overflow-y:auto;"></div>
-      </div>
-
-      <!-- 區塊 5：🔐 修改管理員密碼 -->
-      <div class="section-card">
-        <h3>🔐 修改管理員後台密碼</h3>
-        <div class="form-row">
-          <input type="password" id="new-admin-pwd" placeholder="請輸入新的管理密碼" class="form-control" style="margin-bottom:0;" />
-          <button id="save-pwd-btn" class="btn-primary" style="white-space:nowrap;">儲存新密碼</button>
-        </div>
       </div>
     </div>
   </div>
 
   <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAsIcTNN77iuoK2UuWePMZX_zf3tFhUHEw",
+      authDomain: "vocab-king-1209.firebaseapp.com",
+      databaseURL: "https://vocab-king-1209-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "vocab-king-1209",
+      storageBucket: "vocab-king-1209.firebasestorage.app",
+      messagingSenderId: "476030693466",
+      appId: "1:476030693466:web:7199ea3c8a70a0b6906863"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
     const DEFAULT_BASE_QUESTIONS = [
       {"id": 1, "chapter": "Unit 1", "word": "cue", "pos": "n.", "isPhrase": false, "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
-      {"id": 2, "chapter": "Unit 1", "word": "declare", "pos": "v.", "isPhrase": false, "zh": "宣布；宣稱；申報", "sentence": "The government decided to ___ the day a public holiday.", "options": ["declare", "divorce", "disappoint", "finance"]},
-      {"id": 3, "chapter": "Unit 1", "word": "declaration", "pos": "n.", "isPhrase": false, "zh": "宣告；聲明；申報", "sentence": "The man made a formal ___ that he had nothing to do with the robbery.", "options": ["declaration", "percentage", "rebellion", "insurance"]},
-      {"id": 4, "chapter": "Unit 1", "word": "disappoint", "pos": "v.", "isPhrase": false, "zh": "使失望；使沮喪", "sentence": "I didn't want to ___ Lydia, so I went to her party even though I felt ill.", "options": ["disappoint", "declare", "insure", "finance"]},
-      {"id": 5, "chapter": "Unit 1", "word": "disappointment", "pos": "n.", "isPhrase": false, "zh": "失望；掃興", "sentence": "You can see the ___ in her eyes as she heard the bad news.", "options": ["disappointment", "rebellion", "percentage", "declaration"]},
-      {"id": 6, "chapter": "Unit 1", "word": "divorce", "pos": "v.", "isPhrase": false, "zh": "離婚；使分離", "sentence": "Fredrick's parents decided to ___ five years ago.", "options": ["divorce", "declare", "insure", "reject"]},
-      {"id": 7, "chapter": "Unit 1", "word": "finance", "pos": "v./n.", "isPhrase": false, "zh": "資助；提供資金 / 財務；金融", "sentence": "Several experts in ___ predicted the collapse of the housing market.", "options": ["finance", "insurance", "intellect", "rebellion"]},
-      {"id": 8, "chapter": "Unit 1", "word": "financial", "pos": "adj.", "isPhrase": false, "zh": "財務的；金融的", "sentence": "Fred is having ___ problems right now, so don't ask him for money.", "options": ["financial", "rebellious", "divorced", "intellectual"]},
-      {"id": 9, "chapter": "Unit 1", "word": "insurance", "pos": "n.", "isPhrase": false, "zh": "保險；保險業", "sentence": "Doug's ___ will pay for some of the repairs to his car.", "options": ["insurance", "declaration", "rejection", "finance"]},
-      {"id": 10, "chapter": "Unit 1", "word": "insure", "pos": "v.", "isPhrase": false, "zh": "為……投保", "sentence": "It is important to ___ your valuable jewelry against theft.", "options": ["insure", "divorce", "disappoint", "declare"]},
-      {"id": 11, "chapter": "Unit 1", "word": "intellectual", "pos": "adj./n.", "isPhrase": false, "zh": "智力的；智能的 / 知識分子", "sentence": "This is an ___ game that challenges players' critical thinking.", "options": ["intellectual", "financial", "rebellious", "divorced"]},
-      {"id": 12, "chapter": "Unit 1", "word": "intellect", "pos": "n.", "isPhrase": false, "zh": "思維能力；理解力；智力", "sentence": "A person of great ___ can easily analyze complex social problems.", "options": ["intellect", "insurance", "rebellion", "percentage"]},
-      {"id": 13, "chapter": "Unit 1", "word": "percent", "pos": "n.", "isPhrase": false, "zh": "百分之……", "sentence": "About twenty ___ of the world's population lives in China.", "options": ["percent", "rebel", "cue", "prime"]},
-      {"id": 14, "chapter": "Unit 1", "word": "percentage", "pos": "n.", "isPhrase": false, "zh": "百分比；比率", "sentence": "He spends a large ___ of his income on apartment rent.", "options": ["percentage", "insurance", "rebellion", "declaration"]},
-      {"id": 15, "chapter": "Unit 1", "word": "prime", "pos": "adj.", "isPhrase": false, "zh": "首要的；最具代表性的", "sentence": "Our ___ concern is making sure that our customers are happy.", "options": ["prime", "intellectual", "rebellious", "financial"]},
-      {"id": 16, "chapter": "Unit 1", "word": "rebel", "pos": "v./n.", "isPhrase": false, "zh": "反抗；造反 / 反抗者", "sentence": "Teenagers sometimes ___ against their parents.", "options": ["rebel", "insure", "finance", "declare"]},
-      {"id": 17, "chapter": "Unit 1", "word": "rebellion", "pos": "n.", "isPhrase": false, "zh": "反叛；叛亂", "sentence": "The army suppressed the armed ___ in the northern province.", "options": ["rebellion", "percentage", "declaration", "disappointment"]},
-      {"id": 18, "chapter": "Unit 1", "word": "rebellious", "pos": "adj.", "isPhrase": false, "zh": "叛逆的", "sentence": "She has a ___ attitude toward outdated social rules.", "options": ["rebellious", "intellectual", "financial", "intelligent"]},
-      {"id": 19, "chapter": "Unit 1", "word": "rejection", "pos": "n.", "isPhrase": false, "zh": "拒絕", "sentence": "Although I was hopeful, I received a letter of ___ for my application.", "options": ["rejection", "insurance", "declaration", "percentage"]},
-      {"id": 20, "chapter": "Unit 1", "word": "reject", "pos": "v.", "isPhrase": false, "zh": "拒絕；不接受", "sentence": "The committee decided to ___ the proposal due to lack of merit.", "options": ["reject", "divorce", "declare", "finance"]}
+      {"id": 2, "chapter": "Unit 1", "word": "declare", "pos": "v.", "isPhrase": false, "zh": "宣布；宣稱；申報", "sentence": "The government decided to ___ the day a public holiday.", "options": ["declare", "divorce", "disappoint", "finance"]}
     ];
 
-    let adminPwd = localStorage.getItem('app_admin_pwd') || "admin888";
+    let adminPwd = localStorage.getItem('app_admin_pwd') || "ning0908";
     let questions = [];
-    let students = JSON.parse(localStorage.getItem('student_accounts') || JSON.stringify([
-      { acc: "Roger", pwd: "1209", name: "羅傑" },
-      { acc: "student1", pwd: "1234", name: "示範生小明" }
-    ]));
-    let selectedIds = new Set();
+    let students = [];
 
-    function getSavedQuestions() {
-      const saved = localStorage.getItem('app_all_questions');
-      if (saved) {
-        try { return JSON.parse(saved); } catch(e) { return [...DEFAULT_BASE_QUESTIONS]; }
+    // 即時從雲端同步題庫與學生名單
+    db.ref('questions').on('value', (snap) => {
+      const val = snap.val();
+      if (val) {
+        questions = Array.isArray(val) ? val : Object.values(val);
+      } else {
+        questions = [...DEFAULT_BASE_QUESTIONS];
+        db.ref('questions').set(questions);
       }
-      return [...DEFAULT_BASE_QUESTIONS];
-    }
+      renderAllDashboard();
+    });
 
-    function saveQuestions(newQuestions) {
-      questions = newQuestions;
-      localStorage.setItem('app_all_questions', JSON.stringify(questions));
-    }
+    db.ref('students').on('value', (snap) => {
+      const val = snap.val();
+      if (val) {
+        students = Array.isArray(val) ? val : Object.values(val);
+      } else {
+        students = [{ acc: "Roger", pwd: "1209", name: "羅傑" }];
+        db.ref('students').set(students);
+      }
+      renderStudents();
+    });
 
     document.getElementById('auth-login-btn').addEventListener('click', () => {
       const input = document.getElementById('admin-pwd-input').value.trim();
@@ -192,8 +169,6 @@
         document.getElementById('auth-panel').style.display = 'none';
         document.getElementById('dashboard-panel').style.display = 'block';
         document.getElementById('auth-err').style.display = 'none';
-        questions = getSavedQuestions();
-        renderAllDashboard();
         checkApiKeyStatus();
       } else {
         document.getElementById('auth-err').style.display = 'block';
@@ -212,7 +187,6 @@
 
     function renderAllDashboard() {
       updateChapterOptions();
-      renderStudents();
       renderQuestions();
     }
 
@@ -223,25 +197,21 @@
       if (key) {
         inputEl.value = key;
         statusEl.innerText = "✅ 已配置 Gemini API Key，已啟動 AI 視覺辨識功能！";
-        statusEl.style.color = "#15803d";
       } else {
-        statusEl.innerText = "⚠️ 未設定 API Key，目前處於離線 Tesseract 基礎辨識模式。";
-        statusEl.style.color = "#b45309";
+        statusEl.innerText = "⚠️ 未設定 API Key";
       }
     }
 
     document.getElementById('save-api-key-btn').addEventListener('click', () => {
       const val = document.getElementById('gemini-api-key').value.trim();
-      if (!val) {
-        localStorage.removeItem('gemini_api_key');
-        alert("已清除 Gemini API Key。");
-      } else {
+      if (val) {
         localStorage.setItem('gemini_api_key', val);
         alert("🎉 Gemini API Key 儲存成功！");
       }
       checkApiKeyStatus();
     });
 
+    // AI 辨識
     function fileToBase64(file) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -253,7 +223,7 @@
 
     async function recognizeWithGemini(file, chapterName, apiKey) {
       const { base64Data, mimeType } = await fileToBase64(file);
-      const prompt = `請分析這張英文課本/講義的照片，提取照片中所有的核心單字或片語。請嚴格輸出 JSON 陣列，不要加入任何額外的文字或 markdown 標籤：
+      const prompt = `請分析這張英文課本/講義照片，提取所有單字或片語。請嚴格輸出 JSON 陣列，不要加入任何 markdown 標籤：
 [
   {
     "id": 123456789,
@@ -261,231 +231,16 @@
     "word": "單字全小寫",
     "pos": "詞性 (n., v., adj., phr.)",
     "isPhrase": false,
-    "zh": "繁體中文釋義",
+    "zh": "中文釋義",
     "sentence": "例句，必須將該單字替換成 ___",
     "options": ["正確單字", "干擾項1", "干擾項2", "干擾項3"]
   }
 ]`;
-
       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }, { inlineData: { mimeType: mimeType || "image/jpeg", data: base64Data } }] }]
-        })
+        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }, { inlineData: { mimeType: mimeType || "image/jpeg", data: base64Data } }] }] })
       });
-
-      if (!response.ok) {
-        const errData = await response.json();
-        throw new Error(errData.error?.message || "Gemini API 呼叫失敗");
-      }
-
       const result = await response.json();
       const rawText = result.candidates[0].content.parts[0].text.trim();
-      const cleanJson = rawText.replace(/```json/gi, '').replace(/```/g, '').trim();
-      return JSON.parse(cleanJson);
-    }
-
-    document.getElementById('ocr-file').addEventListener('change', async (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      const chapter = document.getElementById('ocr-chapter').value.trim() || "Unit 2";
-      const status = document.getElementById('ocr-status');
-      const apiKey = localStorage.getItem('gemini_api_key');
-
-      status.style.display = 'block';
-
-      if (apiKey) {
-        status.innerHTML = `<span class="spinner"></span> 正在運用 <b>Gemini AI</b> 解析照片...`;
-        try {
-          const parsed = await recognizeWithGemini(file, chapter, apiKey);
-          document.getElementById('ocr-json').value = JSON.stringify(parsed, null, 2);
-          document.getElementById('ocr-preview-box').style.display = 'block';
-          status.innerHTML = `✨ <b>Gemini AI 辨識完成！</b> 擷取到 ${parsed.length} 題。`;
-        } catch (err) {
-          alert("Gemini AI 辨識出錯: " + err.message);
-          status.style.display = 'none';
-        }
-      } else {
-        alert("請先在上方設定 Gemini API Key 才能進行 AI 拍照辨識！");
-        status.style.display = 'none';
-      }
-    });
-
-    document.getElementById('import-ocr-btn').addEventListener('click', () => {
-      try {
-        const items = JSON.parse(document.getElementById('ocr-json').value);
-        if (!Array.isArray(items) || items.length === 0) return alert("題目內容為空！");
-        saveQuestions([...questions, ...items]);
-        updateChapterOptions();
-        renderQuestions();
-        document.getElementById('ocr-preview-box').style.display = 'none';
-        document.getElementById('ocr-status').style.display = 'none';
-        document.getElementById('ocr-file').value = '';
-        alert(`🎉 成功將 ${items.length} 題加入題庫！`);
-      } catch (e) {
-        alert("JSON 格式有誤！");
-      }
-    });
-
-    window.deleteQuestionItem = function(targetId) {
-      const target = questions.find(q => String(q.id) === String(targetId));
-      if (!target) return;
-      if (confirm(`確定要刪除「${target.word}」嗎？`)) {
-        const updated = questions.filter(q => String(q.id) !== String(targetId));
-        saveQuestions(updated);
-        selectedIds.delete(String(targetId));
-        updateBatchDeleteBtn();
-        updateChapterOptions();
-        renderQuestions();
-      }
-    };
-
-    window.toggleSelectQuestion = function(targetId, chkBox) {
-      if (chkBox.checked) selectedIds.add(String(targetId));
-      else selectedIds.delete(String(targetId));
-      updateBatchDeleteBtn();
-    };
-
-    function updateBatchDeleteBtn() {
-      const btn = document.getElementById('btn-batch-del');
-      const countEl = document.getElementById('selected-count');
-      if (selectedIds.size > 0) {
-        btn.style.display = 'inline-block';
-        countEl.innerText = selectedIds.size;
-      } else {
-        btn.style.display = 'none';
-      }
-    }
-
-    document.getElementById('btn-batch-del').addEventListener('click', () => {
-      if (selectedIds.size === 0) return;
-      if (confirm(`確定刪除選取的 ${selectedIds.size} 個題目？`)) {
-        const updated = questions.filter(q => !selectedIds.has(String(q.id)));
-        saveQuestions(updated);
-        selectedIds.clear();
-        updateBatchDeleteBtn();
-        updateChapterOptions();
-        renderQuestions();
-        alert("✅ 批量刪除成功！");
-      }
-    });
-
-    document.getElementById('btn-restore-default').addEventListener('click', () => {
-      if (confirm("確定要重設為出廠預設題庫嗎？")) {
-        saveQuestions([...DEFAULT_BASE_QUESTIONS]);
-        selectedIds.clear();
-        updateBatchDeleteBtn();
-        updateChapterOptions();
-        renderQuestions();
-        alert("↺ 已恢復預設題庫！");
-      }
-    });
-
-    function updateChapterOptions() {
-      const select = document.getElementById('filter-chapter-select');
-      const cur = select.value;
-      const chapters = ["全部章節", ...new Set(questions.map(q => q.chapter || "Unit 1"))];
-      select.innerHTML = chapters.map(c => `<option value="${c}">${c}</option>`).join('');
-      if (chapters.includes(cur)) select.value = cur;
-    }
-
-    function renderQuestions() {
-      const container = document.getElementById('word-table-list');
-      container.innerHTML = '';
-      const keyword = document.getElementById('search-word-input').value.trim().toLowerCase();
-      const chapterFilter = document.getElementById('filter-chapter-select').value;
-
-      let list = questions;
-      if (chapterFilter && chapterFilter !== "全部章節") {
-        list = list.filter(q => q.chapter === chapterFilter);
-      }
-      if (keyword) {
-        list = list.filter(q => (q.word && q.word.toLowerCase().includes(keyword)) || (q.zh && q.zh.toLowerCase().includes(keyword)));
-      }
-
-      document.getElementById('total-count-text').innerText = questions.length;
-
-      if (list.length === 0) {
-        container.innerHTML = `<p style="text-align:center; color:#94a3b8; padding:30px;">查無符合題目</p>`;
-        return;
-      }
-
-      list.forEach(q => {
-        const div = document.createElement('div');
-        div.className = 'item-card';
-        const isChecked = selectedIds.has(String(q.id)) ? 'checked' : '';
-        div.innerHTML = `
-          <div style="display:flex; align-items:center; gap:10px;">
-            <input type="checkbox" style="width:18px; height:18px; cursor:pointer;" ${isChecked} onchange="toggleSelectQuestion('${q.id}', this)" />
-            <div>
-              <span class="tag">${q.chapter || 'Unit 1'}</span>
-              <span class="tag-pos">${q.pos || '詞性'}</span>
-              <strong style="font-size:1.1rem; margin-left:6px; color:#0f172a;">${q.word}</strong>
-              <span style="color:#64748b; margin-left:8px; font-weight:600;">${q.zh}</span>
-            </div>
-          </div>
-          <button type="button" class="btn-del" onclick="deleteQuestionItem('${q.id}')">刪除</button>
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    document.getElementById('search-word-input').addEventListener('input', renderQuestions);
-    document.getElementById('filter-chapter-select').addEventListener('change', renderQuestions);
-
-    // 學生帳密管理
-    function renderStudents() {
-      const container = document.getElementById('student-list');
-      container.innerHTML = '';
-      students.forEach((s, idx) => {
-        const d = document.createElement('div');
-        d.className = 'item-card';
-        d.innerHTML = `
-          <div>
-            <span class="tag">帳號: ${s.acc}</span>
-            <strong style="margin-left:8px;">${s.name}</strong>
-            <small style="color:#64748b; margin-left:8px;">(密碼: ${s.pwd})</small>
-          </div>
-          <button class="btn-del" onclick="delStudent(${idx})">刪除</button>
-        `;
-        container.appendChild(d);
-      });
-    }
-
-    window.delStudent = function(idx) {
-      if (confirm(`確定刪除「${students[idx].name}」的帳號？`)) {
-        students.splice(idx, 1);
-        localStorage.setItem('student_accounts', JSON.stringify(students));
-        renderStudents();
-      }
-    };
-
-    document.getElementById('add-student-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const acc = document.getElementById('stu-acc').value.trim();
-      const pwd = document.getElementById('stu-pwd').value.trim();
-      const name = document.getElementById('stu-name').value.trim();
-
-      if (students.some(s => s.acc === acc)) {
-        return alert("此學生帳號已存在！");
-      }
-      students.push({ acc, pwd, name });
-      localStorage.setItem('student_accounts', JSON.stringify(students));
-      renderStudents();
-      e.target.reset();
-      alert(`✅ 學生「${name}」帳號已建立！`);
-    });
-
-    document.getElementById('save-pwd-btn').addEventListener('click', () => {
-      const val = document.getElementById('new-admin-pwd').value.trim();
-      if (!val) return alert("密碼不能為空！");
-      adminPwd = val;
-      localStorage.setItem('app_admin_pwd', val);
-      document.getElementById('new-admin-pwd').value = '';
-      alert("🎉 後台管理密碼已成功變更！");
-    });
-  </script>
-</body>
-</html>
+      return JSON.parse(rawText.replace(/```json/gi, '').replace(/
