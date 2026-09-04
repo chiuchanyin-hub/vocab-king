@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>高中單字挑戰王 - 雙模實戰 APP</title>
+  <title>高中單字挑戰王 - 雙模實戰系統</title>
   <!-- 引入文字辨識 Tesseract.js -->
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
   <!-- 引入 Excel 匯出套件 SheetJS -->
@@ -16,6 +16,7 @@
       --danger: #ef4444;
       --dark: #0f172a;
       --border: #e2e8f0;
+      --bg: #020617;
     }
     * {
       box-sizing: border-box;
@@ -24,37 +25,62 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
     body {
-      background: #020617;
+      background: var(--bg);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 12px;
     }
+
+    /* ================= 系統主框架 ================= */
     .app-shell {
       width: 100%;
-      max-width: 500px;
+      max-width: 520px;
       background: #ffffff;
       border-radius: 28px;
       overflow: hidden;
       box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8);
       display: flex;
       flex-direction: column;
-      min-height: 750px;
+      min-height: 760px;
+      position: relative;
     }
+
+    /* 獨立後台全螢幕外觀 (桌面版自動適配寬度) */
+    .admin-standalone-page {
+      display: none;
+      width: 100%;
+      height: 100%;
+      background: #f8fafc;
+      flex-direction: column;
+      overflow-y: auto;
+      padding: 20px;
+      position: absolute;
+      inset: 0;
+      z-index: 100;
+    }
+
+    /* 學生端頂部導覽列：含四個主功能 + 右側單一齒輪 ⚙️ */
     .app-nav {
       display: flex;
       background: #1e293b;
-      padding: 8px;
+      padding: 8px 10px;
+      gap: 6px;
+      align-items: center;
+    }
+    .nav-tabs-group {
+      display: flex;
+      flex: 1;
       gap: 4px;
       overflow-x: auto;
     }
     .nav-btn {
       flex: 1;
-      min-width: 80px;
+      min-width: 75px;
       border: none;
       background: transparent;
-      padding: 10px 4px;
+      padding: 9px 4px;
       border-radius: 12px;
       font-weight: 700;
       font-size: 0.8rem;
@@ -70,6 +96,25 @@
       background: #334155;
       color: #f8fafc;
     }
+    .btn-gear {
+      border: none;
+      background: #334155;
+      color: #cbd5e1;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-gear:hover {
+      background: #475569;
+      color: #ffffff;
+      transform: rotate(45deg);
+    }
     .badge {
       background: var(--danger);
       color: white;
@@ -77,6 +122,7 @@
       padding: 2px 6px;
       border-radius: 10px;
     }
+
     .view-panel {
       display: none;
       flex-direction: column;
@@ -85,6 +131,17 @@
     }
     .view-panel.active {
       display: flex;
+    }
+
+    /* 學生登入遮罩 */
+    .student-login-view {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 24px;
+      text-align: center;
+      flex: 1;
     }
 
     /* 頂部狀態列 */
@@ -201,7 +258,7 @@
       cursor: pointer;
     }
 
-    /* 實線填空區 + 上方顯眼正確字母標籤 */
+    /* 灰色實線填空區 + 上方顯眼正確字母標籤 */
     .pure-dashed-zone {
       position: relative;
       width: 100%;
@@ -301,12 +358,12 @@
 
     .btn-primary {
       width: 100%;
-      padding: 14px;
+      padding: 13px;
       background: var(--primary);
       color: white;
       border: none;
       border-radius: 14px;
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 800;
       cursor: pointer;
     }
@@ -559,236 +616,334 @@
     .choice-btn.wrong { background: linear-gradient(180deg, #f87171 0%, #dc2626 100%) !important; color: #fff !important; }
     .battle-toast { text-align: center; font-weight: 800; min-height: 22px; }
 
-    /* 後台與不熟區 */
-    .mistake-header, .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-    .mistake-card, .admin-item-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; }
+    /* 後台獨立面板通用樣式 */
+    .admin-nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: #1e293b;
+      color: #ffffff;
+      border-radius: 16px;
+      margin-bottom: 16px;
+    }
+    .admin-section {
+      background: #ffffff;
+      border-radius: 18px;
+      border: 1.5px solid #e2e8f0;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .admin-section h4 {
+      color: #1e293b;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
     .btn-danger-outline { border: none; background: transparent; color: var(--danger); font-weight: 700; cursor: pointer; }
     .auth-box { margin-top: 30px; padding: 26px 20px; }
     .admin-input-full, .admin-form input, .admin-form textarea { width: 100%; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; margin-bottom: 8px; outline: none; }
     .form-row { display: flex; gap: 8px; }
-    .admin-list-container { max-height: 220px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
-    .btn-secondary-sm { background: #e2e8f0; border: none; padding: 6px 10px; border-radius: 8px; font-weight: 700; cursor: pointer; }
-    .btn-excel { background: #10b981; color: white; border: none; padding: 6px 10px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+    .admin-list-container { max-height: 200px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
+    .btn-secondary-sm { background: #e2e8f0; border: none; padding: 8px 12px; border-radius: 8px; font-weight: 700; cursor: pointer; color: #334155; }
+    .btn-excel { background: #10b981; color: white; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 800; cursor: pointer; box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3); }
     .btn-sound { background: #f1f5f9; border: 1px solid var(--border); padding: 4px 10px; border-radius: 8px; cursor: pointer; font-weight: 700; }
+    .mistake-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .mistake-card, .admin-item-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; background: white; }
+    .user-tag { background: #e2e8f0; padding: 2px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; color: #475569; }
   </style>
 </head>
 <body>
   <div class="app-shell">
-    <header class="app-nav">
-      <button class="nav-btn active" id="tab-game-btn">👑 單字挑戰</button>
-      <button class="nav-btn" id="tab-phrase-btn">🧩 片語特訓</button>
-      <button class="nav-btn" id="tab-cloze-btn">⚔️ 克漏字對戰</button>
-      <button class="nav-btn" id="tab-mistakes-btn">📖 不熟區 <span id="mistake-badge" class="badge">0</span></button>
-      <button class="nav-btn" id="tab-admin-btn">🔒 後台管理</button>
-    </header>
 
-    <!-- 頁籤 1：純單字挑戰王 -->
-    <main id="view-game" class="view-panel active">
-      <div class="chapter-selector-bar">
-        <label for="game-chapter-filter">🎯 單字範圍：</label>
-        <select id="game-chapter-filter" class="chapter-dropdown"></select>
-      </div>
-
-      <div class="game-status-bar">
-        <span id="game-progress-tag" class="pill pill-level">進度：0 / 0</span>
-        <span id="score-display" class="pill pill-score">積分：0</span>
-        <div class="timer-wrapper">
-          <span class="timer-icon">⏱️</span>
-          <span id="timer-count">15</span>s
-        </div>
-      </div>
+    <!-- ================= 0. 學生登入遮罩頁面 ================= -->
+    <div id="view-student-login" class="student-login-view">
+      <div style="font-size:3.5rem; margin-bottom:10px;">👑</div>
+      <h2 style="color:#0f172a; margin-bottom:6px;">高中單字挑戰王</h2>
+      <p style="color:#64748b; font-size:0.85rem; margin-bottom:24px;">請輸入教師配發的學生帳號與密碼開始練習</p>
       
-      <div class="timer-progress-bar">
-        <div id="timer-progress-fill" class="timer-fill"></div>
+      <div style="width:100%; max-width:340px;">
+        <input type="text" id="student-acc-input" placeholder="學生帳號 (例如: student1)" class="admin-input-full" />
+        <input type="password" id="student-pwd-input" placeholder="密碼 (預設: 1234)" class="admin-input-full" />
+        <button id="student-login-btn" class="btn-primary" style="margin-top:6px;">進入系統挑戰 ➔</button>
+        <p id="student-login-err" style="color:var(--danger); font-size:0.85rem; margin-top:10px; display:none;">帳號或密碼錯誤！請洽老師</p>
       </div>
 
-      <div class="card quiz-card">
-        <div style="display:flex; justify-content:center; gap:6px;">
-          <span id="quiz-chapter" class="chapter-tag">Unit 1</span>
-          <span id="quiz-pos" class="pos-tag">詞性</span>
+      <!-- 學生端頁尾：提供快速切換到後台管理的齒輪 -->
+      <div style="margin-top:40px; display:flex; align-items:center; gap:6px; color:#94a3b8; font-size:0.8rem;">
+        <span>教師/管理員管理入口：</span>
+        <button id="login-screen-gear-btn" class="btn-gear" style="width:30px; height:30px; font-size:1rem;" title="後台管理入口">⚙️</button>
+      </div>
+    </div>
+
+    <!-- ================= 前台遊戲主視窗 (登入後顯示) ================= -->
+    <div id="view-student-main" style="display:none; flex-direction:column; flex:1;">
+      <!-- 頂部頁籤導覽 (只留齒輪符號 ⚙️) -->
+      <header class="app-nav">
+        <div class="nav-tabs-group">
+          <button class="nav-btn active" id="tab-game-btn">👑 單字挑戰</button>
+          <button class="nav-btn" id="tab-phrase-btn">🧩 片語特訓</button>
+          <button class="nav-btn" id="tab-cloze-btn">⚔️ 克漏字對戰</button>
+          <button class="nav-btn" id="tab-mistakes-btn">📖 不熟區 <span id="mistake-badge" class="badge">0</span></button>
         </div>
-        <h2 id="quiz-chinese" class="chinese-prompt">題目載入中...</h2>
+        <!-- 核心：只保留一個乾淨的齒輪圖示 ⚙️ -->
+        <button id="main-gear-btn" class="btn-gear" title="開啟後台管理">⚙️</button>
+      </header>
+
+      <!-- 學生狀態條 (顯示使用者與登出) -->
+      <div style="background:#f1f5f9; padding:6px 14px; font-size:0.8rem; font-weight:700; color:#475569; display:flex; justify-content:space-between; align-items:center;">
+        <span>👤 目前登入：<b id="cur-student-name" style="color:#4338ca;">學生</b></span>
+        <button id="student-logout-btn" style="border:none; background:transparent; color:#ef4444; font-weight:800; cursor:pointer;">登出</button>
+      </div>
+
+      <!-- 頁籤 1：純單字挑戰王 -->
+      <main id="view-game" class="view-panel active">
+        <div class="chapter-selector-bar">
+          <label for="game-chapter-filter">🎯 單字範圍：</label>
+          <select id="game-chapter-filter" class="chapter-dropdown"></select>
+        </div>
+
+        <div class="game-status-bar">
+          <span id="game-progress-tag" class="pill pill-level">進度：0 / 0</span>
+          <span id="score-display" class="pill pill-score">積分：0</span>
+          <div class="timer-wrapper">
+            <span class="timer-icon">⏱️</span>
+            <span id="timer-count">15</span>s
+          </div>
+        </div>
         
-        <div class="hint-audio-bar">
-          <span id="quiz-hint" class="hint-text">長度：3 字母・首字 [ c ]</span>
-          <button type="button" id="game-sound-btn" class="btn-sound-hint" title="點擊聽發音">🔊 聽發音</button>
+        <div class="timer-progress-bar">
+          <div id="timer-progress-fill" class="timer-fill"></div>
         </div>
-      </div>
 
-      <div class="pure-dashed-zone" onclick="focusHiddenInput('word')">
-        <div id="letter-slots-container" class="slots-flex-row"></div>
-        <input type="text" id="answer-input" class="ghost-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-      </div>
-
-      <div style="margin-top:14px; display:flex; gap:10px;">
-        <button id="submit-btn" class="btn-primary" style="flex:1;">確認送出 (Enter)</button>
-        <button id="next-question-btn" class="btn-next-action" style="display:none;">NEXT 下一題 ➔</button>
-      </div>
-
-      <div id="game-feedback" class="feedback-box"></div>
-
-      <div id="round-summary-modal" class="modal-overlay" style="display:none;">
-        <div class="modal-card">
-          <div id="summary-icon" style="font-size:3.5rem;">🏆</div>
-          <h2 id="summary-title" style="margin:10px 0;">結算報告</h2>
-          <div class="summary-stats">
-            <p>本次總答題數：<span id="summary-total">0</span></p>
-            <p>正確答對題數：<span id="summary-correct">0</span></p>
-            <p>最終累積積分：<b id="summary-score" style="color:#f59e0b;">0</b></p>
-            <p style="font-size:1.2rem; font-weight:800; margin-top:8px;">正確率：<span id="summary-accuracy">0%</span></p>
+        <div class="card quiz-card">
+          <div style="display:flex; justify-content:center; gap:6px;">
+            <span id="quiz-chapter" class="chapter-tag">Unit 1</span>
+            <span id="quiz-pos" class="pos-tag">詞性</span>
           </div>
-          <div id="summary-verdict" class="summary-verdict-box">結算中...</div>
-          <button id="restart-round-btn" class="btn-primary" style="margin-top:16px;">重新挑戰</button>
-        </div>
-      </div>
-    </main>
-
-    <!-- 頁籤 2：片語特訓區 -->
-    <main id="view-phrase" class="view-panel">
-      <div class="chapter-selector-bar">
-        <label for="phrase-chapter-filter">🧩 片語範圍：</label>
-        <select id="phrase-chapter-filter" class="chapter-dropdown"></select>
-      </div>
-
-      <div class="game-status-bar">
-        <span id="phrase-progress-tag" class="pill pill-level">進度：0 / 0</span>
-        <span id="phrase-score-display" class="pill pill-score">積分：0</span>
-        <div class="timer-wrapper">
-          <span class="timer-icon">⏱️</span>
-          <span id="phrase-timer-count">20</span>s
-        </div>
-      </div>
-      
-      <div class="timer-progress-bar">
-        <div id="phrase-timer-progress-fill" class="timer-fill"></div>
-      </div>
-
-      <div class="card quiz-card">
-        <div style="display:flex; justify-content:center; gap:6px;">
-          <span id="phrase-chapter" class="chapter-tag">Unit 1</span>
-          <span id="phrase-pos" class="pos-tag" style="background:#fef3c7; color:#b45309;">phr. 片語</span>
-        </div>
-        <h2 id="phrase-chinese" class="chinese-prompt">片語載入中...</h2>
-        
-        <div class="hint-audio-bar">
-          <span id="phrase-hint" class="hint-text">片語長度提示</span>
-          <button type="button" id="phrase-sound-btn" class="btn-sound-hint" title="聽發音">🔊 聽片語發音</button>
-        </div>
-      </div>
-
-      <div class="pure-dashed-zone" onclick="focusHiddenInput('phrase')">
-        <div id="phrase-slots-container" class="slots-flex-row"></div>
-        <input type="text" id="phrase-input" class="ghost-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-      </div>
-
-      <div style="margin-top:14px; display:flex; gap:10px;">
-        <button id="phrase-submit-btn" class="btn-primary" style="flex:1;">確認送出 (Enter)</button>
-        <button id="phrase-next-btn" class="btn-next-action" style="display:none;">NEXT 下一題 ➔</button>
-      </div>
-
-      <div id="phrase-feedback" class="feedback-box"></div>
-    </main>
-
-    <!-- 頁籤 3：克漏字對戰 -->
-    <main id="view-cloze" class="view-panel arena-bg">
-      <div class="cloze-top-control">
-        <select id="cloze-chapter-filter" class="chapter-select-dark"></select>
-        <div class="mode-switch-pill">
-          <button id="mode-pve-btn" class="mode-switch-btn active">👤 vs 電腦</button>
-          <button id="mode-pvp-btn" class="mode-switch-btn">👥 雙人對抗</button>
-        </div>
-      </div>
-
-      <div class="battle-top-hud">
-        <div class="player-card">
-          <div class="avatar-frame"><div class="avatar-placeholder">👤</div></div>
-          <span class="player-name" id="p1-name">玩家 1</span>
-        </div>
-
-        <div class="radial-timer-box">
-          <svg class="radial-timer-svg" viewBox="0 0 100 100">
-            <circle class="timer-track" cx="50" cy="50" r="42" />
-            <circle id="cloze-timer-stroke" class="timer-progress" cx="50" cy="50" r="42" />
-          </svg>
-          <span id="cloze-timer-text" class="timer-number">10</span>
-        </div>
-
-        <div class="player-card">
-          <div class="avatar-frame"><div class="avatar-placeholder" id="p2-avatar">🤖</div></div>
-          <span class="player-name" id="p2-name">教練 AI</span>
-        </div>
-      </div>
-
-      <div class="arena-middle">
-        <div class="meter-column">
-          <div class="score-num" id="p1-score-text">0</div>
-          <div class="meter-track"><div id="p1-meter-fill" class="meter-fill user-fill"></div></div>
-        </div>
-
-        <div class="question-core">
-          <button id="cloze-listen-btn" class="btn-sound-glow" style="margin-bottom:8px;">🔊 朗讀例句</button>
-          <div class="cloze-sentence-card">
-            <p id="cloze-sentence-text">例句載入中...</p>
-          </div>
-        </div>
-
-        <div class="meter-column">
-          <div class="score-num" id="p2-score-text">0</div>
-          <div class="meter-track"><div id="p2-meter-fill" class="meter-fill bot-fill"></div></div>
-        </div>
-      </div>
-
-      <div id="turn-indicator-bar" style="text-align:center; font-weight:800; color:#38bdf8; font-size:0.9rem; margin-bottom:6px;">當前回合：玩家 1 作答</div>
-      <div class="answers-stack" id="cloze-options-container"></div>
-      <div id="cloze-round-toast" class="battle-toast"></div>
-    </main>
-
-    <!-- 頁籤 4：不熟單字區 -->
-    <main id="view-mistakes" class="view-panel">
-      <div class="mistake-header">
-        <h3>待加強字庫與片語</h3>
-        <div>
-          <button id="export-mistakes-excel-quick-btn" class="btn-excel" style="margin-right:6px;">📊 匯出錯題 Excel</button>
-          <button id="clear-mistakes-btn" class="btn-danger-outline">全部清空</button>
-        </div>
-      </div>
-      <div id="mistakes-list" class="mistake-cards-container"></div>
-    </main>
-
-    <!-- 頁籤 5：後台管理介面 -->
-    <main id="view-admin" class="view-panel">
-      <div id="admin-auth-panel" class="card auth-box">
-        <div style="font-size:2.5rem; margin-bottom:8px;">🔐</div>
-        <h3>後台管理權限驗證</h3>
-        <p style="color:#64748b; font-size:0.85rem; margin:6px 0 16px;">請輸入管理密碼 (預設: admin888)</p>
-        <input type="password" id="admin-pwd-input" placeholder="請輸入密碼" class="admin-input-full" />
-        <button id="admin-login-btn" class="btn-primary" style="margin-top:10px;">解鎖後台</button>
-        <p id="auth-error-msg" style="color:var(--danger); font-size:0.85rem; margin-top:8px; display:none;">密碼錯誤！</p>
-      </div>
-
-      <div id="admin-main-panel" style="display:none;">
-        <div class="admin-header">
-          <h3>⚙️ 章節與題庫管理</h3>
-          <div style="display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end;">
-            <button id="export-mistakes-excel-btn" class="btn-excel">📊 匯出錯題 Excel</button>
-            <button id="export-json-btn" class="btn-secondary-sm">📥 匯出題庫 JSON</button>
-            <button id="admin-logout-btn" class="btn-danger-outline">登出</button>
-          </div>
-        </div>
-
-        <div class="card" style="text-align:left; border:2px dashed #6366f1; background:#f8fafc; margin-bottom:16px;">
-          <h4 style="color:#4338ca; margin-bottom:4px;">🎯 題庫批次匯入與章節設定</h4>
-          <p style="color:#64748b; font-size:0.8rem; margin-bottom:12px;">上傳圖片或 .json 檔案，並指定歸屬章節（片語填寫 phr. 詞性會自動進片語區）。</p>
+          <h2 id="quiz-chinese" class="chinese-prompt">題目載入中...</h2>
           
-          <div style="background:white; padding:12px; border:1px solid #e2e8f0; border-radius:10px; margin-bottom:12px;">
-            <label style="font-size:0.85rem; font-weight:800; color:#1e293b; display:block; margin-bottom:6px;">第一步：設定欲匯入的章節</label>
-            <div class="form-row" style="align-items:center;">
-              <select id="import-chapter-select" style="flex:1; padding:8px; border-radius:8px; border:1.5px solid #cbd5e1; font-weight:700;"></select>
-              <input type="text" id="import-chapter-custom" placeholder="或輸入新章節名稱 (例如: Unit 3)" style="flex:1.5; padding:8px; border-radius:8px; border:1.5px solid #cbd5e1;" />
+          <div class="hint-audio-bar">
+            <span id="quiz-hint" class="hint-text">長度：3 字母・首字 [ c ]</span>
+            <button type="button" id="game-sound-btn" class="btn-sound-hint" title="點擊聽發音">🔊 聽發音</button>
+          </div>
+        </div>
+
+        <div class="pure-dashed-zone" onclick="focusHiddenInput('word')">
+          <div id="letter-slots-container" class="slots-flex-row"></div>
+          <input type="text" id="answer-input" class="ghost-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        </div>
+
+        <div style="margin-top:14px; display:flex; gap:10px;">
+          <button id="submit-btn" class="btn-primary" style="flex:1;">確認送出 (Enter)</button>
+          <button id="next-question-btn" class="btn-next-action" style="display:none;">NEXT 下一題 ➔</button>
+        </div>
+
+        <div id="game-feedback" class="feedback-box"></div>
+
+        <div id="round-summary-modal" class="modal-overlay" style="display:none;">
+          <div class="modal-card">
+            <div id="summary-icon" style="font-size:3.5rem;">🏆</div>
+            <h2 id="summary-title" style="margin:10px 0;">結算報告</h2>
+            <div class="summary-stats">
+              <p>本次總答題數：<span id="summary-total">0</span></p>
+              <p>正確答對題數：<span id="summary-correct">0</span></p>
+              <p>最終累積積分：<b id="summary-score" style="color:#f59e0b;">0</b></p>
+              <p style="font-size:1.2rem; font-weight:800; margin-top:8px;">正確率：<span id="summary-accuracy">0%</span></p>
+            </div>
+            <div id="summary-verdict" class="summary-verdict-box">結算中...</div>
+            <button id="restart-round-btn" class="btn-primary" style="margin-top:16px;">重新挑戰</button>
+          </div>
+        </div>
+      </main>
+
+      <!-- 頁籤 2：片語特訓區 -->
+      <main id="view-phrase" class="view-panel">
+        <div class="chapter-selector-bar">
+          <label for="phrase-chapter-filter">🧩 片語範圍：</label>
+          <select id="phrase-chapter-filter" class="chapter-dropdown"></select>
+        </div>
+
+        <div class="game-status-bar">
+          <span id="phrase-progress-tag" class="pill pill-level">進度：0 / 0</span>
+          <span id="phrase-score-display" class="pill pill-score">積分：0</span>
+          <div class="timer-wrapper">
+            <span class="timer-icon">⏱️</span>
+            <span id="phrase-timer-count">20</span>s
+          </div>
+        </div>
+        
+        <div class="timer-progress-bar">
+          <div id="phrase-timer-progress-fill" class="timer-fill"></div>
+        </div>
+
+        <div class="card quiz-card">
+          <div style="display:flex; justify-content:center; gap:6px;">
+            <span id="phrase-chapter" class="chapter-tag">Unit 1</span>
+            <span id="phrase-pos" class="pos-tag" style="background:#fef3c7; color:#b45309;">phr. 片語</span>
+          </div>
+          <h2 id="phrase-chinese" class="chinese-prompt">片語載入中...</h2>
+          
+          <div class="hint-audio-bar">
+            <span id="phrase-hint" class="hint-text">片語長度提示</span>
+            <button type="button" id="phrase-sound-btn" class="btn-sound-hint" title="聽發音">🔊 聽片語發音</button>
+          </div>
+        </div>
+
+        <div class="pure-dashed-zone" onclick="focusHiddenInput('phrase')">
+          <div id="phrase-slots-container" class="slots-flex-row"></div>
+          <input type="text" id="phrase-input" class="ghost-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        </div>
+
+        <div style="margin-top:14px; display:flex; gap:10px;">
+          <button id="phrase-submit-btn" class="btn-primary" style="flex:1;">確認送出 (Enter)</button>
+          <button id="phrase-next-btn" class="btn-next-action" style="display:none;">NEXT 下一題 ➔</button>
+        </div>
+
+        <div id="phrase-feedback" class="feedback-box"></div>
+      </main>
+
+      <!-- 頁籤 3：克漏字對戰 -->
+      <main id="view-cloze" class="view-panel arena-bg">
+        <div class="cloze-top-control">
+          <select id="cloze-chapter-filter" class="chapter-select-dark"></select>
+          <div class="mode-switch-pill">
+            <button id="mode-pve-btn" class="mode-switch-btn active">👤 vs 電腦</button>
+            <button id="mode-pvp-btn" class="mode-switch-btn">👥 雙人對抗</button>
+          </div>
+        </div>
+
+        <div class="battle-top-hud">
+          <div class="player-card">
+            <div class="avatar-frame"><div class="avatar-placeholder">👤</div></div>
+            <span class="player-name" id="p1-name">玩家 1</span>
+          </div>
+
+          <div class="radial-timer-box">
+            <svg class="radial-timer-svg" viewBox="0 0 100 100">
+              <circle class="timer-track" cx="50" cy="50" r="42" />
+              <circle id="cloze-timer-stroke" class="timer-progress" cx="50" cy="50" r="42" />
+            </svg>
+            <span id="cloze-timer-text" class="timer-number">10</span>
+          </div>
+
+          <div class="player-card">
+            <div class="avatar-frame"><div class="avatar-placeholder" id="p2-avatar">🤖</div></div>
+            <span class="player-name" id="p2-name">教練 AI</span>
+          </div>
+        </div>
+
+        <div class="arena-middle">
+          <div class="meter-column">
+            <div class="score-num" id="p1-score-text">0</div>
+            <div class="meter-track"><div id="p1-meter-fill" class="meter-fill user-fill"></div></div>
+          </div>
+
+          <div class="question-core">
+            <button id="cloze-listen-btn" class="btn-sound-glow" style="margin-bottom:8px;">🔊 朗讀例句</button>
+            <div class="cloze-sentence-card">
+              <p id="cloze-sentence-text">例句載入中...</p>
             </div>
           </div>
 
-          <label style="font-size:0.85rem; font-weight:800; color:#1e293b; display:block; margin-bottom:6px;">第二步：選擇檔案來源</label>
+          <div class="meter-column">
+            <div class="score-num" id="p2-score-text">0</div>
+            <div class="meter-track"><div id="p2-meter-fill" class="meter-fill bot-fill"></div></div>
+          </div>
+        </div>
+
+        <div id="turn-indicator-bar" style="text-align:center; font-weight:800; color:#38bdf8; font-size:0.9rem; margin-bottom:6px;">當前回合：玩家 1 作答</div>
+        <div class="answers-stack" id="cloze-options-container"></div>
+        <div id="cloze-round-toast" class="battle-toast"></div>
+      </main>
+
+      <!-- 頁籤 4：不熟單字區 -->
+      <main id="view-mistakes" class="view-panel">
+        <div class="mistake-header">
+          <h3>待加強字庫與片語</h3>
+          <div>
+            <button id="export-mistakes-excel-quick-btn" class="btn-excel" style="margin-right:6px;">📊 匯出錯題 Excel</button>
+            <button id="clear-mistakes-btn" class="btn-danger-outline">全部清空</button>
+          </div>
+        </div>
+        <div id="mistakes-list" class="mistake-cards-container"></div>
+      </main>
+    </div>
+
+    <!-- ================= 核心重頭戲：獨立完整的後台管理頁面 ================= -->
+    <div id="standalone-admin-page" class="admin-standalone-page">
+      <!-- 後台登入鎖定視窗 -->
+      <div id="admin-auth-panel" class="card auth-box" style="max-width:380px; margin:40px auto;">
+        <div style="font-size:3rem; margin-bottom:8px;">🔐</div>
+        <h3>管理員後台驗證</h3>
+        <p style="color:#64748b; font-size:0.85rem; margin:6px 0 16px;">請輸入管理員密碼</p>
+        <input type="password" id="admin-pwd-input" placeholder="請輸入密碼 (預設: admin888)" class="admin-input-full" />
+        <button id="admin-login-btn" class="btn-primary" style="margin-top:10px;">解鎖並進入後台</button>
+        <p id="auth-error-msg" style="color:var(--danger); font-size:0.85rem; margin-top:8px; display:none;">密碼錯誤！</p>
+        <button id="admin-cancel-btn" style="border:none; background:transparent; color:#64748b; margin-top:16px; font-weight:700; cursor:pointer;">返回學生前台</button>
+      </div>
+
+      <!-- 後台管理工作台核心 (登入成功後呈現整個頁面) -->
+      <div id="admin-dashboard-panel" style="display:none; max-width:800px; margin:0 auto; width:100%;">
+        <!-- 頂部列：狀態與退出 -->
+        <div class="admin-nav-bar">
+          <div>
+            <span style="font-size:1.2rem; font-weight:900;">⚙️ 後台管理工作台</span>
+            <div style="font-size:0.75rem; color:#94a3b8;">題庫設定 / 帳號權限 / 數據匯出</div>
+          </div>
+          <div>
+            <button id="admin-close-btn" class="btn-secondary-sm" style="background:#334155; color:white;">關閉並回前台 ✖</button>
+          </div>
+        </div>
+
+        <!-- 區塊 1：📊 顯眼的數據與錯題匯出專區 (解決之前找不到的問題) -->
+        <div class="admin-section" style="border:2px solid #10b981; background:#f0fdf4;">
+          <h4 style="color:#065f46;">📊 學習數據與題庫匯出中心</h4>
+          <p style="font-size:0.8rem; color:#166534; margin-bottom:12px;">一鍵打包所有學生的錯題記錄或完整題庫，方便印出複習卷或建檔備份。</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button id="export-mistakes-excel-btn" class="btn-excel" style="font-size:0.95rem; padding:10px 18px;">📊 一鍵匯出【錯題 EXCEL 檔】(.xlsx)</button>
+            <button id="export-json-btn" class="btn-secondary-sm" style="font-size:0.95rem; padding:10px 18px; background:#e2e8f0;">📥 匯出【完整題庫 JSON】(.json)</button>
+          </div>
+        </div>
+
+        <!-- 區塊 2：👥 學生帳密建立與管理 -->
+        <div class="admin-section">
+          <h4>👥 學生帳號與密碼管理</h4>
+          <p style="font-size:0.8rem; color:#64748b; margin-bottom:10px;">為班級學生建立專屬帳號密碼，登入後方可作答並記錄個人錯題。</p>
+          <form id="create-student-form" class="form-row" style="flex-wrap:wrap; margin-bottom:12px;">
+            <input type="text" id="new-student-acc" placeholder="帳號 (如: s101)" required style="flex:1.2; padding:8px; border:1px solid #cbd5e1; border-radius:8px;" />
+            <input type="password" id="new-student-pwd" placeholder="密碼 (如: 1234)" required style="flex:1.2; padding:8px; border:1px solid #cbd5e1; border-radius:8px;" />
+            <input type="text" id="new-student-name" placeholder="姓名 (如: 王小明)" required style="flex:1.2; padding:8px; border:1px solid #cbd5e1; border-radius:8px;" />
+            <button type="submit" class="btn-primary" style="flex:1; padding:8px 12px; font-size:0.85rem;">➕ 建立帳號</button>
+          </form>
+          <div style="font-size:0.8rem; font-weight:800; color:#475569; margin-bottom:6px;">目前已建立的學生帳號清單：</div>
+          <div id="student-accounts-list" class="admin-list-container" style="max-height:140px;"></div>
+        </div>
+
+        <!-- 區塊 3：🔐 管理員密碼修改專區 -->
+        <div class="admin-section">
+          <h4>🔐 修改管理員後台密碼</h4>
+          <p style="font-size:0.8rem; color:#64748b; margin-bottom:10px;">變更齒輪 ⚙️ 後台解鎖密碼（系統將自動儲存於瀏覽器）。</p>
+          <div class="form-row">
+            <input type="password" id="update-admin-pwd" placeholder="輸入新的管理密碼" style="flex:2; padding:8px; border:1px solid #cbd5e1; border-radius:8px;" />
+            <button id="save-admin-pwd-btn" class="btn-secondary-sm" style="flex:1; background:#4338ca; color:white;">儲存新密碼</button>
+          </div>
+        </div>
+
+        <!-- 區塊 4：📸 題庫批次匯入（照片 OCR / JSON 檔） -->
+        <div class="admin-section" style="border:2px dashed #6366f1;">
+          <h4 style="color:#4338ca;">📸 題庫批次匯入與章節指派</h4>
+          <p style="color:#64748b; font-size:0.8rem; margin-bottom:12px;">選擇照片辨識或上傳 .json，並統一指派所屬章節。</p>
+          
+          <div style="background:#f8fafc; padding:10px; border-radius:10px; margin-bottom:10px;">
+            <div class="form-row" style="align-items:center;">
+              <select id="import-chapter-select" style="flex:1; padding:8px; border-radius:8px; border:1.5px solid #cbd5e1; font-weight:700;"></select>
+              <input type="text" id="import-chapter-custom" placeholder="或輸入全新章節名稱 (例如: Unit 3)" style="flex:1.5; padding:8px; border-radius:8px; border:1.5px solid #cbd5e1;" />
+            </div>
+          </div>
+
           <div style="display:flex; gap:10px; margin-bottom:10px;">
             <label class="btn-sound" style="flex:1; text-align:center; cursor:pointer; background:#eef2ff; color:#4338ca; border-color:#c7d2fe;">
               📸 選擇課本照片
@@ -809,44 +964,52 @@
 
           <div id="ocr-result-container" style="display:none; margin-top:12px;">
             <div style="display:flex; justify-content:space-between; align-items:center;">
-              <label style="font-size:0.8rem; font-weight:800; color:#334155;">題目預覽 (可編輯)：</label>
+              <label style="font-size:0.8rem; font-weight:800; color:#334155;">題目預覽 (可微調)：</label>
               <span id="pending-chapter-badge" class="chapter-tag" style="font-size:0.75rem;">目標章節: Unit 1</span>
             </div>
-            <textarea id="ocr-json-output" style="width:100%; height:140px; font-family:monospace; font-size:0.8rem; margin-top:4px; padding:8px; border:1.5px solid #cbd5e1; border-radius:8px;"></textarea>
-            
+            <textarea id="ocr-json-output" style="width:100%; height:120px; font-family:monospace; font-size:0.8rem; margin-top:4px; padding:8px; border:1.5px solid #cbd5e1; border-radius:8px;"></textarea>
             <div style="display:flex; gap:8px; margin-top:8px;">
               <button id="confirm-import-btn" class="btn-primary" style="flex:2; background:#10b981;">✅ 確認套用設定並匯入題庫</button>
-              <button id="download-parsed-json-btn" class="btn-secondary-sm" style="flex:1;">💾 下載 .json 檔</button>
             </div>
           </div>
         </div>
 
-        <form id="add-word-form" class="admin-form card">
-          <h4>單筆手動新增</h4>
-          <div class="form-row">
-            <input type="text" id="new-chapter" placeholder="章節名稱 (如: Unit 1)" required />
-            <input type="text" id="new-pos" placeholder="詞性 (單字填 n./v./adj.，片語填 phr.)" required />
-          </div>
-          <input type="text" id="new-word" placeholder="英文單字/片語 (如: cue 或 on cue)" required />
-          <input type="text" id="new-zh" placeholder="中文釋義 (如: 提示；線索)" required />
-          <textarea id="new-sentence" placeholder="克漏字例句（請用 ___ 代表空格）" required></textarea>
-          <div class="form-row">
-            <input type="text" id="new-opt2" placeholder="干擾選項 1" required />
-            <input type="text" id="new-opt3" placeholder="干擾選項 2" required />
-            <input type="text" id="new-opt4" placeholder="干擾選項 3" required />
-          </div>
-          <button type="submit" class="btn-primary" style="margin-top:10px;">➕ 新增至題庫</button>
-        </form>
+        <!-- 區塊 5：單筆新增與題庫清單 -->
+        <div class="admin-section">
+          <h4>➕ 手動新增單筆題目</h4>
+          <form id="add-word-form" class="admin-form">
+            <div class="form-row">
+              <input type="text" id="new-chapter" placeholder="章節名稱 (如: Unit 1)" required />
+              <input type="text" id="new-pos" placeholder="詞性 (單字填 n./v./adj.，片語填 phr.)" required />
+            </div>
+            <input type="text" id="new-word" placeholder="英文單字/片語 (如: cue 或 on cue)" required />
+            <input type="text" id="new-zh" placeholder="中文釋義 (如: 提示；線索)" required />
+            <textarea id="new-sentence" placeholder="克漏字例句（請用 ___ 代表空格）" required></textarea>
+            <div class="form-row">
+              <input type="text" id="new-opt2" placeholder="干擾選項 1" required />
+              <input type="text" id="new-opt3" placeholder="干擾選項 2" required />
+              <input type="text" id="new-opt4" placeholder="干擾選項 3" required />
+            </div>
+            <button type="submit" class="btn-primary" style="margin-top:4px;">➕ 新增至題庫</button>
+          </form>
 
-        <h4 style="margin: 15px 0 8px 0; color: #475569;">目前所有題庫清單 (<span id="total-word-count">0</span>)</h4>
-        <div id="admin-word-list" class="admin-list-container"></div>
+          <h4 style="margin: 18px 0 8px 0; color: #475569;">目前系統所有題庫清單 (<span id="total-word-count">0</span>)</h4>
+          <div id="admin-word-list" class="admin-list-container"></div>
+        </div>
       </div>
-    </main>
+    </div>
   </div>
 
   <script>
-    const ADMIN_PASSWORD = "admin888";
+    // ================= 1. 權限與帳號管理邏輯 =================
+    let currentAdminPassword = localStorage.getItem('app_admin_pwd') || "admin888";
     let isAdminAuthenticated = false;
+
+    // 學生帳號清單 (預設提供一組 student1 / 1234)
+    let studentAccounts = JSON.parse(localStorage.getItem('student_accounts') || JSON.stringify([
+      { acc: "student1", pwd: "1234", name: "示範生小明" }
+    ]));
+    let loggedInStudent = null; // 當前登入的學生
 
     // 內建完整題庫
     const BUILTIN_QUESTIONS = [
@@ -922,7 +1085,7 @@
     const CLOZE_INITIAL_TIME = 10;
     const CIRCLE_CIRCUMFERENCE = 264;
 
-    let mistakeIds = new Set(JSON.parse(localStorage.getItem('mistakes') || '[]'));
+    let mistakeIds = new Set();
 
     function shuffleArray(arr) {
       const res = [...arr];
@@ -961,7 +1124,8 @@
       }));
 
       allQuestions = [...BUILTIN_QUESTIONS, ...processedCustom];
-      document.getElementById('total-word-count').innerText = allQuestions.length;
+      const countEl = document.getElementById('total-word-count');
+      if (countEl) countEl.innerText = allQuestions.length;
       updateChapterDropdowns();
     }
 
@@ -1025,7 +1189,6 @@
       }
     }
 
-    // 核心渲染：灰色實線 + 錯字正上方浮現綠底正確字母
     function renderUnderlineSlots(containerId, targetWord, currentVal = '', isEvaluated = false) {
       const container = document.getElementById(containerId);
       if (!container) return;
@@ -1476,26 +1639,40 @@
       document.getElementById('p2-meter-fill').style.height = `${Math.min(100, (p2Score / 1000) * 100)}%`;
     }
 
-    // =================== 不熟區與後台 ===================
+    // =================== 4. 不熟區錯題（依學生帳號獨立儲存） ===================
+    function getMistakesKey() {
+      return loggedInStudent ? `mistakes_${loggedInStudent.acc}` : 'mistakes_guest';
+    }
+
+    function loadStudentMistakes() {
+      const saved = localStorage.getItem(getMistakesKey()) || '[]';
+      mistakeIds = new Set(JSON.parse(saved));
+      updateMistakeBadge();
+      renderMistakes();
+    }
+
     function addMistake(id) {
       mistakeIds.add(id);
-      localStorage.setItem('mistakes', JSON.stringify([...mistakeIds]));
+      localStorage.setItem(getMistakesKey(), JSON.stringify([...mistakeIds]));
       updateMistakeBadge();
     }
+
     function removeMistake(id) {
       mistakeIds.delete(id);
-      localStorage.setItem('mistakes', JSON.stringify([...mistakeIds]));
+      localStorage.setItem(getMistakesKey(), JSON.stringify([...mistakeIds]));
       renderMistakes();
       updateMistakeBadge();
     }
+
     function updateMistakeBadge() {
       document.getElementById('mistake-badge').innerText = mistakeIds.size;
     }
+
     function renderMistakes() {
       const list = document.getElementById('mistakes-list');
       list.innerHTML = '';
       if (mistakeIds.size === 0) {
-        list.innerHTML = `<p style="text-align:center; color:#94a3b8; margin-top:40px;">太棒了，目前沒有不熟字詞！</p>`;
+        list.innerHTML = `<p style="text-align:center; color:#94a3b8; margin-top:40px;">太棒了，目前沒有任何錯題！</p>`;
         return;
       }
       const badQuestions = allQuestions.filter(q => mistakeIds.has(q.id));
@@ -1517,7 +1694,88 @@
       });
     }
 
-    // 🔥 核心功能：匯出錯題為 Excel (.xlsx)
+    // =================== 5. 後台獨立管理功能與 EXCEL 匯出 ===================
+    function openAdminStandalone() {
+      document.getElementById('standalone-admin-page').style.display = 'flex';
+      if (!isAdminAuthenticated) {
+        document.getElementById('admin-auth-panel').style.display = 'block';
+        document.getElementById('admin-dashboard-panel').style.display = 'none';
+      } else {
+        document.getElementById('admin-auth-panel').style.display = 'none';
+        document.getElementById('admin-dashboard-panel').style.display = 'block';
+        renderAdminData();
+      }
+    }
+
+    function closeAdminStandalone() {
+      document.getElementById('standalone-admin-page').style.display = 'none';
+    }
+
+    function renderAdminData() {
+      renderStudentAccountsList();
+      renderAdminWordList();
+      refreshAdminChapterSelector();
+    }
+
+    // 渲染學生名單
+    function renderStudentAccountsList() {
+      const container = document.getElementById('student-accounts-list');
+      container.innerHTML = '';
+      studentAccounts.forEach((s, idx) => {
+        const div = document.createElement('div');
+        div.className = 'admin-item-card';
+        div.innerHTML = `
+          <div>
+            <span class="user-tag">帳號: ${s.acc}</span>
+            <strong style="margin-left:6px;">${s.name}</strong>
+            <span style="color:#94a3b8; font-size:0.8rem; margin-left:6px;">(密碼: ${s.pwd})</span>
+          </div>
+          <div>
+            <button style="border:none; background:#fee2e2; color:#ef4444; border-radius:6px; padding:3px 8px; cursor:pointer; font-weight:700;" onclick="deleteStudentAccount(${idx})">刪除</button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    window.deleteStudentAccount = function(idx) {
+      if (confirm(`確定刪除學生帳號「${studentAccounts[idx].acc}」？`)) {
+        studentAccounts.splice(idx, 1);
+        localStorage.setItem('student_accounts', JSON.stringify(studentAccounts));
+        renderStudentAccountsList();
+      }
+    };
+
+    // 渲染題庫清單
+    function renderAdminWordList() {
+      const container = document.getElementById('admin-word-list');
+      container.innerHTML = '';
+      allQuestions.forEach(q => {
+        const isCustom = customQuestions.some(c => c.id === q.id);
+        const div = document.createElement('div');
+        div.className = 'admin-item-card';
+        div.innerHTML = `
+          <div>
+            <strong style="color:#0f172a;">${q.word}</strong> <small style="color:#64748b;">[${q.chapter || 'Unit 1'}] ${q.zh}</small>
+          </div>
+          <div>
+            ${isCustom ? `<button style="border:none; background:#fee2e2; color:#ef4444; border-radius:6px; padding:4px 8px; cursor:pointer;" onclick="deleteCustomWord(${q.id})">刪除</button>` : '<span style="font-size:0.75rem; color:#94a3b8;">內建</span>'}
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    window.deleteCustomWord = function(id) {
+      if (confirm("確定刪除此題目？")) {
+        customQuestions = customQuestions.filter(c => c.id !== id);
+        localStorage.setItem('custom_questions', JSON.stringify(customQuestions));
+        refreshTotalQuestions();
+        renderAdminWordList();
+      }
+    };
+
+    // 🔥 核心功能：匯出錯題 Excel 報表
     function exportMistakesToExcel() {
       if (mistakeIds.size === 0) {
         alert("目前沒有任何不熟或答錯的題目可供匯出！");
@@ -1525,55 +1783,143 @@
       }
 
       const badQuestions = allQuestions.filter(q => mistakeIds.has(q.id));
-      
-      // 整理 Excel 表格內容與標題列
+      const studentTag = loggedInStudent ? `${loggedInStudent.name}(${loggedInStudent.acc})` : "全體錯題";
+
       const excelData = badQuestions.map((q, index) => ({
         "項次": index + 1,
+        "學生姓名": studentTag,
         "章節": q.chapter || "Unit 1",
         "類型": q.isPhrase ? "片語/詞組" : "單字",
         "英文詞彙": q.word,
         "詞性": q.pos,
         "中文釋義": q.zh,
-        "大考例句": (q.sentence || "").replace('___', `[ ${q.word} ]`)
+        "例句參考": (q.sentence || "").replace('___', `[ ${q.word} ]`)
       }));
 
-      // 使用 SheetJS 產生工作表與活頁簿
       const worksheet = XLSX.utils.json_to_sheet(excelData);
-
-      // 自動設定欄寬
       worksheet['!cols'] = [
-        { wch: 6 },  // 項次
-        { wch: 12 }, // 章節
-        { wch: 12 }, // 類型
-        { wch: 22 }, // 英文詞彙
-        { wch: 10 }, // 詞性
-        { wch: 26 }, // 中文釋義
-        { wch: 45 }  // 例句
+        { wch: 6 }, { wch: 14 }, { wch: 12 }, { wch: 12 }, { wch: 22 }, { wch: 10 }, { wch: 26 }, { wch: 45 }
       ];
 
       const workbook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(workbook, worksheet, "錯題複習庫");
+      XLSX.utils.book_append_sheet(workbook, worksheet, "錯題診斷清單");
 
-      // 下載 .xlsx 檔案（檔名標註當前日期與時間）
       const now = new Date();
       const dateStr = `${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}_${String(now.getHours()).padStart(2,'0')}${String(now.getMinutes()).padStart(2,'0')}`;
-      XLSX.writeFile(workbook, `單字挑戰王_錯題精選_${dateStr}.xlsx`);
+      XLSX.writeFile(workbook, `錯題清單_${studentTag}_${dateStr}.xlsx`);
     }
 
-    // 初始化與事件掛載
+    // 匯出完整 JSON
+    function exportQuestionsJSON() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(allQuestions, null, 2));
+      const dl = document.createElement('a');
+      dl.setAttribute("href", dataStr);
+      dl.setAttribute("download", `vocab_database_${Date.now()}.json`);
+      document.body.appendChild(dl);
+      dl.click();
+      dl.remove();
+    }
+
+    // =================== 6. 系統事件掛載 ===================
     window.addEventListener('DOMContentLoaded', () => {
       refreshTotalQuestions();
-      updateMistakeBadge();
-      startNewWordSession();
-      startNewPhraseSession();
-      loadClozeBattleRound();
 
+      // 1. 學生登入邏輯
+      document.getElementById('student-login-btn').addEventListener('click', () => {
+        const acc = document.getElementById('student-acc-input').value.trim();
+        const pwd = document.getElementById('student-pwd-input').value.trim();
+        const found = studentAccounts.find(s => s.acc === acc && s.pwd === pwd);
+
+        if (found) {
+          loggedInStudent = found;
+          document.getElementById('cur-student-name').innerText = found.name;
+          document.getElementById('view-student-login').style.display = 'none';
+          document.getElementById('view-student-main').style.display = 'flex';
+          document.getElementById('student-login-err').style.display = 'none';
+
+          loadStudentMistakes();
+          startNewWordSession();
+          startNewPhraseSession();
+          loadClozeBattleRound();
+        } else {
+          document.getElementById('student-login-err').style.display = 'block';
+        }
+      });
+
+      // 學生登出
+      document.getElementById('student-logout-btn').addEventListener('click', () => {
+        loggedInStudent = null;
+        stopAnySpeech();
+        document.getElementById('view-student-main').style.display = 'none';
+        document.getElementById('view-student-login').style.display = 'flex';
+        document.getElementById('student-acc-input').value = '';
+        document.getElementById('student-pwd-input').value = '';
+      });
+
+      // 2. 齒輪 ⚙️ 按鈕（前台只留一個小齒輪進入獨立後台）
+      document.getElementById('main-gear-btn').addEventListener('click', openAdminStandalone);
+      document.getElementById('login-screen-gear-btn').addEventListener('click', openAdminStandalone);
+      document.getElementById('admin-cancel-btn').addEventListener('click', closeAdminStandalone);
+      document.getElementById('admin-close-btn').addEventListener('click', closeAdminStandalone);
+
+      // 後台登入驗證
+      document.getElementById('admin-login-btn').addEventListener('click', () => {
+        const inputPwd = document.getElementById('admin-pwd-input').value.trim();
+        if (inputPwd === currentAdminPassword) {
+          isAdminAuthenticated = true;
+          document.getElementById('admin-pwd-input').value = '';
+          document.getElementById('auth-error-msg').style.display = 'none';
+          document.getElementById('admin-auth-panel').style.display = 'none';
+          document.getElementById('admin-dashboard-panel').style.display = 'block';
+          renderAdminData();
+        } else {
+          document.getElementById('auth-error-msg').style.display = 'block';
+        }
+      });
+
+      // 後台建立學生帳號
+      document.getElementById('create-student-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const acc = document.getElementById('new-student-acc').value.trim();
+        const pwd = document.getElementById('new-student-pwd').value.trim();
+        const name = document.getElementById('new-student-name').value.trim();
+
+        if (studentAccounts.some(s => s.acc === acc)) {
+          alert("此學生帳號已存在！");
+          return;
+        }
+
+        studentAccounts.push({ acc, pwd, name });
+        localStorage.setItem('student_accounts', JSON.stringify(studentAccounts));
+        renderStudentAccountsList();
+        e.target.reset();
+        alert(`✅ 學生帳號「${acc} (${name})」已成功建立！`);
+      });
+
+      // 後台修改管理員密碼
+      document.getElementById('save-admin-pwd-btn').addEventListener('click', () => {
+        const newPwd = document.getElementById('update-admin-pwd').value.trim();
+        if (!newPwd) {
+          alert("密碼不可為空！");
+          return;
+        }
+        currentAdminPassword = newPwd;
+        localStorage.setItem('app_admin_pwd', newPwd);
+        document.getElementById('update-admin-pwd').value = '';
+        alert("🎉 管理員後台密碼已修改成功！請牢記新密碼。");
+      });
+
+      // 匯出按鈕綁定 (後台與前台不熟區均可匯出)
+      document.getElementById('export-mistakes-excel-btn').addEventListener('click', exportMistakesToExcel);
+      document.getElementById('export-mistakes-excel-quick-btn').addEventListener('click', exportMistakesToExcel);
+      document.getElementById('export-json-btn').addEventListener('click', exportQuestionsJSON);
+
+      // 3. 前台頁籤切換
       const tabs = [
         { btn: 'tab-game-btn', view: 'view-game' },
         { btn: 'tab-phrase-btn', view: 'view-phrase' },
         { btn: 'tab-cloze-btn', view: 'view-cloze' },
-        { btn: 'tab-mistakes-btn', view: 'view-mistakes' },
-        { btn: 'tab-admin-btn', view: 'view-admin' }
+        { btn: 'tab-mistakes-btn', view: 'view-mistakes' }
       ];
 
       tabs.forEach(t => {
@@ -1598,41 +1944,35 @@
             startClozeTimer();
           } else if (t.view === 'view-mistakes') {
             renderMistakes();
-          } else if (t.view === 'view-admin') {
-            document.getElementById('admin-auth-panel').style.display = isAdminAuthenticated ? 'none' : 'block';
-            document.getElementById('admin-main-panel').style.display = isAdminAuthenticated ? 'block' : 'none';
           }
         });
       });
 
+      // 章節變更
       document.getElementById('game-chapter-filter').addEventListener('change', () => {
         filterWordList();
         startNewWordSession();
       });
-
       document.getElementById('phrase-chapter-filter').addEventListener('change', () => {
         filterPhraseList();
         startNewPhraseSession();
       });
-
       document.getElementById('cloze-chapter-filter').addEventListener('change', () => {
         filterClozeList();
         currentClozeIndex = 0;
         loadClozeBattleRound();
       });
 
-      // 單字區操作
+      // 單字區作答事件
       document.getElementById('next-question-btn').addEventListener('click', () => {
         stopAnySpeech();
         currentWordIndex++;
         loadWordQuestion();
       });
-
       document.getElementById('answer-input').addEventListener('input', (e) => {
         if (!activeWordList.length || currentWordIndex >= activeWordList.length || isWordSubmitted) return;
         renderUnderlineSlots('letter-slots-container', activeWordList[currentWordIndex].word, e.target.value.toLowerCase(), false);
       });
-
       document.getElementById('submit-btn').addEventListener('click', submitWordAnswer);
       document.getElementById('answer-input').addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
@@ -1640,25 +1980,22 @@
           else document.getElementById('next-question-btn').click();
         }
       });
-
       document.getElementById('restart-round-btn').addEventListener('click', startNewWordSession);
       document.getElementById('game-sound-btn').addEventListener('click', () => {
         if (!activeWordList.length || currentWordIndex >= activeWordList.length) return;
         playSound(activeWordList[currentWordIndex].word);
       });
 
-      // 片語區操作
+      // 片語區作答事件
       document.getElementById('phrase-next-btn').addEventListener('click', () => {
         stopAnySpeech();
         currentPhraseIndex = (currentPhraseIndex + 1) % activePhraseList.length;
         loadPhraseQuestion();
       });
-
       document.getElementById('phrase-input').addEventListener('input', (e) => {
         if (!activePhraseList.length || isPhraseSubmitted) return;
         renderUnderlineSlots('phrase-slots-container', activePhraseList[currentPhraseIndex].word, e.target.value.toLowerCase(), false);
       });
-
       document.getElementById('phrase-submit-btn').addEventListener('click', submitPhraseAnswer);
       document.getElementById('phrase-input').addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
@@ -1666,43 +2003,162 @@
           else document.getElementById('phrase-next-btn').click();
         }
       });
-
       document.getElementById('phrase-sound-btn').addEventListener('click', () => {
         if (!activePhraseList.length) return;
         playSound(activePhraseList[currentPhraseIndex].word);
       });
 
-      document.getElementById('cloze-listen-btn').addEventListener('click', () => {
-        if (!activeClozeList.length) return;
-        playSound(activeClozeList[currentClozeIndex].sentence.replace('___', activeClozeList[currentClozeIndex].word));
-      });
-
+      // 清空錯題
       document.getElementById('clear-mistakes-btn').addEventListener('click', () => {
         mistakeIds.clear();
-        localStorage.removeItem('mistakes');
+        localStorage.removeItem(getMistakesKey());
         renderMistakes();
         updateMistakeBadge();
       });
 
-      // 🔥 綁定錯題 Excel 匯出按鈕（後台與不熟區各有一個快速匯出按鈕）
-      document.getElementById('export-mistakes-excel-btn').addEventListener('click', exportMistakesToExcel);
-      document.getElementById('export-mistakes-excel-quick-btn').addEventListener('click', exportMistakesToExcel);
+      // 手動新增題目
+      document.getElementById('add-word-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const chapter = document.getElementById('new-chapter').value.trim();
+        const pos = document.getElementById('new-pos').value.trim();
+        const word = document.getElementById('new-word').value.trim();
+        const zh = document.getElementById('new-zh').value.trim();
+        let sentence = document.getElementById('new-sentence').value.trim();
+        const opt2 = document.getElementById('new-opt2').value.trim();
+        const opt3 = document.getElementById('new-opt3').value.trim();
+        const opt4 = document.getElementById('new-opt4').value.trim();
 
-      // 後台驗證
-      document.getElementById('admin-login-btn').addEventListener('click', () => {
-        if (document.getElementById('admin-pwd-input').value === ADMIN_PASSWORD) {
-          isAdminAuthenticated = true;
-          document.getElementById('admin-auth-panel').style.display = 'none';
-          document.getElementById('admin-main-panel').style.display = 'block';
-        } else {
-          document.getElementById('auth-error-msg').style.display = 'block';
+        if (!sentence.includes('___')) sentence = sentence.replace(new RegExp(word, 'gi'), '___');
+
+        customQuestions.push({
+          id: Date.now(),
+          chapter: chapter || "Unit 1",
+          word,
+          pos,
+          isPhrase: (pos === 'phr.' || word.includes(' ')),
+          zh,
+          sentence,
+          options: [word, opt2, opt3, opt4]
+        });
+
+        localStorage.setItem('custom_questions', JSON.stringify(customQuestions));
+        refreshTotalQuestions();
+        renderAdminWordList();
+        e.target.reset();
+        alert(`✅ 題目 "${word}" 已成功加入題庫！`);
+      });
+
+      // 圖片 OCR 辨識
+      document.getElementById('ocr-image-input').addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const customCh = document.getElementById('import-chapter-custom').value.trim();
+        const selectCh = document.getElementById('import-chapter-select').value;
+        const targetChapter = customCh || selectCh || "Unit 2";
+
+        const statusBar = document.getElementById('ocr-status-bar');
+        const statusText = document.getElementById('ocr-status-text');
+        const progressInner = document.getElementById('ocr-progress-inner');
+        const resultContainer = document.getElementById('ocr-result-container');
+        const jsonOutput = document.getElementById('ocr-json-output');
+
+        statusBar.style.display = 'block';
+        resultContainer.style.display = 'none';
+
+        try {
+          const result = await Tesseract.recognize(file, 'chi_tra+eng', {
+            logger: m => {
+              if (m.status === 'recognizing text') {
+                const pct = Math.floor(m.progress * 100);
+                statusText.innerText = `正在分析圖片單字中... ${pct}%`;
+                progressInner.style.width = `${pct}%`;
+              }
+            }
+          });
+
+          statusText.innerText = "文字辨識完成，正在構建題目結構...";
+          const parsed = [];
+          const lines = result.data.text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+          const posRegex = /(n\.|v\.|adj\.|adv\.|phr\.|prep\.)/i;
+
+          lines.forEach(line => {
+            const m = line.match(posRegex);
+            if (m) {
+              const pos = m[0].toLowerCase();
+              const parts = line.split(m[0]);
+              let w = parts[0].replace(/^[0-9\s\.\-]+/, '').replace(/\[.*?\]/, '').trim();
+              let z = parts[1] ? parts[1].replace(/^[0-9\s\.\-]+/, '').trim() : "核心字彙";
+              if (w.length >= 2 && /^[a-zA-Z\s\-]+$/.test(w)) {
+                parsed.push({
+                  id: Date.now() + Math.floor(Math.random() * 10000),
+                  chapter: targetChapter,
+                  word: w.toLowerCase(),
+                  pos: pos,
+                  isPhrase: (pos === 'phr.' || w.includes(' ')),
+                  zh: z,
+                  sentence: `It is important to remember ___ in this context.`,
+                  options: [w.toLowerCase(), "option1", "option2", "option3"]
+                });
+              }
+            }
+          });
+
+          jsonOutput.value = JSON.stringify(parsed, null, 2);
+          document.getElementById('pending-chapter-badge').innerText = `目標章節: ${targetChapter}`;
+          resultContainer.style.display = 'block';
+          statusBar.style.display = 'none';
+          alert(`🎉 成功從圖片辨識出 ${parsed.length} 個題目！`);
+        } catch (err) {
+          alert("辨識失敗，請確認圖片清晰度。");
+          statusBar.style.display = 'none';
         }
       });
 
-      document.getElementById('admin-logout-btn').addEventListener('click', () => {
-        isAdminAuthenticated = false;
-        document.getElementById('admin-auth-panel').style.display = 'block';
-        document.getElementById('admin-main-panel').style.display = 'none';
+      // JSON 檔案上傳
+      document.getElementById('json-file-input').addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const customCh = document.getElementById('import-chapter-custom').value.trim();
+        const selectCh = document.getElementById('import-chapter-select').value;
+        const targetChapter = customCh || selectCh || "Unit 2";
+
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          try {
+            let data = JSON.parse(ev.target.result);
+            if (!Array.isArray(data)) return alert("JSON 必須為陣列！");
+            data = data.map(item => ({
+              ...item,
+              id: item.id || (Date.now() + Math.floor(Math.random()*10000)),
+              chapter: targetChapter,
+              isPhrase: (item.pos === 'phr.' || item.word.includes(' '))
+            }));
+            document.getElementById('ocr-json-output').value = JSON.stringify(data, null, 2);
+            document.getElementById('pending-chapter-badge').innerText = `目標章節: ${targetChapter}`;
+            document.getElementById('ocr-result-container').style.display = 'block';
+            alert(`📂 已載入 ${data.length} 題，已統一指派為【${targetChapter}】！`);
+          } catch(err) {
+            alert("讀取 .json 檔案失敗！");
+          }
+        };
+        reader.readAsText(file);
+      });
+
+      // 確認匯入題目
+      document.getElementById('confirm-import-btn').addEventListener('click', () => {
+        try {
+          const items = JSON.parse(document.getElementById('ocr-json-output').value);
+          if (!Array.isArray(items) || items.length === 0) return alert("內容為空！");
+          customQuestions = [...customQuestions, ...items];
+          localStorage.setItem('custom_questions', JSON.stringify(customQuestions));
+          refreshTotalQuestions();
+          renderAdminWordList();
+          document.getElementById('ocr-result-container').style.display = 'none';
+          alert(`✅ 成功匯入 ${items.length} 筆題目！`);
+        } catch(err) {
+          alert("JSON 語法錯誤！");
+        }
       });
     });
   </script>
