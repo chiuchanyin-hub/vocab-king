@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>高中單字挑戰王 - 雲端即時版</title>
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <title>高中單字挑戰王 - 內嵌帳號穩定版</title>
   <style>
     :root {
       --primary: #4338ca;
@@ -79,18 +76,13 @@
     <div id="view-student-login" class="student-login-view">
       <div style="font-size:3.5rem; margin-bottom:10px;">👑</div>
       <h2 style="color:#0f172a; margin-bottom:6px;">高中單字挑戰王</h2>
-      <p id="cloud-sync-hint" style="color:#64748b; font-size:0.85rem; margin-bottom:20px;">正在連線雲端資料庫...</p>
+      <p style="color:#10b981; font-size:0.85rem; margin-bottom:20px; font-weight:700;">系統已就緒 🟢 (內建帳號模式)</p>
       
       <div style="width:100%; max-width:340px;">
-        <input type="text" id="student-acc-input" placeholder="學生帳號" class="admin-input-full" />
-        <input type="password" id="student-pwd-input" placeholder="密碼" class="admin-input-full" />
+        <input type="text" id="student-acc-input" placeholder="學生帳號 (例如: Roger)" class="admin-input-full" />
+        <input type="password" id="student-pwd-input" placeholder="密碼 (例如: 1209)" class="admin-input-full" />
         <button id="student-login-btn" class="btn-primary" style="margin-top:6px;">進入系統挑戰 ➔</button>
-        <p id="student-login-err" style="color:var(--danger); font-size:0.85rem; margin-top:10px; display:none;">帳號或密碼錯誤！請洽老師</p>
-      </div>
-
-      <div style="margin-top:40px; display:flex; align-items:center; gap:8px; color:#94a3b8; font-size:0.8rem;">
-        <span>管理員後台入口：</span>
-        <a href="admin.html" target="_blank" class="btn-gear" style="width:30px; height:30px; font-size:1rem;" title="在新分頁開啟獨立後台">⚙️</a>
+        <p id="student-login-err" style="color:var(--danger); font-size:0.85rem; margin-top:10px; display:none;">帳號或密碼錯誤！請輸入 Roger / 1209</p>
       </div>
     </div>
 
@@ -103,7 +95,6 @@
           <button class="nav-btn" id="tab-cloze-btn">⚔️ 克漏字對戰</button>
           <button class="nav-btn" id="tab-mistakes-btn">📖 不熟區 <span id="mistake-badge" class="badge">0</span></button>
         </div>
-        <a href="admin.html" target="_blank" class="btn-gear" title="開啟獨立後台管理平台">⚙️</a>
       </header>
 
       <div style="background:#f1f5f9; padding:6px 14px; font-size:0.8rem; font-weight:700; color:#475569; display:flex; justify-content:space-between; align-items:center;">
@@ -227,21 +218,41 @@
   </div>
 
   <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyAsIcTNN77iuoK2UuWePMZX_zf3tFhUHEw",
-      authDomain: "vocab-king-1209.firebaseapp.com",
-      databaseURL: "https://vocab-king-1209-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "vocab-king-1209",
-      storageBucket: "vocab-king-1209.firebasestorage.app",
-      messagingSenderId: "476030693466",
-      appId: "1:476030693466:web:7199ea3c8a70a0b6906863"
-    };
+    const DEFAULT_BASE_QUESTIONS = [
+      {"id": 1, "chapter": "Unit 1", "word": "cue", "pos": "n.", "isPhrase": false, "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
+      {"id": 2, "chapter": "Unit 1", "word": "declare", "pos": "v.", "isPhrase": false, "zh": "宣布；宣稱；申報", "sentence": "The government decided to ___ the day a public holiday.", "options": ["declare", "divorce", "disappoint", "finance"]},
+      {"id": 3, "chapter": "Unit 1", "word": "declaration", "pos": "n.", "isPhrase": false, "zh": "宣告；聲明；申報", "sentence": "The man made a formal ___ that he had nothing to do with the robbery.", "options": ["declaration", "percentage", "rebellion", "insurance"]},
+      {"id": 4, "chapter": "Unit 1", "word": "disappoint", "pos": "v.", "isPhrase": false, "zh": "使失望；使沮喪", "sentence": "I didn't want to ___ Lydia, so I went to her party even though I felt ill.", "options": ["disappoint", "declare", "insure", "finance"]},
+      {"id": 5, "chapter": "Unit 1", "word": "disappointment", "pos": "n.", "isPhrase": false, "zh": "失望；掃興", "sentence": "You can see the ___ in her eyes as she heard the bad news.", "options": ["disappointment", "rebellion", "percentage", "declaration"]},
+      {"id": 6, "chapter": "Unit 1", "word": "divorce", "pos": "v.", "isPhrase": false, "zh": "離婚；使分離", "sentence": "Fredrick's parents decided to ___ five years ago.", "options": ["divorce", "declare", "insure", "reject"]},
+      {"id": 7, "chapter": "Unit 1", "word": "finance", "pos": "v./n.", "isPhrase": false, "zh": "資助；提供資金 / 財務；金融", "sentence": "Several experts in ___ predicted the collapse of the housing market.", "options": ["finance", "insurance", "intellect", "rebellion"]},
+      {"id": 8, "chapter": "Unit 1", "word": "financial", "pos": "adj.", "isPhrase": false, "zh": "財務的；金融的", "sentence": "Fred is having ___ problems right now, so don't ask him for money.", "options": ["financial", "rebellious", "divorced", "intellectual"]},
+      {"id": 9, "chapter": "Unit 1", "word": "insurance", "pos": "n.", "isPhrase": false, "zh": "保險；保險業", "sentence": "Doug's ___ will pay for some of the repairs to his car.", "options": ["insurance", "declaration", "rejection", "finance"]},
+      {"id": 10, "chapter": "Unit 1", "word": "insure", "pos": "v.", "isPhrase": false, "zh": "為……投保", "sentence": "It is important to ___ your valuable jewelry against theft.", "options": ["insure", "divorce", "disappoint", "declare"]},
+      {"id": 11, "chapter": "Unit 1", "word": "intellectual", "pos": "adj./n.", "isPhrase": false, "zh": "智力的；智能的 / 知識分子", "sentence": "This is an ___ game that challenges players' critical thinking.", "options": ["intellectual", "financial", "rebellious", "divorced"]},
+      {"id": 12, "chapter": "Unit 1", "word": "intellect", "pos": "n.", "isPhrase": false, "zh": "思維能力；理解力；智力", "sentence": "A person of great ___ can easily analyze complex social problems.", "options": ["intellect", "insurance", "rebellion", "percentage"]},
+      {"id": 13, "chapter": "Unit 1", "word": "percent", "pos": "n.", "isPhrase": false, "zh": "百分之……", "sentence": "About twenty ___ of the world's population lives in China.", "options": ["percent", "rebel", "cue", "prime"]},
+      {"id": 14, "chapter": "Unit 1", "word": "percentage", "pos": "n.", "isPhrase": false, "zh": "百分比；比率", "sentence": "He spends a large ___ of his income on apartment rent.", "options": ["percentage", "insurance", "rebellion", "declaration"]},
+      {"id": 15, "chapter": "Unit 1", "word": "prime", "pos": "adj.", "isPhrase": false, "zh": "首要的；最具代表性的", "sentence": "Our ___ concern is making sure that our customers are happy.", "options": ["prime", "intellectual", "rebellious", "financial"]},
+      {"id": 16, "chapter": "Unit 1", "word": "rebel", "pos": "v./n.", "isPhrase": false, "zh": "反抗；造反 / 反抗者", "sentence": "Teenagers sometimes ___ against their parents.", "options": ["rebel", "insure", "finance", "declare"]},
+      {"id": 17, "chapter": "Unit 1", "word": "rebellion", "pos": "n.", "isPhrase": false, "zh": "反叛；叛亂", "sentence": "The army suppressed the armed ___ in the northern province.", "options": ["rebellion", "percentage", "declaration", "disappointment"]},
+      {"id": 18, "chapter": "Unit 1", "word": "rebellious", "pos": "adj.", "isPhrase": false, "zh": "叛逆的", "sentence": "She has a ___ attitude toward outdated social rules.", "options": ["rebellious", "intellectual", "financial", "intelligent"]},
+      {"id": 19, "chapter": "Unit 1", "word": "rejection", "pos": "n.", "isPhrase": false, "zh": "拒絕", "sentence": "Although I was hopeful, I received a letter of ___ for my application.", "options": ["rejection", "insurance", "declaration", "percentage"]},
+      {"id": 20, "chapter": "Unit 1", "word": "reject", "pos": "v.", "isPhrase": false, "zh": "拒絕；不接受", "sentence": "The committee decided to ___ the proposal due to lack of merit.", "options": ["reject", "divorce", "declare", "finance"]},
+      {"id": 101, "chapter": "Unit 1", "word": "on cue", "pos": "phr.", "isPhrase": true, "zh": "恰好在此時；正當那時", "sentence": "We were talking about earthquakes and then an earthquake happened right ___.", "options": ["on cue", "in prime", "with percent", "for finance"]},
+      {"id": 102, "chapter": "Unit 1", "word": "take your cue from", "pos": "phr.", "isPhrase": true, "zh": "照某人的樣子做；仿效某人", "sentence": "___ your older sister and finish your homework now.", "options": ["Take your cue from", "Declare war on", "Rebel against", "Insure with"]},
+      {"id": 103, "chapter": "Unit 1", "word": "declare war", "pos": "phr.", "isPhrase": true, "zh": "宣戰", "sentence": "The government refused to ___ despite severe border tensions.", "options": ["declare war", "take cue", "in prime", "be 100 percent"]},
+      {"id": 104, "chapter": "Unit 1", "word": "to one's disappointment", "pos": "phr.", "isPhrase": true, "zh": "讓某人失望的是……", "sentence": "___, the girl he likes didn't show up at the party.", "options": ["To his disappointment", "In his prime", "On his cue", "With his finance"]},
+      {"id": 105, "chapter": "Unit 1", "word": "corporate finance", "pos": "phr.", "isPhrase": true, "zh": "企業財務", "sentence": "She specialized in ___ and helps companies manage capital.", "options": ["corporate finance", "health insurance", "prime time", "intellectual property"]}
+    ];
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
+    // 寫死內建的學生帳號（保證手機必能登入）
+    const studentAccounts = [
+      { acc: "Roger", pwd: "1209", name: "羅傑" },
+      { acc: "student1", pwd: "1234", name: "示範生小明" }
+    ];
 
-    let allQuestions = [];
-    let studentAccounts = [];
+    let allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
     let loggedInStudent = null;
 
     let activeWordList = [];
@@ -327,25 +338,6 @@
       }
       return res;
     }
-
-    // 強制直接顯示就緒，不依賴連線事件卡住
-    document.getElementById('cloud-sync-hint').innerText = '雲端即時同步已就緒 🟢';
-    document.getElementById('cloud-sync-hint').style.color = '#10b981';
-
-    db.ref('students').on('value', (snap) => {
-      const val = snap.val();
-      if (val) {
-        studentAccounts = Array.isArray(val) ? val : Object.values(val);
-      }
-    });
-
-    db.ref('questions').on('value', (snap) => {
-      const val = snap.val();
-      if (val) {
-        allQuestions = Array.isArray(val) ? val : Object.values(val);
-        updateChapterDropdowns();
-      }
-    });
 
     function updateChapterDropdowns() {
       const chapters = ["全部章節", ...new Set(allQuestions.map(q => q.chapter || "Unit 1"))];
@@ -746,15 +738,15 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
+      updateChapterDropdowns();
+
       document.getElementById('student-login-btn').addEventListener('click', () => {
         const acc = document.getElementById('student-acc-input').value.trim().toLowerCase();
         const pwd = document.getElementById('student-pwd-input').value.trim();
 
-        const found = studentAccounts.find(s => {
-          const dbAcc = String(s.acc || '').trim().toLowerCase();
-          const dbPwd = String(s.pwd || '').trim();
-          return dbAcc === acc && dbPwd === pwd;
-        });
+        const found = studentAccounts.find(s => 
+          s.acc.toLowerCase() === acc && s.pwd === pwd
+        );
 
         if (found) {
           loggedInStudent = found;
@@ -769,7 +761,7 @@
         } else {
           const errEl = document.getElementById('student-login-err');
           errEl.style.display = 'block';
-          errEl.innerText = `帳號或密碼錯誤！(目前雲端同步 ${studentAccounts.length} 個帳號)`;
+          errEl.innerText = `帳號或密碼錯誤！請輸入 Roger / 1209`;
         }
       });
 
