@@ -264,7 +264,6 @@
     let currentClozeIndex = 0;
     let mistakeIds = new Set();
 
-    // 穩健語音引擎 (全域強引用，杜絕 Garbage Collection 斷音與重疊)
     let activeUtterances = [];
     let speechLoopTimer = null;
 
@@ -329,7 +328,6 @@
       return res;
     }
 
-    // 監聽 Firebase 資料
     db.ref('.info/connected').on('value', (snap) => {
       const hint = document.getElementById('cloud-sync-hint');
       if (snap.val() === true) {
@@ -452,7 +450,6 @@
       });
     }
 
-    // 1. 單字練習
     function startNewWordSession() {
       killAllSpeech();
       currentWordIndex = 0;
@@ -568,7 +565,6 @@
       document.getElementById('next-question-btn').style.display = 'block';
     }
 
-    // 2. 片語練習
     function startNewPhraseSession() {
       killAllSpeech();
       currentPhraseIndex = 0;
@@ -681,7 +677,6 @@
       document.getElementById('phrase-next-btn').style.display = 'block';
     }
 
-    // 3. 克漏字
     function loadClozeBattleRound() {
       if (!activeClozeList.length) return;
       const q = activeClozeList[currentClozeIndex];
@@ -716,7 +711,6 @@
       });
     }
 
-    // 4. 不熟區
     function addMistake(id) {
       mistakeIds.add(id);
       updateMistakeBadge();
@@ -758,16 +752,16 @@
       });
     }
 
-    // 5. 事件監聽
     window.addEventListener('DOMContentLoaded', () => {
       document.getElementById('student-login-btn').addEventListener('click', () => {
         const acc = document.getElementById('student-acc-input').value.trim().toLowerCase();
         const pwd = document.getElementById('student-pwd-input').value.trim();
 
-        const found = studentAccounts.find(s => 
-          String(s.acc).trim().toLowerCase() === acc && 
-          String(s.pwd).trim() === pwd
-        );
+        const found = studentAccounts.find(s => {
+          const dbAcc = String(s.acc || '').trim().toLowerCase();
+          const dbPwd = String(s.pwd || '').trim();
+          return dbAcc === acc && dbPwd === pwd;
+        });
 
         if (found) {
           loggedInStudent = found;
@@ -780,7 +774,9 @@
           startNewPhraseSession();
           loadClozeBattleRound();
         } else {
-          document.getElementById('student-login-err').style.display = 'block';
+          const errEl = document.getElementById('student-login-err');
+          errEl.style.display = 'block';
+          errEl.innerText = `帳號或密碼錯誤！(目前雲端同步 ${studentAccounts.length} 個帳號)`;
         }
       });
 
