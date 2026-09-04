@@ -198,18 +198,18 @@
       cursor: pointer;
     }
 
-    /* 🔥 實線填空區 + 上方即時浮現正確字母設計 */
+    /* 實線填空區 + 上方顯眼正確字母標籤 */
     .pure-dashed-zone {
       position: relative;
       width: 100%;
-      min-height: 110px; /* 留出上方浮現正確字母的高度 */
+      min-height: 120px;
       display: flex;
       justify-content: center;
       align-items: center;
       background: transparent !important;
       border: none !important;
       cursor: text;
-      padding: 20px 4px 10px 4px;
+      padding: 10px 4px;
     }
     .slots-flex-row {
       display: flex;
@@ -217,38 +217,48 @@
       justify-content: center;
       align-items: flex-end;
       gap: 8px;
+      row-gap: 18px;
       pointer-events: none;
     }
 
-    /* 每個字母槽的垂直包裝容器 (放上方提示與下方底線) */
+    /* 每個字母欄位的直向容器 */
     .slot-cell-unit {
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: relative;
+      justify-content: flex-end;
+      width: 34px;
     }
 
-    /* 錯字上方浮現的綠色正確字母 */
-    .correction-hint-badge {
-      font-size: 1rem;
-      font-weight: 900;
-      color: #059669;
-      background: #ecfdf5;
-      border: 1.5px solid #10b981;
-      border-radius: 6px;
-      padding: 1px 6px;
+    /* 上方固定高度的正確字母提示框 */
+    .correction-slot-top {
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-bottom: 4px;
-      line-height: 1.2;
-      animation: popBadge 0.25s ease-out forwards;
+      width: 100%;
     }
-    @keyframes popBadge {
-      from { transform: translateY(6px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+
+    /* 醒目的綠底白字正確字母小標籤 */
+    .correct-letter-badge {
+      background: #10b981;
+      color: #ffffff;
+      font-size: 1.05rem;
+      font-weight: 900;
+      width: 26px;
+      height: 24px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(16, 185, 129, 0.4);
+      text-transform: lowercase;
     }
 
     /* 下方灰色實線槽 */
     .dash-underline {
-      width: 32px;
+      width: 100%;
       height: 48px;
       border-bottom: 4px solid #94a3b8 !important; /* 灰色實線 */
       display: flex;
@@ -260,21 +270,18 @@
       text-transform: lowercase;
       transition: all 0.15s ease;
     }
-    /* 當前焦點 */
     .dash-underline.focusing {
       border-bottom: 4px solid #4f46e5 !important;
       background: rgba(79, 70, 229, 0.05);
       border-radius: 6px 6px 0 0;
       animation: blinkLine 0.9s infinite alternate;
     }
-    /* 答錯或超時標紅 */
     .dash-underline.char-wrong {
       color: #ef4444 !important;
       border-bottom: 4px solid #ef4444 !important;
       background: rgba(239, 68, 68, 0.08);
       border-radius: 6px 6px 0 0;
     }
-    /* 答對標綠 */
     .dash-underline.char-right {
       color: #10b981 !important;
       border-bottom: 4px solid #10b981 !important;
@@ -614,6 +621,7 @@
         </div>
       </div>
 
+      <!-- 實線填空區 -->
       <div class="pure-dashed-zone" onclick="focusHiddenInput('word')">
         <div id="letter-slots-container" class="slots-flex-row"></div>
         <input type="text" id="answer-input" class="ghost-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
@@ -642,7 +650,7 @@
       </div>
     </main>
 
-    <!-- 頁籤 2：🧩 片語特訓區 -->
+    <!-- 頁籤 2：片語特訓區 -->
     <main id="view-phrase" class="view-panel">
       <div class="chapter-selector-bar">
         <label for="phrase-chapter-filter">🧩 片語範圍：</label>
@@ -845,7 +853,6 @@
 
     // 內建完整題庫
     const BUILTIN_QUESTIONS = [
-      // --- 單字 (Words) ---
       {"id": 1, "chapter": "Unit 1", "word": "cue", "pos": "n.", "isPhrase": false, "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
       {"id": 2, "chapter": "Unit 1", "word": "declare", "pos": "v.", "isPhrase": false, "zh": "宣布；宣稱；申報", "sentence": "The government decided to ___ the day a public holiday.", "options": ["declare", "divorce", "disappoint", "finance"]},
       {"id": 3, "chapter": "Unit 1", "word": "declaration", "pos": "n.", "isPhrase": false, "zh": "宣告；聲明；申報", "sentence": "The man made a formal ___ that he had nothing to do with the robbery.", "options": ["declaration", "percentage", "rebellion", "insurance"]},
@@ -867,7 +874,6 @@
       {"id": 19, "chapter": "Unit 1", "word": "rejection", "pos": "n.", "isPhrase": false, "zh": "拒絕", "sentence": "Although I was hopeful, I received a letter of ___ for my application.", "options": ["rejection", "insurance", "declaration", "percentage"]},
       {"id": 20, "chapter": "Unit 1", "word": "reject", "pos": "v.", "isPhrase": false, "zh": "拒絕；不接受", "sentence": "The committee decided to ___ the proposal due to lack of merit.", "options": ["reject", "divorce", "declare", "finance"]},
 
-      // --- 片語與詞組 (Phrases) ---
       {"id": 101, "chapter": "Unit 1", "word": "on cue", "pos": "phr.", "isPhrase": true, "zh": "恰好在此時；正當那時", "sentence": "We were talking about earthquakes and then an earthquake happened right ___.", "options": ["on cue", "in prime", "with percent", "for finance"]},
       {"id": 102, "chapter": "Unit 1", "word": "take your cue from", "pos": "phr.", "isPhrase": true, "zh": "照某人的樣子做；仿效某人", "sentence": "___ your older sister and finish your homework now.", "options": ["Take your cue from", "Declare war on", "Rebel against", "Insure with"]},
       {"id": 103, "chapter": "Unit 1", "word": "declare war", "pos": "phr.", "isPhrase": true, "zh": "宣戰", "sentence": "The government refused to ___ despite severe border tensions.", "options": ["declare war", "take cue", "in prime", "be 100 percent"]},
@@ -930,13 +936,24 @@
       return res;
     }
 
+    // 🔥 核心發音：先取消所有正在唸或排隊中的舊語音，確保發音絕對屬於當前題目
     function playSound(text) {
       if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel(); // 立即中斷上一題殘留發音
+        setTimeout(() => {
+          const utter = new SpeechSynthesisUtterance(text);
+          utter.lang = 'en-US';
+          utter.rate = 0.85;
+          window.speechSynthesis.speak(utter);
+        }, 50);
+      }
+    }
+
+    function stopAnySpeech() {
+      if (autoPronounceTimeout) clearTimeout(autoPronounceTimeout);
+      if (phrasePronounceTimeout) clearTimeout(phrasePronounceTimeout);
+      if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.lang = 'en-US';
-        utter.rate = 0.85;
-        window.speechSynthesis.speak(utter);
       }
     }
 
@@ -1012,7 +1029,7 @@
       }
     }
 
-    // 🔥 核心渲染：灰色實線 + 錯字上方浮現正確字母
+    // 核心渲染：固定雙層架構，錯字上方浮現綠底白字正確字母
     function renderUnderlineSlots(containerId, targetWord, currentVal = '', isEvaluated = false) {
       const container = document.getElementById(containerId);
       if (!container) return;
@@ -1028,38 +1045,38 @@
           spaceDiv.className = 'dash-gap';
           container.appendChild(spaceDiv);
         } else {
-          // 單元容器：垂直放「提示」與「實線槽」
           const cellUnit = document.createElement('div');
           cellUnit.className = 'slot-cell-unit';
 
-          const slot = document.createElement('div');
-          slot.className = 'dash-underline';
+          const topSlot = document.createElement('div');
+          topSlot.className = 'correction-slot-top';
+
+          const bottomSlot = document.createElement('div');
+          bottomSlot.className = 'dash-underline';
           
           const userChar = userLetters[charIdx] || '';
-          slot.innerText = userChar;
+          bottomSlot.innerText = userChar;
 
           if (isEvaluated) {
             if (userChar === c) {
-              // 拼對：綠色
-              slot.classList.add('char-right');
+              bottomSlot.classList.add('char-right');
             } else {
-              // 拼錯：紅色
-              slot.classList.add('char-wrong');
-              if (!userChar) slot.innerText = '•';
+              bottomSlot.classList.add('char-wrong');
+              if (!userChar) bottomSlot.innerText = '•';
 
-              // 🔥 核心關鍵：在錯的字母上方浮現正確字母！
-              const hintBadge = document.createElement('div');
-              hintBadge.className = 'correction-hint-badge';
-              hintBadge.innerText = c; // 正確字母
-              cellUnit.appendChild(hintBadge);
+              const badge = document.createElement('div');
+              badge.className = 'correct-letter-badge';
+              badge.innerText = c;
+              topSlot.appendChild(badge);
             }
           } else {
             if (charIdx === userLetters.length) {
-              slot.classList.add('focusing');
+              bottomSlot.classList.add('focusing');
             }
           }
 
-          cellUnit.appendChild(slot);
+          cellUnit.appendChild(topSlot);
+          cellUnit.appendChild(bottomSlot);
           container.appendChild(cellUnit);
           charIdx++;
         }
@@ -1068,6 +1085,7 @@
 
     // =================== 1. 單字挑戰王 ===================
     function startNewWordSession() {
+      stopAnySpeech();
       currentWordIndex = 0;
       wordScore = 0;
       wordCorrectCount = 0;
@@ -1078,6 +1096,8 @@
     }
 
     function loadWordQuestion() {
+      stopAnySpeech(); // 換題時立刻中止前題發音
+
       if (!activeWordList.length) {
         document.getElementById('quiz-chinese').innerText = "此章節無單字題目";
         return;
@@ -1109,8 +1129,10 @@
       document.getElementById('submit-btn').style.display = 'block';
       document.getElementById('next-question-btn').style.display = 'none';
 
-      if (autoPronounceTimeout) clearTimeout(autoPronounceTimeout);
-      autoPronounceTimeout = setTimeout(() => { playSound(q.word); }, 1000);
+      // 🔥 關鍵設定：按 NEXT 進入新題目後，足足延遲 2 秒（2000毫秒）再發音
+      autoPronounceTimeout = setTimeout(() => {
+        playSound(q.word);
+      }, 2000);
 
       // 每字母 5 秒
       const lettersCount = q.word.replace(/[^a-zA-Z]/g, '').length;
@@ -1139,18 +1161,17 @@
     }
 
     function handleWordTimeout() {
-      if (autoPronounceTimeout) clearTimeout(autoPronounceTimeout);
+      stopAnySpeech();
       isWordSubmitted = true;
       const q = activeWordList[currentWordIndex];
       addMistake(q.id);
       playSound(q.word);
 
-      // 時間到：逐字核對，未輸入者上方全數浮現正確字母
       renderUnderlineSlots('letter-slots-container', q.word, document.getElementById('answer-input').value, true);
 
       const fb = document.getElementById('game-feedback');
       fb.className = 'feedback-box error';
-      fb.innerHTML = `⏰ 時間到！已標註正確字母 (已存入不熟區)`;
+      fb.innerHTML = `⏰ 時間到！已於上方標註正確字母 (已存入不熟區)`;
 
       document.getElementById('submit-btn').style.display = 'none';
       document.getElementById('next-question-btn').style.display = 'block';
@@ -1158,7 +1179,7 @@
 
     function submitWordAnswer() {
       if (!activeWordList.length || currentWordIndex >= activeWordList.length || isWordSubmitted) return;
-      if (autoPronounceTimeout) clearTimeout(autoPronounceTimeout);
+      stopAnySpeech();
       clearInterval(wordTimer);
       isWordSubmitted = true;
 
@@ -1193,7 +1214,7 @@
 
     function triggerRoundSummary() {
       clearInterval(wordTimer);
-      if (autoPronounceTimeout) clearTimeout(autoPronounceTimeout);
+      stopAnySpeech();
       const modal = document.getElementById('round-summary-modal');
       const acc = Math.round((wordCorrectCount / wordTotalCount) * 100) || 0;
 
@@ -1222,6 +1243,7 @@
 
     // =================== 2. 片語特訓專區 ===================
     function startNewPhraseSession() {
+      stopAnySpeech();
       currentPhraseIndex = 0;
       phraseScore = 0;
       document.getElementById('phrase-score-display').innerText = `積分：0`;
@@ -1229,6 +1251,8 @@
     }
 
     function loadPhraseQuestion() {
+      stopAnySpeech(); // 換題時立刻中止前題發音
+
       if (!activePhraseList.length) {
         document.getElementById('phrase-chinese').innerText = "此章節無片語題目";
         return;
@@ -1256,8 +1280,10 @@
       document.getElementById('phrase-submit-btn').style.display = 'block';
       document.getElementById('phrase-next-btn').style.display = 'none';
 
-      if (phrasePronounceTimeout) clearTimeout(phrasePronounceTimeout);
-      phrasePronounceTimeout = setTimeout(() => { playSound(q.word); }, 1000);
+      // 🔥 關鍵設定：按 NEXT 進入片語題目後，足足延遲 2 秒再發音
+      phrasePronounceTimeout = setTimeout(() => {
+        playSound(q.word);
+      }, 2000);
 
       const lettersCount = q.word.replace(/[^a-zA-Z]/g, '').length;
       currentPhraseTotalTime = Math.max(15, lettersCount * 5);
@@ -1285,7 +1311,7 @@
     }
 
     function handlePhraseTimeout() {
-      if (phrasePronounceTimeout) clearTimeout(phrasePronounceTimeout);
+      stopAnySpeech();
       isPhraseSubmitted = true;
       const q = activePhraseList[currentPhraseIndex];
       addMistake(q.id);
@@ -1295,7 +1321,7 @@
 
       const fb = document.getElementById('phrase-feedback');
       fb.className = 'feedback-box error';
-      fb.innerHTML = `⏰ 時間到！已標註正確字母 (已存入不熟區)`;
+      fb.innerHTML = `⏰ 時間到！已於上方標註正確字母 (已存入不熟區)`;
 
       document.getElementById('phrase-submit-btn').style.display = 'none';
       document.getElementById('phrase-next-btn').style.display = 'block';
@@ -1303,7 +1329,7 @@
 
     function submitPhraseAnswer() {
       if (!activePhraseList.length || isPhraseSubmitted) return;
-      if (phrasePronounceTimeout) clearTimeout(phrasePronounceTimeout);
+      stopAnySpeech();
       clearInterval(phraseTimer);
       isPhraseSubmitted = true;
 
@@ -1498,7 +1524,7 @@
       });
     }
 
-    // 初始化與事件綁定
+    // 初始化與事件掛載
     window.addEventListener('DOMContentLoaded', () => {
       refreshTotalQuestions();
       updateMistakeBadge();
@@ -1526,8 +1552,7 @@
           clearInterval(wordTimer);
           clearInterval(phraseTimer);
           clearInterval(clozeTimer);
-          if (autoPronounceTimeout) clearTimeout(autoPronounceTimeout);
-          if (phrasePronounceTimeout) clearTimeout(phrasePronounceTimeout);
+          stopAnySpeech();
 
           if (t.view === 'view-game') {
             if (!isWordSubmitted) startWordTimer();
@@ -1560,8 +1585,9 @@
         loadClozeBattleRound();
       });
 
-      // 單字區
+      // 單字區操作
       document.getElementById('next-question-btn').addEventListener('click', () => {
+        stopAnySpeech(); // 按 NEXT 先靜音
         currentWordIndex++;
         loadWordQuestion();
       });
@@ -1585,8 +1611,9 @@
         playSound(activeWordList[currentWordIndex].word);
       });
 
-      // 片語區
+      // 片語區操作
       document.getElementById('phrase-next-btn').addEventListener('click', () => {
+        stopAnySpeech(); // 按 NEXT 先靜音
         currentPhraseIndex = (currentPhraseIndex + 1) % activePhraseList.length;
         loadPhraseQuestion();
       });
