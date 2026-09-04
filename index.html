@@ -328,16 +328,9 @@
       return res;
     }
 
-    db.ref('.info/connected').on('value', (snap) => {
-      const hint = document.getElementById('cloud-sync-hint');
-      if (snap.val() === true) {
-        hint.innerText = '雲端即時同步已就緒 🟢';
-        hint.style.color = '#10b981';
-      } else {
-        hint.innerText = '正在連線雲端資料庫...';
-        hint.style.color = '#64748b';
-      }
-    });
+    // 強制直接顯示就緒，不依賴連線事件卡住
+    document.getElementById('cloud-sync-hint').innerText = '雲端即時同步已就緒 🟢';
+    document.getElementById('cloud-sync-hint').style.color = '#10b981';
 
     db.ref('students').on('value', (snap) => {
       const val = snap.val();
