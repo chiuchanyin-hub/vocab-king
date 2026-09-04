@@ -24,7 +24,7 @@
     .btn-secondary { background: #e2e8f0; color: #334155; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; }
     .btn-ai { background: linear-gradient(135deg, #6366f1, #a855f7); color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; box-shadow: 0 2px 8px rgba(168, 85, 247, 0.35); }
     .form-row { display: flex; gap: 8px; margin-bottom: 8px; }
-    .form-control { width: 100%; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; outline: none; margin-bottom: 8px; font-size: 0.9rem; }
+    .form-control { width: 100%; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; outline: none; margin-bottom: 8px; font-size: 0.9rem; background: white; }
     .item-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; background: #ffffff; transition: background 0.15s; }
     .item-card:hover { background: #f1f5f9; }
     .btn-del { border: none; background: #fee2e2; color: #ef4444; border-radius: 6px; padding: 6px 12px; font-weight: 800; cursor: pointer; transition: all 0.15s; }
@@ -73,11 +73,11 @@
         <div id="api-key-status" style="font-size:0.75rem; margin-top:6px; color:#15803d; font-weight:700;"></div>
       </div>
 
-      <!-- 區塊 1：📸 照片 AI 智慧辨識建題 (含手動補單筆欄位) -->
+      <!-- 區塊 1：📸 照片 AI 智慧辨識建題 (含手動補單筆欄位，詞性改下拉選單) -->
       <div class="section-card" style="border:2px dashed #6366f1;">
         <h3 style="color:#4338ca;">📸 課本照片智慧辨識與手動補題</h3>
         <p style="font-size:0.82rem; color:#64748b; margin-bottom:10px;">
-          拍照辨識後可於下方預覽框微調，或直接利用下方的<b>手動輸入表單</b>補上未辨識到的單字！
+          拍照辨識後可於下方預覽框微調，或直接利用下方的<b>手動輸入表單</b>補上未辨識到的單字或片語！
         </p>
         
         <div class="form-row">
@@ -95,20 +95,28 @@
           </div>
         </div>
 
-        <!-- 🔥 新增：手動輸入單筆題目表單 -->
+        <!-- 手動輸入單筆題目表單（詞性為下拉式選單） -->
         <div style="margin-top:16px; padding-top:14px; border-top:1px solid #e2e8f0;">
           <h4 style="font-size:0.9rem; color:#1e293b; margin-bottom:8px;">✏️ 另外手動補上一筆題目：</h4>
           <form id="manual-add-form">
             <div class="form-row">
               <input type="text" id="man-chapter" placeholder="章節 (如: Unit 2)" required class="form-control" style="flex:1; margin-bottom:6px;" />
-              <input type="text" id="man-pos" placeholder="詞性 (如: v. 或 n.)" required class="form-control" style="flex:1; margin-bottom:6px;" />
+              <!-- 下拉式選單選擇詞性 -->
+              <select id="man-pos" class="form-control" style="flex:1; margin-bottom:6px; font-weight:700;">
+                <option value="n.">n. (名詞)</option>
+                <option value="v.">v. (動詞)</option>
+                <option value="adj.">adj. (形容詞)</option>
+                <option value="adv.">adv. (副詞)</option>
+                <option value="phr.">phr. (片語)</option>
+                <option value="v./n.">v./n. (動詞/名詞)</option>
+              </select>
             </div>
             <div class="form-row">
               <input type="text" id="man-word" placeholder="英文單字或片語 (如: abandon)" required class="form-control" style="flex:1; margin-bottom:6px;" />
               <input type="text" id="man-zh" placeholder="中文釋義 (如: 遺棄；放棄)" required class="form-control" style="flex:1.5; margin-bottom:6px;" />
             </div>
-            <input type="text" id="man-sentence" placeholder="例句 (請用 ___ 代表空格，如: Do not ___ your friends.)" required class="form-control" style="margin-bottom:6px;" />
-            <button type="submit" class="btn-primary" style="background:#4338ca; width:100%; padding:8px;">➕ 立即手動新增此單字</button>
+            <input type="text" id="man-sentence" placeholder="例句 (選填，若不填將自動產生預設句)" class="form-control" style="margin-bottom:6px;" />
+            <button type="submit" class="btn-primary" style="background:#4338ca; width:100%; padding:8px;">➕ 立即手動新增此項目</button>
           </form>
         </div>
       </div>
@@ -187,7 +195,12 @@
       {"id": 17, "chapter": "Unit 1", "word": "rebellion", "pos": "n.", "isPhrase": false, "zh": "反叛；叛亂", "sentence": "The army suppressed the armed ___ in the northern province.", "options": ["rebellion", "percentage", "declaration", "disappointment"]},
       {"id": 18, "chapter": "Unit 1", "word": "rebellious", "pos": "adj.", "isPhrase": false, "zh": "叛逆的", "sentence": "She has a ___ attitude toward outdated social rules.", "options": ["rebellious", "intellectual", "financial", "intelligent"]},
       {"id": 19, "chapter": "Unit 1", "word": "rejection", "pos": "n.", "isPhrase": false, "zh": "拒絕", "sentence": "Although I was hopeful, I received a letter of ___ for my application.", "options": ["rejection", "insurance", "declaration", "percentage"]},
-      {"id": 20, "chapter": "Unit 1", "word": "reject", "pos": "v.", "isPhrase": false, "zh": "拒絕；不接受", "sentence": "The committee decided to ___ the proposal due to lack of merit.", "options": ["reject", "divorce", "declare", "finance"]}
+      {"id": 20, "chapter": "Unit 1", "word": "reject", "pos": "v.", "isPhrase": false, "zh": "拒絕；不接受", "sentence": "The committee decided to ___ the proposal due to lack of merit.", "options": ["reject", "divorce", "declare", "finance"]},
+      {"id": 101, "chapter": "Unit 1", "word": "on cue", "pos": "phr.", "isPhrase": true, "zh": "恰好在此時；正當那時", "sentence": "We were talking about earthquakes and then an earthquake happened right ___.", "options": ["on cue", "in prime", "with percent", "for finance"]},
+      {"id": 102, "chapter": "Unit 1", "word": "take your cue from", "pos": "phr.", "isPhrase": true, "zh": "照某人的樣子做；仿效某人", "sentence": "___ your older sister and finish your homework now.", "options": ["Take your cue from", "Declare war on", "Rebel against", "Insure with"]},
+      {"id": 103, "chapter": "Unit 1", "word": "declare war", "pos": "phr.", "isPhrase": true, "zh": "宣戰", "sentence": "The government refused to ___ despite severe border tensions.", "options": ["declare war", "take cue", "in prime", "be 100 percent"]},
+      {"id": 104, "chapter": "Unit 1", "word": "to one's disappointment", "pos": "phr.", "isPhrase": true, "zh": "讓某人失望的是……", "sentence": "___, the girl he likes didn't show up at the party.", "options": ["To his disappointment", "In his prime", "On his cue", "With his finance"]},
+      {"id": 105, "chapter": "Unit 1", "word": "corporate finance", "pos": "phr.", "isPhrase": true, "zh": "企業財務", "sentence": "She specialized in ___ and helps companies manage capital.", "options": ["corporate finance", "health insurance", "prime time", "intellectual property"]}
     ];
 
     let adminPwd = localStorage.getItem('app_admin_pwd') || "admin888";
@@ -293,8 +306,8 @@
     "id": 隨機數字ID,
     "chapter": "${chapterName}",
     "word": "單字或片語 (全小寫)",
-    "pos": "詞性 (如: n., v., adj., phr.)",
-    "isPhrase": 是否為片語 (true/false),
+    "pos": "詞性 (單字填 n., v., adj. 等，片語請務必填寫 phr.)",
+    "isPhrase": 是否為片語 (若為片語請填 true，單字填 false),
     "zh": "繁體中文釋義",
     "sentence": "例句，必須將例句中的該單字替換成 ___",
     "options": ["正確單字", "干擾項1", "干擾項2", "干擾項3"]
@@ -340,9 +353,15 @@
         status.innerHTML = `<span class="spinner"></span> 正在運用 <b>Gemini 2.0 Flash AI 視覺大腦</b> 解析課本排版、單字與例句...`;
         try {
           const parsed = await recognizeWithGemini(file, chapter, apiKey);
-          document.getElementById('ocr-json').value = JSON.stringify(parsed, null, 2);
+          const fixedParsed = parsed.map(item => ({
+            ...item,
+            pos: item.pos || (item.word.includes(' ') ? "phr." : "n."),
+            isPhrase: item.isPhrase !== undefined ? item.isPhrase : (item.pos === 'phr.' || item.word.includes(' ')),
+            sentence: item.sentence || `It is important to learn the word ___.`
+          }));
+          document.getElementById('ocr-json').value = JSON.stringify(fixedParsed, null, 2);
           document.getElementById('ocr-preview-box').style.display = 'block';
-          status.innerHTML = `✨ <b>Gemini AI 辨識完成！</b> 精準擷取到 ${parsed.length} 道高質量題目（包含例句挖空）。`;
+          status.innerHTML = `✨ <b>Gemini AI 辨識完成！</b> 精準擷取到 ${fixedParsed.length} 道題目。`;
         } catch (err) {
           console.error(err);
           alert("Gemini AI 辨識出錯: " + err.message + "\n正在為您切換回本機 Tesseract 模式...");
@@ -355,7 +374,7 @@
 
     async function runTesseractFallback(file, chapter) {
       const status = document.getElementById('ocr-status');
-      status.innerText = '正在使用本機 OCR 分析文字（建議填寫 Gemini API Key 可大幅提高精準度）...';
+      status.innerText = '正在使用本機 OCR 分析文字...';
       try {
         const result = await Tesseract.recognize(file, 'chi_tra+eng');
         const lines = result.data.text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
@@ -364,29 +383,30 @@
 
         lines.forEach(line => {
           const m = line.match(posRegex);
-          if (m) {
-            const pos = m[0].toLowerCase();
-            const parts = line.split(m[0]);
-            let w = parts[0].replace(/^[0-9\s\.\-]+/, '').replace(/\[.*?\]/, '').trim();
-            let z = parts[1] ? parts[1].replace(/^[0-9\s\.\-]+/, '').trim() : "核心字彙";
-            if (w.length >= 2 && /^[a-zA-Z\s\-]+$/.test(w)) {
-              parsed.push({
-                id: Date.now() + Math.floor(Math.random() * 100000),
-                chapter: chapter,
-                word: w.toLowerCase(),
-                pos: pos,
-                isPhrase: (pos === 'phr.' || w.includes(' ')),
-                zh: z,
-                sentence: "It is crucial to understand the concept of ___.",
-                options: [w.toLowerCase(), "option1", "option2", "option3"]
-              });
-            }
+          let pos = m ? m[0].toLowerCase() : "n.";
+          if (line.toLowerCase().includes('phr') || line.includes(' ')) pos = "phr.";
+
+          const parts = line.split(pos);
+          let w = parts[0].replace(/^[0-9\s\.\-]+/, '').replace(/\[.*?\]/, '').trim();
+          let z = parts[1] ? parts[1].replace(/^[0-9\s\.\-]+/, '').trim() : "核心字彙";
+          
+          if (w.length >= 2 && /^[a-zA-Z\s\-]+$/.test(w)) {
+            parsed.push({
+              id: Date.now() + Math.floor(Math.random() * 100000),
+              chapter: chapter,
+              word: w.toLowerCase(),
+              pos: pos,
+              isPhrase: (pos === 'phr.' || w.includes(' ')),
+              zh: z,
+              sentence: "It is crucial to understand the concept of ___.",
+              options: [w.toLowerCase(), "option1", "option2", "option3"]
+            });
           }
         });
 
         document.getElementById('ocr-json').value = JSON.stringify(parsed, null, 2);
         document.getElementById('ocr-preview-box').style.display = 'block';
-        status.innerText = `辨識結束，擷取到 ${parsed.length} 個單字，請在下方校對。`;
+        status.innerText = `辨識結束，擷取到 ${parsed.length} 個項目，請在下方校對。`;
       } catch (err) {
         alert("OCR 辨識失敗！請確認圖片品質。");
         status.style.display = 'none';
@@ -397,29 +417,41 @@
       try {
         const items = JSON.parse(document.getElementById('ocr-json').value);
         if (!Array.isArray(items) || items.length === 0) return alert("題目內容為空！");
-        saveQuestions([...questions, ...items]);
+        
+        const validated = items.map(item => ({
+          ...item,
+          pos: item.pos || (item.word.includes(' ') ? "phr." : "n."),
+          isPhrase: item.isPhrase !== undefined ? item.isPhrase : (item.pos === 'phr.' || item.word.includes(' ')),
+          sentence: item.sentence || `It is important to learn the word ___.`
+        }));
+
+        saveQuestions([...questions, ...validated]);
         updateChapterOptions();
         renderQuestions();
         document.getElementById('ocr-preview-box').style.display = 'none';
         document.getElementById('ocr-status').style.display = 'none';
         document.getElementById('ocr-file').value = '';
-        alert(`🎉 成功將 ${items.length} 題加入題庫！前台已可直接測驗。`);
+        alert(`🎉 成功將 ${validated.length} 題加入題庫！`);
       } catch (e) {
         alert("JSON 格式有誤，請檢查標點符號！");
       }
     });
 
-    // 🔥 處理手動單筆新增表單提交
+    // 處理手動單筆新增表單提交（詞性由下拉式選單取得）
     document.getElementById('manual-add-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const chapter = document.getElementById('man-chapter').value.trim();
-      const pos = document.getElementById('man-pos').value.trim().toLowerCase();
+      const pos = document.getElementById('man-pos').value; // 從下拉選單取得
       const word = document.getElementById('man-word').value.trim().toLowerCase();
       const zh = document.getElementById('man-zh').value.trim();
       let sentence = document.getElementById('man-sentence').value.trim();
 
+      // 如果例句沒填，自動產生預設句
+      if (!sentence) {
+        sentence = `Please study the word ___ carefully.`;
+      }
+
       if (!sentence.includes('___')) {
-        // 如果忘記加 ___，自動將單字替換為 ___
         sentence = sentence.replace(new RegExp(word, 'gi'), '___');
         if (!sentence.includes('___')) {
           sentence = `Please learn the word ___. (${sentence})`;
@@ -441,7 +473,7 @@
       updateChapterOptions();
       renderQuestions();
       e.target.reset();
-      alert(`✅ 成功手動新增題目「${word}」！`);
+      alert(`✅ 成功手動新增項目「${word}」（詞性: ${pos}）！`);
     });
 
     document.getElementById('cancel-ocr-btn').addEventListener('click', () => {
@@ -450,12 +482,12 @@
       document.getElementById('ocr-file').value = '';
     });
 
-    // 刪除題目的字串相容機制
+    // 刪除題目
     window.deleteQuestionItem = function(targetId) {
       const target = questions.find(q => String(q.id) === String(targetId));
       if (!target) return alert("找不到此題目！");
 
-      if (confirm(`確定要刪除題目「${target.word}」嗎？`)) {
+      if (confirm(`確定要刪除項目「${target.word}」嗎？`)) {
         const updated = questions.filter(q => String(q.id) !== String(targetId));
         saveQuestions(updated);
         selectedIds.delete(String(targetId));
@@ -484,14 +516,14 @@
 
     document.getElementById('btn-batch-del').addEventListener('click', () => {
       if (selectedIds.size === 0) return;
-      if (confirm(`確定要一次刪除選取的 ${selectedIds.size} 個題目嗎？`)) {
+      if (confirm(`確定要一次刪除選取的 ${selectedIds.size} 個項目嗎？`)) {
         const updated = questions.filter(q => !selectedIds.has(String(q.id)));
         saveQuestions(updated);
         selectedIds.clear();
         updateBatchDeleteBtn();
         updateChapterOptions();
         renderQuestions();
-        alert("✅ 選取題目已批量刪除！");
+        alert("✅ 選取項目已批量刪除！");
       }
     });
 
@@ -534,7 +566,7 @@
       document.getElementById('total-count-text').innerText = questions.length;
 
       if (list.length === 0) {
-        container.innerHTML = `<p style="text-align:center; color:#94a3b8; padding:30px;">查無符合題目</p>`;
+        container.innerHTML = `<p style="text-align:center; color:#94a3b8; padding:30px;">查無符合項目</p>`;
         return;
       }
 
@@ -548,7 +580,7 @@
             <input type="checkbox" style="width:18px; height:18px; cursor:pointer;" ${isChecked} onchange="toggleSelectQuestion('${q.id}', this)" />
             <div>
               <span class="tag">${q.chapter || 'Unit 1'}</span>
-              <span class="tag-pos">${q.pos || '詞性'}</span>
+              <span class="tag-pos">${q.pos || (q.word.includes(' ') ? 'phr.' : 'n.')}</span>
               <strong style="font-size:1.1rem; margin-left:6px; color:#0f172a;">${q.word}</strong>
               <span style="color:#64748b; margin-left:8px; font-weight:600;">${q.zh}</span>
             </div>
