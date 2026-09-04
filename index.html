@@ -99,7 +99,6 @@
         <label style="font-weight:800; font-size:0.95rem; color:#334155; margin-bottom:6px; display:block; margin-top:16px;">2. 章節 / 資料夾：</label>
         <select id="lobby-folder-select" class="admin-input-full" style="font-size:1rem; padding:12px;"></select>
         
-        <!-- 大廳不再選擇模式，模式由原本上方的頁籤決定 -->
         <button id="lobby-start-btn" class="btn-primary" style="margin-top: 24px; font-size:1.1rem; padding:14px; background:#10b981;">🚀 進入訓練區</button>
       </div>
       <button id="lobby-logout-btn" class="btn-secondary" style="margin-top: 20px; width:100%; padding:12px;">登出換人</button>
@@ -122,10 +121,9 @@
         <span>👤 目前學生：<b id="cur-student-name" style="color:#4338ca;">學生</b></span>
       </div>
 
-      <!-- 頁籤 1：單字挑戰王 (你的原版互動設計) -->
+      <!-- 頁籤 1：單字挑戰王 -->
       <main id="view-game" class="view-panel active">
         <div class="chapter-selector-bar">
-          <!-- 加上這顆 回大廳 按鈕 -->
           <button id="btn-back-lobby" class="btn-secondary" style="padding:6px 10px; font-size:0.75rem; background:#cbd5e1; color:#334155; margin-right:8px; border-radius:8px;">🏠 回大廳</button>
           
           <label for="game-chapter-filter" style="margin-left:auto;">🎯 單字範圍：</label>
@@ -157,7 +155,8 @@
           </div>
         </div>
 
-        <div class="pure-dashed-zone" onclick="focusHiddenInput('word')">
+        <!-- 動態拼寫格子區塊 -->
+        <div class="pure-dashed-zone" onclick="focusHiddenInput()">
           <div id="letter-slots-container" class="slots-flex-row"></div>
           <input type="text" id="answer-input" class="ghost-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
@@ -186,7 +185,6 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       
-      // 登入邏輯：驗證帳密後，進入大廳，並依權限過濾分類
       document.getElementById('student-login-btn').addEventListener('click', () => {
         const acc = document.getElementById('student-acc-input').value.trim().toLowerCase();
         const pwd = document.getElementById('student-pwd-input').value.trim();
@@ -218,7 +216,6 @@
         }
       });
 
-      // 初始化大廳的大分類下拉選單
       function initLobbyCategories() {
         const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
         const allCats = [...new Set(allQuestions.map(q => q.category || "高中學測"))];
@@ -250,7 +247,6 @@
 
       document.getElementById('lobby-category-select').addEventListener('change', updateLobbyFolders);
 
-      // 大廳登出按鈕
       document.getElementById('lobby-logout-btn').addEventListener('click', () => {
         loggedInStudent = null;
         document.getElementById('view-student-lobby').style.display = 'none';
@@ -259,7 +255,6 @@
         document.getElementById('student-pwd-input').value = '';
       });
 
-      // 點擊「進入訓練」離開大廳，進入原本的遊戲頁面
       document.getElementById('lobby-start-btn').addEventListener('click', () => {
         currentLobbyCategory = document.getElementById('lobby-category-select').value;
         const selectedFolder = document.getElementById('lobby-folder-select').value;
@@ -268,7 +263,6 @@
         document.getElementById('view-student-main').style.display = 'flex';
         document.getElementById('cur-student-name').innerText = loggedInStudent.name;
 
-        // 同步遊戲頁面的下拉選單
         updateChapterDropdowns();
         const mainDropdown = document.getElementById('game-chapter-filter');
         if ([...mainDropdown.options].some(o => o.value === selectedFolder)) {
@@ -279,14 +273,12 @@
         startNewWordSession();
       });
 
-      // 回大廳按鈕
       document.getElementById('btn-back-lobby').addEventListener('click', () => {
         document.getElementById('view-student-main').style.display = 'none';
         document.getElementById('view-student-lobby').style.display = 'flex';
         initLobbyCategories();
       });
 
-      // 以下全數保留你的原版遊戲邏輯
       document.getElementById('game-chapter-filter').addEventListener('change', () => {
         filterWordList();
         startNewWordSession();
@@ -297,7 +289,8 @@
         loadWordQuestion();
       });
 
-      document.getElementById('submit-btn').addEventListener('click', submitWordAnswer);
+      // 綁定輸入框事件以動態更新格子
+      document.getElementById('answer-input').addEventListener('input', updateSlotsDisplay);
       document.getElementById('answer-input').addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
           if (document.getElementById('submit-btn').style.display !== 'none') {
@@ -307,6 +300,7 @@
           }
         }
       });
+      document.getElementById('submit-btn').addEventListener('click', submitWordAnswer);
     });
 
     function updateChapterDropdowns() {
@@ -346,6 +340,7 @@
     function loadWordQuestion() {
       if (!activeWordList.length) {
         document.getElementById('quiz-chinese').innerText = "此章節無單字題目";
+        document.getElementById('letter-slots-container').innerHTML = '';
         return;
       }
       if (currentWordIndex >= activeWordList.length) currentWordIndex = 0;
@@ -364,18 +359,74 @@
       input.maxLength = q.word.length;
       input.focus();
 
+      // 呼叫更新格子函數
+      updateSlotsDisplay();
+
       document.getElementById('game-feedback').style.display = 'none';
       document.getElementById('submit-btn').style.display = 'block';
       document.getElementById('next-question-btn').style.display = 'none';
     }
 
+    // ==========================================
+    // 核心邏輯還原：動態生成與更新輸入格子
+    // ==========================================
+    function updateSlotsDisplay() {
+      const input = document.getElementById('answer-input');
+      if (!input) return;
+      
+      const val = input.value;
+      const q = activeWordList[currentWordIndex];
+      if (!q || !q.word) return;
+
+      const targetWord = q.word;
+      const container = document.getElementById('letter-slots-container');
+      container.innerHTML = '';
+
+      for (let i = 0; i < targetWord.length; i++) {
+        const unit = document.createElement('div');
+        unit.className = 'slot-cell-unit';
+
+        const top = document.createElement('div');
+        top.className = 'correction-slot-top';
+
+        const dash = document.createElement('div');
+        dash.className = 'dash-underline';
+
+        // 顯示已經輸入的字母
+        if (i < val.length) {
+          dash.innerText = val[i];
+        }
+
+        // 當前輸入焦點的閃爍底線特效
+        if (i === val.length && !input.disabled) {
+          dash.classList.add('focusing');
+        }
+
+        // 送出後（disabled 狀態），比對對錯並顯示綠色或紅色特效
+        if (input.disabled) {
+          if (val[i] && val[i].toLowerCase() === targetWord[i].toLowerCase()) {
+            dash.classList.add('char-right');
+          } else {
+            dash.classList.add('char-wrong');
+            // 若錯誤，在上方顯示正確的綠色字母 Badge
+            top.innerHTML = `<div class="correct-letter-badge">${targetWord[i]}</div>`;
+          }
+        }
+
+        unit.appendChild(top);
+        unit.appendChild(dash);
+        container.appendChild(unit);
+      }
+    }
+
     function submitWordAnswer() {
+      if (!activeWordList.length) return;
       const input = document.getElementById('answer-input');
       const userAns = input.value.trim().toLowerCase();
       const target = activeWordList[currentWordIndex].word.trim().toLowerCase();
       const fb = document.getElementById('game-feedback');
 
-      input.disabled = true;
+      input.disabled = true; // 鎖定輸入框，觸發 updateSlotsDisplay 結算特效
 
       if (userAns === target) {
         wordScore += 100;
@@ -387,13 +438,19 @@
         fb.innerHTML = `❌ 錯誤！正解是：${target}`;
       }
 
+      updateSlotsDisplay(); // 結算紅綠字特效
+
       document.getElementById('submit-btn').style.display = 'none';
       document.getElementById('next-question-btn').style.display = 'block';
     }
 
-    function focusHiddenInput(type) {
-      document.getElementById('answer-input').focus();
-    }
+    window.focusHiddenInput = function() {
+      const inp = document.getElementById('answer-input');
+      if (inp && !inp.disabled) {
+        inp.focus();
+        updateSlotsDisplay();
+      }
+    };
   </script>
 </body>
 </html>
