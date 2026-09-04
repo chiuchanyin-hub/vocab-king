@@ -37,7 +37,7 @@
       box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8);
       display: flex;
       flex-direction: column;
-      min-height: 740px;
+      min-height: 750px;
     }
     .app-nav {
       display: flex;
@@ -198,58 +198,91 @@
       cursor: pointer;
     }
 
-    /* 灰色橫向實線填空區 */
+    /* 🔥 實線填空區 + 上方即時浮現正確字母設計 */
     .pure-dashed-zone {
       position: relative;
       width: 100%;
-      min-height: 90px;
+      min-height: 110px; /* 留出上方浮現正確字母的高度 */
       display: flex;
       justify-content: center;
       align-items: center;
       background: transparent !important;
       border: none !important;
       cursor: text;
-      padding: 14px 4px;
+      padding: 20px 4px 10px 4px;
     }
     .slots-flex-row {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
-      gap: 10px;
+      align-items: flex-end;
+      gap: 8px;
       pointer-events: none;
     }
+
+    /* 每個字母槽的垂直包裝容器 (放上方提示與下方底線) */
+    .slot-cell-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    /* 錯字上方浮現的綠色正確字母 */
+    .correction-hint-badge {
+      font-size: 1rem;
+      font-weight: 900;
+      color: #059669;
+      background: #ecfdf5;
+      border: 1.5px solid #10b981;
+      border-radius: 6px;
+      padding: 1px 6px;
+      margin-bottom: 4px;
+      line-height: 1.2;
+      animation: popBadge 0.25s ease-out forwards;
+    }
+    @keyframes popBadge {
+      from { transform: translateY(6px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* 下方灰色實線槽 */
     .dash-underline {
       width: 32px;
-      height: 52px;
+      height: 48px;
       border-bottom: 4px solid #94a3b8 !important; /* 灰色實線 */
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 1.95rem;
       font-weight: 900;
       color: #0f172a;
       text-transform: lowercase;
       transition: all 0.15s ease;
     }
+    /* 當前焦點 */
     .dash-underline.focusing {
       border-bottom: 4px solid #4f46e5 !important;
       background: rgba(79, 70, 229, 0.05);
       border-radius: 6px 6px 0 0;
       animation: blinkLine 0.9s infinite alternate;
     }
+    /* 答錯或超時標紅 */
     .dash-underline.char-wrong {
       color: #ef4444 !important;
       border-bottom: 4px solid #ef4444 !important;
       background: rgba(239, 68, 68, 0.08);
       border-radius: 6px 6px 0 0;
     }
+    /* 答對標綠 */
     .dash-underline.char-right {
       color: #10b981 !important;
       border-bottom: 4px solid #10b981 !important;
+      background: rgba(16, 185, 129, 0.08);
+      border-radius: 6px 6px 0 0;
     }
     .dash-gap { 
-      width: 22px; /* 片語空格 */
+      width: 18px; 
     }
 
     @keyframes blinkLine {
@@ -548,7 +581,7 @@
       <button class="nav-btn" id="tab-admin-btn">🔒 後台管理</button>
     </header>
 
-    <!-- 頁籤 1：純單字挑戰王 (純單字，無片語) -->
+    <!-- 頁籤 1：純單字挑戰王 -->
     <main id="view-game" class="view-panel active">
       <div class="chapter-selector-bar">
         <label for="game-chapter-filter">🎯 單字範圍：</label>
@@ -576,7 +609,7 @@
         <h2 id="quiz-chinese" class="chinese-prompt">題目載入中...</h2>
         
         <div class="hint-audio-bar">
-          <span id="quiz-hint" class="hint-text">長度：3 字元・首字母 [ c ]</span>
+          <span id="quiz-hint" class="hint-text">長度：3 字母・首字 [ c ]</span>
           <button type="button" id="game-sound-btn" class="btn-sound-hint" title="點擊聽發音">🔊 聽發音</button>
         </div>
       </div>
@@ -609,7 +642,7 @@
       </div>
     </main>
 
-    <!-- 頁籤 2：🧩 片語特訓區 (專屬片語與詞組練習) -->
+    <!-- 頁籤 2：🧩 片語特訓區 -->
     <main id="view-phrase" class="view-panel">
       <div class="chapter-selector-bar">
         <label for="phrase-chapter-filter">🧩 片語範圍：</label>
@@ -810,7 +843,7 @@
     const ADMIN_PASSWORD = "admin888";
     let isAdminAuthenticated = false;
 
-    // 內建完整題庫：明確標示 isPhrase 屬性
+    // 內建完整題庫
     const BUILTIN_QUESTIONS = [
       // --- 單字 (Words) ---
       {"id": 1, "chapter": "Unit 1", "word": "cue", "pos": "n.", "isPhrase": false, "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
@@ -908,7 +941,6 @@
     }
 
     function refreshTotalQuestions() {
-      // 確保自訂題目也有判斷 isPhrase
       const processedCustom = customQuestions.map(q => ({
         ...q,
         chapter: q.chapter || "Unit 1",
@@ -952,7 +984,6 @@
       select.innerHTML = uniqueChapters.map(c => `<option value="${c}">現有章節：${c}</option>`).join('');
     }
 
-    // 🔥 篩選：單字挑戰王「只留純單字」
     function filterWordList() {
       const f = document.getElementById('game-chapter-filter').value;
       const base = allQuestions.filter(q => !q.isPhrase && !q.word.trim().includes(' '));
@@ -960,7 +991,6 @@
       activeWordList = shuffleArray(filtered);
     }
 
-    // 🔥 篩選：片語專區「只留片語」
     function filterPhraseList() {
       const f = document.getElementById('phrase-chapter-filter').value;
       const base = allQuestions.filter(q => q.isPhrase || q.word.trim().includes(' '));
@@ -982,7 +1012,7 @@
       }
     }
 
-    // 渲染灰色實線
+    // 🔥 核心渲染：灰色實線 + 錯字上方浮現正確字母
     function renderUnderlineSlots(containerId, targetWord, currentVal = '', isEvaluated = false) {
       const container = document.getElementById(containerId);
       if (!container) return;
@@ -998,18 +1028,30 @@
           spaceDiv.className = 'dash-gap';
           container.appendChild(spaceDiv);
         } else {
+          // 單元容器：垂直放「提示」與「實線槽」
+          const cellUnit = document.createElement('div');
+          cellUnit.className = 'slot-cell-unit';
+
           const slot = document.createElement('div');
-          slot.className = 'dash-underline'; // 灰色實線
+          slot.className = 'dash-underline';
           
           const userChar = userLetters[charIdx] || '';
           slot.innerText = userChar;
 
           if (isEvaluated) {
             if (userChar === c) {
+              // 拼對：綠色
               slot.classList.add('char-right');
             } else {
+              // 拼錯：紅色
               slot.classList.add('char-wrong');
               if (!userChar) slot.innerText = '•';
+
+              // 🔥 核心關鍵：在錯的字母上方浮現正確字母！
+              const hintBadge = document.createElement('div');
+              hintBadge.className = 'correction-hint-badge';
+              hintBadge.innerText = c; // 正確字母
+              cellUnit.appendChild(hintBadge);
             }
           } else {
             if (charIdx === userLetters.length) {
@@ -1017,13 +1059,14 @@
             }
           }
 
-          container.appendChild(slot);
+          cellUnit.appendChild(slot);
+          container.appendChild(cellUnit);
           charIdx++;
         }
       });
     }
 
-    // =================== 1. 單字挑戰王 (純單字) ===================
+    // =================== 1. 單字挑戰王 ===================
     function startNewWordSession() {
       currentWordIndex = 0;
       wordScore = 0;
@@ -1102,13 +1145,12 @@
       addMistake(q.id);
       playSound(q.word);
 
-      // 揭曉答案
-      renderUnderlineSlots('letter-slots-container', q.word, q.word, false);
-      document.querySelectorAll('#letter-slots-container .dash-underline').forEach(s => s.classList.add('char-wrong'));
+      // 時間到：逐字核對，未輸入者上方全數浮現正確字母
+      renderUnderlineSlots('letter-slots-container', q.word, document.getElementById('answer-input').value, true);
 
       const fb = document.getElementById('game-feedback');
       fb.className = 'feedback-box error';
-      fb.innerHTML = `⏰ 時間到！答案是：<b>${q.word}</b> (已存入不熟區)`;
+      fb.innerHTML = `⏰ 時間到！已標註正確字母 (已存入不熟區)`;
 
       document.getElementById('submit-btn').style.display = 'none';
       document.getElementById('next-question-btn').style.display = 'block';
@@ -1142,7 +1184,7 @@
         playSound(target);
 
         fb.className = 'feedback-box error';
-        fb.innerHTML = `❌ 拼錯了！正解：<b>${activeWordList[currentWordIndex].word}</b> (已存入不熟區)`;
+        fb.innerHTML = `❌ 拼錯了！請看上方綠色正確字母訂正`;
       }
 
       document.getElementById('submit-btn').style.display = 'none';
@@ -1178,7 +1220,7 @@
       modal.style.display = 'flex';
     }
 
-    // =================== 2. 🧩 片語特訓專區 ===================
+    // =================== 2. 片語特訓專區 ===================
     function startNewPhraseSession() {
       currentPhraseIndex = 0;
       phraseScore = 0;
@@ -1217,7 +1259,6 @@
       if (phrasePronounceTimeout) clearTimeout(phrasePronounceTimeout);
       phrasePronounceTimeout = setTimeout(() => { playSound(q.word); }, 1000);
 
-      // 片語動態時間：每字母 5 秒
       const lettersCount = q.word.replace(/[^a-zA-Z]/g, '').length;
       currentPhraseTotalTime = Math.max(15, lettersCount * 5);
       phraseTimeLeft = currentPhraseTotalTime;
@@ -1250,12 +1291,11 @@
       addMistake(q.id);
       playSound(q.word);
 
-      renderUnderlineSlots('phrase-slots-container', q.word, q.word, false);
-      document.querySelectorAll('#phrase-slots-container .dash-underline').forEach(s => s.classList.add('char-wrong'));
+      renderUnderlineSlots('phrase-slots-container', q.word, document.getElementById('phrase-input').value, true);
 
       const fb = document.getElementById('phrase-feedback');
       fb.className = 'feedback-box error';
-      fb.innerHTML = `⏰ 時間到！正解：<b>${q.word}</b> (已存入不熟區)`;
+      fb.innerHTML = `⏰ 時間到！已標註正確字母 (已存入不熟區)`;
 
       document.getElementById('phrase-submit-btn').style.display = 'none';
       document.getElementById('phrase-next-btn').style.display = 'block';
@@ -1282,13 +1322,13 @@
         playSound(target);
 
         fb.className = 'feedback-box success';
-        fb.innerHTML = `🎉 片語正確！+${earned} 積分`;
+        fb.innerHTML = `🎉 片語完全正確！+${earned} 積分`;
       } else {
         addMistake(activePhraseList[currentPhraseIndex].id);
         playSound(target);
 
         fb.className = 'feedback-box error';
-        fb.innerHTML = `❌ 拼錯了！正解：<b>${activePhraseList[currentPhraseIndex].word}</b> (已存入不熟區)`;
+        fb.innerHTML = `❌ 拼錯了！請看上方綠色正確字母訂正`;
       }
 
       document.getElementById('phrase-submit-btn').style.display = 'none';
@@ -1458,7 +1498,7 @@
       });
     }
 
-    // 初始化與事件掛載
+    // 初始化與事件綁定
     window.addEventListener('DOMContentLoaded', () => {
       refreshTotalQuestions();
       updateMistakeBadge();
@@ -1504,7 +1544,6 @@
         });
       });
 
-      // 章節變更監聽
       document.getElementById('game-chapter-filter').addEventListener('change', () => {
         filterWordList();
         startNewWordSession();
@@ -1521,7 +1560,7 @@
         loadClozeBattleRound();
       });
 
-      // 單字區操作
+      // 單字區
       document.getElementById('next-question-btn').addEventListener('click', () => {
         currentWordIndex++;
         loadWordQuestion();
@@ -1546,7 +1585,7 @@
         playSound(activeWordList[currentWordIndex].word);
       });
 
-      // 片語區操作
+      // 片語區
       document.getElementById('phrase-next-btn').addEventListener('click', () => {
         currentPhraseIndex = (currentPhraseIndex + 1) % activePhraseList.length;
         loadPhraseQuestion();
@@ -1570,7 +1609,6 @@
         playSound(activePhraseList[currentPhraseIndex].word);
       });
 
-      // 其他功能
       document.getElementById('cloze-listen-btn').addEventListener('click', () => {
         if (!activeClozeList.length) return;
         playSound(activeClozeList[currentClozeIndex].sentence.replace('___', activeClozeList[currentClozeIndex].word));
