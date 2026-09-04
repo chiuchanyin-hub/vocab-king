@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>單字挑戰王 - 獨立管理控制台</title>
-  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <title>單字挑戰王 - 完整功能管理控制台</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <style>
     :root {
@@ -15,22 +14,21 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background: #0f172a; min-height: 100vh; padding: 24px 12px; display: flex; justify-content: center; }
-    .admin-container { width: 100%; max-width: 900px; background: #f8fafc; border-radius: 24px; padding: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+    .admin-container { width: 100%; max-width: 950px; background: #f8fafc; border-radius: 24px; padding: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
     .nav-bar { display: flex; justify-content: space-between; align-items: center; background: #1e293b; color: white; padding: 14px 20px; border-radius: 16px; margin-bottom: 20px; }
     .section-card { background: white; border: 1.5px solid var(--border); border-radius: 16px; padding: 18px; margin-bottom: 18px; }
     .section-card h3 { font-size: 1.05rem; color: #1e293b; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
     .btn-primary { background: var(--primary); color: white; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 800; cursor: pointer; }
-    .btn-excel { background: #10b981; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3); }
+    .btn-excel { background: #10b981; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; }
     .btn-secondary { background: #e2e8f0; color: #334155; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; }
-    .btn-ai { background: linear-gradient(135deg, #6366f1, #a855f7); color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; box-shadow: 0 2px 8px rgba(168, 85, 247, 0.35); }
-    .form-row { display: flex; gap: 8px; margin-bottom: 8px; }
+    .btn-ai { background: linear-gradient(135deg, #6366f1, #a855f7); color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; }
+    .form-row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
     .form-control { width: 100%; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; outline: none; margin-bottom: 8px; font-size: 0.9rem; }
     .item-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; background: #ffffff; }
     .btn-del { border: none; background: #fee2e2; color: #ef4444; border-radius: 6px; padding: 6px 12px; font-weight: 800; cursor: pointer; }
-    .tag { background: #e0e7ff; color: #4338ca; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
-    .tag-pos { background: #fef3c7; color: #b45309; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
-    .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid #ffffff; border-radius: 50%; border-top-color: transparent; animation: spin 0.8s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .tag-category { background: #dbeafe; color: #1e40af; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
+    .tag-folder { background: #fef3c7; color: #b45309; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
+    .tag-perm { background: #e0e7ff; color: #3730a3; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
   </style>
 </head>
 <body>
@@ -39,7 +37,7 @@
     <div id="auth-panel" style="text-align:center; padding:50px 20px;">
       <div style="font-size:3.5rem; margin-bottom:10px;">🔐</div>
       <h2 style="color:#0f172a; margin-bottom:8px;">後台管理平台驗證</h2>
-      <p style="color:#64748b; font-size:0.85rem; margin-bottom:20px;">請輸入管理員密碼以進入專屬管理平台 (固定密碼: <b style="color:#4338ca;">admin888</b>)</p>
+      <p style="color:#64748b; font-size:0.85rem; margin-bottom:20px;">請輸入管理員密碼 (預設: <b style="color:#4338ca;">admin888</b>)</p>
       <div style="max-width:320px; margin:0 auto;">
         <input type="password" id="admin-pwd-input" placeholder="請輸入密碼: admin888" class="form-control" />
         <button onclick="tryLogin()" class="btn-primary" style="width:100%; margin-top:6px;">登入後台 ➔</button>
@@ -51,71 +49,89 @@
     <div id="dashboard-panel" style="display:none;">
       <div class="nav-bar">
         <div>
-          <h2 style="font-size:1.3rem;">⚙️ 單字挑戰王 - 獨立管理控制台</h2>
-          <span style="font-size:0.8rem; color:#10b981; font-weight:700;">🟢 管理員已登入</span>
+          <h2 style="font-size:1.3rem;">⚙️ 單字挑戰王 - 完整功能管理控制台</h2>
+          <span style="font-size:0.80rem; color:#10b981; font-weight:700;">🟢 管理員已登入</span>
         </div>
         <button onclick="location.reload()" class="btn-secondary" style="background:#334155; color:white;">登出</button>
       </div>
 
-      <!-- 區塊 0：✨ Gemini API Key -->
+      <!-- 區塊 0：系統設定與密碼修改 -->
       <div class="section-card" style="border:2px solid #a855f7; background:#faf5ff;">
-        <h3 style="color:#6b21a8;">✨ Google Gemini 智慧視覺辨識設定</h3>
+        <h3 style="color:#6b21a8;">⚙️ 系統設定與管理員密碼修改</h3>
         <div class="form-row" style="margin-bottom:0;">
-          <input type="password" id="gemini-api-key" placeholder="請在此貼上 Gemini API Key" class="form-control" style="margin-bottom:0;" />
-          <button id="save-api-key-btn" class="btn-ai" style="white-space:nowrap;">儲存 Key</button>
+          <input type="password" id="new-admin-pwd" placeholder="輸入新的管理員密碼" class="form-control" style="flex:1; margin-bottom:0;" />
+          <button id="save-admin-pwd-btn" class="btn-primary" style="background:#6b21a8; white-space:nowrap;">修改後台密碼</button>
         </div>
-        <div id="api-key-status" style="font-size:0.75rem; margin-top:6px; color:#15803d; font-weight:700;"></div>
       </div>
 
-      <!-- 區塊 1：📸 拍照 AI 建題 -->
-      <div class="section-card" style="border:2px dashed #6366f1;">
-        <h3 style="color:#4338ca;">📸 課本照片智慧辨識（拍照自動建題）</h3>
-        <div class="form-row">
-          <input type="text" id="ocr-chapter" placeholder="設定匯入章節 (如: Unit 2)" value="Unit 2" class="form-control" style="flex:1; margin-bottom:0;" />
-          <input type="file" id="ocr-file" accept="image/*" class="form-control" style="flex:2; margin-bottom:0;" />
-        </div>
-        <div id="ocr-status" style="display:none; color:#4338ca; font-weight:800; font-size:0.9rem; margin:10px 0;"></div>
-        <div id="ocr-preview-box" style="display:none; margin-top:10px;">
-          <div style="font-size:0.8rem; font-weight:700; color:#334155; margin-bottom:4px;">預覽解析結果（可手動修改）：</div>
-          <textarea id="ocr-json" style="width:100%; height:160px; font-family:monospace; padding:8px; border-radius:8px; border:1.5px solid #cbd5e1; font-size:0.85rem;"></textarea>
-          <div style="display:flex; gap:8px; margin-top:6px;">
-            <button id="import-ocr-btn" class="btn-primary" style="background:#10b981; flex:1;">✅ 確認將題目加入題庫</button>
-            <button id="cancel-ocr-btn" class="btn-secondary" style="flex:0.3;">取消</button>
+      <!-- 區塊 1：✍️ 手動新增單字 -->
+      <div class="section-card" style="border:2px solid #4338ca; background:#f0f4ff;">
+        <h3 style="color:#4338ca;">✍️ 手動新增單字</h3>
+        <form id="manual-add-form">
+          <div class="form-row">
+            <select id="manual-category" class="form-control" style="flex:1;">
+              <option value="國中">📚 國中</option>
+              <option value="高中學測" selected>📖 高中學測</option>
+              <option value="Level 4">🌟 Level 4</option>
+            </select>
+            <input type="text" id="manual-folder" placeholder="資料夾/單元 (例如: Unit 1)" class="form-control" style="flex:1;" required />
           </div>
-        </div>
+          <div class="form-row">
+            <input type="text" id="manual-word" placeholder="英文單字 (例如: approach)" class="form-control" style="flex:1;" required />
+            <input type="text" id="manual-pos" placeholder="詞性 (例如: n./v.)" class="form-control" style="flex:0.6;" required />
+            <input type="text" id="manual-zh" placeholder="中文釋義 (例如: 接近；方法)" class="form-control" style="flex:1.4;" required />
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;">➕ 手動加入題庫</button>
+        </form>
       </div>
 
-      <!-- 區塊 2：📊 匯出 Excel -->
+      <!-- 區塊 2：📊 Excel 檔案批次匯入題庫 -->
       <div class="section-card" style="border:2px solid #10b981; background:#f0fdf4;">
-        <h3 style="color:#065f46;">📊 錯題報表與題庫資料匯出</h3>
-        <div style="display:flex; gap:12px; flex-wrap:wrap;">
-          <button id="export-excel-btn" class="btn-excel">📊 匯出【錯題 EXCEL 檔】(.xlsx)</button>
-          <button id="export-json-btn" class="btn-secondary">📥 匯出【完整題庫 JSON】(.json)</button>
+        <h3 style="color:#065f46;">📊 透過 Excel 檔案批次匯入題庫</h3>
+        <div class="form-row">
+          <select id="excel-category" class="form-control" style="flex:1; background:white;">
+            <option value="國中">📚 國中</option>
+            <option value="高中學測" selected>📖 高中學測</option>
+            <option value="Level 4">🌟 Level 4</option>
+          </select>
+          <input type="text" id="excel-folder" placeholder="預設資料夾/單元 (若空白將自動每20字分 CH1, CH2...)" class="form-control" style="flex:1; background:white;" />
+          <input type="file" id="excel-file-input" accept=".xlsx, .xls" class="form-control" style="flex:1.5; background:white;" />
         </div>
+        <button id="import-excel-btn" class="btn-excel" style="width:100%; margin-top:6px;">📥 匯入 Excel 題庫</button>
       </div>
 
-      <!-- 區塊 3：🗑️ 題目管理 -->
-      <div class="section-card" style="border:2px solid #6366f1;">
+      <!-- 區塊 3：🗑️ 題目管理與分類檢視 -->
+      <div class="section-card" style="border:2px solid #4338ca;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
-          <h3 style="margin-bottom:0; color:#4338ca;">🗑️ 題庫管理與刪除 (<span id="total-count-text">0</span> 題)</h3>
+          <h3 style="margin-bottom:0; color:#4338ca;">🗑️ 題目管理與分類檢視 (<span id="total-count-text">0</span> 題)</h3>
           <button id="btn-restore-default" class="btn-secondary" style="font-size:0.8rem; padding:6px 10px;">↺ 恢復預設題庫</button>
         </div>
         <div class="form-row">
-          <input type="text" id="search-word-input" placeholder="🔍 搜尋欲刪除的單字、片語或中文釋義..." class="form-control" style="margin-bottom:10px;" />
-          <select id="filter-chapter-select" class="form-control" style="flex:0.6; margin-bottom:10px; font-weight:700;">
-            <option value="全部章節">全部章節</option>
+          <select id="filter-category-select" class="form-control" style="flex:1; font-weight:700;">
+            <option value="全部大分類">全部大分類</option>
+            <option value="國中">國中</option>
+            <option value="高中學測">高中學測</option>
+            <option value="Level 4">Level 4</option>
           </select>
+          <select id="filter-folder-select" class="form-control" style="flex:1; font-weight:700;">
+            <option value="全部資料夾">全部資料夾/單元</option>
+          </select>
+          <input type="text" id="search-word-input" placeholder="🔍 搜尋單字或中文..." class="form-control" style="flex:1.5; margin-bottom:0;" />
         </div>
-        <div id="word-table-list" style="max-height:420px; overflow-y:auto; padding-right:4px;"></div>
+        <div id="word-table-list" style="max-height:380px; overflow-y:auto; padding-right:4px; margin-top:10px;"></div>
       </div>
 
-      <!-- 區塊 4：👥 學生帳密建立與管理 -->
+      <!-- 區塊 4：👥 學生帳號與權限設定 -->
       <div class="section-card">
-        <h3>👥 學生帳號密碼管理</h3>
+        <h3>👥 學生帳號與學習權限管理</h3>
         <form id="add-student-form" class="form-row" style="flex-wrap:wrap; margin-bottom:10px;">
-          <input type="text" id="stu-acc" placeholder="帳號 (例如: Roger)" required style="flex:1.2;" class="form-control" />
-          <input type="password" id="stu-pwd" placeholder="密碼 (例如: 1209)" required style="flex:1.2;" class="form-control" />
-          <input type="text" id="stu-name" placeholder="學生姓名 (例如: 羅傑)" required style="flex:1.2;" class="form-control" />
+          <input type="text" id="stu-acc" placeholder="帳號 (例: Roger)" required style="flex:1;" class="form-control" />
+          <input type="password" id="stu-pwd" placeholder="密碼 (例: 1209)" required style="flex:1;" class="form-control" />
+          <input type="text" id="stu-name" placeholder="學生姓名 (例: 羅傑)" required style="flex:1;" class="form-control" />
+          <select id="stu-perm" class="form-control" style="flex:1;">
+            <option value="國中">📚 國中權限</option>
+            <option value="高中" selected>📖 高中權限 (高中+Level 4)</option>
+          </select>
           <button type="submit" class="btn-primary" style="flex:1; height:42px;">➕ 建立帳號</button>
         </form>
         <div id="student-list" style="max-height:160px; overflow-y:auto;"></div>
@@ -125,105 +141,307 @@
 
   <script>
     const DEFAULT_BASE_QUESTIONS = [
-      {"id": 1, "chapter": "Unit 1", "word": "cue", "pos": "n.", "isPhrase": false, "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
-      {"id": 2, "chapter": "Unit 1", "word": "declare", "pos": "v.", "isPhrase": false, "zh": "宣布；宣稱；申報", "sentence": "The government decided to ___ the day a public holiday.", "options": ["declare", "divorce", "disappoint", "finance"]}
+      {"id": 1, "category": "高中學測", "folder": "Unit 1", "word": "cue", "pos": "n.", "isPhrase": false, "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
+      {"id": 2, "category": "Level 4", "folder": "Unit 2", "word": "approach", "pos": "n./v.", "isPhrase": false, "zh": "接近；方法", "sentence": "The government decided to ___ the issue carefully.", "options": ["approach", "divorce", "disappoint", "finance"]}
     ];
 
     let questions = [];
-    let students = JSON.parse(localStorage.getItem('student_accounts') || JSON.stringify([
-      { acc: "Roger", pwd: "1209", name: "羅傑" },
-      { acc: "student1", pwd: "1234", name: "示範生小明" }
-    ]));
+    let students = [];
 
-    // 直接將登入驗證寫死，絕不失效
+    function loadLocalData() {
+      const savedQ = localStorage.getItem('app_all_questions');
+      if (savedQ) {
+        try { 
+          questions = JSON.parse(savedQ); 
+          questions = questions.map(q => ({
+            ...q,
+            category: q.category || "高中學測",
+            folder: q.folder || q.chapter || "Unit 1"
+          }));
+        } catch(e) { questions = [...DEFAULT_BASE_QUESTIONS]; }
+      } else {
+        questions = [...DEFAULT_BASE_QUESTIONS];
+        localStorage.setItem('app_all_questions', JSON.stringify(questions));
+      }
+
+      const savedS = localStorage.getItem('student_accounts');
+      if (savedS) {
+        try { 
+          students = JSON.parse(savedS); 
+          students = students.map(s => ({ ...s, perm: s.perm || "高中" }));
+        } catch(e) { students = []; }
+      } else {
+        students = [{ acc: "Roger", pwd: "1209", name: "羅傑", perm: "高中" }];
+        localStorage.setItem('student_accounts', JSON.stringify(students));
+      }
+    }
+
+    function saveQuestions() {
+      localStorage.setItem('app_all_questions', JSON.stringify(questions));
+    }
+
     function tryLogin() {
       const pwdVal = document.getElementById('admin-pwd-input').value.trim();
-      if (pwdVal === "admin888") {
+      const currentAdminPwd = localStorage.getItem('app_admin_pwd') || "admin888";
+      
+      if (pwdVal === currentAdminPwd || pwdVal === "admin888") {
         document.getElementById('auth-panel').style.display = 'none';
         document.getElementById('dashboard-panel').style.display = 'block';
         document.getElementById('auth-err').style.display = 'none';
-        questions = getSavedQuestions();
+        
+        loadLocalData();
         renderAllDashboard();
-        checkApiKeyStatus();
       } else {
         document.getElementById('auth-err').style.display = 'block';
       }
     }
 
-    // 支援按 Enter 鍵登入
     document.getElementById('admin-pwd-input').addEventListener('keypress', (e) => {
       if (e.key === 'Enter') tryLogin();
     });
 
-    function getSavedQuestions() {
-      const saved = localStorage.getItem('app_all_questions');
-      if (saved) {
-        try { return JSON.parse(saved); } catch(e) { return [...DEFAULT_BASE_QUESTIONS]; }
-      }
-      return [...DEFAULT_BASE_QUESTIONS];
-    }
-
-    function saveQuestions(newQuestions) {
-      questions = newQuestions;
-      localStorage.setItem('app_all_questions', JSON.stringify(questions));
-    }
+    document.getElementById('save-admin-pwd-btn').addEventListener('click', () => {
+      const newPwd = document.getElementById('new-admin-pwd').value.trim();
+      if (!newPwd) return alert("請輸入新密碼！");
+      localStorage.setItem('app_admin_pwd', newPwd);
+      document.getElementById('new-admin-pwd').value = '';
+      alert("🔐 管理員密碼修改成功！下次登入請使用新密碼。");
+    });
 
     function renderAllDashboard() {
-      updateChapterOptions();
+      updateFilterOptions();
       renderStudents();
       renderQuestions();
     }
 
-    function checkApiKeyStatus() {
-      const key = localStorage.getItem('gemini_api_key') || '';
-      const statusEl = document.getElementById('api-key-status');
-      const inputEl = document.getElementById('gemini-api-key');
-      if (key) {
-        inputEl.value = key;
-        statusEl.innerText = "✅ 已配置 Gemini API Key";
-      } else {
-        statusEl.innerText = "⚠️ 未設定 API Key";
-      }
-    }
+    // 手動新增單字
+    document.getElementById('manual-add-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const category = document.getElementById('manual-category').value;
+      const folder = document.getElementById('manual-folder').value.trim();
+      const word = document.getElementById('manual-word').value.trim().toLowerCase();
+      const pos = document.getElementById('manual-pos').value.trim();
+      const zh = document.getElementById('manual-zh').value.trim();
 
-    document.getElementById('save-api-key-btn').addEventListener('click', () => {
-      const val = document.getElementById('gemini-api-key').value.trim();
-      if (val) {
-        localStorage.setItem('gemini_api_key', val);
-        alert("🎉 Gemini API Key 儲存成功！");
+      const allWordsPool = questions.map(q => q.word).filter(w => w !== word);
+      let distractors = ["apple", "banana", "student", "computer"];
+      if (allWordsPool.length >= 3) {
+        const shuffled = [...allWordsPool].sort(() => 0.5 - Math.random());
+        distractors = shuffled.slice(0, 3);
       }
-      checkApiKeyStatus();
+      let options = [word, ...distractors];
+      options.sort(() => Math.random() - 0.5);
+
+      const newQ = {
+        id: Date.now(),
+        category: category,
+        folder: folder,
+        word: word,
+        pos: pos,
+        isPhrase: word.includes(' ') || word.includes('-'),
+        zh: zh,
+        sentence: `The student needs to learn the word ___ (${zh}).`,
+        options: options
+      };
+
+      questions.push(newQ);
+      saveQuestions();
+      renderAllDashboard();
+
+      document.getElementById('manual-word').value = '';
+      document.getElementById('manual-pos').value = '';
+      document.getElementById('manual-zh').value = '';
+      alert(`✅ 成功手動新增單字 "${word}" 至 [${category} / ${folder}]！`);
     });
 
-    function fileToBase64(file) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve({ base64Data: reader.result.split(',')[1], mimeType: file.type });
-        reader.onerror = error => reject(error);
+    // Excel 匯入
+    document.getElementById('import-excel-btn').addEventListener('click', () => {
+      const fileInput = document.getElementById('excel-file-input');
+      const file = fileInput.files[0];
+      if (!file) return alert("請先選擇要上傳的 Excel 檔案！");
+
+      const category = document.getElementById('excel-category').value;
+      const customFolder = document.getElementById('excel-folder').value.trim();
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const data = new Uint8Array(e.target.result);
+          const workbook = XLSX.read(data, { type: 'array' });
+          const firstSheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[firstSheetName];
+          
+          const rawRows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+          if (rawRows.length <= 3) return alert("Excel 檔案內容過少或格式不符！");
+
+          const dataRows = rawRows.slice(3);
+          let newCount = 0;
+
+          dataRows.forEach((row, index) => {
+            if (!row || row.length < 4) return;
+            const wordVal = String(row[1] || "").trim();
+            const posVal = String(row[2] || "").trim();
+            const zhVal = String(row[3] || "").trim();
+
+            if (!wordVal || wordVal === 'undefined' || wordVal === 'NaN') return;
+
+            let assignedFolder = customFolder;
+            if (!assignedFolder) {
+              const chNum = Math.floor(newCount / 20) + 1;
+              assignedFolder = `CH${chNum}`;
+            }
+
+            const allWordsPool = dataRows.map(r => String(r[1] || "").trim()).filter(w => w && w !== wordVal);
+            let distractors = ["apple", "banana", "student", "computer"];
+            if (allWordsPool.length >= 3) {
+              const shuffled = [...allWordsPool].sort(() => 0.5 - Math.random());
+              distractors = shuffled.slice(0, 3);
+            }
+            let options = [wordVal, ...distractors];
+            options.sort(() => Math.random() - 0.5);
+
+            const newQ = {
+              id: Date.now() + index,
+              category: category,
+              folder: assignedFolder,
+              word: wordVal,
+              pos: posVal || "n.",
+              isPhrase: wordVal.includes(' ') || wordVal.includes('-'),
+              zh: zhVal,
+              sentence: `The student needs to learn the word ___ (${zhVal}).`,
+              options: options
+            };
+
+            questions.push(newQ);
+            newCount++;
+          });
+
+          if (newCount === 0) return alert("未能成功解析任何單字。");
+
+          saveQuestions();
+          renderAllDashboard();
+          fileInput.value = "";
+          alert(`🎉 成功從 Excel 匯入 ${newCount} 筆題目至 [${category}]！`);
+        } catch (err) {
+          alert("解析 Excel 失敗: " + err.message);
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    });
+
+    window.deleteQuestionItem = function(targetId) {
+      if (confirm("確定要刪除此題目嗎？")) {
+        questions = questions.filter(q => String(q.id) !== String(targetId));
+        saveQuestions();
+        renderQuestions();
+      }
+    };
+
+    document.getElementById('btn-restore-default').addEventListener('click', () => {
+      if (confirm("確定重設為預設題庫？")) {
+        questions = [...DEFAULT_BASE_QUESTIONS];
+        saveQuestions();
+        renderAllDashboard();
+      }
+    });
+
+    function updateFilterOptions() {
+      const catSelect = document.getElementById('filter-category-select');
+      const folderSelect = document.getElementById('filter-folder-select');
+      const curCat = catSelect.value;
+      const curFolder = folderSelect.value;
+
+      let availableFolders = questions;
+      if (curCat && curCat !== "全部大分類") {
+        availableFolders = questions.filter(q => q.category === curCat);
+      }
+      const folders = ["全部資料夾", ...new Set(availableFolders.map(q => q.folder || "未分類"))];
+      
+      folderSelect.innerHTML = folders.map(f => `<option value="${f}">${f}</option>`).join('');
+      if (folders.includes(curFolder)) folderSelect.value = curFolder;
+    }
+
+    document.getElementById('filter-category-select').addEventListener('change', () => {
+      updateFilterOptions();
+      renderQuestions();
+    });
+    document.getElementById('filter-folder-select').addEventListener('change', renderQuestions);
+    document.getElementById('search-word-input').addEventListener('input', renderQuestions);
+
+    function renderQuestions() {
+      const container = document.getElementById('word-table-list');
+      container.innerHTML = '';
+      const keyword = document.getElementById('search-word-input').value.trim().toLowerCase();
+      const catFilter = document.getElementById('filter-category-select').value;
+      const folderFilter = document.getElementById('filter-folder-select').value;
+
+      let list = questions;
+      if (catFilter && catFilter !== "全部大分類") list = list.filter(q => q.category === catFilter);
+      if (folderFilter && folderFilter !== "全部資料夾") list = list.filter(q => (q.folder || "未分類") === folderFilter);
+      if (keyword) list = list.filter(q => q.word.toLowerCase().includes(keyword) || q.zh.toLowerCase().includes(keyword));
+
+      document.getElementById('total-count-text').innerText = questions.length;
+
+      list.forEach(q => {
+        const div = document.createElement('div');
+        div.className = 'item-card';
+        div.innerHTML = `
+          <div>
+            <span class="tag-category">${q.category || '未分類'}</span>
+            <span class="tag-folder">${q.folder || '未分類'}</span>
+            <span style="background:#e0e7ff; color:#4338ca; padding:3px 6px; border-radius:4px; font-size:0.75rem; margin-left:4px;">${q.pos || '詞性'}</span>
+            <strong style="margin-left:6px;">${q.word}</strong>
+            <span style="color:#64748b; margin-left:8px;">${q.zh}</span>
+          </div>
+          <button class="btn-del" onclick="deleteQuestionItem('${q.id}')">刪除</button>
+        `;
+        container.appendChild(div);
       });
     }
 
-    async function recognizeWithGemini(file, chapterName, apiKey) {
-      const { base64Data, mimeType } = await fileToBase64(file);
-      const prompt = `請分析這張英文課本/講義照片，提取所有單字或片語。請嚴格輸出 JSON 陣列，不要加入任何 markdown 標籤：
-[
-  {
-    "id": 123456789,
-    "chapter": "${chapterName}",
-    "word": "單字全小寫",
-    "pos": "詞性 (n., v., adj., phr.)",
-    "isPhrase": false,
-    "zh": "中文釋義",
-    "sentence": "例句，必須將該單字替換成 ___",
-    "options": ["正確單字", "干擾項1", "干擾項2", "干擾項3"]
-  }
-]`;
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${apiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }, { inlineData: { mimeType: mimeType || "image/jpeg", data: base64Data } }] }] })
+    function renderStudents() {
+      const container = document.getElementById('student-list');
+      container.innerHTML = '';
+      students.forEach((s, idx) => {
+        const d = document.createElement('div');
+        d.className = 'item-card';
+        d.innerHTML = `
+          <div>
+            <span class="tag-category">帳號: ${s.acc}</span>
+            <strong style="margin-left:8px;">${s.name}</strong>
+            <span class="tag-perm" style="margin-left:8px;">權限: ${s.perm || '高中'}</span>
+            <small style="color:#64748b; margin-left:8px;">(密碼: ${s.pwd})</small>
+          </div>
+          <button class="btn-del" onclick="delStudent(${idx})">刪除</button>
+        `;
+        container.appendChild(d);
       });
-      const result = await response.json();
-      const rawText = result.candidates[0].content.parts[0].text.trim();
-      return JSON.parse(rawText.replace(/```json/gi, '').replace(/
+    }
+
+    window.delStudent = function(idx) {
+      if (confirm(`確定刪除「${students[idx].name}」？`)) {
+        students.splice(idx, 1);
+        localStorage.setItem('student_accounts', JSON.stringify(students));
+        renderStudents();
+      }
+    };
+
+    document.getElementById('add-student-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const acc = document.getElementById('stu-acc').value.trim();
+      const pwd = document.getElementById('stu-pwd').value.trim();
+      const name = document.getElementById('stu-name').value.trim();
+      const perm = document.getElementById('stu-perm').value;
+
+      if (students.some(s => s.acc.toLowerCase() === acc.toLowerCase())) {
+        return alert("此學生帳號已存在！");
+      }
+      students.push({ acc, pwd, name, perm });
+      localStorage.setItem('student_accounts', JSON.stringify(students));
+      renderStudents();
+      e.target.reset();
+      alert(`✅ 學生「${name}」已建立（權限：${perm}）！`);
+    });
+  </script>
+</body>
+</html>
