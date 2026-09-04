@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高中單字挑戰王 - 雙模實戰 APP</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- 引入瀏覽器端圖片文字辨識套件 (Tesseract.js) -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- 頂部頁籤導覽 -->
+    <header class="app-nav">
+      <button class="nav-btn active" id="tab-game-btn">👑 單字挑戰王</button>
+      <button class="nav-btn" id="tab-cloze-btn">⚔️ 克漏字對戰</button>
+      <button class="nav-btn" id="tab-mistakes-btn">📖 不熟區 <span id="mistake-badge" class="badge">0</span></button>
+      <button class="nav-btn" id="tab-admin-btn">🔒 後台管理</button>
+    </header>
+
+    <!-- 模式 1：單字挑戰王 (輸入英文字母 + 積分制 + 90%通過) -->
+    <main id="view-game" class="view-panel active">
+      <div class="chapter-selector-bar">
+        <label for="game-chapter-filter">🎯 挑戰範圍：</label>
+        <select id="game-chapter-filter" class="chapter-dropdown"></select>
+      </div>
+
+      <div class="game-status-bar">
+        <span id="game-progress-tag" class="pill pill-level">進度：0 / 0</span>
+        <span id="score-display" class="pill pill-score">積分：0</span>
+        <div class="timer-wrapper">
+          <span class="timer-icon">⏱️</span>
+          <span id="timer-count">15</span>s
+        </div>
+      </div>
+      
+      <!-- 倒數時間進度條 -->
+      <div class="timer-progress-bar">
+        <div id="timer-progress-fill"></div>
+      </div>
+
+      <!-- 挑戰卡片 -->
+      <div class="card quiz-card">
+        <div style="display:flex; justify-content:center; gap:6px;">
+          <span id="quiz-chapter" class="chapter-tag">Unit 1</span>
+          <span id="quiz-pos" class="pos-tag">詞性</span>
+        </div>
+        <h2 id="quiz-chinese" class="chinese-prompt">載入題目中...</h2>
+        
+        <!-- 提示大字 + 發音按鈕 -->
+        <div class="hint-audio-bar">
+          <span id="quiz-hint" class="hint-text">長度：3 字元・首字母 [ c ]</span>
+          <button type="button" id="game-sound-btn" class="btn-sound-hint" title="點擊聽發音">🔊 聽發音</button>
+        </div>
+      </div>
+
+      <!-- 輸入框 (字母輸入非選擇題) -->
+      <div class="input-container">
+        <input type="text" id="answer-input" placeholder="請輸入英文單字或片語..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        <button id="submit-btn" class="btn-primary">確認送出 (Enter)</button>
+      </div>
+
+      <div id="game-feedback" class="feedback-box"></div>
+
+      <!-- 結算彈窗 (90% 通過門檻) -->
+      <div id="round-summary-modal" class="modal-overlay" style="display:none;">
+        <div class="modal-card">
+          <div id="summary-icon" style="font-size:3.5rem;">🏆</div>
+          <h2 id="summary-title" style="margin:10px 0;">結算報告</h2>
+          <div class="summary-stats">
+            <p>本次總答題數：<span id="summary-total">0</span></p>
+            <p>正確答對題數：<span id="summary-correct">0</span></p>
+            <p>最終累積積分：<b id="summary-score" style="color:#f59e0b;">0</b></p>
+            <p style="font-size:1.2rem; font-weight:800; margin-top:8px;">正確率：<span id="summary-accuracy">0%</span></p>
+          </div>
+          <div id="summary-verdict" class="summary-verdict-box">結算中...</div>
+          <button id="restart-round-btn" class="btn-primary" style="margin-top:16px;">重新挑戰</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- 模式 2：克漏字對戰 (選擇題 + 1v1 對抗模式) -->
+    <main id="view-cloze" class="view-panel arena-bg">
+      <div class="cloze-top-control">
+        <select id="cloze-chapter-filter" class="chapter-select-dark"></select>
+        <!-- 對戰模式切換按鈕 -->
+        <div class="mode-switch-pill">
+          <button id="mode-pve-btn" class="mode-switch-btn active">👤 vs 電腦</button>
+          <button id="mode-pvp-btn" class="mode-switch-btn">👥 雙人對抗</button>
+        </div>
+      </div>
+
+      <!-- 知識王風格 頂部 HUD (玩家1 VS 玩家2/電腦) -->
+      <div class="battle-top-hud">
+        <div class="player-card">
+          <div class="avatar-frame"><div class="avatar-placeholder">👤</div></div>
+          <span class="player-name" id="p1-name">玩家 1</span>
+        </div>
+
+        <!-- 圓形計時器 (10秒) -->
+        <div class="radial-timer-box">
+          <svg class="radial-timer-svg" viewBox="0 0 100 100">
+            <circle class="timer-track" cx="50" cy="50" r="42" />
+            <circle id="cloze-timer-stroke" class="timer-progress" cx="50" cy="50" r="42" />
+          </svg>
+          <span id="cloze-timer-text" class="timer-number">10</span>
+        </div>
+
+        <div class="player-card">
+          <div class="avatar-frame"><div class="avatar-placeholder" id="p2-avatar">🤖</div></div>
+          <span class="player-name" id="p2-name">教練 AI</span>
+          <div class="speech-bubble" id="p2-bubble">輪到你了！</div>
+        </div>
+      </div>
+
+      <!-- 中間：例句卡片 + 雙人即時得分柱 -->
+      <div class="arena-middle">
+        <div class="meter-column">
+          <div class="score-num" id="p1-score-text">0</div>
+          <div class="meter-track"><div id="p1-meter-fill" class="meter-fill user-fill"></div></div>
+        </div>
+
+        <div class="question-core">
+          <button id="cloze-listen-btn" class="btn-sound-glow" style="margin-bottom:8px;">🔊 朗讀例句</button>
+          <div class="cloze-sentence-card">
+            <p id="cloze-sentence-text">例句載入中...</p>
+          </div>
+        </div>
+
+        <div class="meter-column">
+          <div class="score-num" id="p2-score-text">0</div>
+          <div class="meter-track"><div id="p2-meter-fill" class="meter-fill bot-fill"></div></div>
+        </div>
+      </div>
+
+      <!-- 下方 4 大圓角選擇按鈕 -->
+      <div id="turn-indicator-bar" style="text-align:center; font-weight:800; color:#38bdf8; font-size:0.9rem; margin-bottom:6px;">當前回合：玩家 1 作答</div>
+      <div class="answers-stack" id="cloze-options-container"></div>
+      <div id="cloze-round-toast" class="battle-toast"></div>
+    </main>
+
+    <!-- 模式 3：不熟單字區 -->
+    <main id="view-mistakes" class="view-panel">
+      <div class="mistake-header">
+        <h3>待加強單字庫</h3>
+        <button id="clear-mistakes-btn" class="btn-danger-outline">全部清空</button>
+      </div>
+      <div id="mistakes-list" class="mistake-cards-container"></div>
+    </main>
+
+    <!-- 模式 4：後台管理介面 (含密碼鎖、章節指定、圖片辨識與JSON匯入) -->
+    <main id="view-admin" class="view-panel">
+      <!-- 密碼驗證鎖 -->
+      <div id="admin-auth-panel" class="card auth-box">
+        <div style="font-size:2.5rem; margin-bottom:8px;">🔐</div>
+        <h3>後台管理權限驗證</h3>
+        <p style="color:#64748b; font-size:0.85rem; margin:6px 0 16px;">請輸入管理密碼 (預設: admin888)</p>
+        <input type="password" id="admin-pwd-input" placeholder="請輸入密碼" class="admin-input-full" />
+        <button id="admin-login-btn" class="btn-primary" style="margin-top:10px;">解鎖後台</button>
+        <p id="auth-error-msg" style="color:var(--danger); font-size:0.85rem; margin-top:8px; display:none;">密碼錯誤！</p>
+      </div>
+
+      <!-- 後台核心操作區 -->
+      <div id="admin-main-panel" style="display:none;">
+        <div class="admin-header">
+          <h3>⚙️ 章節與題庫管理</h3>
+          <div>
+            <button id="admin-logout-btn" class="btn-danger-outline" style="margin-right:6px;">登出</button>
+            <button id="export-json-btn" class="btn-secondary-sm">📥 匯出全部 JSON</button>
+          </div>
+        </div>
+
+        <!-- 批次匯入與章節設定專區 -->
+        <div class="card" style="text-align:left; border:2px dashed #6366f1; background:#f8fafc; margin-bottom:16px;">
+          <h4 style="color:#4338ca; margin-bottom:4px;">🎯 題庫批次匯入與章節設定</h4>
+          <p style="color:#64748b; font-size:0.8rem; margin-bottom:12px;">上傳圖片（自動辨識轉檔）或直接上傳 .json 檔案，並統一指定歸屬章節。</p>
+          
+          <!-- 章節設定控制組 -->
+          <div style="background:white; padding:12px; border:1px solid #e2e8f0; border-radius:10px; margin-bottom:12px;">
+            <label style="font-size:0.85rem; font-weight:800; color:#1e293b; display:block; margin-bottom:6px;">第一步：設定欲匯入的章節</label>
+            <div class="form-row" style="align-items:center;">
+              <select id="import-chapter-select" style="flex:1; padding:8px; border-radius:8px; border:1.5px solid #cbd5e1; font-weight:700;">
+                <!-- 動態載入現有章節 -->
+              </select>
+              <input type="text" id="import-chapter-custom" placeholder="或輸入新章節名稱 (例如: Unit 3)" style="flex:1.5; padding:8px; border-radius:8px; border:1.5px solid #cbd5e1;" />
+            </div>
+            <small style="color:#94a3b8; font-size:0.75rem; margin-top:4px; display:block;">* 若填寫「新章節名稱」，將優先使用自訂名稱建立新章節分類。</small>
+          </div>
+
+          <!-- 匯入來源選擇 -->
+          <label style="font-size:0.85rem; font-weight:800; color:#1e293b; display:block; margin-bottom:6px;">第二步：選擇檔案來源</label>
+          <div style="display:flex; gap:10px; margin-bottom:10px;">
+            <label class="btn-sound" style="flex:1; text-align:center; cursor:pointer; background:#eef2ff; color:#4338ca; border-color:#c7d2fe;">
+              📸 選擇課本照片
+              <input type="file" id="ocr-image-input" accept="image/*" style="display:none;" />
+            </label>
+            <label class="btn-sound" style="flex:1; text-align:center; cursor:pointer; background:#f0fdf4; color:#15803d; border-color:#bbf7d0;">
+              📂 選擇 .json 題庫檔
+              <input type="file" id="json-file-input" accept=".json" style="display:none;" />
+            </label>
+          </div>
+
+          <!-- OCR 辨識進度條 -->
+          <div id="ocr-status-bar" style="display:none; margin:10px 0; font-size:0.85rem; font-weight:700; color:#4338ca;">
+            <span id="ocr-status-text">正在分析圖片單字中... 0%</span>
+            <div style="width:100%; height:6px; background:#e2e8f0; border-radius:3px; margin-top:4px;">
+              <div id="ocr-progress-inner" style="width:0%; height:100%; background:#4338ca; border-radius:3px; transition:width 0.2s;"></div>
+            </div>
+          </div>
+
+          <!-- JSON 預覽與確認儲存 -->
+          <div id="ocr-result-container" style="display:none; margin-top:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <label style="font-size:0.8rem; font-weight:800; color:#334155;">即將匯入之題目預覽 (可編輯微調)：</label>
+              <span id="pending-chapter-badge" class="chapter-tag" style="font-size:0.75rem;">目標章節: Unit 1</span>
+            </div>
+            <textarea id="ocr-json-output" style="width:100%; height:140px; font-family:monospace; font-size:0.8rem; margin-top:4px; padding:8px; border:1.5px solid #cbd5e1; border-radius:8px;"></textarea>
+            
+            <div style="display:flex; gap:8px; margin-top:8px;">
+              <button id="confirm-import-btn" class="btn-primary" style="flex:2; background:#10b981;">✅ 確認套用設定並匯入題庫</button>
+              <button id="download-parsed-json-btn" class="btn-secondary-sm" style="flex:1;">💾 下載 .json 檔</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 單筆手動新增表單 -->
+        <form id="add-word-form" class="admin-form card">
+          <h4>單筆手動新增</h4>
+          <div class="form-row">
+            <input type="text" id="new-chapter" placeholder="章節名稱 (如: Unit 1)" required />
+            <input type="text" id="new-pos" placeholder="詞性 (如: n. 或 phr.)" required />
+          </div>
+          <input type="text" id="new-word" placeholder="英文單字/片語 (如: cue)" required />
+          <input type="text" id="new-zh" placeholder="中文釋義 (如: 提示；線索)" required />
+          <textarea id="new-sentence" placeholder="克漏字例句（請用 ___ 代表空格）" required></textarea>
+          <div class="form-row">
+            <input type="text" id="new-opt2" placeholder="干擾選項 1" required />
+            <input type="text" id="new-opt3" placeholder="干擾選項 2" required />
+            <input type="text" id="new-opt4" placeholder="干擾選項 3" required />
+          </div>
+          <button type="submit" class="btn-primary" style="margin-top:10px;">➕ 新增至題庫</button>
+        </form>
+
+        <h4 style="margin: 15px 0 8px 0; color: #475569;">目前所有題庫清單 (<span id="total-word-count">0</span>)</h4>
+        <div id="admin-word-list" class="admin-list-container"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
