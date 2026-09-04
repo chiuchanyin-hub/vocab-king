@@ -83,7 +83,7 @@ body {
   display: flex;
 }
 
-/* ================= 模式 1：挑戰王 (純拼字 + 積分制) ================= */
+/* ================= 模式 1：單字挑戰王 ================= */
 .chapter-selector-bar {
   display: flex;
   align-items: center;
@@ -209,19 +209,95 @@ body {
   cursor: pointer;
 }
 
-.input-container input {
+/* 大尺寸動態虛線填空欄 */
+.letter-slots-wrapper {
+  position: relative;
   width: 100%;
-  padding: 16px;
-  border: 2px solid #cbd5e1;
-  border-radius: 14px;
-  font-size: 1.25rem;
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 12px;
-  outline: none;
+  min-height: 86px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8fafc;
+  border: 2.5px dashed #cbd5e1;
+  border-radius: 20px;
+  cursor: text;
+  padding: 14px 10px;
+  transition: all 0.2s ease;
 }
 
-.input-container input:focus { border-color: var(--primary-light); }
+.letter-slots-wrapper:focus-within, .letter-slots-wrapper:hover {
+  border-color: #6366f1;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+}
+
+.letter-slots-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+}
+
+/* 獨立虛線字格 */
+.slot-dash {
+  width: 46px;
+  height: 56px;
+  border-bottom: 5px dashed #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #1e293b;
+  text-transform: lowercase;
+  transition: all 0.15s ease;
+}
+
+.slot-dash.active {
+  border-bottom: 5px solid #4f46e5;
+  background: rgba(79, 70, 229, 0.06);
+  border-radius: 8px 8px 0 0;
+  animation: blinkBorder 1s infinite alternate;
+}
+
+.slot-dash.filled {
+  border-bottom: 5px solid #1e293b;
+}
+
+/* 答錯時標記紅色 */
+.slot-dash.wrong-char {
+  color: #ef4444 !important;
+  border-bottom: 5px solid #ef4444 !important;
+  background: #fef2f2;
+  border-radius: 8px 8px 0 0;
+}
+
+/* 答對時標記綠色 */
+.slot-dash.correct-char {
+  color: #10b981 !important;
+  border-bottom: 5px solid #10b981 !important;
+}
+
+.slot-space {
+  width: 20px;
+}
+
+@keyframes blinkBorder {
+  from { border-color: #4f46e5; }
+  to { border-color: #cbd5e1; }
+}
+
+.hidden-real-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: text;
+}
 
 .btn-primary {
   width: 100%;
@@ -233,6 +309,26 @@ body {
   font-size: 1.05rem;
   font-weight: 800;
   cursor: pointer;
+}
+
+/* NEXT 下一題按鈕 */
+.btn-next-action {
+  flex: 1;
+  padding: 14px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  animation: pulseNext 1.2s infinite alternate;
+}
+
+@keyframes pulseNext {
+  from { transform: scale(1); }
+  to { transform: scale(1.03); }
 }
 
 .feedback-box {
