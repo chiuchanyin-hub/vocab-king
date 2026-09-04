@@ -6,6 +6,7 @@ let defaultQuestions = [];
 let customQuestions = JSON.parse(localStorage.getItem('custom_questions') || '[]');
 let allQuestions = [];
 
+// 挑戰王隨機題庫變數
 let activeGameList = [];
 let currentGameIndex = 0;
 let gameScore = 0;
@@ -15,9 +16,9 @@ let gameTimer = null;
 let gameTimeLeft = 15;
 const GAME_INITIAL_TIME = 15;
 let autoPronounceTimeout = null;
-let isCurrentQuestionSubmitted = false; // 是否已確認送出當前題目
+let isCurrentQuestionSubmitted = false;
 
-// 克漏字對戰變數 (支援 PVE 人機 / PVP 雙人)
+// 克漏字對戰變數
 let activeClozeList = [];
 let currentClozeIndex = 0;
 let clozeBattleMode = 'pve';
@@ -30,6 +31,16 @@ const CLOZE_INITIAL_TIME = 10;
 const CIRCLE_CIRCUMFERENCE = 264;
 
 let mistakeIds = new Set(JSON.parse(localStorage.getItem('mistakes') || '[]'));
+
+// 經典隨機打亂演算法 (Fisher-Yates Shuffle)
+function shuffleArray(arr) {
+  const result = [...arr];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
 
 // 語音發音
 function playSound(text) {
@@ -128,6 +139,7 @@ function setupTabs() {
     });
   });
 
+  // 章節篩選變更（自動打亂隨機出題）
   document.getElementById('game-chapter-filter').addEventListener('change', () => {
     filterGameList();
     startNewGameSession();
@@ -161,24 +173,28 @@ function setupTabs() {
   });
 }
 
+// 篩選題目並隨機洗牌
 function filterGameList() {
   const f = document.getElementById('game-chapter-filter').value;
-  activeGameList = f === "全部章節" ? allQuestions : allQuestions.filter(q => q.chapter === f);
+  const filtered = f === "全部章節" ? allQuestions : allQuestions.filter(q => q.chapter === f);
+  // 核心：一律隨機出題！
+  activeGameList = shuffleArray(filtered);
 }
 
 function filterClozeList() {
   const f = document.getElementById('cloze-chapter-filter').value;
-  activeClozeList = f === "全部章節" ? allQuestions : allQuestions.filter(q => q.chapter === f);
+  const filtered = f === "全部章節" ? allQuestions : allQuestions.filter(q => q.chapter === f);
+  activeClozeList = shuffleArray(filtered);
 }
 
-// =================== 模式 1：單字挑戰王 (虛線 + 拼錯標紅 + NEXT按鈕) ===================
+// =================== 模式 1：純虛線填空無框 + 標紅 + 隨機出題 ===================
 function focusHiddenInput() {
   if (isCurrentQuestionSubmitted) return;
   const input = document.getElementById('answer-input');
   if (input) input.focus();
 }
 
-// 動態渲染虛線格 (包含答題後的逐字標紅對比邏輯)
+// 純虛線生成（幾個字母就幾條橫向虛線）
 function renderLetterSlots(targetWord, currentVal = '', isEvaluated = false) {
   const container = document.getElementById('letter-slots-container');
   if (!container) return;
@@ -191,30 +207,25 @@ function renderLetterSlots(targetWord, currentVal = '', isEvaluated = false) {
   targetChars.forEach((c) => {
     if (c === ' ') {
       const spaceDiv = document.createElement('div');
-      spaceDiv.className = 'slot-space';
+      spaceDiv.className = 'dash-gap';
       container.appendChild(spaceDiv);
     } else {
       const slot = document.createElement('div');
-      slot.className = 'slot-dash';
+      slot.className = 'dash-underline';
       
       const userChar = userLetters[charIdx] || '';
       slot.innerText = userChar;
 
       if (isEvaluated) {
-        // 已送出驗證：拼錯標紅色，拼對標綠色
         if (userChar === c) {
-          slot.classList.add('correct-char');
+          slot.classList.add('char-right');
         } else {
-          slot.classList.add('wrong-char');
-          // 如果孩子少打字，直接把漏掉的格子上紅底
-          if (!userChar) slot.innerText = '•';
+          slot.classList.add('char-wrong');
+          if (!userChar) slot.innerText = '•'; // 缺漏字母上標紅點
         }
       } else {
-        // 打字中狀態
-        if (userChar) {
-          slot.classList.add('filled');
-        } else if (charIdx === userLetters.length) {
-          slot.classList.add('active');
+        if (charIdx === userLetters.length) {
+          slot.classList.add('focusing');
         }
       }
 
@@ -260,7 +271,7 @@ function loadGameQuestion() {
   input.maxLength = q.word.length;
   focusHiddenInput();
 
-  // 繪製初始虛線
+  // 渲染幾條純虛線
   renderLetterSlots(q.word, '');
 
   document.getElementById('game-feedback').style.display = 'none';
@@ -306,7 +317,6 @@ function handleGameTimeout() {
   addMistake(q.id);
   playSound(q.word);
 
-  // 標記紅色
   renderLetterSlots(q.word, document.getElementById('answer-input').value, true);
 
   const fb = document.getElementById('game-feedback');
@@ -330,7 +340,7 @@ function submitGameAnswer() {
 
   input.disabled = true;
 
-  // 逐字對比並標記紅/綠色
+  // 逐字對比並標記紅/綠底線
   renderLetterSlots(target, userAns, true);
 
   if (userAns === target) {
@@ -350,18 +360,17 @@ function submitGameAnswer() {
     fb.innerHTML = `❌ 拼錯了！正解：<b>${activeGameList[currentGameIndex].word}</b> (已存入不熟區)`;
   }
 
-  // 隱藏送出鍵，顯示「NEXT 下一題」按鈕由孩子點擊
   document.getElementById('submit-btn').style.display = 'none';
   document.getElementById('next-question-btn').style.display = 'block';
 }
 
-// 點擊 NEXT 下一題按鈕切換
+// 點擊 NEXT 下一題
 document.getElementById('next-question-btn').addEventListener('click', () => {
   currentGameIndex++;
   loadGameQuestion();
 });
 
-// 即時打字同步更新虛線中的字母
+// 即時打字同步浮現在虛線上
 document.getElementById('answer-input').addEventListener('input', (e) => {
   if (!activeGameList.length || currentGameIndex >= activeGameList.length || isCurrentQuestionSubmitted) return;
   const target = activeGameList[currentGameIndex].word;
@@ -634,7 +643,6 @@ function getTargetImportChapter() {
   return selectVal || "Unit 1";
 }
 
-// 圖片 OCR 辨識解析
 document.getElementById('ocr-image-input').addEventListener('change', async (e) => {
   const file = e.target.files[0];
   if (!file) return;
@@ -720,7 +728,6 @@ function parseOcrTextToQuiz(rawText, chapterName) {
   return items;
 }
 
-// JSON 檔案直接匯入
 document.getElementById('json-file-input').addEventListener('change', (e) => {
   const file = e.target.files[0];
   if (!file) return;
@@ -753,7 +760,6 @@ document.getElementById('json-file-input').addEventListener('change', (e) => {
   reader.readAsText(file);
 });
 
-// 確認匯入題庫
 document.getElementById('confirm-import-btn').addEventListener('click', () => {
   try {
     const jsonStr = document.getElementById('ocr-json-output').value;
@@ -797,7 +803,6 @@ document.getElementById('download-parsed-json-btn').addEventListener('click', ()
   dl.remove();
 });
 
-// 單筆手動新增
 document.getElementById('add-word-form').addEventListener('submit', (e) => {
   e.preventDefault();
   const chapter = document.getElementById('new-chapter').value.trim();
@@ -873,7 +878,6 @@ document.getElementById('answer-input').addEventListener('keypress', (e) => {
     if (!isCurrentQuestionSubmitted) {
       submitGameAnswer();
     } else {
-      // 已經送出後，按 Enter 也能等同點擊 NEXT
       document.getElementById('next-question-btn').click();
     }
   }

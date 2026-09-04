@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>高中單字挑戰王 - 雙模實戰 APP</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- 引入瀏覽器端圖片文字辨識套件 (Tesseract.js) -->
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 </head>
 <body>
@@ -18,7 +17,7 @@
       <button class="nav-btn" id="tab-admin-btn">🔒 後台管理</button>
     </header>
 
-    <!-- 模式 1：單字挑戰王 (輸入英文字母 + 虛線填空 + NEXT按鈕) -->
+    <!-- 模式 1：單字挑戰王 (純虛線填空 + 隨機出題 + 90%通關) -->
     <main id="view-game" class="view-panel active">
       <div class="chapter-selector-bar">
         <label for="game-chapter-filter">🎯 挑戰範圍：</label>
@@ -54,10 +53,10 @@
         </div>
       </div>
 
-      <!-- 大尺寸動態虛線字母填空區 -->
-      <div class="letter-slots-wrapper" onclick="focusHiddenInput()">
-        <div id="letter-slots-container" class="letter-slots-row"></div>
-        <input type="text" id="answer-input" class="hidden-real-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+      <!-- 純虛線填空區（完全無外框，僅幾條底線） -->
+      <div class="pure-dashed-zone" onclick="focusHiddenInput()">
+        <div id="letter-slots-container" class="slots-flex-row"></div>
+        <input type="text" id="answer-input" class="ghost-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
       </div>
 
       <!-- 操作按鈕群：確認送出 / NEXT 下一題 -->

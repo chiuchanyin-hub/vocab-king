@@ -83,7 +83,7 @@ body {
   display: flex;
 }
 
-/* ================= 模式 1：單字挑戰王 ================= */
+/* ================= 模式 1：純虛線填空無框風格 ================= */
 .chapter-selector-bar {
   display: flex;
   align-items: center;
@@ -176,9 +176,10 @@ body {
 }
 
 .chinese-prompt {
-  font-size: 1.55rem;
+  font-size: 1.65rem;
   color: var(--dark);
   margin: 10px 0;
+  font-weight: 800;
 }
 
 .hint-audio-bar {
@@ -209,87 +210,74 @@ body {
   cursor: pointer;
 }
 
-/* 大尺寸動態虛線填空欄 */
-.letter-slots-wrapper {
+/* 純底線虛線展示區（無外框框） */
+.pure-dashed-zone {
   position: relative;
   width: 100%;
-  min-height: 86px;
+  min-height: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f8fafc;
-  border: 2.5px dashed #cbd5e1;
-  border-radius: 20px;
+  background: transparent; /* 完全透明無框 */
+  border: none !important;
   cursor: text;
-  padding: 14px 10px;
-  transition: all 0.2s ease;
+  padding: 10px 0;
 }
 
-.letter-slots-wrapper:focus-within, .letter-slots-wrapper:hover {
-  border-color: #6366f1;
-  background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
-}
-
-.letter-slots-row {
+.slots-flex-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 14px; /* 虛線彼此距離 */
   pointer-events: none;
 }
 
-/* 獨立虛線字格 */
-.slot-dash {
-  width: 46px;
-  height: 56px;
-  border-bottom: 5px dashed #64748b;
+/* 每一條獨立字母的底部虛線 */
+.dash-underline {
+  width: 44px;
+  height: 60px;
+  border-bottom: 5px dashed #475569; /* 明顯加粗的虛線 */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   font-weight: 900;
-  color: #1e293b;
+  color: #0f172a;
   text-transform: lowercase;
   transition: all 0.15s ease;
 }
 
-.slot-dash.active {
+/* 當前輸入中字母焦點底線 */
+.dash-underline.focusing {
   border-bottom: 5px solid #4f46e5;
-  background: rgba(79, 70, 229, 0.06);
-  border-radius: 8px 8px 0 0;
-  animation: blinkBorder 1s infinite alternate;
+  animation: blinkLine 0.9s infinite alternate;
 }
 
-.slot-dash.filled {
-  border-bottom: 5px solid #1e293b;
-}
-
-/* 答錯時標記紅色 */
-.slot-dash.wrong-char {
+/* 答錯時標紅色 */
+.dash-underline.char-wrong {
   color: #ef4444 !important;
   border-bottom: 5px solid #ef4444 !important;
-  background: #fef2f2;
-  border-radius: 8px 8px 0 0;
+  background: rgba(239, 68, 68, 0.08);
 }
 
-/* 答對時標記綠色 */
-.slot-dash.correct-char {
+/* 答對時標綠色 */
+.dash-underline.char-right {
   color: #10b981 !important;
   border-bottom: 5px solid #10b981 !important;
 }
 
-.slot-space {
-  width: 20px;
+.dash-gap {
+  width: 20px; /* 片語空格 */
 }
 
-@keyframes blinkBorder {
-  from { border-color: #4f46e5; }
-  to { border-color: #cbd5e1; }
+@keyframes blinkLine {
+  from { border-bottom-color: #4f46e5; }
+  to { border-bottom-color: #cbd5e1; }
 }
 
-.hidden-real-input {
+/* 隱藏原生輸入框，保持隨點隨打 */
+.ghost-input {
   position: absolute;
   top: 0;
   left: 0;
