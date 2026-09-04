@@ -534,12 +534,22 @@
       const acc = document.getElementById('stu-acc').value.trim();
       const pwd = document.getElementById('stu-pwd').value.trim();
       const name = document.getElementById('stu-name').value.trim();
-      if (students.some(s => s.acc === acc)) return alert("此學生帳號已存在！");
-      students.push({ acc, pwd, name });
-      localStorage.setItem('student_accounts', JSON.stringify(students));
-      renderStudents();
-      e.target.reset();
-      alert(`✅ 學生「${name}」帳號已建立！`);
+
+      if (currentStudents.some(s => s.acc === acc)) {
+        return alert("此學生帳號已存在！");
+      }
+
+      // 將新學生加入陣列並直接同步至 Firebase 雲端
+      const updatedStudents = [...currentStudents, { acc, pwd, name }];
+      
+      db.ref('students').set(updatedStudents).then(() => {
+        renderStudents();
+        e.target.reset();
+        alert(`✅ 學生「${name}」帳號已成功同步至雲端！`);
+      }).catch((error) => {
+        alert("同步雲端失敗：" + error.message);
+      });
+    });
     });
 
     // 修改管理員密碼
