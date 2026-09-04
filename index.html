@@ -67,7 +67,6 @@
     .mistake-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; background: white; }
     .btn-sound { background: #f1f5f9; border: 1px solid var(--border); padding: 4px 10px; border-radius: 8px; cursor: pointer; font-weight: 700; }
     
-    /* 知識王風格對戰 */
     .arena-bg { background: radial-gradient(circle at top, #1e293b 0%, #090d16 100%) !important; color: #ffffff; justify-content: space-between; }
     .cloze-top-control { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
     .chapter-select-dark { background: #1e293b; color: #f8fafc; border: 1px solid #475569; padding: 4px 10px; border-radius: 8px; font-weight: 600; outline: none; }
@@ -110,7 +109,7 @@
 <body>
   <div class="app-shell">
 
-    <!-- 0. 學生登入介面 -->
+    <!-- 學生登入介面 -->
     <div id="view-student-login" class="student-login-view">
       <div style="font-size:3.5rem; margin-bottom:10px;">👑</div>
       <h2 style="color:#0f172a; margin-bottom:6px;">高中單字挑戰王</h2>
@@ -129,7 +128,7 @@
       </div>
     </div>
 
-    <!-- 學生主操作畫面 (登入後解鎖) -->
+    <!-- 學生主操作畫面 -->
     <div id="view-student-main" style="display:none; flex-direction:column; flex:1;">
       <header class="app-nav">
         <div class="nav-tabs-group">
@@ -138,7 +137,6 @@
           <button class="nav-btn" id="tab-cloze-btn">⚔️ 克漏字對戰</button>
           <button class="nav-btn" id="tab-mistakes-btn">📖 不熟區 <span id="mistake-badge" class="badge">0</span></button>
         </div>
-        <!-- 核心：只留一個齒輪符號，點擊在新分頁開啟獨立 admin.html -->
         <a href="admin.html" target="_blank" class="btn-gear" title="開啟獨立後台管理平台">⚙️</a>
       </header>
 
@@ -147,7 +145,7 @@
         <button id="student-logout-btn" style="border:none; background:transparent; color:#ef4444; font-weight:800; cursor:pointer;">登出</button>
       </div>
 
-      <!-- 頁籤 1：純單字挑戰王 -->
+      <!-- 頁籤 1：單字挑戰王 -->
       <main id="view-game" class="view-panel active">
         <div class="chapter-selector-bar">
           <label for="game-chapter-filter">🎯 單字範圍：</label>
@@ -320,7 +318,6 @@
   </div>
 
   <script>
-    // 預設基礎題庫
     const DEFAULT_BASE_QUESTIONS = [
       {"id": 1, "chapter": "Unit 1", "word": "cue", "pos": "n.", "isPhrase": false, "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
       {"id": 2, "chapter": "Unit 1", "word": "declare", "pos": "v.", "isPhrase": false, "zh": "宣布；宣稱；申報", "sentence": "The government decided to ___ the day a public holiday.", "options": ["declare", "divorce", "disappoint", "finance"]},
@@ -349,7 +346,6 @@
       {"id": 105, "chapter": "Unit 1", "word": "corporate finance", "pos": "phr.", "isPhrase": true, "zh": "企業財務", "sentence": "She specialized in ___ and helps companies manage capital.", "options": ["corporate finance", "health insurance", "prime time", "intellectual property"]}
     ];
 
-    // 初始化題庫儲存（讓後台可以完全控制刪除與新增）
     if (!localStorage.getItem('app_all_questions')) {
       localStorage.setItem('app_all_questions', JSON.stringify(DEFAULT_BASE_QUESTIONS));
     }
@@ -390,7 +386,10 @@
     const CIRCLE_CIRCUMFERENCE = 264;
 
     let mistakeIds = new Set();
-    let autoPronounceTimer = null; // 唯一控制的發音定時器
+
+    // 🔥 全局發音控制核心 Token：避免多題混亂與排隊發音
+    let currentSpeechToken = 0;
+    let speechIntervalTimer = null;
 
     function shuffleArray(arr) {
       const res = [...arr];
@@ -401,8 +400,20 @@
       return res;
     }
 
-    // 🔥 語音核心：立即終止舊音，精準發音指定文字
-    function speakText(text) {
+    // 🔥 徹底殺死所有現有語音與所有排程
+    function killAllSpeech() {
+      currentSpeechToken++; // 使先前的計數器失效
+      if (speechIntervalTimer) {
+        clearTimeout(speechIntervalTimer);
+        speechIntervalTimer = null;
+      }
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    // 單純發音一次
+    function speakOnce(text) {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
         setTimeout(() => {
@@ -410,18 +421,51 @@
           utter.lang = 'en-US';
           utter.rate = 0.85;
           window.speechSynthesis.speak(utter);
-        }, 50);
+        }, 30);
       }
     }
 
-    function cancelAllSpeech() {
-      if (autoPronounceTimer) {
-        clearTimeout(autoPronounceTimer);
-        autoPronounceTimer = null;
+    // 🔥 核心發音：一個頁面唸 3 次，每次間隔 2 秒，換題或作答隨時截斷！
+    function startTripleSpeech(text) {
+      killAllSpeech();
+      const thisToken = currentSpeechToken;
+      let count = 0;
+
+      function speakRound() {
+        if (thisToken !== currentSpeechToken) return; // 已切題或已送出，立刻停止
+        if (count >= 3) return; // 念滿3次停止
+
+        count++;
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'en-US';
+        utter.rate = 0.85;
+
+        // 當本次朗讀結束後，間隔 2 秒再唸下一次
+        utter.onend = () => {
+          if (thisToken !== currentSpeechToken) return;
+          if (count < 3) {
+            speechIntervalTimer = setTimeout(() => {
+              speakRound();
+            }, 2000); // 間隔 2 秒
+          }
+        };
+
+        utter.onerror = () => {
+          if (thisToken !== currentSpeechToken) return;
+          if (count < 3) {
+            speechIntervalTimer = setTimeout(() => {
+              speakRound();
+            }, 2000);
+          }
+        };
+
+        window.speechSynthesis.speak(utter);
       }
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
+
+      // 進頁面後，延遲 2 秒再開始第 1 次發音
+      speechIntervalTimer = setTimeout(() => {
+        speakRound();
+      }, 2000);
     }
 
     function loadAllQuestions() {
@@ -527,7 +571,7 @@
 
     // =================== 1. 單字挑戰王 ===================
     function startNewWordSession() {
-      cancelAllSpeech();
+      killAllSpeech();
       currentWordIndex = 0;
       wordScore = 0;
       wordCorrectCount = 0;
@@ -538,7 +582,7 @@
     }
 
     function loadWordQuestion() {
-      cancelAllSpeech(); // 換題切實中斷任何殘留語音
+      killAllSpeech(); // 進入新題目，截斷之前所有語音
 
       if (!activeWordList.length) {
         document.getElementById('quiz-chinese').innerText = "此章節無單字題目";
@@ -571,10 +615,8 @@
       document.getElementById('submit-btn').style.display = 'block';
       document.getElementById('next-question-btn').style.display = 'none';
 
-      // 🔥 題目完全載入後，足足延遲 2 秒才自動發出【當前畫面單字】之音
-      autoPronounceTimer = setTimeout(() => {
-        speakText(q.word);
-      }, 2000);
+      // 🔥 啟動當前題目專屬的「念3次、間隔2秒」排程
+      startTripleSpeech(q.word);
 
       const lettersCount = q.word.replace(/[^a-zA-Z]/g, '').length;
       currentWordTotalTime = Math.max(10, lettersCount * 5);
@@ -602,11 +644,11 @@
     }
 
     function handleWordTimeout() {
-      cancelAllSpeech();
+      killAllSpeech(); // 超時立即中斷背景連唸，單獨朗讀一次正解
       isWordSubmitted = true;
       const q = activeWordList[currentWordIndex];
       addMistake(q.id);
-      speakText(q.word);
+      speakOnce(q.word);
 
       renderUnderlineSlots('letter-slots-container', q.word, document.getElementById('answer-input').value, true);
 
@@ -620,7 +662,7 @@
 
     function submitWordAnswer() {
       if (!activeWordList.length || currentWordIndex >= activeWordList.length || isWordSubmitted) return;
-      cancelAllSpeech();
+      killAllSpeech(); // 答題送出立刻截斷連唸
       clearInterval(wordTimer);
       isWordSubmitted = true;
 
@@ -637,13 +679,13 @@
         const earned = 100 + (wordTimeLeft * 15);
         wordScore += earned;
         document.getElementById('score-display').innerText = `積分：${wordScore}`;
-        speakText(target);
+        speakOnce(target);
 
         fb.className = 'feedback-box success';
         fb.innerHTML = `🎉 完全正確！+${earned} 積分`;
       } else {
         addMistake(activeWordList[currentWordIndex].id);
-        speakText(target);
+        speakOnce(target);
 
         fb.className = 'feedback-box error';
         fb.innerHTML = `❌ 拼錯了！請看上方綠色正確字母訂正`;
@@ -655,7 +697,7 @@
 
     function triggerRoundSummary() {
       clearInterval(wordTimer);
-      cancelAllSpeech();
+      killAllSpeech();
       const modal = document.getElementById('round-summary-modal');
       const acc = Math.round((wordCorrectCount / wordTotalCount) * 100) || 0;
 
@@ -684,7 +726,7 @@
 
     // =================== 2. 片語特訓專區 ===================
     function startNewPhraseSession() {
-      cancelAllSpeech();
+      killAllSpeech();
       currentPhraseIndex = 0;
       phraseScore = 0;
       document.getElementById('phrase-score-display').innerText = `積分：0`;
@@ -692,7 +734,7 @@
     }
 
     function loadPhraseQuestion() {
-      cancelAllSpeech();
+      killAllSpeech();
 
       if (!activePhraseList.length) {
         document.getElementById('phrase-chinese').innerText = "此章節無片語題目";
@@ -721,9 +763,8 @@
       document.getElementById('phrase-submit-btn').style.display = 'block';
       document.getElementById('phrase-next-btn').style.display = 'none';
 
-      autoPronounceTimer = setTimeout(() => {
-        speakText(q.word);
-      }, 2000);
+      // 片語同樣啟動 3 次間隔 2 秒排程
+      startTripleSpeech(q.word);
 
       const lettersCount = q.word.replace(/[^a-zA-Z]/g, '').length;
       currentPhraseTotalTime = Math.max(15, lettersCount * 5);
@@ -751,11 +792,11 @@
     }
 
     function handlePhraseTimeout() {
-      cancelAllSpeech();
+      killAllSpeech();
       isPhraseSubmitted = true;
       const q = activePhraseList[currentPhraseIndex];
       addMistake(q.id);
-      speakText(q.word);
+      speakOnce(q.word);
 
       renderUnderlineSlots('phrase-slots-container', q.word, document.getElementById('phrase-input').value, true);
 
@@ -769,7 +810,7 @@
 
     function submitPhraseAnswer() {
       if (!activePhraseList.length || isPhraseSubmitted) return;
-      cancelAllSpeech();
+      killAllSpeech();
       clearInterval(phraseTimer);
       isPhraseSubmitted = true;
 
@@ -785,13 +826,13 @@
         const earned = 100 + (phraseTimeLeft * 15);
         phraseScore += earned;
         document.getElementById('phrase-score-display').innerText = `積分：${phraseScore}`;
-        speakText(target);
+        speakOnce(target);
 
         fb.className = 'feedback-box success';
         fb.innerHTML = `🎉 片語完全正確！+${earned} 積分`;
       } else {
         addMistake(activePhraseList[currentPhraseIndex].id);
-        speakText(target);
+        speakOnce(target);
 
         fb.className = 'feedback-box error';
         fb.innerHTML = `❌ 拼錯了！請看上方綠色正確字母訂正`;
@@ -855,7 +896,7 @@
 
       if (isCorrect) {
         selectedBtn.classList.add('correct');
-        speakText(answerText);
+        speakOnce(answerText);
         const earned = 100 + (clozeTimeLeft * 15);
         if (clozeBattleMode === 'pve') {
           p1Score += earned;
@@ -875,7 +916,7 @@
           if (b.innerText.toLowerCase() === answerText.toLowerCase()) b.classList.add('correct');
         });
         addMistake(activeClozeList[currentClozeIndex].id);
-        speakText(answerText);
+        speakOnce(answerText);
         toast.innerHTML = `<span style="color:#f87171;">❌ 答錯！正解為 ${answerText}</span>`;
       }
 
@@ -898,7 +939,7 @@
     function handleClozeTimeout() {
       const currentWord = activeClozeList[currentClozeIndex].word;
       addMistake(activeClozeList[currentClozeIndex].id);
-      speakText(currentWord);
+      speakOnce(currentWord);
 
       const allBtns = document.querySelectorAll('#cloze-options-container .choice-btn');
       allBtns.forEach(b => {
@@ -970,7 +1011,7 @@
             <div style="color:#64748b; font-size:0.88rem; margin-top:2px;">${q.zh}</div>
           </div>
           <div>
-            <button class="btn-sound" onclick="speakText('${q.word}')">🔊</button>
+            <button class="btn-sound" onclick="speakOnce('${q.word}')">🔊</button>
             <button style="border:none; background:#fee2e2; color:#ef4444; padding:6px 10px; border-radius:8px; font-weight:700; cursor:pointer;" onclick="removeMistake(${q.id})">已熟記</button>
           </div>
         `;
@@ -982,7 +1023,6 @@
     window.addEventListener('DOMContentLoaded', () => {
       loadAllQuestions();
 
-      // 學生登入
       document.getElementById('student-login-btn').addEventListener('click', () => {
         const acc = document.getElementById('student-acc-input').value.trim();
         const pwd = document.getElementById('student-pwd-input').value.trim();
@@ -1008,17 +1048,15 @@
         }
       });
 
-      // 學生登出
       document.getElementById('student-logout-btn').addEventListener('click', () => {
         loggedInStudent = null;
-        cancelAllSpeech();
+        killAllSpeech();
         document.getElementById('view-student-main').style.display = 'none';
         document.getElementById('view-student-login').style.display = 'flex';
         document.getElementById('student-acc-input').value = '';
         document.getElementById('student-pwd-input').value = '';
       });
 
-      // 前台頁籤切換
       const tabs = [
         { btn: 'tab-game-btn', view: 'view-game' },
         { btn: 'tab-phrase-btn', view: 'view-phrase' },
@@ -1038,7 +1076,7 @@
           clearInterval(wordTimer);
           clearInterval(phraseTimer);
           clearInterval(clozeTimer);
-          cancelAllSpeech();
+          killAllSpeech();
 
           if (t.view === 'view-game') {
             if (!isWordSubmitted) startWordTimer();
@@ -1052,7 +1090,6 @@
         });
       });
 
-      // 章節切換
       document.getElementById('game-chapter-filter').addEventListener('change', () => {
         filterWordList();
         startNewWordSession();
@@ -1069,7 +1106,7 @@
 
       // 單字區操作
       document.getElementById('next-question-btn').addEventListener('click', () => {
-        cancelAllSpeech();
+        killAllSpeech(); // 按 NEXT 先立即截斷發音
         currentWordIndex++;
         loadWordQuestion();
       });
@@ -1089,15 +1126,16 @@
 
       document.getElementById('restart-round-btn').addEventListener('click', startNewWordSession);
 
-      // 🔥 關鍵修復：點擊「🔊 聽發音」按鈕，精確只唸當前畫面的單字！
+      // 手動點發音：只單純唸當前題目 1 次
       document.getElementById('game-sound-btn').addEventListener('click', () => {
         if (!activeWordList.length || currentWordIndex >= activeWordList.length) return;
-        speakText(activeWordList[currentWordIndex].word);
+        killAllSpeech();
+        speakOnce(activeWordList[currentWordIndex].word);
       });
 
       // 片語區操作
       document.getElementById('phrase-next-btn').addEventListener('click', () => {
-        cancelAllSpeech();
+        killAllSpeech(); // 按 NEXT 先立即截斷發音
         currentPhraseIndex = (currentPhraseIndex + 1) % activePhraseList.length;
         loadPhraseQuestion();
       });
@@ -1115,15 +1153,16 @@
         }
       });
 
-      // 🔥 關鍵修復：片語點擊「🔊 聽發音」，精確只唸當前畫面的片語！
       document.getElementById('phrase-sound-btn').addEventListener('click', () => {
         if (!activePhraseList.length || currentPhraseIndex >= activePhraseList.length) return;
-        speakText(activePhraseList[currentPhraseIndex].word);
+        killAllSpeech();
+        speakOnce(activePhraseList[currentPhraseIndex].word);
       });
 
       document.getElementById('cloze-listen-btn').addEventListener('click', () => {
         if (!activeClozeList.length) return;
-        speakText(activeClozeList[currentClozeIndex].sentence.replace('___', activeClozeList[currentClozeIndex].word));
+        killAllSpeech();
+        speakOnce(activeClozeList[currentClozeIndex].sentence.replace('___', activeClozeList[currentClozeIndex].word));
       });
 
       document.getElementById('clear-mistakes-btn').addEventListener('click', () => {
