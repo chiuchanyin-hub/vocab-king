@@ -41,9 +41,9 @@
     <div id="auth-panel" style="text-align:center; padding:50px 20px;">
       <div style="font-size:3.5rem; margin-bottom:10px;">🔐</div>
       <h2 style="color:#0f172a; margin-bottom:8px;">後台管理平台驗證</h2>
-      <p style="color:#64748b; font-size:0.85rem; margin-bottom:20px;">請輸入管理員密碼以進入專屬管理平台</p>
+      <p style="color:#64748b; font-size:0.85rem; margin-bottom:20px;">請輸入管理員密碼以進入專屬管理平台 (預設: admin888)</p>
       <div style="max-width:320px; margin:0 auto;">
-        <input type="password" id="admin-pwd-input" placeholder="請輸入管理密碼 (預設: admin888)" class="form-control" />
+        <input type="password" id="admin-pwd-input" placeholder="請輸入管理密碼" class="form-control" />
         <button id="auth-login-btn" class="btn-primary" style="width:100%; margin-top:6px;">登入後台 ➔</button>
         <p id="auth-err" style="color:var(--danger); font-size:0.85rem; margin-top:10px; display:none;">密碼錯誤！</p>
       </div>
@@ -165,7 +165,6 @@
       {"id": 20, "chapter": "Unit 1", "word": "reject", "pos": "v.", "isPhrase": false, "zh": "拒絕；不接受", "sentence": "The committee decided to ___ the proposal due to lack of merit.", "options": ["reject", "divorce", "declare", "finance"]}
     ];
 
-    let adminPwd = localStorage.getItem('app_admin_pwd') || "admin888";
     let questions = [];
     let students = JSON.parse(localStorage.getItem('student_accounts') || JSON.stringify([
       { acc: "Roger", pwd: "1209", name: "羅傑" },
@@ -186,28 +185,38 @@
       localStorage.setItem('app_all_questions', JSON.stringify(questions));
     }
 
-    document.getElementById('auth-login-btn').addEventListener('click', () => {
-      const input = document.getElementById('admin-pwd-input').value.trim();
-      if (input === adminPwd) {
-        document.getElementById('auth-panel').style.display = 'none';
-        document.getElementById('dashboard-panel').style.display = 'block';
-        document.getElementById('auth-err').style.display = 'none';
-        questions = getSavedQuestions();
-        renderAllDashboard();
-        checkApiKeyStatus();
-      } else {
-        document.getElementById('auth-err').style.display = 'block';
+    // 絕對順暢的登入綁定
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginBtn = document.getElementById('auth-login-btn');
+      const pwdInput = document.getElementById('admin-pwd-input');
+      const errEl = document.getElementById('auth-err');
+
+      function handleLogin() {
+        const input = pwdInput.value.trim();
+        const currentAdminPwd = localStorage.getItem('app_admin_pwd') || "admin888";
+        
+        if (input === currentAdminPwd) {
+          document.getElementById('auth-panel').style.display = 'none';
+          document.getElementById('dashboard-panel').style.display = 'block';
+          errEl.style.display = 'none';
+          questions = getSavedQuestions();
+          renderAllDashboard();
+          checkApiKeyStatus();
+        } else {
+          errEl.style.display = 'block';
+        }
       }
-    });
 
-    document.getElementById('admin-pwd-input').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') document.getElementById('auth-login-btn').click();
-    });
+      loginBtn.addEventListener('click', handleLogin);
+      pwdInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleLogin();
+      });
 
-    document.getElementById('logout-btn').addEventListener('click', () => {
-      document.getElementById('dashboard-panel').style.display = 'none';
-      document.getElementById('auth-panel').style.display = 'block';
-      document.getElementById('admin-pwd-input').value = '';
+      document.getElementById('logout-btn').addEventListener('click', () => {
+        document.getElementById('dashboard-panel').style.display = 'none';
+        document.getElementById('auth-panel').style.display = 'block';
+        pwdInput.value = '';
+      });
     });
 
     function renderAllDashboard() {
@@ -268,4 +277,151 @@
       });
       const result = await response.json();
       const rawText = result.candidates[0].content.parts[0].text.trim();
-      return JSON.parse(rawText.replace(/```json/gi, '').replace(/
+      return JSON.parse(rawText.replace(/```json/gi, '').replace(/```/g, '').trim());
+    }
+
+    document.getElementById('ocr-file').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const chapter = document.getElementById('ocr-chapter').value.trim() || "Unit 2";
+      const status = document.getElementById('ocr-status');
+      const apiKey = localStorage.getItem('gemini_api_key');
+      status.style.display = 'block';
+      if (apiKey) {
+        status.innerHTML = `<span class="spinner"></span> 正在運用 Gemini AI 解析照片...`;
+        try {
+          const parsed = await recognizeWithGemini(file, chapter, apiKey);
+          document.getElementById('ocr-json').value = JSON.stringify(parsed, null, 2);
+          document.getElementById('ocr-preview-box').style.display = 'block';
+          status.innerHTML = `✨ 辨識完成！擷取到 ${parsed.length} 題。`;
+        } catch (err) {
+          alert("辨識失敗: " + err.message);
+          status.style.display = 'none';
+        }
+      } else {
+        alert("請先設定 Gemini API Key！");
+        status.style.display = 'none';
+      }
+    });
+
+    document.getElementById('import-ocr-btn').addEventListener('click', () => {
+      try {
+        const items = JSON.parse(document.getElementById('ocr-json').value);
+        saveQuestions([...questions, ...items]);
+        updateChapterOptions();
+        renderQuestions();
+        document.getElementById('ocr-preview-box').style.display = 'none';
+        document.getElementById('ocr-status').style.display = 'none';
+        document.getElementById('ocr-file').value = '';
+        alert(`🎉 成功將 ${items.length} 題加入題庫！`);
+      } catch (e) {
+        alert("JSON 格式有誤！");
+      }
+    });
+
+    window.deleteQuestionItem = function(targetId) {
+      if (confirm("確定要刪除此題目嗎？")) {
+        const updated = questions.filter(q => String(q.id) !== String(targetId));
+        saveQuestions(updated);
+        renderQuestions();
+      }
+    };
+
+    document.getElementById('btn-restore-default').addEventListener('click', () => {
+      if (confirm("確定重設為預設題庫？")) {
+        saveQuestions([...DEFAULT_BASE_QUESTIONS]);
+        renderQuestions();
+      }
+    });
+
+    function updateChapterOptions() {
+      const select = document.getElementById('filter-chapter-select');
+      const cur = select.value;
+      const chapters = ["全部章節", ...new Set(questions.map(q => q.chapter || "Unit 1"))];
+      select.innerHTML = chapters.map(c => `<option value="${c}">${c}</option>`).join('');
+      if (chapters.includes(cur)) select.value = cur;
+    }
+
+    function renderQuestions() {
+      const container = document.getElementById('word-table-list');
+      container.innerHTML = '';
+      const keyword = document.getElementById('search-word-input').value.trim().toLowerCase();
+      const chapterFilter = document.getElementById('filter-chapter-select').value;
+
+      let list = questions;
+      if (chapterFilter && chapterFilter !== "全部章節") list = list.filter(q => q.chapter === chapterFilter);
+      if (keyword) list = list.filter(q => q.word.toLowerCase().includes(keyword) || q.zh.toLowerCase().includes(keyword));
+
+      document.getElementById('total-count-text').innerText = questions.length;
+
+      list.forEach(q => {
+        const div = document.createElement('div');
+        div.className = 'item-card';
+        div.innerHTML = `
+          <div>
+            <span class="tag">${q.chapter || 'Unit 1'}</span>
+            <span class="tag-pos">${q.pos || '詞性'}</span>
+            <strong style="margin-left:6px;">${q.word}</strong>
+            <span style="color:#64748b; margin-left:8px;">${q.zh}</span>
+          </div>
+          <button class="btn-del" onclick="deleteQuestionItem('${q.id}')">刪除</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    document.getElementById('search-word-input').addEventListener('input', renderQuestions);
+    document.getElementById('filter-chapter-select').addEventListener('change', renderQuestions);
+
+    function renderStudents() {
+      const container = document.getElementById('student-list');
+      container.innerHTML = '';
+      students.forEach((s, idx) => {
+        const d = document.createElement('div');
+        d.className = 'item-card';
+        d.innerHTML = `
+          <div>
+            <span class="tag">帳號: ${s.acc}</span>
+            <strong style="margin-left:8px;">${s.name}</strong>
+            <small style="color:#64748b; margin-left:8px;">(密碼: ${s.pwd})</small>
+          </div>
+          <button class="btn-del" onclick="delStudent(${idx})">刪除</button>
+        `;
+        container.appendChild(d);
+      });
+    }
+
+    window.delStudent = function(idx) {
+      if (confirm(`確定刪除「${students[idx].name}」？`)) {
+        students.splice(idx, 1);
+        localStorage.setItem('student_accounts', JSON.stringify(students));
+        renderStudents();
+      }
+    };
+
+    document.getElementById('add-student-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const acc = document.getElementById('stu-acc').value.trim();
+      const pwd = document.getElementById('stu-pwd').value.trim();
+      const name = document.getElementById('stu-name').value.trim();
+
+      if (students.some(s => s.acc.toLowerCase() === acc.toLowerCase())) {
+        return alert("此學生帳號已存在！");
+      }
+      students.push({ acc, pwd, name });
+      localStorage.setItem('student_accounts', JSON.stringify(students));
+      renderStudents();
+      e.target.reset();
+      alert(`✅ 學生「${name}」已建立！`);
+    });
+
+    document.getElementById('save-pwd-btn').addEventListener('click', () => {
+      const val = document.getElementById('new-admin-pwd').value.trim();
+      if (!val) return alert("密碼不能為空！");
+      localStorage.setItem('app_admin_pwd', val);
+      document.getElementById('new-admin-pwd').value = '';
+      alert("🎉 密碼已變更！下次請使用新密碼登入。");
+    });
+  </script>
+</body>
+</html>
