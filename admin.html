@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>單字挑戰王 - 獨立管理控制台</title>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <style>
+    :root {
+      --primary: #4338ca;
+      --success: #10b981;
+      --danger: #ef4444;
+      --border: #cbd5e1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: #0f172a; min-height: 100vh; padding: 24px 12px; display: flex; justify-content: center; }
+    .admin-container { width: 100%; max-width: 880px; background: #f8fafc; border-radius: 24px; padding: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+    .nav-bar { display: flex; justify-content: space-between; align-items: center; background: #1e293b; color: white; padding: 14px 20px; border-radius: 16px; margin-bottom: 20px; }
+    .section-card { background: white; border: 1.5px solid var(--border); border-radius: 16px; padding: 18px; margin-bottom: 18px; }
+    .section-card h3 { font-size: 1.05rem; color: #1e293b; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .btn-primary { background: var(--primary); color: white; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 800; cursor: pointer; }
+    .btn-excel { background: #10b981; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3); }
+    .btn-secondary { background: #e2e8f0; color: #334155; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+    .form-row { display: flex; gap: 8px; margin-bottom: 8px; }
+    .form-control { width: 100%; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; outline: none; margin-bottom: 8px; font-size: 0.9rem; }
+    .item-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; background: #ffffff; }
+    .btn-del { border: none; background: #fee2e2; color: #ef4444; border-radius: 6px; padding: 4px 10px; font-weight: 800; cursor: pointer; }
+    .tag { background: #e0e7ff; color: #4338ca; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <!-- 登入驗證遮罩 -->
+    <div id="auth-panel" style="text-align:center; padding:50px 20px;">
+      <div style="font-size:3.5rem; margin-bottom:10px;">🔐</div>
+      <h2 style="color:#0f172a; margin-bottom:8px;">後台管理平台驗證</h2>
+      <p style="color:#64748b; font-size:0.85rem; margin-bottom:20px;">請輸入管理員密碼以進入專屬管理平台</p>
+      <div style="max-width:320px; margin:0 auto;">
+        <input type="password" id="admin-pwd-input" placeholder="請輸入管理密碼 (預設: admin888)" class="form-control" />
+        <button id="auth-login-btn" class="btn-primary" style="width:100%; margin-top:6px;">登入後台 ➔</button>
+        <p id="auth-err" style="color:var(--danger); font-size:0.85rem; margin-top:10px; display:none;">密碼錯誤！</p>
+      </div>
+    </div>
+
+    <!-- 獨立後台工作台 -->
+    <div id="dashboard-panel" style="display:none;">
+      <div class="nav-bar">
+        <div>
+          <h2 style="font-size:1.3rem;">⚙️ 單字挑戰王 - 獨立管理控制台</h2>
+          <span style="font-size:0.8rem; color:#94a3b8;">題庫刪除與匯入 / 學生帳密管理 / Excel 報表匯出</span>
+        </div>
+        <button id="logout-btn" class="btn-secondary" style="background:#334155; color:white;">登出</button>
+      </div>
+
+      <!-- 區塊 1：📊 Excel 錯題與題庫匯出 -->
+      <div class="section-card" style="border:2px solid #10b981; background:#f0fdf4;">
+        <h3 style="color:#065f46;">📊 錯題報表與題庫資料匯出</h3>
+        <p style="font-size:0.85rem; color:#166534; margin-bottom:12px;">一鍵打包學生做錯的單字片語，自動產出可直接列印的 Excel 診斷卷。</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <button id="export-excel-btn" class="btn-excel">📊 匯出【錯題 EXCEL 檔】(.xlsx)</button>
+          <button id="export-json-btn" class="btn-secondary">📥 匯出【完整題庫 JSON】(.json)</button>
+        </div>
+      </div>
+
+      <!-- 區塊 2：👥 學生帳密建立與管理 -->
+      <div class="section-card">
+        <h3>👥 學生帳號密碼管理</h3>
+        <form id="add-student-form" class="form-row" style="flex-wrap:wrap; margin-bottom:10px;">
+          <input type="text" id="stu-acc" placeholder="帳號 (例如: s101)" required style="flex:1.2;" class="form-control" />
+          <input type="password" id="stu-pwd" placeholder="密碼 (例如: 1234)" required style="flex:1.2;" class="form-control" />
+          <input type="text" id="stu-name" placeholder="學生姓名" required style="flex:1.2;" class="form-control" />
+          <button type="submit" class="btn-primary" style="flex:1; height:42px;">➕ 建立帳號</button>
+        </form>
+        <div id="student-list" style="max-height:160px; overflow-y:auto;"></div>
+      </div>
+
+      <!-- 區塊 3：🔐 修改管理員密碼 -->
+      <div class="section-card">
+        <h3>🔐 修改管理員後台密碼</h3>
+        <div class="form-row">
+          <input type="password" id="new-admin-pwd" placeholder="請輸入新的管理密碼" class="form-control" style="margin-bottom:0;" />
+          <button id="save-pwd-btn" class="btn-primary" style="white-space:nowrap;">儲存新密碼</button>
+        </div>
+      </div>
+
+      <!-- 區塊 4：📸 圖片 OCR 批次轉入題庫 -->
+      <div class="section-card" style="border:2px dashed #6366f1;">
+        <h3 style="color:#4338ca;">📸 課本照片文字辨識（OCR 自動建題）</h3>
+        <div class="form-row">
+          <input type="text" id="ocr-chapter" placeholder="設定匯入章節 (如: Unit 2)" value="Unit 2" class="form-control" style="flex:1; margin-bottom:0;" />
+          <input type="file" id="ocr-file" accept="image/*" class="form-control" style="flex:2; margin-bottom:0;" />
+        </div>
+        <div id="ocr-status" style="display:none; color:#4338ca; font-weight:800; font-size:0.85rem; margin:8px 0;">正在分析圖片文字中...</div>
+        <div id="ocr-preview-box" style="display:none; margin-top:10px;">
+          <textarea id="ocr-json" style="width:100%; height:120px; font-family:monospace; padding:8px; border-radius:8px; border:1px solid #cbd5e1;"></textarea>
+          <button id="import-ocr-btn" class="btn-primary" style="margin-top:6px; background:#10b981;">✅ 確認加入題庫</button>
+        </div>
+      </div>
+
+      <!-- 區塊 5：🗑️ 題目管理與刪除（核心功能） -->
+      <div class="section-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+          <h3>🗑️ 題目管理（可直接刪除目前題庫）</h3>
+          <span style="font-size:0.85rem; font-weight:800; color:#475569;">總題數：<b id="total-count-text" style="color:#4338ca;">0</b> 題</span>
+        </div>
+        <div class="form-row">
+          <input type="text" id="search-word-input" placeholder="🔍 搜尋欲刪除或檢視的單字/片語..." class="form-control" style="margin-bottom:10px;" />
+        </div>
+        <div id="word-table-list" style="max-height:360px; overflow-y:auto;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let adminPwd = localStorage.getItem('app_admin_pwd') || "admin888";
+    let questions = JSON.parse(localStorage.getItem('app_all_questions') || '[]');
+    let students = JSON.parse(localStorage.getItem('student_accounts') || JSON.stringify([
+      { acc: "student1", pwd: "1234", name: "示範生小明" }
+    ]));
+
+    // 登入後台
+    document.getElementById('auth-login-btn').addEventListener('click', () => {
+      const input = document.getElementById('admin-pwd-input').value.trim();
+      if (input === adminPwd) {
+        document.getElementById('auth-panel').style.display = 'none';
+        document.getElementById('dashboard-panel').style.display = 'block';
+        document.getElementById('auth-err').style.display = 'none';
+        renderAllDashboard();
+      } else {
+        document.getElementById('auth-err').style.display = 'block';
+      }
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      document.getElementById('dashboard-panel').style.display = 'none';
+      document.getElementById('auth-panel').style.display = 'block';
+      document.getElementById('admin-pwd-input').value = '';
+    });
+
+    function renderAllDashboard() {
+      renderStudents();
+      renderQuestions();
+    }
+
+    // 學生帳密管理
+    function renderStudents() {
+      const container = document.getElementById('student-list');
+      container.innerHTML = '';
+      students.forEach((s, idx) => {
+        const d = document.createElement('div');
+        d.className = 'item-card';
+        d.innerHTML = `
+          <div>
+            <span class="tag">帳號: ${s.acc}</span>
+            <strong style="margin-left:6px;">${s.name}</strong>
+            <small style="color:#64748b; margin-left:6px;">(密碼: ${s.pwd})</small>
+          </div>
+          <button class="btn-del" onclick="delStudent(${idx})">刪除</button>
+        `;
+        container.appendChild(d);
+      });
+    }
+
+    window.delStudent = function(idx) {
+      if (confirm(`確定刪除「${students[idx].name}」的帳號？`)) {
+        students.splice(idx, 1);
+        localStorage.setItem('student_accounts', JSON.stringify(students));
+        renderStudents();
+      }
+    };
+
+    document.getElementById('add-student-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const acc = document.getElementById('stu-acc').value.trim();
+      const pwd = document.getElementById('stu-pwd').value.trim();
+      const name = document.getElementById('stu-name').value.trim();
+      if (students.some(s => s.acc === acc)) return alert("帳號已存在！");
+      students.push({ acc, pwd, name });
+      localStorage.setItem('student_accounts', JSON.stringify(students));
+      renderStudents();
+      e.target.reset();
+      alert(`✅ 學生「${name}」帳號已建立！`);
+    });
+
+    // 修改後台密碼
+    document.getElementById('save-pwd-btn').addEventListener('click', () => {
+      const val = document.getElementById('new-admin-pwd').value.trim();
+      if (!val) return alert("密碼不能為空！");
+      adminPwd = val;
+      localStorage.setItem('app_admin_pwd', val);
+      document.getElementById('new-admin-pwd').value = '';
+      alert("🎉 後台管理密碼已成功變更！");
+    });
+
+    // 🔥 核心功能：渲染題庫清單並支援刪除任何題目
+    function renderQuestions(filterKeyword = '') {
+      const container = document.getElementById('word-table-list');
+      container.innerHTML = '';
+      const list = filterKeyword 
+        ? questions.filter(q => q.word.toLowerCase().includes(filterKeyword.toLowerCase()) || q.zh.includes(filterKeyword))
+        : questions;
+
+      document.getElementById('total-count-text').innerText = questions.length;
+
+      if (list.length === 0) {
+        container.innerHTML = `<p style="text-align:center; color:#94a3b8; padding:20px;">無符合題目</p>`;
+        return;
+      }
+
+      list.forEach(q => {
+        const div = document.createElement('div');
+        div.className = 'item-card';
+        div.innerHTML = `
+          <div>
+            <span class="tag">${q.chapter || 'Unit 1'}</span>
+            <span class="tag" style="background:#fef3c7; color:#b45309;">${q.pos}</span>
+            <strong style="font-size:1.05rem; margin-left:6px;">${q.word}</strong>
+            <span style="color:#64748b; margin-left:8px;">${q.zh}</span>
+          </div>
+          <button class="btn-del" onclick="deleteQuestion(${q.id})">刪除</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // 刪除題目
+    window.deleteQuestion = function(id) {
+      const target = questions.find(q => q.id === id);
+      if (!target) return;
+      if (confirm(`確定要刪除題目「${target.word}」？`)) {
+        questions = questions.filter(q => q.id !== id);
+        localStorage.setItem('app_all_questions', JSON.stringify(questions));
+        renderQuestions(document.getElementById('search-word-input').value.trim());
+      }
+    };
+
+    document.getElementById('search-word-input').addEventListener('input', (e) => {
+      renderQuestions(e.target.value.trim());
+    });
+
+    // 匯出 Excel
+    document.getElementById('export-excel-btn').addEventListener('click', () => {
+      // 聚合所有學生的錯題
+      let allBadIds = new Set();
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('mistakes_')) {
+          const ids = JSON.parse(localStorage.getItem(key) || '[]');
+          ids.forEach(id => allBadIds.add(id));
+        }
+      }
+
+      if (allBadIds.size === 0) {
+        return alert("目前系統內沒有任何學生的錯題記錄！");
+      }
+
+      const badList = questions.filter(q => allBadIds.has(q.id));
+      const excelData = badList.map((q, idx) => ({
+        "編號": idx + 1,
+        "章節": q.chapter || "Unit 1",
+        "類型": q.isPhrase ? "片語" : "單字",
+        "英文詞彙": q.word,
+        "詞性": q.pos,
+        "中文釋義": q.zh,
+        "例句參考": (q.sentence || "").replace('___', `[ ${q.word} ]`)
+      }));
+
+      const ws = XLSX.utils.json_to_sheet(excelData);
+      ws['!cols'] = [{ wch: 6 }, { wch: 12 }, { wch: 10 }, { wch: 22 }, { wch: 10 }, { wch: 26 }, { wch: 45 }];
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "錯題清單");
+      XLSX.writeFile(wb, `高中單字挑戰王_錯題總表_${Date.now()}.xlsx`);
+    });
+
+    // 匯出 JSON
+    document.getElementById('export-json-btn').addEventListener('click', () => {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(questions, null, 2));
+      const dl = document.createElement('a');
+      dl.setAttribute("href", dataStr);
+      dl.setAttribute("download", `vocab_questions_${Date.now()}.json`);
+      document.body.appendChild(dl);
+      dl.click();
+      dl.remove();
+    });
+
+    // 圖片 OCR
+    document.getElementById('ocr-file').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const chapter = document.getElementById('ocr-chapter').value.trim() || "Unit 2";
+      const status = document.getElementById('ocr-status');
+      status.style.display = 'block';
+      status.innerText = '正在使用 OCR 辨識圖片單字中...';
+
+      try {
+        const result = await Tesseract.recognize(file, 'chi_tra+eng');
+        const lines = result.data.text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+        const posRegex = /(n\.|v\.|adj\.|adv\.|phr\.|prep\.)/i;
+        const parsed = [];
+
+        lines.forEach(line => {
+          const m = line.match(posRegex);
+          if (m) {
+            const pos = m[0].toLowerCase();
+            const parts = line.split(m[0]);
+            let w = parts[0].replace(/^[0-9\s\.\-]+/, '').replace(/\[.*?\]/, '').trim();
+            let z = parts[1] ? parts[1].replace(/^[0-9\s\.\-]+/, '').trim() : "核心字彙";
+            if (w.length >= 2 && /^[a-zA-Z\s\-]+$/.test(w)) {
+              parsed.push({
+                id: Date.now() + Math.floor(Math.random() * 100000),
+                chapter: chapter,
+                word: w.toLowerCase(),
+                pos: pos,
+                isPhrase: (pos === 'phr.' || w.includes(' ')),
+                zh: z,
+                sentence: "It is essential to understand ___.",
+                options: [w.toLowerCase(), "optA", "optB", "optC"]
+              });
+            }
+          }
+        });
+
+        document.getElementById('ocr-json').value = JSON.stringify(parsed, null, 2);
+        document.getElementById('ocr-preview-box').style.display = 'block';
+        status.innerText = `辨識成功，解析出 ${parsed.length} 個題目！`;
+      } catch (err) {
+        alert("OCR 辨識失敗！");
+        status.style.display = 'none';
+      }
+    });
+
+    document.getElementById('import-ocr-btn').addEventListener('click', () => {
+      try {
+        const items = JSON.parse(document.getElementById('ocr-json').value);
+        if (!Array.isArray(items) || items.length === 0) return alert("題目為空！");
+        questions = [...questions, ...items];
+        localStorage.setItem('app_all_questions', JSON.stringify(questions));
+        renderQuestions();
+        document.getElementById('ocr-preview-box').style.display = 'none';
+        document.getElementById('ocr-status').style.display = 'none';
+        alert(`✅ 成功匯入 ${items.length} 題！`);
+      } catch (e) {
+        alert("JSON 語法錯誤！");
+      }
+    });
+  </script>
+</body>
+</html>
