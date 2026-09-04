@@ -85,34 +85,30 @@
       </div>
     </div>
 
-    <!-- ==================== 新增：學生大廳介面 ==================== -->
+    <!-- ==================== 學生大廳介面 ==================== -->
     <div id="view-student-lobby" style="display:none; flex-direction:column; padding: 30px 24px; flex:1; align-items:center; justify-content:center;">
       <h2 style="color:#0f172a; margin-bottom:8px; font-size:1.8rem;">👋 歡迎，<span id="lobby-student-name" style="color:var(--primary);"></span></h2>
       <p id="lobby-perm-tag" style="color:#10b981; font-weight:700; font-size:0.95rem; margin-bottom: 24px;"></p>
       
       <div class="card" style="width:100%; text-align:left; padding: 24px;">
-        <label style="font-weight:800; font-size:0.95rem; color:#334155; margin-bottom:6px; display:block;">1. 選擇單字庫分類：</label>
+        <h3 style="color:#1e293b; margin-bottom:16px; font-size:1.1rem; text-align:center;">🎯 請選擇訓練範圍</h3>
+        
+        <label style="font-weight:800; font-size:0.95rem; color:#334155; margin-bottom:6px; display:block;">1. 單字庫大分類：</label>
         <select id="lobby-category-select" class="admin-input-full" style="font-size:1rem; padding:12px;"></select>
 
-        <label style="font-weight:800; font-size:0.95rem; color:#334155; margin-bottom:6px; display:block; margin-top:16px;">2. 選擇單元範圍：</label>
+        <label style="font-weight:800; font-size:0.95rem; color:#334155; margin-bottom:6px; display:block; margin-top:16px;">2. 章節 / 資料夾：</label>
         <select id="lobby-folder-select" class="admin-input-full" style="font-size:1rem; padding:12px;"></select>
         
-        <label style="font-weight:800; font-size:0.95rem; color:#334155; margin-bottom:6px; display:block; margin-top:16px;">3. 選擇訓練模式：</label>
-        <select id="lobby-mode-select" class="admin-input-full" style="font-size:1rem; padding:12px;">
-          <option value="tab-game-btn">👑 單字挑戰 (拼寫/作答)</option>
-          <option value="tab-phrase-btn">🧩 片語特訓</option>
-          <option value="tab-cloze-btn">⚔️ 克漏字對戰</option>
-          <option value="tab-mistakes-btn">📖 不熟區複習</option>
-        </select>
-        
-        <button id="lobby-start-btn" class="btn-primary" style="margin-top: 20px; font-size:1.1rem; padding:14px; background:#10b981;">🚀 進入訓練</button>
+        <!-- 大廳不再選擇模式，模式由原本上方的頁籤決定 -->
+        <button id="lobby-start-btn" class="btn-primary" style="margin-top: 24px; font-size:1.1rem; padding:14px; background:#10b981;">🚀 進入訓練區</button>
       </div>
       <button id="lobby-logout-btn" class="btn-secondary" style="margin-top: 20px; width:100%; padding:12px;">登出換人</button>
     </div>
-    <!-- ==================== 結束大廳 ==================== -->
 
-    <!-- 學生主操作畫面 -->
+    <!-- ==================== 學生主操作畫面 ==================== -->
     <div id="view-student-main" style="display:none; flex-direction:column; flex:1;">
+      
+      <!-- 保留你原本設計的上方導覽列 -->
       <header class="app-nav">
         <div class="nav-tabs-group">
           <button class="nav-btn active" id="tab-game-btn">👑 單字挑戰</button>
@@ -124,14 +120,14 @@
 
       <div style="background:#f1f5f9; padding:6px 14px; font-size:0.8rem; font-weight:700; color:#475569; display:flex; justify-content:space-between; align-items:center;">
         <span>👤 目前學生：<b id="cur-student-name" style="color:#4338ca;">學生</b></span>
-        <button id="student-logout-btn" style="border:none; background:transparent; color:#ef4444; font-weight:800; cursor:pointer;">登出</button>
       </div>
 
-      <!-- 頁籤 1：單字挑戰王 -->
+      <!-- 頁籤 1：單字挑戰王 (你的原版互動設計) -->
       <main id="view-game" class="view-panel active">
-        <!-- ==================== 安插：回大廳按鈕 ==================== -->
         <div class="chapter-selector-bar">
+          <!-- 加上這顆 回大廳 按鈕 -->
           <button id="btn-back-lobby" class="btn-secondary" style="padding:6px 10px; font-size:0.75rem; background:#cbd5e1; color:#334155; margin-right:8px; border-radius:8px;">🏠 回大廳</button>
+          
           <label for="game-chapter-filter" style="margin-left:auto;">🎯 單字範圍：</label>
           <select id="game-chapter-filter" class="chapter-dropdown"></select>
         </div>
@@ -186,10 +182,11 @@
     let activeWordList = [];
     let currentWordIndex = 0;
     let wordScore = 0;
-    let currentLobbyCategory = "高中學測"; // 儲存目前大廳選擇的分類
+    let currentLobbyCategory = "高中學測";
 
     window.addEventListener('DOMContentLoaded', () => {
-      // 登入邏輯改寫：登入後先前往大廳，並依權限過濾分類
+      
+      // 登入邏輯：驗證帳密後，進入大廳，並依權限過濾分類
       document.getElementById('student-login-btn').addEventListener('click', () => {
         const acc = document.getElementById('student-acc-input').value.trim().toLowerCase();
         const pwd = document.getElementById('student-pwd-input').value.trim();
@@ -206,25 +203,22 @@
 
         if (found) {
           loggedInStudent = found;
-          loggedInStudent.perm = loggedInStudent.perm || "高中"; // 預設權限
+          loggedInStudent.perm = loggedInStudent.perm || "高中"; 
           
           document.getElementById('view-student-login').style.display = 'none';
           document.getElementById('view-student-lobby').style.display = 'flex';
           
           document.getElementById('lobby-student-name').innerText = found.name;
-          document.getElementById('lobby-perm-tag').innerText = `目前權限：${loggedInStudent.perm === '國中' ? '📚 國中題庫專用' : '📖 高中與進階題庫'}`;
+          document.getElementById('lobby-perm-tag').innerText = `權限範圍：${loggedInStudent.perm === '國中' ? '📚 國中專用' : '📖 高中與進階題庫'}`;
           document.getElementById('student-login-err').style.display = 'none';
 
           initLobbyCategories();
         } else {
-          const errEl = document.getElementById('student-login-err');
-          errEl.style.display = 'block';
-          errEl.innerText = `帳號或密碼錯誤！`;
+          document.getElementById('student-login-err').style.display = 'block';
         }
       });
 
-      // ----------------- 大廳功能 -----------------
-      // 初始化大廳的分類下拉選單
+      // 初始化大廳的大分類下拉選單
       function initLobbyCategories() {
         const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
         const allCats = [...new Set(allQuestions.map(q => q.category || "高中學測"))];
@@ -244,7 +238,6 @@
         updateLobbyFolders();
       }
 
-      // 依據大廳選擇的分類，更新單元下拉選單
       function updateLobbyFolders() {
         const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
         const cat = document.getElementById('lobby-category-select').value;
@@ -257,33 +250,7 @@
 
       document.getElementById('lobby-category-select').addEventListener('change', updateLobbyFolders);
 
-      // 大廳：開始訓練按鈕
-      document.getElementById('lobby-start-btn').addEventListener('click', () => {
-        currentLobbyCategory = document.getElementById('lobby-category-select').value;
-        const selectedFolder = document.getElementById('lobby-folder-select').value;
-        const selectedModeBtnId = document.getElementById('lobby-mode-select').value;
-        
-        document.getElementById('view-student-lobby').style.display = 'none';
-        document.getElementById('view-student-main').style.display = 'flex';
-        document.getElementById('cur-student-name').innerText = loggedInStudent.name;
-
-        // 同步上方選擇器的資料
-        updateChapterDropdowns();
-        const mainDropdown = document.getElementById('game-chapter-filter');
-        if ([...mainDropdown.options].some(o => o.value === selectedFolder)) {
-          mainDropdown.value = selectedFolder;
-        }
-
-        // 模擬點擊原本的頁籤來切換模式（視覺效果）
-        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-        const modeBtn = document.getElementById(selectedModeBtnId);
-        if (modeBtn) modeBtn.classList.add('active');
-
-        filterWordList();
-        startNewWordSession();
-      });
-
-      // 大廳：登出按鈕
+      // 大廳登出按鈕
       document.getElementById('lobby-logout-btn').addEventListener('click', () => {
         loggedInStudent = null;
         document.getElementById('view-student-lobby').style.display = 'none';
@@ -292,23 +259,34 @@
         document.getElementById('student-pwd-input').value = '';
       });
 
-      // 主畫面：回大廳按鈕
+      // 點擊「進入訓練」離開大廳，進入原本的遊戲頁面
+      document.getElementById('lobby-start-btn').addEventListener('click', () => {
+        currentLobbyCategory = document.getElementById('lobby-category-select').value;
+        const selectedFolder = document.getElementById('lobby-folder-select').value;
+        
+        document.getElementById('view-student-lobby').style.display = 'none';
+        document.getElementById('view-student-main').style.display = 'flex';
+        document.getElementById('cur-student-name').innerText = loggedInStudent.name;
+
+        // 同步遊戲頁面的下拉選單
+        updateChapterDropdowns();
+        const mainDropdown = document.getElementById('game-chapter-filter');
+        if ([...mainDropdown.options].some(o => o.value === selectedFolder)) {
+          mainDropdown.value = selectedFolder;
+        }
+
+        filterWordList();
+        startNewWordSession();
+      });
+
+      // 回大廳按鈕
       document.getElementById('btn-back-lobby').addEventListener('click', () => {
         document.getElementById('view-student-main').style.display = 'none';
         document.getElementById('view-student-lobby').style.display = 'flex';
         initLobbyCategories();
       });
 
-      // 原本的主畫面登出按鈕（保留）
-      document.getElementById('student-logout-btn').addEventListener('click', () => {
-        loggedInStudent = null;
-        document.getElementById('view-student-main').style.display = 'none';
-        document.getElementById('view-student-login').style.display = 'flex';
-        document.getElementById('student-acc-input').value = '';
-        document.getElementById('student-pwd-input').value = '';
-      });
-
-      // ----------------- 保留的遊戲邏輯 -----------------
+      // 以下全數保留你的原版遊戲邏輯
       document.getElementById('game-chapter-filter').addEventListener('change', () => {
         filterWordList();
         startNewWordSession();
@@ -331,7 +309,6 @@
       });
     });
 
-    // 嚴格依據 currentLobbyCategory 更新選單
     function updateChapterDropdowns() {
       const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
       const filtered = allQuestions.filter(q => (q.category || "高中學測") === currentLobbyCategory);
@@ -346,7 +323,6 @@
       filterWordList();
     }
 
-    // 嚴格依據 currentLobbyCategory 與選擇的資料夾進行過濾
     function filterWordList() {
       const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
       const f = document.getElementById('game-chapter-filter')?.value || "全部章節";
@@ -357,7 +333,7 @@
         (q.category || "高中學測") === currentLobbyCategory
       );
       
-      activeWordList = f === "全部章節" ? [...base] : base.filter(q => (q.folder || q.chapter) === f);
+      activeWordList = f === "全部章節" ? [...base] : base.filter(q => (q.folder || q.chapter || "Unit 1") === f);
     }
 
     function startNewWordSession() {
