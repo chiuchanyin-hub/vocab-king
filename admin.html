@@ -72,28 +72,7 @@
         </div>
       </div>
 
-      <!-- 區塊 1：✍️ 手動新增單字 -->
-      <div class="section-card" style="border:2px solid #4338ca; background:#f0f4ff;">
-        <h3 style="color:#4338ca;">✍️ 手動新增單字</h3>
-        <form id="manual-add-form">
-          <div class="form-row">
-            <select id="manual-category" class="form-control" style="flex:1;">
-              <option value="國中">📚 國中</option>
-              <option value="高中學測" selected>📖 高中學測</option>
-              <option value="Level 4">🌟 Level 4</option>
-            </select>
-            <input type="text" id="manual-folder" placeholder="資料夾/單元 (例如: Unit 1)" class="form-control" style="flex:1;" required />
-          </div>
-          <div class="form-row">
-            <input type="text" id="manual-word" placeholder="英文單字 (例如: approach)" class="form-control" style="flex:1;" required />
-            <input type="text" id="manual-pos" placeholder="詞性 (例如: n./v.)" class="form-control" style="flex:0.6;" required />
-            <input type="text" id="manual-zh" placeholder="中文釋義 (例如: 接近；方法)" class="form-control" style="flex:1.4;" required />
-          </div>
-          <button type="submit" class="btn-primary" style="width:100%;">➕ 手動加入題庫</button>
-        </form>
-      </div>
-
-      <!-- 區塊 2：📸 AI 拍照建題 -->
+      <!-- 區塊 1：📸 AI 拍照建題 -->
       <div class="section-card" style="border:2px dashed #6366f1;">
         <h3 style="color:#4338ca;">📸 課本照片智慧辨識（Gemini 拍照自動建題）</h3>
         <div class="form-row">
@@ -114,6 +93,27 @@
             <button id="cancel-ocr-btn" class="btn-secondary" style="flex:0.3;">取消</button>
           </div>
         </div>
+      </div>
+
+      <!-- 區塊 2：✍️ 手動新增單字 -->
+      <div class="section-card" style="border:2px solid #4338ca; background:#f0f4ff;">
+        <h3 style="color:#4338ca;">✍️ 手動新增單字</h3>
+        <form id="manual-add-form">
+          <div class="form-row">
+            <select id="manual-category" class="form-control" style="flex:1;">
+              <option value="國中">📚 國中</option>
+              <option value="高中學測" selected>📖 高中學測</option>
+              <option value="Level 4">🌟 Level 4</option>
+            </select>
+            <input type="text" id="manual-folder" placeholder="資料夾/單元 (例如: Unit 1)" class="form-control" style="flex:1;" required />
+          </div>
+          <div class="form-row">
+            <input type="text" id="manual-word" placeholder="英文單字 (例如: approach)" class="form-control" style="flex:1;" required />
+            <input type="text" id="manual-pos" placeholder="詞性 (例如: n./v.)" class="form-control" style="flex:0.6;" required />
+            <input type="text" id="manual-zh" placeholder="中文釋義 (例如: 接近；方法)" class="form-control" style="flex:1.4;" required />
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;">➕ 手動加入題庫</button>
+        </form>
       </div>
 
       <!-- 區塊 3：📊 Excel 檔案批次匯入題庫 -->
@@ -267,46 +267,7 @@
       checkApiKeyStatus();
     });
 
-    // ✍️ 手動新增單字處理
-    document.getElementById('manual-add-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const category = document.getElementById('manual-category').value;
-      const folder = document.getElementById('manual-folder').value.trim();
-      const word = document.getElementById('manual-word').value.trim().toLowerCase();
-      const pos = document.getElementById('manual-pos').value.trim();
-      const zh = document.getElementById('manual-zh').value.trim();
-
-      const allWordsPool = questions.map(q => q.word).filter(w => w !== word);
-      let distractors = ["apple", "banana", "student", "computer"];
-      if (allWordsPool.length >= 3) {
-        const shuffled = [...allWordsPool].sort(() => 0.5 - Math.random());
-        distractors = shuffled.slice(0, 3);
-      }
-      let options = [word, ...distractors];
-      options.sort(() => Math.random() - 0.5);
-
-      const newQ = {
-        id: Date.now(),
-        category: category,
-        folder: folder,
-        word: word,
-        pos: pos,
-        isPhrase: word.includes(' ') || word.includes('-'),
-        zh: zh,
-        sentence: `The student needs to learn the word ___ (${zh}).`,
-        options: options
-      };
-
-      questions.push(newQ);
-      saveQuestions();
-      renderAllDashboard();
-
-      document.getElementById('manual-word').value = '';
-      document.getElementById('manual-pos').value = '';
-      document.getElementById('manual-zh').value = '';
-      alert(`✅ 成功手動新增單字 "${word}" 至 [${category} / ${folder}]！`);
-    });
-
+    // 📸 Gemini AI 拍照辨識建題
     function fileToBase64(file) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -391,6 +352,46 @@
       document.getElementById('ocr-preview-box').style.display = 'none';
       document.getElementById('ocr-status').style.display = 'none';
       document.getElementById('ocr-file').value = '';
+    });
+
+    // ✍️ 手動新增單字處理
+    document.getElementById('manual-add-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const category = document.getElementById('manual-category').value;
+      const folder = document.getElementById('manual-folder').value.trim();
+      const word = document.getElementById('manual-word').value.trim().toLowerCase();
+      const pos = document.getElementById('manual-pos').value.trim();
+      const zh = document.getElementById('manual-zh').value.trim();
+
+      const allWordsPool = questions.map(q => q.word).filter(w => w !== word);
+      let distractors = ["apple", "banana", "student", "computer"];
+      if (allWordsPool.length >= 3) {
+        const shuffled = [...allWordsPool].sort(() => 0.5 - Math.random());
+        distractors = shuffled.slice(0, 3);
+      }
+      let options = [word, ...distractors];
+      options.sort(() => Math.random() - 0.5);
+
+      const newQ = {
+        id: Date.now(),
+        category: category,
+        folder: folder,
+        word: word,
+        pos: pos,
+        isPhrase: word.includes(' ') || word.includes('-'),
+        zh: zh,
+        sentence: `The student needs to learn the word ___ (${zh}).`,
+        options: options
+      };
+
+      questions.push(newQ);
+      saveQuestions();
+      renderAllDashboard();
+
+      document.getElementById('manual-word').value = '';
+      document.getElementById('manual-pos').value = '';
+      document.getElementById('manual-zh').value = '';
+      alert(`✅ 成功手動新增單字 "${word}" 至 [${category} / ${folder}]！`);
     });
 
     // 📊 Excel 匯入
