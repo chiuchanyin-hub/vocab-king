@@ -75,7 +75,7 @@
     <div id="view-student-login" class="student-login-view">
       <div style="font-size:3.5rem; margin-bottom:10px;">👑</div>
       <h2 style="color:#0f172a; margin-bottom:6px;">高中單字挑戰王</h2>
-      <p style="color:#10b981; font-size:0.85rem; margin-bottom:20px; font-weight:700;">系統就緒 🟢 (題庫同步模式)</p>
+      <p style="color:#10b981; font-size:0.85rem; margin-bottom:20px; font-weight:700;">系統就緒 🟢 (動態題庫同步)</p>
       
       <div style="width:100%; max-width:340px;">
         <input type="text" id="student-acc-input" placeholder="學生帳號 (例如: Roger)" class="admin-input-full" />
@@ -150,33 +150,25 @@
 
   <script>
     const DEFAULT_BASE_QUESTIONS = [
-      {"id": 1, "chapter": "Unit 1", "word": "cue", "pos": "n.", "isPhrase": false, "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]}
+      {"id": 1, "chapter": "Unit 1", "word": "cue", "pos": "n.", "isPhrase": false, "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
+      {"id": 2, "chapter": "Unit 1", "word": "declare", "pos": "v.", "isPhrase": false, "zh": "宣布；宣稱；申報", "sentence": "The government decided to ___ the day a public holiday.", "options": ["declare", "divorce", "disappoint", "finance"]}
     ];
 
-    // 從 localStorage 同步讀取後台建立的學生帳號與完整題庫
-    let studentAccounts = JSON.parse(localStorage.getItem('student_accounts') || JSON.stringify([
-      { acc: "Roger", pwd: "1209", name: "羅傑" },
-      { acc: "student1", pwd: "1234", name: "示範生小明" }
-    ]));
-
-    // 關鍵修改：直接讀取後台儲存的完整題庫 app_all_questions
-    let allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
     let loggedInStudent = null;
-
     let activeWordList = [];
     let currentWordIndex = 0;
     let wordScore = 0;
 
     window.addEventListener('DOMContentLoaded', () => {
-      updateChapterDropdowns();
-
       document.getElementById('student-login-btn').addEventListener('click', () => {
         const acc = document.getElementById('student-acc-input').value.trim().toLowerCase();
         const pwd = document.getElementById('student-pwd-input').value.trim();
 
-        // 每次登入時重新同步最新名單與題庫
-        studentAccounts = JSON.parse(localStorage.getItem('student_accounts') || JSON.stringify(studentAccounts));
-        allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(allQuestions));
+        // 每次登入時動態從 localStorage 讀取最新建立的學生名單
+        const studentAccounts = JSON.parse(localStorage.getItem('student_accounts') || JSON.stringify([
+          { acc: "Roger", pwd: "1209", name: "羅傑" },
+          { acc: "student1", pwd: "1234", name: "示範生小明" }
+        ]));
 
         const found = studentAccounts.find(s => 
           String(s.acc || '').trim().toLowerCase() === acc && 
@@ -230,7 +222,8 @@
     });
 
     function updateChapterDropdowns() {
-      allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(allQuestions));
+      // 每次更新章節選單時，強制從 localStorage 讀取最新題庫
+      const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
       const chapters = ["全部章節", ...new Set(allQuestions.map(q => q.chapter || "Unit 1"))];
       const wordSelect = document.getElementById('game-chapter-filter');
       if (wordSelect) {
@@ -242,6 +235,7 @@
     }
 
     function filterWordList() {
+      const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
       const f = document.getElementById('game-chapter-filter')?.value || "全部章節";
       const base = allQuestions.filter(q => !q.isPhrase && !q.word.trim().includes(' '));
       activeWordList = f === "全部章節" ? [...base] : base.filter(q => q.chapter === f);
