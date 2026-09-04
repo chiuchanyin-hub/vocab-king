@@ -54,7 +54,7 @@
       <div class="nav-bar">
         <div>
           <h2 style="font-size:1.3rem;">⚙️ 單字挑戰王 - 獨立管理控制台</h2>
-          <span style="font-size:0.8rem; color:#94a3b8;">AI 視覺建題 / 題庫管理 / 學生帳密 / 報表匯出</span>
+          <span style="font-size:0.8rem; color:#94a3b8;">AI 視覺建題 / 手動補題 / 題庫管理 / 學生帳密</span>
         </div>
         <button id="logout-btn" class="btn-secondary" style="background:#334155; color:white;">登出</button>
       </div>
@@ -73,24 +73,43 @@
         <div id="api-key-status" style="font-size:0.75rem; margin-top:6px; color:#15803d; font-weight:700;"></div>
       </div>
 
-      <!-- 區塊 1：📸 照片 AI 智慧辨識建題 -->
+      <!-- 區塊 1：📸 照片 AI 智慧辨識建題 (含手動補單筆欄位) -->
       <div class="section-card" style="border:2px dashed #6366f1;">
-        <h3 style="color:#4338ca;">📸 課本照片智慧辨識（拍照自動建題）</h3>
+        <h3 style="color:#4338ca;">📸 課本照片智慧辨識與手動補題</h3>
         <p style="font-size:0.82rem; color:#64748b; margin-bottom:10px;">
-          支援單欄、雙欄、排版混亂與透光課本。有填寫上方 API Key 將自動啟用 <b>Gemini 2.0 Flash 智慧視覺辨識</b>。
+          拍照辨識後可於下方預覽框微調，或直接利用下方的<b>手動輸入表單</b>補上未辨識到的單字！
         </p>
+        
         <div class="form-row">
           <input type="text" id="ocr-chapter" placeholder="設定匯入章節 (如: Unit 2)" value="Unit 2" class="form-control" style="flex:1; margin-bottom:0;" />
           <input type="file" id="ocr-file" accept="image/*" class="form-control" style="flex:2; margin-bottom:0;" />
         </div>
         <div id="ocr-status" style="display:none; color:#4338ca; font-weight:800; font-size:0.9rem; margin:10px 0;"></div>
+        
         <div id="ocr-preview-box" style="display:none; margin-top:10px;">
           <div style="font-size:0.8rem; font-weight:700; color:#334155; margin-bottom:4px;">預覽解析結果（可自由手動修改）：</div>
-          <textarea id="ocr-json" style="width:100%; height:160px; font-family:monospace; padding:8px; border-radius:8px; border:1.5px solid #cbd5e1; font-size:0.85rem;"></textarea>
+          <textarea id="ocr-json" style="width:100%; height:140px; font-family:monospace; padding:8px; border-radius:8px; border:1.5px solid #cbd5e1; font-size:0.85rem;"></textarea>
           <div style="display:flex; gap:8px; margin-top:6px;">
-            <button id="import-ocr-btn" class="btn-primary" style="background:#10b981; flex:1;">✅ 確認將題目加入題庫</button>
+            <button id="import-ocr-btn" class="btn-primary" style="background:#10b981; flex:1;">✅ 確認將辨識題目加入題庫</button>
             <button id="cancel-ocr-btn" class="btn-secondary" style="flex:0.3;">取消</button>
           </div>
+        </div>
+
+        <!-- 🔥 新增：手動輸入單筆題目表單 -->
+        <div style="margin-top:16px; padding-top:14px; border-top:1px solid #e2e8f0;">
+          <h4 style="font-size:0.9rem; color:#1e293b; margin-bottom:8px;">✏️ 另外手動補上一筆題目：</h4>
+          <form id="manual-add-form">
+            <div class="form-row">
+              <input type="text" id="man-chapter" placeholder="章節 (如: Unit 2)" required class="form-control" style="flex:1; margin-bottom:6px;" />
+              <input type="text" id="man-pos" placeholder="詞性 (如: v. 或 n.)" required class="form-control" style="flex:1; margin-bottom:6px;" />
+            </div>
+            <div class="form-row">
+              <input type="text" id="man-word" placeholder="英文單字或片語 (如: abandon)" required class="form-control" style="flex:1; margin-bottom:6px;" />
+              <input type="text" id="man-zh" placeholder="中文釋義 (如: 遺棄；放棄)" required class="form-control" style="flex:1.5; margin-bottom:6px;" />
+            </div>
+            <input type="text" id="man-sentence" placeholder="例句 (請用 ___ 代表空格，如: Do not ___ your friends.)" required class="form-control" style="margin-bottom:6px;" />
+            <button type="submit" class="btn-primary" style="background:#4338ca; width:100%; padding:8px;">➕ 立即手動新增此單字</button>
+          </form>
         </div>
       </div>
 
@@ -262,7 +281,7 @@
       });
     }
 
-    // ✨ 核心升級：Gemini 智慧視覺辨識演算法（使用 gemini-2.0-flash 模型）
+    // Gemini 智慧視覺辨識演算法
     async function recognizeWithGemini(file, chapterName, apiKey) {
       const { base64Data, mimeType } = await fileToBase64(file);
 
@@ -306,7 +325,7 @@
       return JSON.parse(cleanJson);
     }
 
-    // 圖片辨識分流（Gemini 優先，Tesseract 備用）
+    // 圖片辨識分流
     document.getElementById('ocr-file').addEventListener('change', async (e) => {
       const file = e.target.files[0];
       if (!file) return;
@@ -388,6 +407,47 @@
       } catch (e) {
         alert("JSON 格式有誤，請檢查標點符號！");
       }
+    });
+
+    // 🔥 處理手動單筆新增表單提交
+    document.getElementById('manual-add-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const chapter = document.getElementById('man-chapter').value.trim();
+      const pos = document.getElementById('man-pos').value.trim().toLowerCase();
+      const word = document.getElementById('man-word').value.trim().toLowerCase();
+      const zh = document.getElementById('man-zh').value.trim();
+      let sentence = document.getElementById('man-sentence').value.trim();
+
+      if (!sentence.includes('___')) {
+        // 如果忘記加 ___，自動將單字替換為 ___
+        sentence = sentence.replace(new RegExp(word, 'gi'), '___');
+        if (!sentence.includes('___')) {
+          sentence = `Please learn the word ___. (${sentence})`;
+        }
+      }
+
+      const newQ = {
+        id: Date.now() + Math.floor(Math.random() * 10000),
+        chapter: chapter,
+        word: word,
+        pos: pos,
+        isPhrase: (pos === 'phr.' || word.includes(' ')),
+        zh: zh,
+        sentence: sentence,
+        options: [word, "optionA", "optionB", "optionC"]
+      };
+
+      saveQuestions([...questions, newQ]);
+      updateChapterOptions();
+      renderQuestions();
+      e.target.reset();
+      alert(`✅ 成功手動新增題目「${word}」！`);
+    });
+
+    document.getElementById('cancel-ocr-btn').addEventListener('click', () => {
+      document.getElementById('ocr-preview-box').style.display = 'none';
+      document.getElementById('ocr-status').style.display = 'none';
+      document.getElementById('ocr-file').value = '';
     });
 
     // 刪除題目的字串相容機制
