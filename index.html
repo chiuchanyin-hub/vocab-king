@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>高中單字挑戰王 - 實戰 APP</title>
+  <title>高中單字挑戰王 - 雲端即時版</title>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
   <style>
     :root {
       --primary: #4338ca;
@@ -23,7 +26,6 @@
     .nav-btn { flex: 1; min-width: 75px; border: none; background: transparent; padding: 9px 4px; border-radius: 12px; font-weight: 700; font-size: 0.8rem; color: #94a3b8; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px; white-space: nowrap; }
     .nav-btn.active { background: #334155; color: #f8fafc; }
     .btn-gear { border: none; background: #334155; color: #cbd5e1; width: 38px; height: 38px; border-radius: 12px; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; text-decoration: none; }
-    .btn-gear:hover { background: #475569; color: #ffffff; transform: rotate(45deg); }
     .badge { background: var(--danger); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 10px; }
     .view-panel { display: none; flex-direction: column; padding: 18px; flex: 1; }
     .view-panel.active { display: flex; }
@@ -49,75 +51,40 @@
     .correction-slot-top { height: 26px; display: flex; align-items: center; justify-content: center; margin-bottom: 4px; width: 100%; }
     .correct-letter-badge { background: #10b981; color: #ffffff; font-size: 1.05rem; font-weight: 900; width: 26px; height: 24px; border-radius: 6px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(16, 185, 129, 0.4); text-transform: lowercase; }
     .dash-underline { width: 100%; height: 48px; border-bottom: 4px solid #94a3b8 !important; display: flex; align-items: center; justify-content: center; font-size: 1.95rem; font-weight: 900; color: #0f172a; text-transform: lowercase; transition: all 0.15s ease; }
-    .dash-underline.focusing { border-bottom: 4px solid #4f46e5 !important; background: rgba(79, 70, 229, 0.05); border-radius: 6px 6px 0 0; animation: blinkLine 0.9s infinite alternate; }
+    .dash-underline.focusing { border-bottom: 4px solid #4f46e5 !important; background: rgba(79, 70, 229, 0.05); border-radius: 6px 6px 0 0; }
     .dash-underline.char-wrong { color: #ef4444 !important; border-bottom: 4px solid #ef4444 !important; background: rgba(239, 68, 68, 0.08); border-radius: 6px 6px 0 0; }
     .dash-underline.char-right { color: #10b981 !important; border-bottom: 4px solid #10b981 !important; background: rgba(16, 185, 129, 0.08); border-radius: 6px 6px 0 0; }
     .dash-gap { width: 18px; }
-    @keyframes blinkLine { from { border-bottom-color: #4f46e5; } to { border-bottom-color: #cbd5e1; } }
     .ghost-input { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0 !important; cursor: text; }
     .btn-primary { width: 100%; padding: 13px; background: var(--primary); color: white; border: none; border-radius: 14px; font-size: 1rem; font-weight: 800; cursor: pointer; }
-    .btn-next-action { flex: 1; padding: 14px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-size: 1.05rem; font-weight: 800; cursor: pointer; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); animation: pulseNext 1.2s infinite alternate; }
-    @keyframes pulseNext { from { transform: scale(1); } to { transform: scale(1.03); } }
+    .btn-next-action { flex: 1; padding: 14px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-size: 1.05rem; font-weight: 800; cursor: pointer; }
     .feedback-box { margin-top: 14px; padding: 12px 16px; border-radius: 12px; font-weight: 700; display: none; justify-content: space-between; align-items: center; }
     .feedback-box.success { background: #ecfdf5; color: #065f46; display: flex; }
     .feedback-box.error { background: #fef2f2; color: #991b1b; display: flex; }
     .admin-input-full { width: 100%; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; margin-bottom: 8px; outline: none; }
-    .btn-danger-outline { border: none; background: transparent; color: var(--danger); font-weight: 700; cursor: pointer; }
-    .mistake-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
     .mistake-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; background: white; }
-    .btn-sound { background: #f1f5f9; border: 1px solid var(--border); padding: 4px 10px; border-radius: 8px; cursor: pointer; font-weight: 700; }
     
     .arena-bg { background: radial-gradient(circle at top, #1e293b 0%, #090d16 100%) !important; color: #ffffff; justify-content: space-between; }
     .cloze-top-control { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
     .chapter-select-dark { background: #1e293b; color: #f8fafc; border: 1px solid #475569; padding: 4px 10px; border-radius: 8px; font-weight: 600; outline: none; }
-    .mode-switch-pill { display: flex; background: #1e293b; border-radius: 10px; padding: 3px; gap: 4px; border: 1px solid #475569; }
-    .mode-switch-btn { background: transparent; border: none; color: #94a3b8; padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; }
-    .mode-switch-btn.active { background: #38bdf8; color: #020617; }
-    .battle-top-hud { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-    .player-card { display: flex; flex-direction: column; align-items: center; width: 80px; position: relative; }
-    .avatar-frame { width: 60px; height: 60px; border-radius: 14px; background: linear-gradient(135deg, #38bdf8, #1e40af); padding: 2.5px; }
-    .avatar-placeholder { width: 100%; height: 100%; background: #1e293b; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; }
-    .player-name { font-size: 0.8rem; font-weight: 800; margin-top: 4px; color: #e2e8f0; }
-    .radial-timer-box { position: relative; width: 74px; height: 74px; }
-    .radial-timer-svg { width: 100%; height: 100%; transform: rotate(-90deg); }
-    .timer-track { fill: none; stroke: rgba(255, 255, 255, 0.1); stroke-width: 7; }
-    .timer-progress { fill: none; stroke: #38bdf8; stroke-width: 7; stroke-linecap: round; stroke-dasharray: 264; stroke-dashoffset: 0; transition: stroke-dashoffset 1s linear, stroke 0.3s; }
-    .timer-number { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; font-weight: 900; color: #ffffff; }
-    .arena-middle { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 8px 0; }
-    .meter-column { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 22px; }
-    .score-num { font-size: 0.8rem; font-weight: 900; color: #94a3b8; }
-    .meter-track { width: 12px; height: 150px; background: rgba(255, 255, 255, 0.08); border: 1.5px solid rgba(255, 255, 255, 0.2); border-radius: 8px; position: relative; overflow: hidden; }
-    .meter-fill { position: absolute; bottom: 0; width: 100%; height: 0%; transition: height 0.4s ease; }
-    .user-fill { background: linear-gradient(to top, #0284c7, #38bdf8); }
-    .bot-fill { background: linear-gradient(to top, #e11d48, #fb7185); }
-    .question-core { flex: 1; text-align: center; }
-    .cloze-sentence-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px; padding: 14px; font-size: 1.05rem; line-height: 1.6; }
-    .btn-sound-glow { background: #1e293b; color: #38bdf8; border: 1.5px solid #38bdf8; padding: 4px 10px; border-radius: 8px; font-size: 0.85rem; font-weight: 800; cursor: pointer; }
     .answers-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 6px; }
-    .choice-btn { width: 100%; padding: 15px 16px; background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%); border: none; border-radius: 14px; font-size: 1.15rem; font-weight: 800; color: #1e293b; box-shadow: 0 5px 0 #94a3b8; cursor: pointer; text-align: center; }
+    .choice-btn { width: 100%; padding: 15px 16px; background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%); border: none; border-radius: 14px; font-size: 1.15rem; font-weight: 800; color: #1e293b; cursor: pointer; }
     .choice-btn.correct { background: linear-gradient(180deg, #34d399 0%, #059669 100%) !important; color: #fff !important; }
     .choice-btn.wrong { background: linear-gradient(180deg, #f87171 0%, #dc2626 100%) !important; color: #fff !important; }
     .battle-toast { text-align: center; font-weight: 800; min-height: 22px; }
-    .modal-overlay { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.85); display: flex; justify-content: center; align-items: center; padding: 20px; z-index: 99; }
-    .modal-card { background: white; width: 100%; border-radius: 24px; padding: 28px 20px; text-align: center; }
-    .summary-stats { background: #f8fafc; border: 1px solid var(--border); border-radius: 14px; padding: 14px; margin: 14px 0; line-height: 1.8; font-weight: 700; }
-    .summary-verdict-box { padding: 12px; border-radius: 12px; font-weight: 800; font-size: 1.1rem; }
-    .verdict-pass { background: #ecfdf5; color: #065f46; border: 2px solid #34d399; }
-    .verdict-fail { background: #fef2f2; color: #991b1b; border: 2px solid #f87171; }
   </style>
 </head>
 <body>
   <div class="app-shell">
-
     <!-- 學生登入介面 -->
     <div id="view-student-login" class="student-login-view">
       <div style="font-size:3.5rem; margin-bottom:10px;">👑</div>
       <h2 style="color:#0f172a; margin-bottom:6px;">高中單字挑戰王</h2>
-      <p style="color:#64748b; font-size:0.85rem; margin-bottom:24px;">請輸入學生帳號與密碼開始練習</p>
+      <p id="cloud-sync-hint" style="color:#64748b; font-size:0.85rem; margin-bottom:20px;">正在連線雲端資料庫...</p>
       
       <div style="width:100%; max-width:340px;">
-        <input type="text" id="student-acc-input" placeholder="學生帳號 (例如: student1)" class="admin-input-full" />
-        <input type="password" id="student-pwd-input" placeholder="密碼 (預設: 1234)" class="admin-input-full" />
+        <input type="text" id="student-acc-input" placeholder="學生帳號" class="admin-input-full" />
+        <input type="password" id="student-pwd-input" placeholder="密碼" class="admin-input-full" />
         <button id="student-login-btn" class="btn-primary" style="margin-top:6px;">進入系統挑戰 ➔</button>
         <p id="student-login-err" style="color:var(--danger); font-size:0.85rem; margin-top:10px; display:none;">帳號或密碼錯誤！請洽老師</p>
       </div>
@@ -156,7 +123,7 @@
           <span id="game-progress-tag" class="pill pill-level">進度：0 / 0</span>
           <span id="score-display" class="pill pill-score">積分：0</span>
           <div class="timer-wrapper">
-            <span class="timer-icon">⏱️</span>
+            <span>⏱️</span>
             <span id="timer-count">15</span>s
           </div>
         </div>
@@ -171,10 +138,9 @@
             <span id="quiz-pos" class="pos-tag">詞性</span>
           </div>
           <h2 id="quiz-chinese" class="chinese-prompt">題目載入中...</h2>
-          
           <div class="hint-audio-bar">
-            <span id="quiz-hint" class="hint-text">長度：3 字母・首字 [ c ]</span>
-            <button type="button" id="game-sound-btn" class="btn-sound-hint" title="點擊聽發音">🔊 聽發音</button>
+            <span id="quiz-hint" class="hint-text">提示資訊</span>
+            <button type="button" id="game-sound-btn" class="btn-sound-hint">🔊 聽發音</button>
           </div>
         </div>
 
@@ -189,21 +155,6 @@
         </div>
 
         <div id="game-feedback" class="feedback-box"></div>
-
-        <div id="round-summary-modal" class="modal-overlay" style="display:none;">
-          <div class="modal-card">
-            <div id="summary-icon" style="font-size:3.5rem;">🏆</div>
-            <h2 id="summary-title" style="margin:10px 0;">結算報告</h2>
-            <div class="summary-stats">
-              <p>本次總答題數：<span id="summary-total">0</span></p>
-              <p>正確答對題數：<span id="summary-correct">0</span></p>
-              <p>最終累積積分：<b id="summary-score" style="color:#f59e0b;">0</b></p>
-              <p style="font-size:1.2rem; font-weight:800; margin-top:8px;">正確率：<span id="summary-accuracy">0%</span></p>
-            </div>
-            <div id="summary-verdict" class="summary-verdict-box">結算中...</div>
-            <button id="restart-round-btn" class="btn-primary" style="margin-top:16px;">重新挑戰</button>
-          </div>
-        </div>
       </main>
 
       <!-- 頁籤 2：片語特訓區 -->
@@ -217,7 +168,7 @@
           <span id="phrase-progress-tag" class="pill pill-level">進度：0 / 0</span>
           <span id="phrase-score-display" class="pill pill-score">積分：0</span>
           <div class="timer-wrapper">
-            <span class="timer-icon">⏱️</span>
+            <span>⏱️</span>
             <span id="phrase-timer-count">20</span>s
           </div>
         </div>
@@ -232,10 +183,9 @@
             <span id="phrase-pos" class="pos-tag" style="background:#fef3c7; color:#b45309;">phr. 片語</span>
           </div>
           <h2 id="phrase-chinese" class="chinese-prompt">片語載入中...</h2>
-          
           <div class="hint-audio-bar">
-            <span id="phrase-hint" class="hint-text">片語長度提示</span>
-            <button type="button" id="phrase-sound-btn" class="btn-sound-hint" title="聽發音">🔊 聽片語發音</button>
+            <span id="phrase-hint" class="hint-text">提示資訊</span>
+            <button type="button" id="phrase-sound-btn" class="btn-sound-hint">🔊 聽發音</button>
           </div>
         </div>
 
@@ -256,111 +206,48 @@
       <main id="view-cloze" class="view-panel arena-bg">
         <div class="cloze-top-control">
           <select id="cloze-chapter-filter" class="chapter-select-dark"></select>
-          <div class="mode-switch-pill">
-            <button id="mode-pve-btn" class="mode-switch-btn active">👤 vs 電腦</button>
-            <button id="mode-pvp-btn" class="mode-switch-btn">👥 雙人對抗</button>
-          </div>
+          <span style="font-size:0.85rem; font-weight:700; color:#38bdf8;">單人挑戰模式</span>
         </div>
-
-        <div class="battle-top-hud">
-          <div class="player-card">
-            <div class="avatar-frame"><div class="avatar-placeholder">👤</div></div>
-            <span class="player-name" id="p1-name">玩家 1</span>
-          </div>
-
-          <div class="radial-timer-box">
-            <svg class="radial-timer-svg" viewBox="0 0 100 100">
-              <circle class="timer-track" cx="50" cy="50" r="42" />
-              <circle id="cloze-timer-stroke" class="timer-progress" cx="50" cy="50" r="42" />
-            </svg>
-            <span id="cloze-timer-text" class="timer-number">10</span>
-          </div>
-
-          <div class="player-card">
-            <div class="avatar-frame"><div class="avatar-placeholder" id="p2-avatar">🤖</div></div>
-            <span class="player-name" id="p2-name">教練 AI</span>
-          </div>
+        <div style="background:rgba(255,255,255,0.06); border-radius:14px; padding:18px; margin:16px 0; text-align:center;">
+          <button id="cloze-listen-btn" class="btn-sound-hint" style="margin-bottom:12px;">🔊 朗讀例句</button>
+          <p id="cloze-sentence-text" style="font-size:1.15rem; line-height:1.7;">例句載入中...</p>
         </div>
-
-        <div class="arena-middle">
-          <div class="meter-column">
-            <div class="score-num" id="p1-score-text">0</div>
-            <div class="meter-track"><div id="p1-meter-fill" class="meter-fill user-fill"></div></div>
-          </div>
-
-          <div class="question-core">
-            <button id="cloze-listen-btn" class="btn-sound-glow" style="margin-bottom:8px;">🔊 朗讀例句</button>
-            <div class="cloze-sentence-card">
-              <p id="cloze-sentence-text">例句載入中...</p>
-            </div>
-          </div>
-
-          <div class="meter-column">
-            <div class="score-num" id="p2-score-text">0</div>
-            <div class="meter-track"><div id="p2-meter-fill" class="meter-fill bot-fill"></div></div>
-          </div>
-        </div>
-
-        <div id="turn-indicator-bar" style="text-align:center; font-weight:800; color:#38bdf8; font-size:0.9rem; margin-bottom:6px;">當前回合：玩家 1 作答</div>
         <div class="answers-stack" id="cloze-options-container"></div>
         <div id="cloze-round-toast" class="battle-toast"></div>
       </main>
 
-      <!-- 頁籤 4：不熟單字區 -->
+      <!-- 頁籤 4：不熟區 -->
       <main id="view-mistakes" class="view-panel">
-        <div class="mistake-header">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
           <h3>待加強字庫與片語</h3>
-          <button id="clear-mistakes-btn" class="btn-danger-outline">全部清空</button>
+          <button id="clear-mistakes-btn" style="border:none; background:transparent; color:var(--danger); font-weight:700; cursor:pointer;">全部清空</button>
         </div>
-        <div id="mistakes-list" class="mistake-cards-container"></div>
+        <div id="mistakes-list"></div>
       </main>
     </div>
   </div>
 
   <script>
-    const DEFAULT_BASE_QUESTIONS = [
-      {"id": 1, "chapter": "Unit 1", "word": "cue", "pos": "n.", "isPhrase": false, "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
-      {"id": 2, "chapter": "Unit 1", "word": "declare", "pos": "v.", "isPhrase": false, "zh": "宣布；宣稱；申報", "sentence": "The government decided to ___ the day a public holiday.", "options": ["declare", "divorce", "disappoint", "finance"]},
-      {"id": 3, "chapter": "Unit 1", "word": "declaration", "pos": "n.", "isPhrase": false, "zh": "宣告；聲明；申報", "sentence": "The man made a formal ___ that he had nothing to do with the robbery.", "options": ["declaration", "percentage", "rebellion", "insurance"]},
-      {"id": 4, "chapter": "Unit 1", "word": "disappoint", "pos": "v.", "isPhrase": false, "zh": "使失望；使沮喪", "sentence": "I didn't want to ___ Lydia, so I went to her party even though I felt ill.", "options": ["disappoint", "declare", "insure", "finance"]},
-      {"id": 5, "chapter": "Unit 1", "word": "disappointment", "pos": "n.", "isPhrase": false, "zh": "失望；掃興", "sentence": "You can see the ___ in her eyes as she heard the bad news.", "options": ["disappointment", "rebellion", "percentage", "declaration"]},
-      {"id": 6, "chapter": "Unit 1", "word": "divorce", "pos": "v.", "isPhrase": false, "zh": "離婚；使分離", "sentence": "Fredrick's parents decided to ___ five years ago.", "options": ["divorce", "declare", "insure", "reject"]},
-      {"id": 7, "chapter": "Unit 1", "word": "finance", "pos": "v./n.", "isPhrase": false, "zh": "資助；提供資金 / 財務；金融", "sentence": "Several experts in ___ predicted the collapse of the housing market.", "options": ["finance", "insurance", "intellect", "rebellion"]},
-      {"id": 8, "chapter": "Unit 1", "word": "financial", "pos": "adj.", "isPhrase": false, "zh": "財務的；金融的", "sentence": "Fred is having ___ problems right now, so don't ask him for money.", "options": ["financial", "rebellious", "divorced", "intellectual"]},
-      {"id": 9, "chapter": "Unit 1", "word": "insurance", "pos": "n.", "isPhrase": false, "zh": "保險；保險業", "sentence": "Doug's ___ will pay for some of the repairs to his car.", "options": ["insurance", "declaration", "rejection", "finance"]},
-      {"id": 10, "chapter": "Unit 1", "word": "insure", "pos": "v.", "isPhrase": false, "zh": "為……投保", "sentence": "It is important to ___ your valuable jewelry against theft.", "options": ["insure", "divorce", "disappoint", "declare"]},
-      {"id": 11, "chapter": "Unit 1", "word": "intellectual", "pos": "adj./n.", "isPhrase": false, "zh": "智力的；智能的 / 知識分子", "sentence": "This is an ___ game that challenges players' critical thinking.", "options": ["intellectual", "financial", "rebellious", "divorced"]},
-      {"id": 12, "chapter": "Unit 1", "word": "intellect", "pos": "n.", "isPhrase": false, "zh": "思維能力；理解力；智力", "sentence": "A person of great ___ can easily analyze complex social problems.", "options": ["intellect", "insurance", "rebellion", "percentage"]},
-      {"id": 13, "chapter": "Unit 1", "word": "percent", "pos": "n.", "isPhrase": false, "zh": "百分之……", "sentence": "About twenty ___ of the world's population lives in China.", "options": ["percent", "rebel", "cue", "prime"]},
-      {"id": 14, "chapter": "Unit 1", "word": "percentage", "pos": "n.", "isPhrase": false, "zh": "百分比；比率", "sentence": "He spends a large ___ of his income on apartment rent.", "options": ["percentage", "insurance", "rebellion", "declaration"]},
-      {"id": 15, "chapter": "Unit 1", "word": "prime", "pos": "adj.", "isPhrase": false, "zh": "首要的；最具代表性的", "sentence": "Our ___ concern is making sure that our customers are happy.", "options": ["prime", "intellectual", "rebellious", "financial"]},
-      {"id": 16, "chapter": "Unit 1", "word": "rebel", "pos": "v./n.", "isPhrase": false, "zh": "反抗；造反 / 反抗者", "sentence": "Teenagers sometimes ___ against their parents.", "options": ["rebel", "insure", "finance", "declare"]},
-      {"id": 17, "chapter": "Unit 1", "word": "rebellion", "pos": "n.", "isPhrase": false, "zh": "反叛；叛亂", "sentence": "The army suppressed the armed ___ in the northern province.", "options": ["rebellion", "percentage", "declaration", "disappointment"]},
-      {"id": 18, "chapter": "Unit 1", "word": "rebellious", "pos": "adj.", "isPhrase": false, "zh": "叛逆的", "sentence": "She has a ___ attitude toward outdated social rules.", "options": ["rebellious", "intellectual", "financial", "intelligent"]},
-      {"id": 19, "chapter": "Unit 1", "word": "rejection", "pos": "n.", "isPhrase": false, "zh": "拒絕", "sentence": "Although I was hopeful, I received a letter of ___ for my application.", "options": ["rejection", "insurance", "declaration", "percentage"]},
-      {"id": 20, "chapter": "Unit 1", "word": "reject", "pos": "v.", "isPhrase": false, "zh": "拒絕；不接受", "sentence": "The committee decided to ___ the proposal due to lack of merit.", "options": ["reject", "divorce", "declare", "finance"]},
-      {"id": 101, "chapter": "Unit 1", "word": "on cue", "pos": "phr.", "isPhrase": true, "zh": "恰好在此時；正當那時", "sentence": "We were talking about earthquakes and then an earthquake happened right ___.", "options": ["on cue", "in prime", "with percent", "for finance"]},
-      {"id": 102, "chapter": "Unit 1", "word": "take your cue from", "pos": "phr.", "isPhrase": true, "zh": "照某人的樣子做；仿效某人", "sentence": "___ your older sister and finish your homework now.", "options": ["Take your cue from", "Declare war on", "Rebel against", "Insure with"]},
-      {"id": 103, "chapter": "Unit 1", "word": "declare war", "pos": "phr.", "isPhrase": true, "zh": "宣戰", "sentence": "The government refused to ___ despite severe border tensions.", "options": ["declare war", "take cue", "in prime", "be 100 percent"]},
-      {"id": 104, "chapter": "Unit 1", "word": "to one's disappointment", "pos": "phr.", "isPhrase": true, "zh": "讓某人失望的是……", "sentence": "___, the girl he likes didn't show up at the party.", "options": ["To his disappointment", "In his prime", "On his cue", "With his finance"]},
-      {"id": 105, "chapter": "Unit 1", "word": "corporate finance", "pos": "phr.", "isPhrase": true, "zh": "企業財務", "sentence": "She specialized in ___ and helps companies manage capital.", "options": ["corporate finance", "health insurance", "prime time", "intellectual property"]}
-    ];
+    const firebaseConfig = {
+      apiKey: "AIzaSyAsIcTNN77iuoK2UuWePMZX_zf3tFhUHEw",
+      authDomain: "vocab-king-1209.firebaseapp.com",
+      databaseURL: "https://vocab-king-1209-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "vocab-king-1209",
+      storageBucket: "vocab-king-1209.firebasestorage.app",
+      messagingSenderId: "476030693466",
+      appId: "1:476030693466:web:7199ea3c8a70a0b6906863"
+    };
 
-    if (!localStorage.getItem('app_all_questions')) {
-      localStorage.setItem('app_all_questions', JSON.stringify(DEFAULT_BASE_QUESTIONS));
-    }
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
 
     let allQuestions = [];
-    let studentAccounts = JSON.parse(localStorage.getItem('student_accounts') || JSON.stringify([
-      { acc: "student1", pwd: "1234", name: "示範生小明" }
-    ]));
+    let studentAccounts = [];
     let loggedInStudent = null;
 
     let activeWordList = [];
     let currentWordIndex = 0;
     let wordScore = 0;
-    let wordCorrectCount = 0;
-    let wordTotalCount = 0;
     let wordTimer = null;
     let wordTimeLeft = 15;
     let currentWordTotalTime = 15;
@@ -376,20 +263,63 @@
 
     let activeClozeList = [];
     let currentClozeIndex = 0;
-    let clozeBattleMode = 'pve';
-    let p1Score = 0;
-    let p2Score = 0;
-    let pvpTurn = 1;
-    let clozeTimer = null;
-    let clozeTimeLeft = 10;
-    const CLOZE_INITIAL_TIME = 10;
-    const CIRCLE_CIRCUMFERENCE = 264;
-
     let mistakeIds = new Set();
 
-    // 🔥 全局發音控制核心 Token：避免多題混亂與排隊發音
-    let currentSpeechToken = 0;
-    let speechIntervalTimer = null;
+    // 健全語音引擎
+    let activeUtterances = [];
+    let speechLoopTimer = null;
+
+    function killAllSpeech() {
+      if (speechLoopTimer) {
+        clearInterval(speechLoopTimer);
+        speechLoopTimer = null;
+      }
+      activeUtterances = [];
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    function speakOnce(text) {
+      if (!('speechSynthesis' in window) || !text) return;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.resume();
+
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-US';
+      utter.rate = 0.85;
+
+      activeUtterances.push(utter);
+      utter.onend = () => {
+        const idx = activeUtterances.indexOf(utter);
+        if (idx > -1) activeUtterances.splice(idx, 1);
+      };
+      utter.onerror = () => {
+        const idx = activeUtterances.indexOf(utter);
+        if (idx > -1) activeUtterances.splice(idx, 1);
+      };
+
+      window.speechSynthesis.speak(utter);
+    }
+
+    function startTripleSpeech(text) {
+      killAllSpeech();
+      if (!text) return;
+
+      let count = 0;
+      speakOnce(text);
+      count++;
+
+      speechLoopTimer = setInterval(() => {
+        if (count >= 3) {
+          clearInterval(speechLoopTimer);
+          speechLoopTimer = null;
+          return;
+        }
+        speakOnce(text);
+        count++;
+      }, 2500);
+    }
 
     function shuffleArray(arr) {
       const res = [...arr];
@@ -400,78 +330,32 @@
       return res;
     }
 
-    // 🔥 徹底殺死所有現有語音與所有排程
-    function killAllSpeech() {
-      currentSpeechToken++; // 使先前的計數器失效
-      if (speechIntervalTimer) {
-        clearTimeout(speechIntervalTimer);
-        speechIntervalTimer = null;
+    // 連線 Firebase 即時監聽學生與題庫
+    db.ref('.info/connected').on('value', (snap) => {
+      const hint = document.getElementById('cloud-sync-hint');
+      if (snap.val() === true) {
+        hint.innerText = '雲端即時同步已就緒 🟢';
+        hint.style.color = '#10b981';
+      } else {
+        hint.innerText = '正在連線雲端資料庫...';
+        hint.style.color = '#64748b';
       }
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
+    });
+
+    db.ref('students').on('value', (snap) => {
+      const val = snap.val();
+      if (val) {
+        studentAccounts = Array.isArray(val) ? val : Object.values(val);
       }
-    }
+    });
 
-    // 單純發音一次
-    function speakOnce(text) {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        setTimeout(() => {
-          const utter = new SpeechSynthesisUtterance(text);
-          utter.lang = 'en-US';
-          utter.rate = 0.85;
-          window.speechSynthesis.speak(utter);
-        }, 30);
+    db.ref('questions').on('value', (snap) => {
+      const val = snap.val();
+      if (val) {
+        allQuestions = Array.isArray(val) ? val : Object.values(val);
+        updateChapterDropdowns();
       }
-    }
-
-    // 🔥 核心發音：一個頁面唸 3 次，每次間隔 2 秒，換題或作答隨時截斷！
-    function startTripleSpeech(text) {
-      killAllSpeech();
-      const thisToken = currentSpeechToken;
-      let count = 0;
-
-      function speakRound() {
-        if (thisToken !== currentSpeechToken) return; // 已切題或已送出，立刻停止
-        if (count >= 3) return; // 念滿3次停止
-
-        count++;
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.lang = 'en-US';
-        utter.rate = 0.85;
-
-        // 當本次朗讀結束後，間隔 2 秒再唸下一次
-        utter.onend = () => {
-          if (thisToken !== currentSpeechToken) return;
-          if (count < 3) {
-            speechIntervalTimer = setTimeout(() => {
-              speakRound();
-            }, 2000); // 間隔 2 秒
-          }
-        };
-
-        utter.onerror = () => {
-          if (thisToken !== currentSpeechToken) return;
-          if (count < 3) {
-            speechIntervalTimer = setTimeout(() => {
-              speakRound();
-            }, 2000);
-          }
-        };
-
-        window.speechSynthesis.speak(utter);
-      }
-
-      // 進頁面後，延遲 2 秒再開始第 1 次發音
-      speechIntervalTimer = setTimeout(() => {
-        speakRound();
-      }, 2000);
-    }
-
-    function loadAllQuestions() {
-      allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || '[]');
-      updateChapterDropdowns();
-    }
+    });
 
     function updateChapterDropdowns() {
       const chapters = ["全部章節", ...new Set(allQuestions.map(q => q.chapter || "Unit 1"))];
@@ -569,35 +453,29 @@
       });
     }
 
-    // =================== 1. 單字挑戰王 ===================
+    // ================= 1. 單字練習 =================
     function startNewWordSession() {
       killAllSpeech();
       currentWordIndex = 0;
       wordScore = 0;
-      wordCorrectCount = 0;
-      wordTotalCount = activeWordList.length;
       document.getElementById('score-display').innerText = `積分：0`;
-      document.getElementById('round-summary-modal').style.display = 'none';
       loadWordQuestion();
     }
 
     function loadWordQuestion() {
-      killAllSpeech(); // 進入新題目，截斷之前所有語音
-
+      killAllSpeech();
       if (!activeWordList.length) {
         document.getElementById('quiz-chinese').innerText = "此章節無單字題目";
         return;
       }
-
       if (currentWordIndex >= activeWordList.length) {
-        triggerRoundSummary();
-        return;
+        currentWordIndex = 0;
       }
 
       isWordSubmitted = false;
       const q = activeWordList[currentWordIndex];
       
-      document.getElementById('game-progress-tag').innerText = `進度：${currentWordIndex + 1} / ${wordTotalCount}`;
+      document.getElementById('game-progress-tag').innerText = `進度：${currentWordIndex + 1} / ${activeWordList.length}`;
       document.getElementById('quiz-chapter').innerText = q.chapter || "Unit 1";
       document.getElementById('quiz-pos').innerText = q.pos;
       document.getElementById('quiz-chinese').innerText = q.zh;
@@ -615,7 +493,6 @@
       document.getElementById('submit-btn').style.display = 'block';
       document.getElementById('next-question-btn').style.display = 'none';
 
-      // 🔥 啟動當前題目專屬的「念3次、間隔2秒」排程
       startTripleSpeech(q.word);
 
       const lettersCount = q.word.replace(/[^a-zA-Z]/g, '').length;
@@ -644,7 +521,7 @@
     }
 
     function handleWordTimeout() {
-      killAllSpeech(); // 超時立即中斷背景連唸，單獨朗讀一次正解
+      killAllSpeech();
       isWordSubmitted = true;
       const q = activeWordList[currentWordIndex];
       addMistake(q.id);
@@ -654,15 +531,15 @@
 
       const fb = document.getElementById('game-feedback');
       fb.className = 'feedback-box error';
-      fb.innerHTML = `⏰ 時間到！已於上方標註正確字母 (已存入不熟區)`;
+      fb.innerHTML = `⏰ 時間到！已標註正確字母 (存入不熟區)`;
 
       document.getElementById('submit-btn').style.display = 'none';
       document.getElementById('next-question-btn').style.display = 'block';
     }
 
     function submitWordAnswer() {
-      if (!activeWordList.length || currentWordIndex >= activeWordList.length || isWordSubmitted) return;
-      killAllSpeech(); // 答題送出立刻截斷連唸
+      if (!activeWordList.length || isWordSubmitted) return;
+      killAllSpeech();
       clearInterval(wordTimer);
       isWordSubmitted = true;
 
@@ -675,56 +552,24 @@
       renderUnderlineSlots('letter-slots-container', target, userAns, true);
 
       if (userAns === target) {
-        wordCorrectCount++;
         const earned = 100 + (wordTimeLeft * 15);
         wordScore += earned;
         document.getElementById('score-display').innerText = `積分：${wordScore}`;
         speakOnce(target);
-
         fb.className = 'feedback-box success';
         fb.innerHTML = `🎉 完全正確！+${earned} 積分`;
       } else {
         addMistake(activeWordList[currentWordIndex].id);
         speakOnce(target);
-
         fb.className = 'feedback-box error';
-        fb.innerHTML = `❌ 拼錯了！請看上方綠色正確字母訂正`;
+        fb.innerHTML = `❌ 拼錯了！請看上方綠色正確字母`;
       }
 
       document.getElementById('submit-btn').style.display = 'none';
       document.getElementById('next-question-btn').style.display = 'block';
     }
 
-    function triggerRoundSummary() {
-      clearInterval(wordTimer);
-      killAllSpeech();
-      const modal = document.getElementById('round-summary-modal');
-      const acc = Math.round((wordCorrectCount / wordTotalCount) * 100) || 0;
-
-      document.getElementById('summary-total').innerText = wordTotalCount;
-      document.getElementById('summary-correct').innerText = wordCorrectCount;
-      document.getElementById('summary-score').innerText = wordScore;
-      document.getElementById('summary-accuracy').innerText = `${acc}%`;
-
-      const verdict = document.getElementById('summary-verdict');
-      const icon = document.getElementById('summary-icon');
-      const title = document.getElementById('summary-title');
-
-      if (acc >= 90) {
-        icon.innerText = "👑";
-        title.innerText = "挑戰通過！你就是單字王";
-        verdict.className = "summary-verdict-box verdict-pass";
-        verdict.innerText = `🌟 達成 ${acc}% 正確率（標準: 90%）恭喜通過！`;
-      } else {
-        icon.innerText = "💪";
-        title.innerText = "未達 90% 通過門檻";
-        verdict.className = "summary-verdict-box verdict-fail";
-        verdict.innerText = `⚠️ 正確率 ${acc}%，差一點點！再挑戰一次吧！`;
-      }
-      modal.style.display = 'flex';
-    }
-
-    // =================== 2. 片語特訓專區 ===================
+    // ================= 2. 片語練習 =================
     function startNewPhraseSession() {
       killAllSpeech();
       currentPhraseIndex = 0;
@@ -735,12 +580,10 @@
 
     function loadPhraseQuestion() {
       killAllSpeech();
-
       if (!activePhraseList.length) {
         document.getElementById('phrase-chinese').innerText = "此章節無片語題目";
         return;
       }
-
       isPhraseSubmitted = false;
       const q = activePhraseList[currentPhraseIndex];
       
@@ -763,7 +606,6 @@
       document.getElementById('phrase-submit-btn').style.display = 'block';
       document.getElementById('phrase-next-btn').style.display = 'none';
 
-      // 片語同樣啟動 3 次間隔 2 秒排程
       startTripleSpeech(q.word);
 
       const lettersCount = q.word.replace(/[^a-zA-Z]/g, '').length;
@@ -802,7 +644,7 @@
 
       const fb = document.getElementById('phrase-feedback');
       fb.className = 'feedback-box error';
-      fb.innerHTML = `⏰ 時間到！已於上方標註正確字母 (已存入不熟區)`;
+      fb.innerHTML = `⏰ 時間到！已標註正確字母 (存入不熟區)`;
 
       document.getElementById('phrase-submit-btn').style.display = 'none';
       document.getElementById('phrase-next-btn').style.display = 'block';
@@ -827,29 +669,27 @@
         phraseScore += earned;
         document.getElementById('phrase-score-display').innerText = `積分：${phraseScore}`;
         speakOnce(target);
-
         fb.className = 'feedback-box success';
         fb.innerHTML = `🎉 片語完全正確！+${earned} 積分`;
       } else {
         addMistake(activePhraseList[currentPhraseIndex].id);
         speakOnce(target);
-
         fb.className = 'feedback-box error';
-        fb.innerHTML = `❌ 拼錯了！請看上方綠色正確字母訂正`;
+        fb.innerHTML = `❌ 拼錯了！請看上方綠色正確字母`;
       }
 
       document.getElementById('phrase-submit-btn').style.display = 'none';
       document.getElementById('phrase-next-btn').style.display = 'block';
     }
 
-    // =================== 3. 克漏字對戰 ===================
+    // ================= 3. 克漏字 =================
     function loadClozeBattleRound() {
       if (!activeClozeList.length) return;
       const q = activeClozeList[currentClozeIndex];
       document.getElementById('cloze-sentence-text').innerHTML = q.sentence.replace('___', '<b style="color:#38bdf8; text-decoration:underline;">______</b>');
       document.getElementById('cloze-round-toast').innerText = '';
 
-      const options = shuffleArray([...q.options]);
+      const options = shuffleArray([...(q.options || [q.word, "opt1", "opt2", "opt3"])]);
       const container = document.getElementById('cloze-options-container');
       container.innerHTML = '';
 
@@ -857,134 +697,34 @@
         const btn = document.createElement('button');
         btn.className = 'choice-btn';
         btn.innerText = opt;
-        btn.onclick = () => handleClozeChoice(btn, opt, q.word);
+        btn.onclick = () => {
+          const isCorrect = opt.toLowerCase() === q.word.toLowerCase();
+          speakOnce(q.word);
+          if (isCorrect) {
+            btn.classList.add('correct');
+            document.getElementById('cloze-round-toast').innerHTML = `<span style="color:#34d399;">⚡ 答對了！</span>`;
+          } else {
+            btn.classList.add('wrong');
+            addMistake(q.id);
+            document.getElementById('cloze-round-toast').innerHTML = `<span style="color:#f87171;">❌ 答錯，正解是 ${q.word}</span>`;
+          }
+          setTimeout(() => {
+            currentClozeIndex = (currentClozeIndex + 1) % activeClozeList.length;
+            loadClozeBattleRound();
+          }, 1500);
+        };
         container.appendChild(btn);
       });
-
-      clozeTimeLeft = CLOZE_INITIAL_TIME;
-      startClozeTimer();
     }
 
-    function startClozeTimer() {
-      clearInterval(clozeTimer);
-      updateClozeTimerVisual(CLOZE_INITIAL_TIME);
-      clozeTimer = setInterval(() => {
-        clozeTimeLeft--;
-        updateClozeTimerVisual(clozeTimeLeft);
-        if (clozeTimeLeft <= 0) {
-          clearInterval(clozeTimer);
-          handleClozeTimeout();
-        }
-      }, 1000);
-    }
-
-    function updateClozeTimerVisual(t) {
-      document.getElementById('cloze-timer-text').innerText = t;
-      const stroke = document.getElementById('cloze-timer-stroke');
-      const offset = CIRCLE_CIRCUMFERENCE - (t / CLOZE_INITIAL_TIME) * CIRCLE_CIRCUMFERENCE;
-      stroke.style.strokeDashoffset = offset;
-      stroke.style.stroke = t <= 3 ? "#ef4444" : "#38bdf8";
-    }
-
-    function handleClozeChoice(selectedBtn, selectedText, answerText) {
-      clearInterval(clozeTimer);
-      const allBtns = document.querySelectorAll('#cloze-options-container .choice-btn');
-      allBtns.forEach(b => b.disabled = true);
-
-      const toast = document.getElementById('cloze-round-toast');
-      const isCorrect = selectedText.toLowerCase() === answerText.toLowerCase();
-
-      if (isCorrect) {
-        selectedBtn.classList.add('correct');
-        speakOnce(answerText);
-        const earned = 100 + (clozeTimeLeft * 15);
-        if (clozeBattleMode === 'pve') {
-          p1Score += earned;
-          toast.innerHTML = `<span style="color:#34d399;">⚡ 玩家1 答對！+${earned} 分</span>`;
-        } else {
-          if (pvpTurn === 1) {
-            p1Score += earned;
-            toast.innerHTML = `<span style="color:#38bdf8;">⚡ 玩家1 答對！+${earned} 分</span>`;
-          } else {
-            p2Score += earned;
-            toast.innerHTML = `<span style="color:#fb7185;">⚡ 玩家2 答對！+${earned} 分</span>`;
-          }
-        }
-      } else {
-        selectedBtn.classList.add('wrong');
-        allBtns.forEach(b => {
-          if (b.innerText.toLowerCase() === answerText.toLowerCase()) b.classList.add('correct');
-        });
-        addMistake(activeClozeList[currentClozeIndex].id);
-        speakOnce(answerText);
-        toast.innerHTML = `<span style="color:#f87171;">❌ 答錯！正解為 ${answerText}</span>`;
-      }
-
-      if (clozeBattleMode === 'pve' && Math.random() < 0.65) {
-        p2Score += 100 + (Math.floor(Math.random() * 8) * 10);
-      }
-      updateClozeMeters();
-
-      if (clozeBattleMode === 'pvp') {
-        pvpTurn = pvpTurn === 1 ? 2 : 1;
-        document.getElementById('turn-indicator-bar').innerText = `當前回合：玩家 ${pvpTurn} 作答`;
-      }
-
-      setTimeout(() => {
-        currentClozeIndex = (currentClozeIndex + 1) % activeClozeList.length;
-        loadClozeBattleRound();
-      }, 1600);
-    }
-
-    function handleClozeTimeout() {
-      const currentWord = activeClozeList[currentClozeIndex].word;
-      addMistake(activeClozeList[currentClozeIndex].id);
-      speakOnce(currentWord);
-
-      const allBtns = document.querySelectorAll('#cloze-options-container .choice-btn');
-      allBtns.forEach(b => {
-        b.disabled = true;
-        if (b.innerText.toLowerCase() === currentWord.toLowerCase()) b.classList.add('correct');
-      });
-
-      document.getElementById('cloze-round-toast').innerHTML = `<span style="color:#f87171;">⏰ 時間到！答案是 ${currentWord}</span>`;
-      if (clozeBattleMode === 'pve') p2Score += 80;
-      updateClozeMeters();
-
-      setTimeout(() => {
-        currentClozeIndex = (currentClozeIndex + 1) % activeClozeList.length;
-        loadClozeBattleRound();
-      }, 2000);
-    }
-
-    function updateClozeMeters() {
-      document.getElementById('p1-score-text').innerText = p1Score;
-      document.getElementById('p2-score-text').innerText = p2Score;
-      document.getElementById('p1-meter-fill').style.height = `${Math.min(100, (p1Score / 1000) * 100)}%`;
-      document.getElementById('p2-meter-fill').style.height = `${Math.min(100, (p2Score / 1000) * 100)}%`;
-    }
-
-    // =================== 4. 學生錯題區 ===================
-    function getMistakesKey() {
-      return loggedInStudent ? `mistakes_${loggedInStudent.acc}` : 'mistakes_guest';
-    }
-
-    function loadStudentMistakes() {
-      const saved = localStorage.getItem(getMistakesKey()) || '[]';
-      mistakeIds = new Set(JSON.parse(saved));
-      updateMistakeBadge();
-      renderMistakes();
-    }
-
+    // ================= 4. 不熟區 =================
     function addMistake(id) {
       mistakeIds.add(id);
-      localStorage.setItem(getMistakesKey(), JSON.stringify([...mistakeIds]));
       updateMistakeBadge();
     }
 
     function removeMistake(id) {
       mistakeIds.delete(id);
-      localStorage.setItem(getMistakesKey(), JSON.stringify([...mistakeIds]));
       renderMistakes();
       updateMistakeBadge();
     }
@@ -997,7 +737,7 @@
       const list = document.getElementById('mistakes-list');
       list.innerHTML = '';
       if (mistakeIds.size === 0) {
-        list.innerHTML = `<p style="text-align:center; color:#94a3b8; margin-top:40px;">太棒了，目前沒有任何錯題！</p>`;
+        list.innerHTML = `<p style="text-align:center; color:#94a3b8; margin-top:40px;">目前沒有任何錯題！</p>`;
         return;
       }
       const badQuestions = allQuestions.filter(q => mistakeIds.has(q.id));
@@ -1006,12 +746,12 @@
         item.className = 'mistake-card';
         item.innerHTML = `
           <div>
-            <span class="chapter-tag" style="font-size:0.75rem; padding:2px 6px;">${q.chapter || 'Unit 1'}</span>
-            <strong>${q.word}</strong> <span style="color:#6366f1; font-size:0.85rem;">[${q.pos}]</span>
-            <div style="color:#64748b; font-size:0.88rem; margin-top:2px;">${q.zh}</div>
+            <span class="chapter-tag">${q.chapter || 'Unit 1'}</span>
+            <strong>${q.word}</strong> <span style="color:#6366f1;">[${q.pos}]</span>
+            <div style="color:#64748b; font-size:0.88rem;">${q.zh}</div>
           </div>
           <div>
-            <button class="btn-sound" onclick="speakOnce('${q.word}')">🔊</button>
+            <button class="btn-sound-hint" onclick="speakOnce('${q.word}')">🔊</button>
             <button style="border:none; background:#fee2e2; color:#ef4444; padding:6px 10px; border-radius:8px; font-weight:700; cursor:pointer;" onclick="removeMistake(${q.id})">已熟記</button>
           </div>
         `;
@@ -1019,17 +759,16 @@
       });
     }
 
-    // =================== 5. 初始化與事件掛載 ===================
+    // ================= 5. 綁定事件 =================
     window.addEventListener('DOMContentLoaded', () => {
-      loadAllQuestions();
-
       document.getElementById('student-login-btn').addEventListener('click', () => {
-        const acc = document.getElementById('student-acc-input').value.trim();
+        const acc = document.getElementById('student-acc-input').value.trim().toLowerCase();
         const pwd = document.getElementById('student-pwd-input').value.trim();
-        studentAccounts = JSON.parse(localStorage.getItem('student_accounts') || JSON.stringify([
-          { acc: "student1", pwd: "1234", name: "示範生小明" }
-        ]));
-        const found = studentAccounts.find(s => s.acc === acc && s.pwd === pwd);
+
+        const found = studentAccounts.find(s => 
+          String(s.acc).trim().toLowerCase() === acc && 
+          String(s.pwd).trim() === pwd
+        );
 
         if (found) {
           loggedInStudent = found;
@@ -1038,8 +777,6 @@
           document.getElementById('view-student-main').style.display = 'flex';
           document.getElementById('student-login-err').style.display = 'none';
 
-          loadAllQuestions();
-          loadStudentMistakes();
           startNewWordSession();
           startNewPhraseSession();
           loadClozeBattleRound();
@@ -1075,15 +812,12 @@
 
           clearInterval(wordTimer);
           clearInterval(phraseTimer);
-          clearInterval(clozeTimer);
           killAllSpeech();
 
           if (t.view === 'view-game') {
             if (!isWordSubmitted) startWordTimer();
           } else if (t.view === 'view-phrase') {
             if (!isPhraseSubmitted) startPhraseTimer();
-          } else if (t.view === 'view-cloze') {
-            startClozeTimer();
           } else if (t.view === 'view-mistakes') {
             renderMistakes();
           }
@@ -1104,15 +838,14 @@
         loadClozeBattleRound();
       });
 
-      // 單字區操作
       document.getElementById('next-question-btn').addEventListener('click', () => {
-        killAllSpeech(); // 按 NEXT 先立即截斷發音
+        killAllSpeech();
         currentWordIndex++;
         loadWordQuestion();
       });
 
       document.getElementById('answer-input').addEventListener('input', (e) => {
-        if (!activeWordList.length || currentWordIndex >= activeWordList.length || isWordSubmitted) return;
+        if (!activeWordList.length || isWordSubmitted) return;
         renderUnderlineSlots('letter-slots-container', activeWordList[currentWordIndex].word, e.target.value.toLowerCase(), false);
       });
 
@@ -1124,18 +857,14 @@
         }
       });
 
-      document.getElementById('restart-round-btn').addEventListener('click', startNewWordSession);
-
-      // 手動點發音：只單純唸當前題目 1 次
       document.getElementById('game-sound-btn').addEventListener('click', () => {
-        if (!activeWordList.length || currentWordIndex >= activeWordList.length) return;
+        if (!activeWordList.length) return;
         killAllSpeech();
         speakOnce(activeWordList[currentWordIndex].word);
       });
 
-      // 片語區操作
       document.getElementById('phrase-next-btn').addEventListener('click', () => {
-        killAllSpeech(); // 按 NEXT 先立即截斷發音
+        killAllSpeech();
         currentPhraseIndex = (currentPhraseIndex + 1) % activePhraseList.length;
         loadPhraseQuestion();
       });
@@ -1154,7 +883,7 @@
       });
 
       document.getElementById('phrase-sound-btn').addEventListener('click', () => {
-        if (!activePhraseList.length || currentPhraseIndex >= activePhraseList.length) return;
+        if (!activePhraseList.length) return;
         killAllSpeech();
         speakOnce(activePhraseList[currentPhraseIndex].word);
       });
@@ -1167,7 +896,6 @@
 
       document.getElementById('clear-mistakes-btn').addEventListener('click', () => {
         mistakeIds.clear();
-        localStorage.removeItem(getMistakesKey());
         renderMistakes();
         updateMistakeBadge();
       });
