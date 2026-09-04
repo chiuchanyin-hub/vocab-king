@@ -3,297 +3,296 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>高中單字挑戰王 - 學生端</title>
+  <title>單字挑戰王 - 學生專區</title>
   <style>
     :root {
       --primary: #4338ca;
-      --primary-light: #6366f1;
       --success: #10b981;
       --danger: #ef4444;
-      --dark: #0f172a;
-      --border: #e2e8f0;
-      --bg: #020617;
+      --border: #cbd5e1;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background: var(--bg); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 12px; }
-    .app-shell { width: 100%; max-width: 500px; background: #ffffff; border-radius: 28px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8); display: flex; flex-direction: column; min-height: 750px; }
-    .student-login-view { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px 24px; text-align: center; flex: 1; }
-    .app-nav { display: flex; background: #1e293b; padding: 8px 10px; gap: 6px; align-items: center; }
-    .nav-tabs-group { display: flex; flex: 1; gap: 4px; overflow-x: auto; }
-    .nav-btn { flex: 1; min-width: 75px; border: none; background: transparent; padding: 9px 4px; border-radius: 12px; font-weight: 700; font-size: 0.8rem; color: #94a3b8; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px; white-space: nowrap; }
-    .nav-btn.active { background: #334155; color: #f8fafc; }
-    .badge { background: var(--danger); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 10px; }
-    .view-panel { display: none; flex-direction: column; padding: 18px; flex: 1; }
-    .view-panel.active { display: flex; }
-    .chapter-selector-bar { display: flex; align-items: center; gap: 8px; background: #f8fafc; padding: 8px 12px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 12px; font-size: 0.88rem; font-weight: 700; color: #334155; }
-    .chapter-dropdown { flex: 1; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: white; font-weight: 600; outline: none; }
-    .game-status-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-    .pill { padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; }
-    .pill-level { background: #e0e7ff; color: var(--primary); }
-    .pill-score { background: #fef3c7; color: #b45309; }
-    .timer-wrapper { display: flex; align-items: center; font-weight: 800; font-size: 1.1rem; color: var(--danger); }
-    .timer-progress-bar { width: 100%; height: 6px; background: #e2e8f0; border-radius: 3px; margin-bottom: 16px; overflow: hidden; }
-    .timer-fill { height: 100%; background: var(--danger); width: 100%; transition: width 1s linear; }
-    .card { background: white; border: 2px solid var(--border); border-radius: 18px; padding: 20px; text-align: center; margin-bottom: 16px; }
-    .chapter-tag { background: #fef3c7; color: #b45309; font-size: 0.8rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
-    .pos-tag { background: #e0e7ff; color: var(--primary); font-size: 0.8rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
-    .chinese-prompt { font-size: 1.75rem; color: var(--dark); margin: 10px 0; font-weight: 800; }
-    .hint-audio-bar { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 10px; }
-    .hint-text { font-size: 1.15rem; font-weight: 800; color: #334155; }
-    .btn-sound-hint { display: inline-flex; align-items: center; gap: 4px; background: #eef2ff; color: var(--primary); border: 1.5px solid #c7d2fe; padding: 6px 12px; border-radius: 10px; font-size: 0.95rem; font-weight: 700; cursor: pointer; }
-    .pure-dashed-zone { position: relative; width: 100%; min-height: 120px; display: flex; justify-content: center; align-items: center; background: transparent !important; border: none !important; cursor: text; padding: 10px 4px; }
-    .slots-flex-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 8px; row-gap: 18px; pointer-events: none; }
-    .slot-cell-unit { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; width: 34px; }
-    .correction-slot-top { height: 26px; display: flex; align-items: center; justify-content: center; margin-bottom: 4px; width: 100%; }
-    .correct-letter-badge { background: #10b981; color: #ffffff; font-size: 1.05rem; font-weight: 900; width: 26px; height: 24px; border-radius: 6px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(16, 185, 129, 0.4); text-transform: lowercase; }
-    .dash-underline { width: 100%; height: 48px; border-bottom: 4px solid #94a3b8 !important; display: flex; align-items: center; justify-content: center; font-size: 1.95rem; font-weight: 900; color: #0f172a; text-transform: lowercase; transition: all 0.15s ease; }
-    .dash-underline.focusing { border-bottom: 4px solid #4f46e5 !important; background: rgba(79, 70, 229, 0.05); border-radius: 6px 6px 0 0; }
-    .dash-underline.char-wrong { color: #ef4444 !important; border-bottom: 4px solid #ef4444 !important; background: rgba(239, 68, 68, 0.08); border-radius: 6px 6px 0 0; }
-    .dash-underline.char-right { color: #10b981 !important; border-bottom: 4px solid #10b981 !important; background: rgba(16, 185, 129, 0.08); border-radius: 6px 6px 0 0; }
-    .dash-gap { width: 18px; }
-    .ghost-input { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0 !important; cursor: text; }
-    .btn-primary { width: 100%; padding: 13px; background: var(--primary); color: white; border: none; border-radius: 14px; font-size: 1rem; font-weight: 800; cursor: pointer; }
-    .btn-next-action { flex: 1; padding: 14px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-size: 1.05rem; font-weight: 800; cursor: pointer; }
-    .feedback-box { margin-top: 14px; padding: 12px 16px; border-radius: 12px; font-weight: 700; display: none; justify-content: space-between; align-items: center; }
-    .feedback-box.success { background: #ecfdf5; color: #065f46; display: flex; }
-    .feedback-box.error { background: #fef2f2; color: #991b1b; display: flex; }
-    .admin-input-full { width: 100%; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; margin-bottom: 8px; outline: none; }
-    .mistake-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; background: white; }
-    .arena-bg { background: radial-gradient(circle at top, #1e293b 0%, #090d16 100%) !important; color: #ffffff; justify-content: space-between; }
-    .cloze-top-control { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-    .chapter-select-dark { background: #1e293b; color: #f8fafc; border: 1px solid #475569; padding: 4px 10px; border-radius: 8px; font-weight: 600; outline: none; }
-    .answers-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 6px; }
-    .choice-btn { width: 100%; padding: 15px 16px; background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%); border: none; border-radius: 14px; font-size: 1.15rem; font-weight: 800; color: #1e293b; cursor: pointer; }
-    .choice-btn.correct { background: linear-gradient(180deg, #34d399 0%, #059669 100%) !important; color: #fff !important; }
-    .choice-btn.wrong { background: linear-gradient(180deg, #f87171 0%, #dc2626 100%) !important; color: #fff !important; }
-    .battle-toast { text-align: center; font-weight: 800; min-height: 22px; }
+    body { background: #0f172a; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 12px; }
+    .app-shell { width: 100%; max-width: 500px; background: #ffffff; border-radius: 28px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.5); display: flex; flex-direction: column; min-height: 700px; }
+    .login-view, .lobby-view, .game-view { display: flex; flex-direction: column; padding: 24px; flex: 1; }
+    .btn-primary { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; font-size: 1rem; margin-top: 10px; }
+    .btn-secondary { background: #e2e8f0; color: #334155; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 0.85rem; }
+    .form-control { width: 100%; padding: 12px; border: 1.5px solid var(--border); border-radius: 10px; outline: none; margin-bottom: 12px; font-size: 1rem; }
+    .title { font-size: 1.5rem; color: #1e293b; margin-bottom: 16px; text-align: center; font-weight: 800; }
+    .option-btn { display: block; width: 100%; padding: 14px; margin-bottom: 10px; background: #f8fafc; border: 2px solid var(--border); border-radius: 12px; font-size: 1.05rem; font-weight: 700; text-align: left; cursor: pointer; transition: all 0.2s; }
+    .option-btn:hover { background: #e0e7ff; border-color: var(--primary); }
+    .option-btn.correct { background: #d1fae5 !important; border-color: var(--success) !important; color: #065f46; }
+    .option-btn.wrong { background: #fee2e2 !important; border-color: var(--danger) !important; color: #991b1b; }
+    .tag { display: inline-block; background: #e0e7ff; color: var(--primary); padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; margin-bottom: 8px; }
+    .card { background: #f8fafc; border: 2px solid var(--border); border-radius: 16px; padding: 20px; text-align: center; margin-bottom: 16px; }
   </style>
 </head>
 <body>
   <div class="app-shell">
-    <!-- 學生登入介面 -->
-    <div id="view-student-login" class="student-login-view">
+    <!-- 1. 學生登入介面 -->
+    <div id="view-login" class="login-view" style="justify-content:center; text-align:center;">
       <div style="font-size:3.5rem; margin-bottom:10px;">👑</div>
-      <h2 style="color:#0f172a; margin-bottom:6px;">高中單字挑戰王</h2>
-      <p style="color:#10b981; font-size:0.85rem; margin-bottom:20px; font-weight:700;">系統就緒 🟢 (動態題庫同步)</p>
+      <h2 class="title" style="margin-bottom:6px;">單字挑戰王</h2>
+      <p style="color:#10b981; font-size:0.85rem; margin-bottom:20px; font-weight:700;">後台題庫動態同步 🟢</p>
       
-      <div style="width:100%; max-width:340px;">
-        <input type="text" id="student-acc-input" placeholder="學生帳號 (例如: Roger)" class="admin-input-full" />
-        <input type="password" id="student-pwd-input" placeholder="密碼 (例如: 1209)" class="admin-input-full" />
-        <button id="student-login-btn" class="btn-primary" style="margin-top:6px;">進入系統挑戰 ➔</button>
-        <p id="student-login-err" style="color:var(--danger); font-size:0.85rem; margin-top:10px; display:none;">帳號或密碼錯誤！</p>
+      <div style="max-width:320px; margin:0 auto; width:100%;">
+        <input type="text" id="login-acc" placeholder="學生帳號 (例如: Roger)" class="form-control" />
+        <input type="password" id="login-pwd" placeholder="密碼 (例如: 1209)" class="form-control" />
+        <button onclick="handleLogin()" class="btn-primary">進入系統挑戰 ➔</button>
+        <p id="login-err" style="color:var(--danger); font-size:0.85rem; margin-top:10px; display:none;">帳號或密碼錯誤！</p>
       </div>
     </div>
 
-    <!-- 學生主操作畫面 -->
-    <div id="view-student-main" style="display:none; flex-direction:column; flex:1;">
-      <header class="app-nav">
-        <div class="nav-tabs-group">
-          <button class="nav-btn active" id="tab-game-btn">👑 單字挑戰</button>
-          <button class="nav-btn" id="tab-phrase-btn">🧩 片語特訓</button>
-          <button class="nav-btn" id="tab-cloze-btn">⚔️ 克漏字對戰</button>
-          <button class="nav-btn" id="tab-mistakes-btn">📖 不熟區 <span id="mistake-badge" class="badge">0</span></button>
+    <!-- 2. 學生大廳介面（登入後第一頁：選擇大分類、資料夾、模式） -->
+    <div id="view-lobby" class="lobby-view" style="display:none;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <div>
+          <h2 style="font-size:1.2rem; color:#0f172a;">👋 歡迎，<span id="lobby-name" style="color:var(--primary);"></span></h2>
+          <p id="lobby-perm" style="font-size:0.75rem; color:#64748b; font-weight:700;"></p>
         </div>
-      </header>
-
-      <div style="background:#f1f5f9; padding:6px 14px; font-size:0.8rem; font-weight:700; color:#475569; display:flex; justify-content:space-between; align-items:center;">
-        <span>👤 目前學生：<b id="cur-student-name" style="color:#4338ca;">學生</b></span>
-        <button id="student-logout-btn" style="border:none; background:transparent; color:#ef4444; font-weight:800; cursor:pointer;">登出</button>
+        <button onclick="handleLogout()" class="btn-secondary">登出</button>
       </div>
 
-      <!-- 頁籤 1：單字挑戰王 -->
-      <main id="view-game" class="view-panel active">
-        <div class="chapter-selector-bar">
-          <label for="game-chapter-filter">🎯 單字範圍：</label>
-          <select id="game-chapter-filter" class="chapter-dropdown"></select>
-        </div>
-
-        <div class="game-status-bar">
-          <span id="game-progress-tag" class="pill pill-level">進度：0 / 0</span>
-          <span id="score-display" class="pill pill-score">積分：0</span>
-          <div class="timer-wrapper">
-            <span>⏱️</span>
-            <span id="timer-count">15</span>s
-          </div>
-        </div>
+      <div style="background:#f8fafc; border:1.5px solid var(--border); border-radius:16px; padding:18px; flex:1;">
+        <h3 style="font-size:1rem; color:#1e293b; margin-bottom:12px;">🎯 選擇您的挑戰範圍與模式</h3>
         
-        <div class="timer-progress-bar">
-          <div id="timer-progress-fill" class="timer-fill"></div>
-        </div>
+        <label style="font-size:0.85rem; font-weight:700; color:#475569; display:block; margin-bottom:4px;">1. 選擇大分類：</label>
+        <select id="lobby-cat" class="form-control" onchange="updateFolders()"></select>
 
-        <div class="card quiz-card">
-          <div style="display:flex; justify-content:center; gap:6px;">
-            <span id="quiz-chapter" class="chapter-tag">Unit 1</span>
-            <span id="quiz-pos" class="pos-tag">詞性</span>
-          </div>
-          <h2 id="quiz-chinese" class="chinese-prompt">題目載入中...</h2>
-          <div class="hint-audio-bar">
-            <span id="quiz-hint" class="hint-text">提示資訊</span>
-            <button type="button" id="game-sound-btn" class="btn-sound-hint">🔊 聽發音</button>
-          </div>
-        </div>
+        <label style="font-size:0.85rem; font-weight:700; color:#475569; display:block; margin-bottom:4px;">2. 選擇子分類 / 資料夾：</label>
+        <select id="lobby-folder" class="form-control"></select>
 
-        <div class="pure-dashed-zone" onclick="focusHiddenInput('word')">
-          <div id="letter-slots-container" class="slots-flex-row"></div>
-          <input type="text" id="answer-input" class="ghost-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-        </div>
+        <label style="font-size:0.85rem; font-weight:700; color:#475569; display:block; margin-bottom:4px;">3. 選擇訓練模式：</label>
+        <select id="lobby-mode" class="form-control">
+          <option value="quiz">🎯 四選一單字選擇題特訓</option>
+          <option value="flashcard">🃏 單字卡快速複習模式</option>
+        </select>
 
-        <div style="margin-top:14px; display:flex; gap:10px;">
-          <button id="submit-btn" class="btn-primary" style="flex:1;">確認送出 (Enter)</button>
-          <button id="next-question-btn" class="btn-next-action" style="display:none;">NEXT 下一題 ➔</button>
-        </div>
+        <button onclick="startChallenge()" class="btn-primary" style="background:var(--success); margin-top:10px;">🚀 開始挑戰！</button>
+      </div>
+    </div>
 
-        <div id="game-feedback" class="feedback-box"></div>
-      </main>
+    <!-- 3. 遊戲實戰畫面 -->
+    <div id="view-game" class="game-view" style="display:none;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; background:#1e293b; padding:10px 14px; border-radius:12px; color:white;">
+        <button onclick="returnToLobby()" class="btn-secondary" style="background:#334155; color:white;">🏠 回大廳</button>
+        <span id="game-scope-info" style="font-size:0.8rem; font-weight:700; color:#34d399;"></span>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin:14px 0; font-weight:800;">
+        <span id="game-progress" style="color:#64748b;">進度: 1 / 10</span>
+        <span id="game-score" style="color:#b45309; background:#fef3c7; padding:4px 10px; border-radius:10px;">積分: 0</span>
+      </div>
+
+      <div id="game-card-area" style="flex:1;"></div>
     </div>
   </div>
 
   <script>
-    const DEFAULT_BASE_QUESTIONS = [
-      {"id": 1, "chapter": "Unit 1", "word": "cue", "pos": "n.", "isPhrase": false, "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
-      {"id": 2, "chapter": "Unit 1", "word": "declare", "pos": "v.", "isPhrase": false, "zh": "宣布；宣稱；申報", "sentence": "The government decided to ___ the day a public holiday.", "options": ["declare", "divorce", "disappoint", "finance"]}
-    ];
+    let currentUser = null;
+    let allQuestions = [];
+    let currentQuizList = [];
+    let currentIndex = 0;
+    let score = 0;
 
-    let loggedInStudent = null;
-    let activeWordList = [];
-    let currentWordIndex = 0;
-    let wordScore = 0;
-
-    window.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('student-login-btn').addEventListener('click', () => {
-        const acc = document.getElementById('student-acc-input').value.trim().toLowerCase();
-        const pwd = document.getElementById('student-pwd-input').value.trim();
-
-        // 每次登入時動態從 localStorage 讀取最新建立的學生名單
-        const studentAccounts = JSON.parse(localStorage.getItem('student_accounts') || JSON.stringify([
-          { acc: "Roger", pwd: "1209", name: "羅傑" },
-          { acc: "student1", pwd: "1234", name: "示範生小明" }
-        ]));
-
-        const found = studentAccounts.find(s => 
-          String(s.acc || '').trim().toLowerCase() === acc && 
-          String(s.pwd || '').trim() === pwd
-        );
-
-        if (found) {
-          loggedInStudent = found;
-          document.getElementById('cur-student-name').innerText = found.name;
-          document.getElementById('view-student-login').style.display = 'none';
-          document.getElementById('view-student-main').style.display = 'flex';
-          document.getElementById('student-login-err').style.display = 'none';
-
-          updateChapterDropdowns();
-          startNewWordSession();
-        } else {
-          const errEl = document.getElementById('student-login-err');
-          errEl.style.display = 'block';
-          errEl.innerText = `帳號或密碼錯誤！`;
-        }
-      });
-
-      document.getElementById('student-logout-btn').addEventListener('click', () => {
-        loggedInStudent = null;
-        document.getElementById('view-student-main').style.display = 'none';
-        document.getElementById('view-student-login').style.display = 'flex';
-        document.getElementById('student-acc-input').value = '';
-        document.getElementById('student-pwd-input').value = '';
-      });
-
-      document.getElementById('game-chapter-filter').addEventListener('change', () => {
-        filterWordList();
-        startNewWordSession();
-      });
-
-      document.getElementById('next-question-btn').addEventListener('click', () => {
-        currentWordIndex++;
-        loadWordQuestion();
-      });
-
-      document.getElementById('submit-btn').addEventListener('click', submitWordAnswer);
-      document.getElementById('answer-input').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          if (document.getElementById('submit-btn').style.display !== 'none') {
-            submitWordAnswer();
-          } else {
-            document.getElementById('next-question-btn').click();
-          }
-        }
-      });
-    });
-
-    function updateChapterDropdowns() {
-      // 每次更新章節選單時，強制從 localStorage 讀取最新題庫
-      const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
-      const chapters = ["全部章節", ...new Set(allQuestions.map(q => q.chapter || "Unit 1"))];
-      const wordSelect = document.getElementById('game-chapter-filter');
-      if (wordSelect) {
-        const cur = wordSelect.value;
-        wordSelect.innerHTML = chapters.map(c => `<option value="${c}">${c}</option>`).join('');
-        if (chapters.includes(cur)) wordSelect.value = cur;
+    function loadDB() {
+      const saved = localStorage.getItem('app_all_questions');
+      if (saved) {
+        try { allQuestions = JSON.parse(saved); } catch(e) { allQuestions = []; }
+      } else {
+        allQuestions = [
+          { id: 1, category: "高中學測", folder: "Unit 1", word: "cue", pos: "n.", zh: "提示；線索", options: ["cue", "finance", "prime", "rebel"] },
+          { id: 2, category: "Level 4", folder: "Unit 2", word: "approach", pos: "n./v.", zh: "接近；方法", options: ["approach", "divorce", "disappoint", "finance"] }
+        ];
       }
-      filterWordList();
     }
 
-    function filterWordList() {
-      const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
-      const f = document.getElementById('game-chapter-filter')?.value || "全部章節";
-      const base = allQuestions.filter(q => !q.isPhrase && !q.word.trim().includes(' '));
-      activeWordList = f === "全部章節" ? [...base] : base.filter(q => q.chapter === f);
+    function handleLogin() {
+      const acc = document.getElementById('login-acc').value.trim().toLowerCase();
+      const pwd = document.getElementById('login-pwd').value.trim();
+      const students = JSON.parse(localStorage.getItem('student_accounts') || '[{"acc":"Roger","pwd":"1209","name":"羅傑","perm":"高中"}]');
+
+      const found = students.find(s => s.acc.toLowerCase() === acc && s.pwd === pwd);
+      if (found) {
+        currentUser = found;
+        currentUser.perm = currentUser.perm || "高中";
+        
+        document.getElementById('view-login').style.display = 'none';
+        document.getElementById('view-lobby').style.display = 'flex';
+        document.getElementById('lobby-name').innerText = found.name;
+        document.getElementById('lobby-perm').innerText = `權限範圍：${currentUser.perm === '國中' ? '📚 國中專用' : '📖 高中權限 (高中+Level 4)'}`;
+        document.getElementById('login-err').style.display = 'none';
+
+        initLobbyCats();
+      } else {
+        const err = document.getElementById('login-err');
+        err.style.display = 'block';
+        err.innerText = "帳號或密碼錯誤！";
+      }
     }
 
-    function startNewWordSession() {
-      currentWordIndex = 0;
-      wordScore = 0;
-      document.getElementById('score-display').innerText = `積分：0`;
-      loadWordQuestion();
+    function handleLogout() {
+      currentUser = null;
+      document.getElementById('view-lobby').style.display = 'none';
+      document.getElementById('view-login').style.display = 'flex';
+      document.getElementById('login-acc').value = '';
+      document.getElementById('login-pwd').value = '';
     }
 
-    function loadWordQuestion() {
-      if (!activeWordList.length) {
-        document.getElementById('quiz-chinese').innerText = "此章節無單字題目";
+    function returnToLobby() {
+      document.getElementById('view-game').style.display = 'none';
+      document.getElementById('view-lobby').style.display = 'flex';
+      initLobbyCats();
+    }
+
+    function initLobbyCats() {
+      loadDB();
+      const allCats = [...new Set(allQuestions.map(q => q.category || "高中學測"))];
+      let allowed = [];
+
+      if (currentUser.perm === '國中') {
+        allowed = allCats.filter(c => c === '國中');
+        if (allowed.length === 0) allowed = ['國中'];
+      } else {
+        allowed = allCats.filter(c => c !== '國中');
+        if (allowed.length === 0) allowed = ['高中學測', 'Level 4'];
+      }
+
+      const catSel = document.getElementById('lobby-cat');
+      catSel.innerHTML = allowed.map(c => `<option value="${c}">${c}</option>`).join('');
+      updateFolders();
+    }
+
+    function updateFolders() {
+      loadDB();
+      const cat = document.getElementById('lobby-cat').value;
+      const folderSel = document.getElementById('lobby-folder');
+
+      const filtered = allQuestions.filter(q => (q.category || "高中學測") === cat);
+      const folders = [...new Set(filtered.map(q => q.folder || q.chapter || "Unit 1"))];
+
+      folderSel.innerHTML = `<option value="全部資料夾">📂 全部資料夾 (${filtered.length} 題)</option>` +
+        folders.map(f => `<option value="${f}">${f}</option>`).join('');
+    }
+
+    function startChallenge() {
+      loadDB();
+      const cat = document.getElementById('lobby-cat').value;
+      const folder = document.getElementById('lobby-folder').value;
+      const mode = document.getElementById('lobby-mode').value;
+
+      if (currentUser.perm === '國中' && cat !== '國中') {
+        return alert("您目前為國中權限，無法存取高中題庫！");
+      }
+
+      let list = allQuestions.filter(q => (q.category || "高中學測") === cat);
+      if (folder && folder !== "全部資料夾") {
+        list = list.filter(q => (q.folder || q.chapter || "Unit 1") === folder);
+      }
+
+      if (list.length === 0) {
+        return alert("此分類與資料夾中尚無題目，請至後台新增或匯入！");
+      }
+
+      currentQuizList = [...list].sort(() => 0.5 - Math.random());
+      currentIndex = 0;
+      score = 0;
+
+      document.getElementById('view-lobby').style.display = 'none';
+      document.getElementById('view-game').style.display = 'flex';
+      document.getElementById('game-scope-info').innerText = `${cat} / ${folder}`;
+
+      if (mode === 'quiz') {
+        renderQuiz();
+      } else {
+        renderFlashcard();
+      }
+    }
+
+    function renderQuiz() {
+      if (currentIndex >= currentQuizList.length) {
+        document.getElementById('game-card-area').innerHTML = `
+          <div class="card" style="padding:40px 20px;">
+            <div style="font-size:3rem; margin-bottom:10px;">🎉</div>
+            <h3 style="color:#1e293b; margin-bottom:8px;">恭喜完成本次挑戰！</h3>
+            <p style="color:#64748b; margin-bottom:20px;">總得分：${score} / ${currentQuizList.length} 題</p>
+            <button onclick="startChallenge()" class="btn-primary" style="margin-bottom:10px;">再挑戰一次</button>
+            <button onclick="returnToLobby()" class="btn-secondary" style="width:100%;">返回大廳選擇其他單元</button>
+          </div>
+        `;
+        document.getElementById('game-progress').innerText = `完成！`;
         return;
       }
-      if (currentWordIndex >= activeWordList.length) currentWordIndex = 0;
 
-      const q = activeWordList[currentWordIndex];
-      
-      document.getElementById('game-progress-tag').innerText = `進度：${currentWordIndex + 1} / ${activeWordList.length}`;
-      document.getElementById('quiz-chapter').innerText = q.chapter || "Unit 1";
-      document.getElementById('quiz-pos').innerText = q.pos;
-      document.getElementById('quiz-chinese').innerText = q.zh;
-      document.getElementById('quiz-hint').innerText = `長度：${q.word.length} 字母・首字 [ ${q.word[0]} ]`;
+      const q = currentQuizList[currentIndex];
+      document.getElementById('game-progress').innerText = `進度: ${currentIndex + 1} / ${currentQuizList.length}`;
+      document.getElementById('game-score').innerText = `積分: ${score}`;
 
-      const input = document.getElementById('answer-input');
-      input.value = '';
-      input.disabled = false;
-      input.maxLength = q.word.length;
-      input.focus();
+      const area = document.getElementById('game-card-area');
+      area.innerHTML = `
+        <div class="card">
+          <span class="tag">${q.category} / ${q.folder || q.chapter}</span>
+          <span class="tag" style="background:#fef3c7; color:#b45309;">${q.pos || '詞性'}</span>
+          <h2 class="title" style="font-size:1.6rem; margin:12px 0;">${q.zh}</h2>
+        </div>
+        <div id="options-box"></div>
+      `;
 
-      document.getElementById('game-feedback').style.display = 'none';
-      document.getElementById('submit-btn').style.display = 'block';
-      document.getElementById('next-question-btn').style.display = 'none';
+      const box = document.getElementById('options-box');
+      let opts = q.options;
+      if (!opts || opts.length < 4) {
+        opts = [q.word, "option_a", "option_b", "option_c"];
+      }
+      // 確保選項包含正確答案並隨機打亂
+      if (!opts.includes(q.word)) opts[0] = q.word;
+      opts = [...opts].sort(() => 0.5 - Math.random());
+
+      opts.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerText = opt;
+        btn.onclick = () => {
+          const allBtns = box.querySelectorAll('button');
+          allBtns.forEach(b => b.disabled = true);
+
+          if (opt === q.word) {
+            btn.classList.add('correct');
+            score += 100;
+          } else {
+            btn.classList.add('wrong');
+            allBtns.forEach(b => {
+              if (b.innerText === q.word) b.classList.add('correct');
+            });
+          }
+
+          setTimeout(() => {
+            currentIndex++;
+            renderQuiz();
+          }, 1100);
+        };
+        box.appendChild(btn);
+      });
     }
 
-    function submitWordAnswer() {
-      const input = document.getElementById('answer-input');
-      const userAns = input.value.trim().toLowerCase();
-      const target = activeWordList[currentWordIndex].word.trim().toLowerCase();
-      const fb = document.getElementById('game-feedback');
+    function renderFlashcard() {
+      if (currentIndex >= currentQuizList.length) currentIndex = 0;
+      const q = currentQuizList[currentIndex];
+      document.getElementById('game-progress').innerText = `單字卡複習: ${currentIndex + 1} / ${currentQuizList.length}`;
+      document.getElementById('game-score').innerText = `單字卡模式`;
 
-      input.disabled = true;
-
-      if (userAns === target) {
-        wordScore += 100;
-        document.getElementById('score-display').innerText = `積分：${wordScore}`;
-        fb.className = 'feedback-box success';
-        fb.innerHTML = `🎉 完全正確！`;
-      } else {
-        fb.className = 'feedback-box error';
-        fb.innerHTML = `❌ 錯誤！正解是：${target}`;
-      }
-
-      document.getElementById('submit-btn').style.display = 'none';
-      document.getElementById('next-question-btn').style.display = 'block';
+      const area = document.getElementById('game-card-area');
+      area.innerHTML = `
+        <div class="card" style="padding:36px 20px;">
+          <span class="tag">${q.category} / ${q.folder || q.chapter}</span>
+          <h1 style="font-size:2.2rem; color:var(--primary); margin:16px 0;">${q.word}</h1>
+          <p style="color:#64748b; font-weight:700; margin-bottom:12px;">[${q.pos || 'n.'}]</p>
+          <h3 style="font-size:1.4rem; color:#1e293b;">${q.zh}</h3>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button onclick="currentIndex++; renderFlashcard();" class="btn-primary">下一個單字 ➔</button>
+          <button onclick="returnToLobby()" class="btn-secondary">回大廳</button>
+        </div>
+      `;
     }
   </script>
 </body>
