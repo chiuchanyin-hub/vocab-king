@@ -4,12 +4,533 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>高中單字挑戰王 - 雙模實戰 APP</title>
-  <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <style>
+    :root {
+      --primary: #4338ca;
+      --primary-light: #6366f1;
+      --success: #10b981;
+      --danger: #ef4444;
+      --dark: #0f172a;
+      --border: #e2e8f0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      background: #020617;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+    }
+    .app-shell {
+      width: 100%;
+      max-width: 480px;
+      background: #ffffff;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8);
+      display: flex;
+      flex-direction: column;
+      min-height: 720px;
+    }
+    .app-nav {
+      display: flex;
+      background: #1e293b;
+      padding: 8px;
+      gap: 6px;
+    }
+    .nav-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 10px 4px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: #94a3b8;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .nav-btn.active {
+      background: #334155;
+      color: #f8fafc;
+    }
+    .badge {
+      background: var(--danger);
+      color: white;
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+    .view-panel {
+      display: none;
+      flex-direction: column;
+      padding: 18px;
+      flex: 1;
+    }
+    .view-panel.active {
+      display: flex;
+    }
+
+    /* 挑戰王頂部與卡片 */
+    .chapter-selector-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f8fafc;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 12px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #334155;
+    }
+    .chapter-dropdown {
+      flex: 1;
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: white;
+      font-weight: 600;
+      outline: none;
+    }
+    .game-status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .pill {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .pill-level { background: #e0e7ff; color: var(--primary); }
+    .pill-score { background: #fef3c7; color: #b45309; }
+    .timer-wrapper {
+      display: flex;
+      align-items: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--danger);
+    }
+    .timer-progress-bar {
+      width: 100%;
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 3px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    #timer-progress-fill {
+      height: 100%;
+      background: var(--danger);
+      width: 100%;
+      transition: width 1s linear;
+    }
+    .card {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .chapter-tag {
+      background: #fef3c7;
+      color: #b45309;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .pos-tag {
+      background: #e0e7ff;
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .chinese-prompt {
+      font-size: 1.7rem;
+      color: var(--dark);
+      margin: 10px 0;
+      font-weight: 800;
+    }
+    .hint-audio-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .hint-text {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #334155;
+    }
+    .btn-sound-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #eef2ff;
+      color: var(--primary);
+      border: 1.5px solid #c7d2fe;
+      padding: 6px 12px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* 🔥 完全無框！純粗虛線填空設計 */
+    .pure-dashed-zone {
+      position: relative;
+      width: 100%;
+      min-height: 96px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent !important;
+      border: none !important;
+      cursor: text;
+      padding: 12px 0;
+    }
+    .slots-flex-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      pointer-events: none;
+    }
+    .dash-underline {
+      width: 46px;
+      height: 60px;
+      border-bottom: 5px dashed #475569 !important; /* 顯眼粗虛線 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: #0f172a;
+      text-transform: lowercase;
+      transition: all 0.15s ease;
+    }
+    .dash-underline.focusing {
+      border-bottom: 5px solid #4f46e5 !important;
+      animation: blinkLine 0.9s infinite alternate;
+    }
+    .dash-underline.char-wrong {
+      color: #ef4444 !important;
+      border-bottom: 5px solid #ef4444 !important;
+      background: rgba(239, 68, 68, 0.08);
+    }
+    .dash-underline.char-right {
+      color: #10b981 !important;
+      border-bottom: 5px solid #10b981 !important;
+    }
+    .dash-gap { width: 22px; }
+    @keyframes blinkLine {
+      from { border-bottom-color: #4f46e5; }
+      to { border-bottom-color: #cbd5e1; }
+    }
+    .ghost-input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0 !important; /* 隱藏原生框 */
+      cursor: text;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 14px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .btn-next-action {
+      flex: 1;
+      padding: 14px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      animation: pulseNext 1.2s infinite alternate;
+    }
+    @keyframes pulseNext {
+      from { transform: scale(1); }
+      to { transform: scale(1.03); }
+    }
+    .feedback-box {
+      margin-top: 14px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .feedback-box.success { background: #ecfdf5; color: #065f46; display: flex; }
+    .feedback-box.error { background: #fef2f2; color: #991b1b; display: flex; }
+
+    /* 90% 結算彈窗 */
+    .modal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      z-index: 99;
+    }
+    .modal-card {
+      background: white;
+      width: 100%;
+      border-radius: 24px;
+      padding: 28px 20px;
+      text-align: center;
+    }
+    .summary-stats {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      margin: 14px 0;
+      line-height: 1.8;
+      font-weight: 700;
+    }
+    .summary-verdict-box {
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+    .verdict-pass { background: #ecfdf5; color: #065f46; border: 2px solid #34d399; }
+    .verdict-fail { background: #fef2f2; color: #991b1b; border: 2px solid #f87171; }
+
+    /* 模式 2：知識王風格克漏字對戰 */
+    .arena-bg {
+      background: radial-gradient(circle at top, #1e293b 0%, #090d16 100%) !important;
+      color: #ffffff;
+      justify-content: space-between;
+    }
+    .cloze-top-control {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .chapter-select-dark {
+      background: #1e293b;
+      color: #f8fafc;
+      border: 1px solid #475569;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-weight: 600;
+      outline: none;
+    }
+    .mode-switch-pill {
+      display: flex;
+      background: #1e293b;
+      border-radius: 10px;
+      padding: 3px;
+      gap: 4px;
+      border: 1px solid #475569;
+    }
+    .mode-switch-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .mode-switch-btn.active {
+      background: #38bdf8;
+      color: #020617;
+    }
+    .battle-top-hud {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .player-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80px;
+      position: relative;
+    }
+    .avatar-frame {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #38bdf8, #1e40af);
+      padding: 2.5px;
+    }
+    .avatar-placeholder {
+      width: 100%;
+      height: 100%;
+      background: #1e293b;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+    .player-name {
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin-top: 4px;
+      color: #e2e8f0;
+    }
+    .radial-timer-box {
+      position: relative;
+      width: 74px;
+      height: 74px;
+    }
+    .radial-timer-svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+    .timer-track { fill: none; stroke: rgba(255, 255, 255, 0.1); stroke-width: 7; }
+    .timer-progress {
+      fill: none;
+      stroke: #38bdf8;
+      stroke-width: 7;
+      stroke-linecap: round;
+      stroke-dasharray: 264;
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 1s linear, stroke 0.3s;
+    }
+    .timer-number {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: #ffffff;
+    }
+    .arena-middle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 8px 0;
+    }
+    .meter-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      width: 22px;
+    }
+    .score-num { font-size: 0.8rem; font-weight: 900; color: #94a3b8; }
+    .meter-track {
+      width: 12px;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .meter-fill {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 0%;
+      transition: height 0.4s ease;
+    }
+    .user-fill { background: linear-gradient(to top, #0284c7, #38bdf8); }
+    .bot-fill { background: linear-gradient(to top, #e11d48, #fb7185); }
+    .question-core { flex: 1; text-align: center; }
+    .cloze-sentence-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      padding: 14px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .btn-sound-glow {
+      background: #1e293b;
+      color: #38bdf8;
+      border: 1.5px solid #38bdf8;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .answers-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .choice-btn {
+      width: 100%;
+      padding: 15px 16px;
+      background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%);
+      border: none;
+      border-radius: 14px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #1e293b;
+      box-shadow: 0 5px 0 #94a3b8;
+      cursor: pointer;
+      text-align: center;
+    }
+    .choice-btn.correct { background: linear-gradient(180deg, #34d399 0%, #059669 100%) !important; color: #fff !important; }
+    .choice-btn.wrong { background: linear-gradient(180deg, #f87171 0%, #dc2626 100%) !important; color: #fff !important; }
+    .battle-toast { text-align: center; font-weight: 800; min-height: 22px; }
+
+    /* 後台與不熟區 */
+    .mistake-header, .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .mistake-card, .admin-item-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; }
+    .btn-danger-outline { border: none; background: transparent; color: var(--danger); font-weight: 700; cursor: pointer; }
+    .auth-box { margin-top: 30px; padding: 26px 20px; }
+    .admin-input-full, .admin-form input, .admin-form textarea { width: 100%; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; margin-bottom: 8px; outline: none; }
+    .form-row { display: flex; gap: 8px; }
+    .admin-list-container { max-height: 220px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
+    .btn-secondary-sm { background: #e2e8f0; border: none; padding: 6px 10px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+    .btn-sound { background: #f1f5f9; border: 1px solid var(--border); padding: 4px 10px; border-radius: 8px; cursor: pointer; font-weight: 700; }
+  </style>
 </head>
 <body>
   <div class="app-shell">
-    <!-- 頂部頁籤導覽 -->
     <header class="app-nav">
       <button class="nav-btn active" id="tab-game-btn">👑 單字挑戰王</button>
       <button class="nav-btn" id="tab-cloze-btn">⚔️ 克漏字對戰</button>
@@ -17,7 +538,7 @@
       <button class="nav-btn" id="tab-admin-btn">🔒 後台管理</button>
     </header>
 
-    <!-- 模式 1：單字挑戰王 (純虛線填空 + 隨機出題 + 90%通關) -->
+    <!-- 模式 1：單字挑戰王 -->
     <main id="view-game" class="view-panel active">
       <div class="chapter-selector-bar">
         <label for="game-chapter-filter">🎯 挑戰範圍：</label>
@@ -33,33 +554,29 @@
         </div>
       </div>
       
-      <!-- 倒數時間進度條 -->
       <div class="timer-progress-bar">
         <div id="timer-progress-fill"></div>
       </div>
 
-      <!-- 題目卡片 -->
       <div class="card quiz-card">
         <div style="display:flex; justify-content:center; gap:6px;">
           <span id="quiz-chapter" class="chapter-tag">Unit 1</span>
           <span id="quiz-pos" class="pos-tag">詞性</span>
         </div>
-        <h2 id="quiz-chinese" class="chinese-prompt">載入題目中...</h2>
+        <h2 id="quiz-chinese" class="chinese-prompt">題目載入中...</h2>
         
-        <!-- 提示大字與發音按鈕 -->
         <div class="hint-audio-bar">
           <span id="quiz-hint" class="hint-text">長度：3 字元・首字母 [ c ]</span>
           <button type="button" id="game-sound-btn" class="btn-sound-hint" title="點擊聽發音">🔊 聽發音</button>
         </div>
       </div>
 
-      <!-- 純虛線填空區（完全無外框，僅幾條底線） -->
+      <!-- 純虛線填空區（完全無框） -->
       <div class="pure-dashed-zone" onclick="focusHiddenInput()">
         <div id="letter-slots-container" class="slots-flex-row"></div>
         <input type="text" id="answer-input" class="ghost-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
       </div>
 
-      <!-- 操作按鈕群：確認送出 / NEXT 下一題 -->
       <div style="margin-top:14px; display:flex; gap:10px;">
         <button id="submit-btn" class="btn-primary" style="flex:1;">確認送出 (Enter)</button>
         <button id="next-question-btn" class="btn-next-action" style="display:none;">NEXT 下一題 ➔</button>
@@ -67,7 +584,6 @@
 
       <div id="game-feedback" class="feedback-box"></div>
 
-      <!-- 結算彈窗 (90% 通過門檻) -->
       <div id="round-summary-modal" class="modal-overlay" style="display:none;">
         <div class="modal-card">
           <div id="summary-icon" style="font-size:3.5rem;">🏆</div>
@@ -84,7 +600,7 @@
       </div>
     </main>
 
-    <!-- 模式 2：克漏字對戰 (選擇題 + 1v1 對抗模式) -->
+    <!-- 模式 2：克漏字對戰 -->
     <main id="view-cloze" class="view-panel arena-bg">
       <div class="cloze-top-control">
         <select id="cloze-chapter-filter" class="chapter-select-dark"></select>
@@ -111,7 +627,6 @@
         <div class="player-card">
           <div class="avatar-frame"><div class="avatar-placeholder" id="p2-avatar">🤖</div></div>
           <span class="player-name" id="p2-name">教練 AI</span>
-          <div class="speech-bubble" id="p2-bubble">輪到你了！</div>
         </div>
       </div>
 
@@ -178,7 +693,6 @@
               <select id="import-chapter-select" style="flex:1; padding:8px; border-radius:8px; border:1.5px solid #cbd5e1; font-weight:700;"></select>
               <input type="text" id="import-chapter-custom" placeholder="或輸入新章節名稱 (例如: Unit 3)" style="flex:1.5; padding:8px; border-radius:8px; border:1.5px solid #cbd5e1;" />
             </div>
-            <small style="color:#94a3b8; font-size:0.75rem; margin-top:4px; display:block;">* 若填寫「新章節名稱」，將優先使用自訂名稱建立新章節分類。</small>
           </div>
 
           <label style="font-size:0.85rem; font-weight:800; color:#1e293b; display:block; margin-bottom:6px;">第二步：選擇檔案來源</label>
@@ -202,7 +716,7 @@
 
           <div id="ocr-result-container" style="display:none; margin-top:12px;">
             <div style="display:flex; justify-content:space-between; align-items:center;">
-              <label style="font-size:0.8rem; font-weight:800; color:#334155;">即將匯入之題目預覽 (可編輯微調)：</label>
+              <label style="font-size:0.8rem; font-weight:800; color:#334155;">題目預覽 (可編輯)：</label>
               <span id="pending-chapter-badge" class="chapter-tag" style="font-size:0.75rem;">目標章節: Unit 1</span>
             </div>
             <textarea id="ocr-json-output" style="width:100%; height:140px; font-family:monospace; font-size:0.8rem; margin-top:4px; padding:8px; border:1.5px solid #cbd5e1; border-radius:8px;"></textarea>
@@ -237,6 +751,590 @@
     </main>
   </div>
 
-  <script src="app.js"></script>
+  <!-- 內嵌 JavaScript，避免外部載入異常 -->
+  <script>
+    const ADMIN_PASSWORD = "admin888";
+    let isAdminAuthenticated = false;
+
+    // 預設內建題庫（3張圖片完整單字）
+    const BUILTIN_QUESTIONS = [
+      {"id": 1, "chapter": "Unit 1", "word": "cue", "pos": "n.", "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
+      {"id": 2, "chapter": "Unit 1", "word": "on cue", "pos": "phr.", "zh": "恰好在此時；正當那時", "sentence": "We were talking about earthquakes and then an earthquake happened right ___.", "options": ["on cue", "in prime", "with percent", "for finance"]},
+      {"id": 3, "chapter": "Unit 1", "word": "take your cue from", "pos": "phr.", "zh": "照某人的樣子做；仿效某人", "sentence": "___ your older sister and finish your homework now.", "options": ["Take your cue from", "Declare war on", "Rebel against", "Insure with"]},
+      {"id": 4, "chapter": "Unit 1", "word": "declare", "pos": "v.", "zh": "宣布；宣稱；申報", "sentence": "The government decided to ___ the day a public holiday.", "options": ["declare", "divorce", "disappoint", "finance"]},
+      {"id": 5, "chapter": "Unit 1", "word": "declaration", "pos": "n.", "zh": "宣告；聲明；申報", "sentence": "The man made a formal ___ that he had nothing to do with the robbery.", "options": ["declaration", "percentage", "rebellion", "insurance"]},
+      {"id": 6, "chapter": "Unit 1", "word": "declare war", "pos": "phr.", "zh": "宣戰", "sentence": "The government refused to ___ despite severe border tensions.", "options": ["declare war", "take cue", "in prime", "be 100 percent"]},
+      {"id": 7, "chapter": "Unit 1", "word": "disappoint", "pos": "v.", "zh": "使失望；使沮喪", "sentence": "I didn't want to ___ Lydia, so I went to her party even though I felt ill.", "options": ["disappoint", "declare", "insure", "finance"]},
+      {"id": 8, "chapter": "Unit 1", "word": "disappointment", "pos": "n.", "zh": "失望；掃興", "sentence": "You can see the ___ in her eyes as she heard the bad news.", "options": ["disappointment", "rebellion", "percentage", "declaration"]},
+      {"id": 9, "chapter": "Unit 1", "word": "to one's disappointment", "pos": "phr.", "zh": "讓某人失望的是……", "sentence": "___, the girl he likes didn't show up at the party.", "options": ["To his disappointment", "In his prime", "On his cue", "With his finance"]},
+      {"id": 10, "chapter": "Unit 1", "word": "divorce", "pos": "v.", "zh": "離婚；使分離", "sentence": "Fredrick's parents decided to ___ five years ago.", "options": ["divorce", "declare", "insure", "reject"]},
+      {"id": 11, "chapter": "Unit 1", "word": "finance", "pos": "v./n.", "zh": "資助；提供資金 / 財務；金融", "sentence": "Several experts in ___ predicted the collapse of the housing market.", "options": ["finance", "insurance", "intellect", "rebellion"]},
+      {"id": 12, "chapter": "Unit 1", "word": "financial", "pos": "adj.", "zh": "財務的；金融的", "sentence": "Fred is having ___ problems right now, so don't ask him for money.", "options": ["financial", "rebellious", "divorced", "intellectual"]},
+      {"id": 13, "chapter": "Unit 1", "word": "insurance", "pos": "n.", "zh": "保險；保險業", "sentence": "Doug's ___ will pay for some of the repairs to his car.", "options": ["insurance", "declaration", "rejection", "finance"]},
+      {"id": 14, "chapter": "Unit 1", "word": "intellectual", "pos": "adj./n.", "zh": "智力的；智能的 / 知識分子", "sentence": "This is an ___ game that challenges players' critical thinking.", "options": ["intellectual", "financial", "rebellious", "divorced"]},
+      {"id": 15, "chapter": "Unit 1", "word": "percent", "pos": "n.", "zh": "百分之……", "sentence": "About twenty ___ of the world's population lives in China.", "options": ["percent", "rebel", "cue", "prime"]},
+      {"id": 16, "chapter": "Unit 1", "word": "prime", "pos": "adj.", "zh": "首要的；最具代表性的", "sentence": "Our ___ concern is making sure that our customers are happy.", "options": ["prime", "intellectual", "rebellious", "financial"]},
+      {"id": 17, "chapter": "Unit 1", "word": "rebel", "pos": "v./n.", "zh": "反抗；造反 / 反抗者", "sentence": "Teenagers sometimes ___ against their parents.", "options": ["rebel", "insure", "finance", "declare"]},
+      {"id": 18, "chapter": "Unit 1", "word": "rejection", "pos": "n.", "zh": "拒絕", "sentence": "Although I was hopeful, I received a letter of ___ for my application.", "options": ["rejection", "insurance", "declaration", "percentage"]}
+    ];
+
+    let customQuestions = JSON.parse(localStorage.getItem('custom_questions') || '[]');
+    let allQuestions = [];
+    let activeGameList = [];
+    let currentGameIndex = 0;
+    let gameScore = 0;
+    let gameCorrectCount = 0;
+    let gameTotalCount = 0;
+    let gameTimer = null;
+    let gameTimeLeft = 15;
+    const GAME_INITIAL_TIME = 15;
+    let autoPronounceTimeout = null;
+    let isCurrentQuestionSubmitted = false;
+
+    let activeClozeList = [];
+    let currentClozeIndex = 0;
+    let clozeBattleMode = 'pve';
+    let p1Score = 0;
+    let p2Score = 0;
+    let pvpTurn = 1;
+    let clozeTimer = null;
+    let clozeTimeLeft = 10;
+    const CLOZE_INITIAL_TIME = 10;
+    const CIRCLE_CIRCUMFERENCE = 264;
+
+    let mistakeIds = new Set(JSON.parse(localStorage.getItem('mistakes') || '[]'));
+
+    // 隨機打亂演算法 (Fisher-Yates)
+    function shuffleArray(arr) {
+      const res = [...arr];
+      for (let i = res.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [res[i], res[j]] = [res[j], res[i]];
+      }
+      return res;
+    }
+
+    function playSound(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'en-US';
+        utter.rate = 0.85;
+        window.speechSynthesis.speak(utter);
+      }
+    }
+
+    function refreshTotalQuestions() {
+      allQuestions = [...BUILTIN_QUESTIONS, ...customQuestions];
+      document.getElementById('total-word-count').innerText = allQuestions.length;
+      updateChapterDropdowns();
+    }
+
+    function updateChapterDropdowns() {
+      const chapters = ["全部章節", ...new Set(allQuestions.map(q => q.chapter || "Unit 1"))];
+      const gameSelect = document.getElementById('game-chapter-filter');
+      const clozeSelect = document.getElementById('cloze-chapter-filter');
+
+      const curG = gameSelect.value || "全部章節";
+      const curC = clozeSelect.value || "全部章節";
+
+      const opts = chapters.map(c => `<option value="${c}">${c}</option>`).join('');
+      gameSelect.innerHTML = opts;
+      clozeSelect.innerHTML = opts;
+
+      gameSelect.value = chapters.includes(curG) ? curG : "全部章節";
+      clozeSelect.value = chapters.includes(curC) ? curC : "全部章節";
+
+      refreshAdminChapterSelector();
+      filterGameList();
+      filterClozeList();
+    }
+
+    function refreshAdminChapterSelector() {
+      const select = document.getElementById('import-chapter-select');
+      if (!select) return;
+      const uniqueChapters = [...new Set(allQuestions.map(q => q.chapter || "Unit 1"))];
+      select.innerHTML = uniqueChapters.map(c => `<option value="${c}">現有章節：${c}</option>`).join('');
+    }
+
+    function filterGameList() {
+      const f = document.getElementById('game-chapter-filter').value;
+      const filtered = f === "全部章節" ? allQuestions : allQuestions.filter(q => q.chapter === f);
+      // 核心：一律隨機出題！
+      activeGameList = shuffleArray(filtered);
+    }
+
+    function filterClozeList() {
+      const f = document.getElementById('cloze-chapter-filter').value;
+      const filtered = f === "全部章節" ? allQuestions : allQuestions.filter(q => q.chapter === f);
+      activeClozeList = shuffleArray(filtered);
+    }
+
+    function focusHiddenInput() {
+      if (isCurrentQuestionSubmitted) return;
+      const input = document.getElementById('answer-input');
+      if (input) input.focus();
+    }
+
+    // 純虛線渲染（幾字母就幾條橫虛線）
+    function renderLetterSlots(targetWord, currentVal = '', isEvaluated = false) {
+      const container = document.getElementById('letter-slots-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const targetChars = targetWord.toLowerCase().split('');
+      const userLetters = currentVal.toLowerCase().split('');
+
+      let charIdx = 0;
+      targetChars.forEach((c) => {
+        if (c === ' ') {
+          const spaceDiv = document.createElement('div');
+          spaceDiv.className = 'dash-gap';
+          container.appendChild(spaceDiv);
+        } else {
+          const slot = document.createElement('div');
+          slot.className = 'dash-underline';
+          
+          const userChar = userLetters[charIdx] || '';
+          slot.innerText = userChar;
+
+          if (isEvaluated) {
+            if (userChar === c) {
+              slot.classList.add('char-right');
+            } else {
+              slot.classList.add('char-wrong');
+              if (!userChar) slot.innerText = '•';
+            }
+          } else {
+            if (charIdx === userLetters.length) {
+              slot.classList.add('focusing');
+            }
+          }
+
+          container.appendChild(slot);
+          charIdx++;
+        }
+      });
+    }
+
+    function startNewGameSession() {
+      currentGameIndex = 0;
+      gameScore = 0;
+      gameCorrectCount = 0;
+      gameTotalCount = activeGameList.length;
+      document.getElementById('score-display').innerText = `積分：0`;
+      document.getElementById('round-summary-modal').style.display = 'none';
+      loadGameQuestion();
+    }
+
+    function loadGameQuestion() {
+      if (!activeGameList.length) {
+        document.getElementById('quiz-chinese').innerText = "此章節無題目";
+        return;
+      }
+
+      if (currentGameIndex >= activeGameList.length) {
+        triggerRoundSummary();
+        return;
+      }
+
+      isCurrentQuestionSubmitted = false;
+      const q = activeGameList[currentGameIndex];
+      
+      document.getElementById('game-progress-tag').innerText = `進度：${currentGameIndex + 1} / ${gameTotalCount}`;
+      document.getElementById('quiz-chapter').innerText = q.chapter || "Unit 1";
+      document.getElementById('quiz-pos').innerText = q.pos;
+      document.getElementById('quiz-chinese').innerText = q.zh;
+      document.getElementById('quiz-hint').innerText = `長度：${q.word.length} 字元・首字母 [ ${q.word[0]} ]`;
+
+      const input = document.getElementById('answer-input');
+      input.value = '';
+      input.disabled = false;
+      input.maxLength = q.word.length;
+      focusHiddenInput();
+
+      renderLetterSlots(q.word, '');
+
+      document.getElementById('game-feedback').style.display = 'none';
+      document.getElementById('submit-btn').style.display = 'block';
+      document.getElementById('next-question-btn').style.display = 'none';
+
+      if (autoPronounceTimeout) clearTimeout(autoPronounceTimeout);
+      autoPronounceTimeout = setTimeout(() => {
+        playSound(q.word);
+      }, 1000);
+
+      gameTimeLeft = GAME_INITIAL_TIME;
+      startGameTimer();
+    }
+
+    function startGameTimer() {
+      clearInterval(gameTimer);
+      updateGameTimerUI();
+      gameTimer = setInterval(() => {
+        gameTimeLeft--;
+        updateGameTimerUI();
+        if (gameTimeLeft <= 0) {
+          clearInterval(gameTimer);
+          handleGameTimeout();
+        }
+      }, 1000);
+    }
+
+    function updateGameTimerUI() {
+      document.getElementById('timer-count').innerText = gameTimeLeft;
+      const percent = (gameTimeLeft / GAME_INITIAL_TIME) * 100;
+      document.getElementById('timer-progress-fill').style.width = `${percent}%`;
+    }
+
+    function handleGameTimeout() {
+      if (autoPronounceTimeout) clearTimeout(autoPronounceTimeout);
+      isCurrentQuestionSubmitted = true;
+      const q = activeGameList[currentGameIndex];
+      addMistake(q.id);
+      playSound(q.word);
+
+      renderLetterSlots(q.word, document.getElementById('answer-input').value, true);
+
+      const fb = document.getElementById('game-feedback');
+      fb.className = 'feedback-box error';
+      fb.innerHTML = `⏰ 時間到！正解：<b>${q.word}</b> (已存入不熟區)`;
+
+      document.getElementById('submit-btn').style.display = 'none';
+      document.getElementById('next-question-btn').style.display = 'block';
+    }
+
+    function submitGameAnswer() {
+      if (!activeGameList.length || currentGameIndex >= activeGameList.length || isCurrentQuestionSubmitted) return;
+      if (autoPronounceTimeout) clearTimeout(autoPronounceTimeout);
+      clearInterval(gameTimer);
+      isCurrentQuestionSubmitted = true;
+
+      const input = document.getElementById('answer-input');
+      const userAns = input.value.trim().toLowerCase();
+      const target = activeGameList[currentGameIndex].word.trim().toLowerCase();
+      const fb = document.getElementById('game-feedback');
+
+      input.disabled = true;
+      renderLetterSlots(target, userAns, true);
+
+      if (userAns === target) {
+        gameCorrectCount++;
+        const earned = 100 + (gameTimeLeft * 15);
+        gameScore += earned;
+        document.getElementById('score-display').innerText = `積分：${gameScore}`;
+        playSound(target);
+
+        fb.className = 'feedback-box success';
+        fb.innerHTML = `🎉 完全正確！+${earned} 積分`;
+      } else {
+        addMistake(activeGameList[currentGameIndex].id);
+        playSound(target);
+
+        fb.className = 'feedback-box error';
+        fb.innerHTML = `❌ 拼錯了！正解：<b>${activeGameList[currentGameIndex].word}</b> (已存入不熟區)`;
+      }
+
+      document.getElementById('submit-btn').style.display = 'none';
+      document.getElementById('next-question-btn').style.display = 'block';
+    }
+
+    function triggerRoundSummary() {
+      clearInterval(gameTimer);
+      if (autoPronounceTimeout) clearTimeout(autoPronounceTimeout);
+      const modal = document.getElementById('round-summary-modal');
+      const acc = Math.round((gameCorrectCount / gameTotalCount) * 100) || 0;
+
+      document.getElementById('summary-total').innerText = gameTotalCount;
+      document.getElementById('summary-correct').innerText = gameCorrectCount;
+      document.getElementById('summary-score').innerText = gameScore;
+      document.getElementById('summary-accuracy').innerText = `${acc}%`;
+
+      const verdict = document.getElementById('summary-verdict');
+      const icon = document.getElementById('summary-icon');
+      const title = document.getElementById('summary-title');
+
+      if (acc >= 90) {
+        icon.innerText = "👑";
+        title.innerText = "挑戰通過！你就是單字王";
+        verdict.className = "summary-verdict-box verdict-pass";
+        verdict.innerText = `🌟 達成 ${acc}% 正確率（標準: 90%）恭喜通過！`;
+      } else {
+        icon.innerText = "💪";
+        title.innerText = "未達 90% 通過門檻";
+        verdict.className = "summary-verdict-box verdict-fail";
+        verdict.innerText = `⚠️ 正確率 ${acc}%，差一點點！再挑戰一次吧！`;
+      }
+      modal.style.display = 'flex';
+    }
+
+    // 克漏字對戰
+    function loadClozeBattleRound() {
+      if (!activeClozeList.length) return;
+      const q = activeClozeList[currentClozeIndex];
+      document.getElementById('cloze-sentence-text').innerHTML = q.sentence.replace('___', '<b style="color:#38bdf8; text-decoration:underline;">______</b>');
+      document.getElementById('cloze-round-toast').innerText = '';
+
+      const options = shuffleArray([...q.options]);
+      const container = document.getElementById('cloze-options-container');
+      container.innerHTML = '';
+
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'choice-btn';
+        btn.innerText = opt;
+        btn.onclick = () => handleClozeChoice(btn, opt, q.word);
+        container.appendChild(btn);
+      });
+
+      clozeTimeLeft = CLOZE_INITIAL_TIME;
+      startClozeTimer();
+    }
+
+    function startClozeTimer() {
+      clearInterval(clozeTimer);
+      updateClozeTimerVisual(CLOZE_INITIAL_TIME);
+      clozeTimer = setInterval(() => {
+        clozeTimeLeft--;
+        updateClozeTimerVisual(clozeTimeLeft);
+        if (clozeTimeLeft <= 0) {
+          clearInterval(clozeTimer);
+          handleClozeTimeout();
+        }
+      }, 1000);
+    }
+
+    function updateClozeTimerVisual(t) {
+      document.getElementById('cloze-timer-text').innerText = t;
+      const stroke = document.getElementById('cloze-timer-stroke');
+      const offset = CIRCLE_CIRCUMFERENCE - (t / CLOZE_INITIAL_TIME) * CIRCLE_CIRCUMFERENCE;
+      stroke.style.strokeDashoffset = offset;
+      stroke.style.stroke = t <= 3 ? "#ef4444" : "#38bdf8";
+    }
+
+    function handleClozeChoice(selectedBtn, selectedText, answerText) {
+      clearInterval(clozeTimer);
+      const allBtns = document.querySelectorAll('#cloze-options-container .choice-btn');
+      allBtns.forEach(b => b.disabled = true);
+
+      const toast = document.getElementById('cloze-round-toast');
+      const isCorrect = selectedText.toLowerCase() === answerText.toLowerCase();
+
+      if (isCorrect) {
+        selectedBtn.classList.add('correct');
+        playSound(answerText);
+        const earned = 100 + (clozeTimeLeft * 15);
+        if (clozeBattleMode === 'pve') {
+          p1Score += earned;
+          toast.innerHTML = `<span style="color:#34d399;">⚡ 玩家1 答對！+${earned} 分</span>`;
+        } else {
+          if (pvpTurn === 1) {
+            p1Score += earned;
+            toast.innerHTML = `<span style="color:#38bdf8;">⚡ 玩家1 答對！+${earned} 分</span>`;
+          } else {
+            p2Score += earned;
+            toast.innerHTML = `<span style="color:#fb7185;">⚡ 玩家2 答對！+${earned} 分</span>`;
+          }
+        }
+      } else {
+        selectedBtn.classList.add('wrong');
+        allBtns.forEach(b => {
+          if (b.innerText.toLowerCase() === answerText.toLowerCase()) b.classList.add('correct');
+        });
+        addMistake(activeClozeList[currentClozeIndex].id);
+        playSound(answerText);
+        toast.innerHTML = `<span style="color:#f87171;">❌ 答錯！正解為 ${answerText}</span>`;
+      }
+
+      if (clozeBattleMode === 'pve' && Math.random() < 0.65) {
+        p2Score += 100 + (Math.floor(Math.random() * 8) * 10);
+      }
+      updateClozeMeters();
+
+      if (clozeBattleMode === 'pvp') {
+        pvpTurn = pvpTurn === 1 ? 2 : 1;
+        document.getElementById('turn-indicator-bar').innerText = `當前回合：玩家 ${pvpTurn} 作答`;
+      }
+
+      setTimeout(() => {
+        currentClozeIndex = (currentClozeIndex + 1) % activeClozeList.length;
+        loadClozeBattleRound();
+      }, 1600);
+    }
+
+    function handleClozeTimeout() {
+      const currentWord = activeClozeList[currentClozeIndex].word;
+      addMistake(activeClozeList[currentClozeIndex].id);
+      playSound(currentWord);
+
+      const allBtns = document.querySelectorAll('#cloze-options-container .choice-btn');
+      allBtns.forEach(b => {
+        b.disabled = true;
+        if (b.innerText.toLowerCase() === currentWord.toLowerCase()) b.classList.add('correct');
+      });
+
+      document.getElementById('cloze-round-toast').innerHTML = `<span style="color:#f87171;">⏰ 時間到！答案是 ${currentWord}</span>`;
+      if (clozeBattleMode === 'pve') p2Score += 80;
+      updateClozeMeters();
+
+      setTimeout(() => {
+        currentClozeIndex = (currentClozeIndex + 1) % activeClozeList.length;
+        loadClozeBattleRound();
+      }, 2000);
+    }
+
+    function updateClozeMeters() {
+      document.getElementById('p1-score-text').innerText = p1Score;
+      document.getElementById('p2-score-text').innerText = p2Score;
+      document.getElementById('p1-meter-fill').style.height = `${Math.min(100, (p1Score / 1000) * 100)}%`;
+      document.getElementById('p2-meter-fill').style.height = `${Math.min(100, (p2Score / 1000) * 100)}%`;
+    }
+
+    function addMistake(id) {
+      mistakeIds.add(id);
+      localStorage.setItem('mistakes', JSON.stringify([...mistakeIds]));
+      updateMistakeBadge();
+    }
+    function removeMistake(id) {
+      mistakeIds.delete(id);
+      localStorage.setItem('mistakes', JSON.stringify([...mistakeIds]));
+      renderMistakes();
+      updateMistakeBadge();
+    }
+    function updateMistakeBadge() {
+      document.getElementById('mistake-badge').innerText = mistakeIds.size;
+    }
+    function renderMistakes() {
+      const list = document.getElementById('mistakes-list');
+      list.innerHTML = '';
+      if (mistakeIds.size === 0) {
+        list.innerHTML = `<p style="text-align:center; color:#94a3b8; margin-top:40px;">太棒了，目前沒有不熟單字！</p>`;
+        return;
+      }
+      const badQuestions = allQuestions.filter(q => mistakeIds.has(q.id));
+      badQuestions.forEach(q => {
+        const item = document.createElement('div');
+        item.className = 'mistake-card';
+        item.innerHTML = `
+          <div>
+            <span class="chapter-tag" style="font-size:0.75rem; padding:2px 6px;">${q.chapter || 'Unit 1'}</span>
+            <strong>${q.word}</strong> <span style="color:#6366f1; font-size:0.85rem;">[${q.pos}]</span>
+            <div style="color:#64748b; font-size:0.88rem; margin-top:2px;">${q.zh}</div>
+          </div>
+          <div>
+            <button class="btn-sound" onclick="playSound('${q.word}')">🔊</button>
+            <button style="border:none; background:#fee2e2; color:#ef4444; padding:6px 10px; border-radius:8px; font-weight:700; cursor:pointer;" onclick="removeMistake(${q.id})">已熟記</button>
+          </div>
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    // 事件監聽綁定
+    window.addEventListener('DOMContentLoaded', () => {
+      refreshTotalQuestions();
+      updateMistakeBadge();
+      startNewGameSession();
+      loadClozeBattleRound();
+
+      const tabs = [
+        { btn: 'tab-game-btn', view: 'view-game' },
+        { btn: 'tab-cloze-btn', view: 'view-cloze' },
+        { btn: 'tab-mistakes-btn', view: 'view-mistakes' },
+        { btn: 'tab-admin-btn', view: 'view-admin' }
+      ];
+
+      tabs.forEach(t => {
+        document.getElementById(t.btn).addEventListener('click', () => {
+          tabs.forEach(o => {
+            document.getElementById(o.btn).classList.remove('active');
+            document.getElementById(o.view).classList.remove('active');
+          });
+          document.getElementById(t.btn).classList.add('active');
+          document.getElementById(t.view).classList.add('active');
+
+          clearInterval(gameTimer);
+          clearInterval(clozeTimer);
+          if (autoPronounceTimeout) clearTimeout(autoPronounceTimeout);
+
+          if (t.view === 'view-game') {
+            if (!isCurrentQuestionSubmitted) startGameTimer();
+          } else if (t.view === 'view-cloze') {
+            startClozeTimer();
+          } else if (t.view === 'view-mistakes') {
+            renderMistakes();
+          } else if (t.view === 'view-admin') {
+            document.getElementById('admin-auth-panel').style.display = isAdminAuthenticated ? 'none' : 'block';
+            document.getElementById('admin-main-panel').style.display = isAdminAuthenticated ? 'block' : 'none';
+          }
+        });
+      });
+
+      document.getElementById('game-chapter-filter').addEventListener('change', () => {
+        filterGameList();
+        startNewGameSession();
+      });
+
+      document.getElementById('cloze-chapter-filter').addEventListener('change', () => {
+        filterClozeList();
+        currentClozeIndex = 0;
+        loadClozeBattleRound();
+      });
+
+      document.getElementById('next-question-btn').addEventListener('click', () => {
+        currentGameIndex++;
+        loadGameQuestion();
+      });
+
+      document.getElementById('answer-input').addEventListener('input', (e) => {
+        if (!activeGameList.length || currentGameIndex >= activeGameList.length || isCurrentQuestionSubmitted) return;
+        const target = activeGameList[currentGameIndex].word;
+        renderLetterSlots(target, e.target.value.toLowerCase(), false);
+      });
+
+      document.getElementById('submit-btn').addEventListener('click', submitGameAnswer);
+      document.getElementById('answer-input').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          if (!isCurrentQuestionSubmitted) submitGameAnswer();
+          else document.getElementById('next-question-btn').click();
+        }
+      });
+
+      document.getElementById('restart-round-btn').addEventListener('click', startNewGameSession);
+      document.getElementById('game-sound-btn').addEventListener('click', () => {
+        if (!activeGameList.length || currentGameIndex >= activeGameList.length) return;
+        playSound(activeGameList[currentGameIndex].word);
+      });
+
+      document.getElementById('cloze-listen-btn').addEventListener('click', () => {
+        if (!activeClozeList.length) return;
+        playSound(activeClozeList[currentClozeIndex].sentence.replace('___', activeClozeList[currentClozeIndex].word));
+      });
+
+      document.getElementById('clear-mistakes-btn').addEventListener('click', () => {
+        mistakeIds.clear();
+        localStorage.removeItem('mistakes');
+        renderMistakes();
+        updateMistakeBadge();
+      });
+
+      // 後台驗證
+      document.getElementById('admin-login-btn').addEventListener('click', () => {
+        if (document.getElementById('admin-pwd-input').value === ADMIN_PASSWORD) {
+          isAdminAuthenticated = true;
+          document.getElementById('admin-auth-panel').style.display = 'none';
+          document.getElementById('admin-main-panel').style.display = 'block';
+        } else {
+          document.getElementById('auth-error-msg').style.display = 'block';
+        }
+      });
+
+      document.getElementById('admin-logout-btn').addEventListener('click', () => {
+        isAdminAuthenticated = false;
+        document.getElementById('admin-auth-panel').style.display = 'block';
+        document.getElementById('admin-main-panel').style.display = 'none';
+      });
+    });
+  </script>
 </body>
 </html>
