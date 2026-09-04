@@ -246,6 +246,9 @@
       renderQuestions();
     }
 
+    // ----------------------------------------------------
+    // API KEY 狀態檢查與儲存
+    // ----------------------------------------------------
     function checkApiKeyStatus() {
       const key = localStorage.getItem('gemini_api_key') || '';
       const statusEl = document.getElementById('api-key-status');
@@ -267,7 +270,9 @@
       checkApiKeyStatus();
     });
 
-    // 📸 Gemini AI 拍照辨識建題
+    // ----------------------------------------------------
+    // 📸 AI 拍照建題功能 (Gemini API)
+    // ----------------------------------------------------
     function fileToBase64(file) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -342,7 +347,7 @@
         document.getElementById('ocr-preview-box').style.display = 'none';
         document.getElementById('ocr-status').style.display = 'none';
         document.getElementById('ocr-file').value = '';
-        alert(`🎉 成功將 ${items.length} 題加入題庫！`);
+        alert(`🎉 成功將 ${items.length} 題照片單字加入題庫！`);
       } catch (e) {
         alert("JSON 格式有誤！請確認格式是否正確。");
       }
@@ -354,7 +359,9 @@
       document.getElementById('ocr-file').value = '';
     });
 
+    // ----------------------------------------------------
     // ✍️ 手動新增單字處理
+    // ----------------------------------------------------
     document.getElementById('manual-add-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const category = document.getElementById('manual-category').value;
@@ -394,7 +401,9 @@
       alert(`✅ 成功手動新增單字 "${word}" 至 [${category} / ${folder}]！`);
     });
 
-    // 📊 Excel 匯入
+    // ----------------------------------------------------
+    // 📊 Excel 檔案匯入處理
+    // ----------------------------------------------------
     document.getElementById('import-excel-btn').addEventListener('click', () => {
       const fileInput = document.getElementById('excel-file-input');
       const file = fileInput.files[0];
@@ -414,6 +423,7 @@
           const rawRows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
           if (rawRows.length <= 3) return alert("Excel 檔案內容過少或格式不符！");
 
+          // Excel 格式防呆：略過前三行 (通常為標題說明)
           const dataRows = rawRows.slice(3);
           let newCount = 0;
 
@@ -469,6 +479,9 @@
       reader.readAsArrayBuffer(file);
     });
 
+    // ----------------------------------------------------
+    // 🗑️ 題目管理與刪除
+    // ----------------------------------------------------
     window.deleteQuestionItem = function(targetId) {
       if (confirm("確定要刪除此題目嗎？")) {
         questions = questions.filter(q => String(q.id) !== String(targetId));
@@ -539,6 +552,9 @@
       });
     }
 
+    // ----------------------------------------------------
+    // 👥 學生管理
+    // ----------------------------------------------------
     function renderStudents() {
       const container = document.getElementById('student-list');
       container.innerHTML = '';
