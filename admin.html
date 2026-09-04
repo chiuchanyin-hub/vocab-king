@@ -24,7 +24,7 @@
     .btn-secondary { background: #e2e8f0; color: #334155; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; }
     .btn-ai { background: linear-gradient(135deg, #6366f1, #a855f7); color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; box-shadow: 0 2px 8px rgba(168, 85, 247, 0.35); }
     .form-row { display: flex; gap: 8px; margin-bottom: 8px; }
-    .form-control { width: 100%; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; outline: none; margin-bottom: 8px; font-size: 0.9rem; background: white; }
+    .form-control { width: 100%; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; outline: none; margin-bottom: 8px; font-size: 0.9rem; }
     .item-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; background: #ffffff; transition: background 0.15s; }
     .item-card:hover { background: #f1f5f9; }
     .btn-del { border: none; background: #fee2e2; color: #ef4444; border-radius: 6px; padding: 6px 12px; font-weight: 800; cursor: pointer; transition: all 0.15s; }
@@ -73,11 +73,11 @@
         <div id="api-key-status" style="font-size:0.75rem; margin-top:6px; color:#15803d; font-weight:700;"></div>
       </div>
 
-      <!-- 區塊 1：📸 照片 AI 智慧辨識建題 (含手動補單筆欄位，詞性改下拉選單) -->
+      <!-- 區塊 1：📸 照片 AI 智慧辨識建題 (含手動補單筆欄位) -->
       <div class="section-card" style="border:2px dashed #6366f1;">
         <h3 style="color:#4338ca;">📸 課本照片智慧辨識與手動補題</h3>
         <p style="font-size:0.82rem; color:#64748b; margin-bottom:10px;">
-          拍照辨識後可於下方預覽框微調，或直接利用下方的<b>手動輸入表單</b>補上未辨識到的單字或片語！
+          拍照辨識後可於下方預覽框微調，或直接利用下方的<b>手動輸入表單</b>補上未辨識到的單字或片語（例句非必填）！
         </p>
         
         <div class="form-row">
@@ -95,21 +95,13 @@
           </div>
         </div>
 
-        <!-- 手動輸入單筆題目表單（詞性為下拉式選單） -->
+        <!-- 手動輸入單筆題目表單（例句非必填） -->
         <div style="margin-top:16px; padding-top:14px; border-top:1px solid #e2e8f0;">
           <h4 style="font-size:0.9rem; color:#1e293b; margin-bottom:8px;">✏️ 另外手動補上一筆題目：</h4>
           <form id="manual-add-form">
             <div class="form-row">
               <input type="text" id="man-chapter" placeholder="章節 (如: Unit 2)" required class="form-control" style="flex:1; margin-bottom:6px;" />
-              <!-- 下拉式選單選擇詞性 -->
-              <select id="man-pos" class="form-control" style="flex:1; margin-bottom:6px; font-weight:700;">
-                <option value="n.">n. (名詞)</option>
-                <option value="v.">v. (動詞)</option>
-                <option value="adj.">adj. (形容詞)</option>
-                <option value="adv.">adv. (副詞)</option>
-                <option value="phr.">phr. (片語)</option>
-                <option value="v./n.">v./n. (動詞/名詞)</option>
-              </select>
+              <input type="text" id="man-pos" placeholder="詞性 (單字填 n./v.，片語填 phr.)" required class="form-control" style="flex:1; margin-bottom:6px;" />
             </div>
             <div class="form-row">
               <input type="text" id="man-word" placeholder="英文單字或片語 (如: abandon)" required class="form-control" style="flex:1; margin-bottom:6px;" />
@@ -437,14 +429,18 @@
       }
     });
 
-    // 處理手動單筆新增表單提交（詞性由下拉式選單取得）
+    // 處理手動單筆新增表單提交（例句選填）
     document.getElementById('manual-add-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const chapter = document.getElementById('man-chapter').value.trim();
-      const pos = document.getElementById('man-pos').value; // 從下拉選單取得
+      let pos = document.getElementById('man-pos').value.trim().toLowerCase();
       const word = document.getElementById('man-word').value.trim().toLowerCase();
       const zh = document.getElementById('man-zh').value.trim();
       let sentence = document.getElementById('man-sentence').value.trim();
+
+      if (word.includes(' ') && !pos.includes('phr')) {
+        pos = "phr.";
+      }
 
       // 如果例句沒填，自動產生預設句
       if (!sentence) {
@@ -462,8 +458,8 @@
         id: Date.now() + Math.floor(Math.random() * 10000),
         chapter: chapter,
         word: word,
-        pos: pos,
-        isPhrase: (pos === 'phr.' || word.includes(' ')),
+        pos: pos || (word.includes(' ') ? "phr." : "n."),
+        isPhrase: (pos.includes('phr') || word.includes(' ')),
         zh: zh,
         sentence: sentence,
         options: [word, "optionA", "optionB", "optionC"]
@@ -473,7 +469,7 @@
       updateChapterOptions();
       renderQuestions();
       e.target.reset();
-      alert(`✅ 成功手動新增項目「${word}」（詞性: ${pos}）！`);
+      alert(`✅ 成功手動新增項目「${word}」！`);
     });
 
     document.getElementById('cancel-ocr-btn').addEventListener('click', () => {
