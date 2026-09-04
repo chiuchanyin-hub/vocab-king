@@ -25,7 +25,7 @@
     .nav-tabs-group { display: flex; flex: 1; gap: 4px; overflow-x: auto; }
     .nav-btn { flex: 1; min-width: 75px; border: none; background: transparent; padding: 9px 4px; border-radius: 12px; font-weight: 700; font-size: 0.8rem; color: #94a3b8; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px; white-space: nowrap; }
     .nav-btn.active { background: #334155; color: #f8fafc; }
-    .btn-gear { border: none; background: #334155; color: #cbd5e1; width: 38px; height: 38px; border-radius: 12px; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .btn-gear { border: none; background: #334155; color: #cbd5e1; width: 38px; height: 38px; border-radius: 12px; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; cursor: pointer; text-decoration: none; }
     .badge { background: var(--danger); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 10px; }
     .view-panel { display: none; flex-direction: column; padding: 18px; flex: 1; }
     .view-panel.active { display: flex; }
@@ -63,7 +63,6 @@
     .feedback-box.error { background: #fef2f2; color: #991b1b; display: flex; }
     .admin-input-full { width: 100%; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; margin-bottom: 8px; outline: none; }
     .mistake-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; background: white; }
-    
     .arena-bg { background: radial-gradient(circle at top, #1e293b 0%, #090d16 100%) !important; color: #ffffff; justify-content: space-between; }
     .cloze-top-control { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
     .chapter-select-dark { background: #1e293b; color: #f8fafc; border: 1px solid #475569; padding: 4px 10px; border-radius: 8px; font-weight: 600; outline: none; }
@@ -265,7 +264,7 @@
     let currentClozeIndex = 0;
     let mistakeIds = new Set();
 
-    // 健全語音引擎
+    // 穩健語音引擎 (全域強引用，杜絕 Garbage Collection 斷音與重疊)
     let activeUtterances = [];
     let speechLoopTimer = null;
 
@@ -330,7 +329,7 @@
       return res;
     }
 
-    // 連線 Firebase 即時監聽學生與題庫
+    // 監聽 Firebase 資料
     db.ref('.info/connected').on('value', (snap) => {
       const hint = document.getElementById('cloud-sync-hint');
       if (snap.val() === true) {
@@ -453,7 +452,7 @@
       });
     }
 
-    // ================= 1. 單字練習 =================
+    // 1. 單字練習
     function startNewWordSession() {
       killAllSpeech();
       currentWordIndex = 0;
@@ -569,7 +568,7 @@
       document.getElementById('next-question-btn').style.display = 'block';
     }
 
-    // ================= 2. 片語練習 =================
+    // 2. 片語練習
     function startNewPhraseSession() {
       killAllSpeech();
       currentPhraseIndex = 0;
@@ -682,14 +681,14 @@
       document.getElementById('phrase-next-btn').style.display = 'block';
     }
 
-    // ================= 3. 克漏字 =================
+    // 3. 克漏字
     function loadClozeBattleRound() {
       if (!activeClozeList.length) return;
       const q = activeClozeList[currentClozeIndex];
       document.getElementById('cloze-sentence-text').innerHTML = q.sentence.replace('___', '<b style="color:#38bdf8; text-decoration:underline;">______</b>');
       document.getElementById('cloze-round-toast').innerText = '';
 
-      const options = shuffleArray([...(q.options || [q.word, "opt1", "opt2", "opt3"])]);
+      const options = shuffleArray([...(q.options || [q.word, "option_1", "option_2", "option_3"])]);
       const container = document.getElementById('cloze-options-container');
       container.innerHTML = '';
 
@@ -717,7 +716,7 @@
       });
     }
 
-    // ================= 4. 不熟區 =================
+    // 4. 不熟區
     function addMistake(id) {
       mistakeIds.add(id);
       updateMistakeBadge();
@@ -737,7 +736,7 @@
       const list = document.getElementById('mistakes-list');
       list.innerHTML = '';
       if (mistakeIds.size === 0) {
-        list.innerHTML = `<p style="text-align:center; color:#94a3b8; margin-top:40px;">目前沒有任何錯題！</p>`;
+        list.innerHTML = `<p style="text-align:center; color:#94a3b8; margin-top:40px;">太棒了！目前沒有任何不熟單字。</p>`;
         return;
       }
       const badQuestions = allQuestions.filter(q => mistakeIds.has(q.id));
@@ -759,7 +758,7 @@
       });
     }
 
-    // ================= 5. 綁定事件 =================
+    // 5. 事件監聽
     window.addEventListener('DOMContentLoaded', () => {
       document.getElementById('student-login-btn').addEventListener('click', () => {
         const acc = document.getElementById('student-acc-input').value.trim().toLowerCase();

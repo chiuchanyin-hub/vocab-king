@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>雲端管理後台 - 高中單字挑戰王</title>
+  <title>高中單字挑戰王 - 完整雲端後台</title>
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
@@ -18,47 +18,45 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background: #0f172a; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 20px 14px; }
-    .admin-shell { width: 100%; max-width: 860px; background: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8); display: flex; flex-direction: column; }
+    .admin-shell { width: 100%; max-width: 860px; background: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8); display: flex; flex-direction: column; margin-bottom: 40px; }
     .header-bar { background: #1e293b; color: #fff; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; }
-    .main-body { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+    .main-body { padding: 24px; display: flex; flex-direction: column; gap: 22px; }
     .admin-input-full { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 10px; margin-bottom: 10px; font-size: 0.95rem; outline: none; }
     .admin-input-full:focus { border-color: var(--primary); }
     .btn-primary { padding: 12px 18px; background: var(--primary); color: white; border: none; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; }
-    .btn-secondary { padding: 10px 16px; background: #0284c7; color: white; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 700; cursor: pointer; }
+    .btn-secondary { padding: 11px 16px; background: #0284c7; color: white; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 700; cursor: pointer; }
     .btn-danger-outline { border: 1.5px solid var(--danger); background: transparent; color: var(--danger); padding: 5px 10px; border-radius: 6px; font-weight: 700; cursor: pointer; }
     .grid-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .card-box { background: #f8fafc; border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
-    .table-container { max-height: 300px; overflow-y: auto; border: 1px solid var(--border); border-radius: 10px; margin-top: 12px; }
+    .table-container { max-height: 280px; overflow-y: auto; border: 1px solid var(--border); border-radius: 10px; margin-top: 12px; }
     table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
     th, td { padding: 12px; border-bottom: 1px solid var(--border); }
     th { background: #f1f5f9; position: sticky; top: 0; z-index: 1; }
-    .status-tag { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; background: #dcfce7; color: #166534; }
-    .upload-zone { border: 2px dashed #94a3b8; border-radius: 12px; padding: 20px; text-align: center; background: #f1f5f9; cursor: pointer; }
-    .upload-zone:hover { border-color: var(--primary); background: #eef2ff; }
+    .status-tag { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; background: #dcfce7; color: #166534; }
   </style>
 </head>
 <body>
   <div class="admin-shell">
     <div class="header-bar">
-      <h2>⚙️ 雲端管理中心 (Firebase 即時連線)</h2>
+      <h2>⚙️ 高中單字挑戰王 - 雲端管理中心</h2>
       <span id="sync-status" class="status-tag">連線中...</span>
     </div>
 
-    <!-- 登入驗證 -->
-    <div id="login-view" class="main-body" style="justify-content: center; align-items: center; min-height: 400px;">
+    <!-- 登入介面 -->
+    <div id="login-view" class="main-body" style="justify-content: center; align-items: center; min-height: 380px;">
       <div style="max-width: 320px; width: 100%; text-align: center;">
-        <h3 style="margin-bottom: 16px;">後台管理員登入</h3>
+        <h3 style="margin-bottom: 16px;">後台管理員驗證</h3>
         <input type="password" id="admin-pwd" placeholder="管理員密碼 (預設 admin888)" class="admin-input-full" />
-        <button id="admin-login-btn" class="btn-primary" style="width: 100%;">驗證進入</button>
+        <button id="admin-login-btn" class="btn-primary" style="width: 100%;">登入後台</button>
       </div>
     </div>
 
-    <!-- 管理控制台 -->
+    <!-- 管理功能面板 -->
     <div id="dashboard-view" class="main-body" style="display: none;">
       
-      <!-- 1. 學生帳號管理 -->
+      <!-- 1. 學生帳號密碼管理 -->
       <div class="card-box">
-        <h3 style="margin-bottom: 12px;">👥 建立學生帳號（即時同步至所有手機）</h3>
+        <h3 style="margin-bottom: 12px;">👥 學生帳號管理（自動同步所有裝置）</h3>
         <div class="grid-form">
           <input type="text" id="new-stu-acc" placeholder="學生帳號 (例如: Roger)" class="admin-input-full" />
           <input type="text" id="new-stu-name" placeholder="學生姓名 (例如: 羅傑)" class="admin-input-full" />
@@ -67,7 +65,7 @@
           <input type="text" id="new-stu-pwd" placeholder="登入密碼 (例如: 1209)" class="admin-input-full" />
           <button id="add-student-btn" class="btn-primary">＋ 新增學生帳號</button>
         </div>
-        <div class="table-container" style="max-height: 180px;">
+        <div class="table-container" style="max-height: 160px;">
           <table>
             <thead><tr><th>帳號</th><th>姓名</th><th>密碼</th><th>操作</th></tr></thead>
             <tbody id="student-tbody"></tbody>
@@ -77,29 +75,29 @@
 
       <!-- 2. 圖片 OCR 辨識匯入 -->
       <div class="card-box">
-        <h3 style="margin-bottom: 8px;">📷 圖片拍照 / 上傳辨識匯入 (OCR)</h3>
-        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 12px;">上傳單字表或考卷照片，系統自動辨識英文與中文。</p>
+        <h3 style="margin-bottom: 8px;">📷 圖片拍照 / OCR 智慧辨識匯入</h3>
+        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 12px;">可直接上傳講義或課本單字照片，系統自動辨識並填入下方文字區。</p>
         <div class="grid-form" style="margin-bottom: 10px;">
-          <input type="text" id="ocr-chapter" placeholder="指派章節 (例如: Unit 2)" class="admin-input-full" value="Unit 2" />
+          <input type="text" id="ocr-chapter" placeholder="指派章節 (預設: Unit 1)" class="admin-input-full" value="Unit 1" />
           <input type="file" id="ocr-file-input" accept="image/*" class="admin-input-full" />
         </div>
-        <button id="start-ocr-btn" class="btn-secondary" style="width: 100%;">🔍 開始辨識並帶入預覽</button>
-        <div id="ocr-status" style="font-size: 0.88rem; color: #4338ca; font-weight: 700; margin-top: 8px; display: none;">辨識進度中...</div>
+        <button id="start-ocr-btn" class="btn-secondary" style="width: 100%;">🔍 開始圖片文字辨識</button>
+        <div id="ocr-status" style="font-size: 0.88rem; color: #4338ca; font-weight: 700; margin-top: 8px; display: none;"></div>
       </div>
 
-      <!-- 3. 批次文字匯入 -->
+      <!-- 3. 批次文字貼上匯入 -->
       <div class="card-box">
-        <h3 style="margin-bottom: 8px;">📋 批次文字貼上匯入</h3>
-        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">格式：<code>單字 詞性 中文 (例句選填)</code>，每行一題，用空格或逗號隔開。</p>
-        <textarea id="batch-input" rows="4" class="admin-input-full" style="resize: vertical;" placeholder="cue n. 提示；線索 My teacher nodded at me...&#10;declare v. 宣布 The government decided to..."></textarea>
-        <button id="batch-import-btn" class="btn-primary" style="width: 100%;">📥 批次同步上傳至雲端</button>
+        <h3 style="margin-bottom: 8px;">📋 批次文字匯入</h3>
+        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">格式：<code>單字 詞性 中文 [例句選填]</code>（每行一筆，可用空格或 Tab 隔開）</p>
+        <textarea id="batch-input" rows="5" class="admin-input-full" style="resize: vertical;" placeholder="cue n. 提示；線索 My teacher nodded at me, and that was my ___ to start speaking.&#10;declare v. 宣布 The government decided to ___ the day a public holiday."></textarea>
+        <button id="batch-import-btn" class="btn-primary" style="width: 100%;">📥 批次寫入雲端題庫</button>
       </div>
 
-      <!-- 4. 單題手動新增 -->
+      <!-- 4. 單題新增與現有題庫列表 -->
       <div class="card-box">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <h3>📚 雲端題庫管理</h3>
-          <button id="reset-default-btn" class="btn-danger-outline" style="border-style: dashed;">寫入預設 25 題至雲端</button>
+          <h3>📚 單題手動新增</h3>
+          <button id="reset-default-btn" class="btn-danger-outline" style="border-style: dashed;">恢復出廠 25 題至雲端</button>
         </div>
         <div class="grid-form">
           <input type="text" id="q-chapter" placeholder="章節 (例如: Unit 1)" class="admin-input-full" value="Unit 1" />
@@ -116,8 +114,9 @@
           <input type="text" id="q-zh" placeholder="中文釋義" class="admin-input-full" />
         </div>
         <input type="text" id="q-sentence" placeholder="例句（空格請用 ___ 表示，選填）" class="admin-input-full" />
-        <button id="add-q-btn" class="btn-primary" style="width: 100%;">＋ 新增單題至雲端</button>
+        <button id="add-q-btn" class="btn-primary" style="width: 100%;">＋ 新增此題目至雲端</button>
 
+        <h4 style="margin-top: 20px; margin-bottom: 8px;">現有題庫清單 (<span id="q-count-tag">0</span> 題)</h4>
         <div class="table-container">
           <table>
             <thead><tr><th>章節</th><th>單字/片語</th><th>詞性</th><th>中文釋義</th><th>操作</th></tr></thead>
@@ -125,6 +124,7 @@
           </table>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -173,7 +173,7 @@
     let currentQuestions = [];
     let currentStudents = [];
 
-    // 連線監聽
+    // 監聽雲端連線狀態
     db.ref('.info/connected').on('value', (snap) => {
       const el = document.getElementById('sync-status');
       if (snap.val() === true) {
@@ -181,7 +181,7 @@
         el.style.background = '#dcfce7';
         el.style.color = '#166534';
       } else {
-        el.innerText = '離線中 🔴';
+        el.innerText = '連線中...';
         el.style.background = '#fee2e2';
         el.style.color = '#991b1b';
       }
@@ -199,10 +199,14 @@
     });
 
     function initRealtimeSync() {
+      // 學生同步
       db.ref('students').on('value', (snap) => {
         const val = snap.val();
         if (!val) {
-          const initList = [{ acc: "Roger", pwd: "1209", name: "Roger" }];
+          const initList = [
+            { acc: "Roger", pwd: "1209", name: "Roger" },
+            { acc: "student1", pwd: "1234", name: "示範生小明" }
+          ];
           db.ref('students').set(initList);
           return;
         }
@@ -210,6 +214,7 @@
         renderStudents();
       });
 
+      // 題庫同步
       db.ref('questions').on('value', (snap) => {
         const val = snap.val();
         if (!val) {
@@ -239,6 +244,7 @@
     function renderQuestions() {
       const tbody = document.getElementById('questions-tbody');
       tbody.innerHTML = '';
+      document.getElementById('q-count-tag').innerText = currentQuestions.length;
       currentQuestions.forEach((q, idx) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
@@ -259,11 +265,11 @@
       const pwd = document.getElementById('new-stu-pwd').value.trim();
 
       if (!acc || !name || !pwd) {
-        alert('請填寫完整學生帳號、姓名與密碼！');
+        alert('請完整填寫學生帳號、姓名與密碼！');
         return;
       }
       if (currentStudents.some(s => s.acc.toLowerCase() === acc.toLowerCase())) {
-        alert('此帳號已存在！');
+        alert('此學生帳號已存在！');
         return;
       }
 
@@ -272,18 +278,18 @@
         document.getElementById('new-stu-acc').value = '';
         document.getElementById('new-stu-name').value = '';
         document.getElementById('new-stu-pwd').value = '';
-        alert('學生帳號已成功同步至雲端！');
+        alert('學生帳號已成功儲存至雲端！');
       });
     });
 
     window.deleteStudent = function(idx) {
-      if (confirm('確定刪除此學生？')) {
+      if (confirm('確定要刪除此學生帳號？')) {
         currentStudents.splice(idx, 1);
         db.ref('students').set(currentStudents);
       }
     };
 
-    // 單題新增
+    // 單題手動新增
     document.getElementById('add-q-btn').addEventListener('click', () => {
       const chapter = document.getElementById('q-chapter').value.trim() || 'Unit 1';
       const word = document.getElementById('q-word').value.trim();
@@ -292,7 +298,7 @@
       const sentence = document.getElementById('q-sentence').value.trim() || `Remember the term: ___ (${zh})`;
 
       if (!word || !zh) {
-        alert('單字與中文釋義為必填！');
+        alert('英文單字與中文釋義為必填！');
         return;
       }
 
@@ -312,7 +318,7 @@
         document.getElementById('q-word').value = '';
         document.getElementById('q-zh').value = '';
         document.getElementById('q-sentence').value = '';
-        alert('題目已同步上傳至雲端！');
+        alert('單題已成功儲存並同步至雲端！');
       });
     });
 
@@ -323,11 +329,11 @@
       }
     };
 
-    // 批次文字匯入
+    // 批次匯入
     document.getElementById('batch-import-btn').addEventListener('click', () => {
       const text = document.getElementById('batch-input').value.trim();
       if (!text) {
-        alert('請先輸入或貼上批次內容！');
+        alert('請先輸入批次內容！');
         return;
       }
 
@@ -345,7 +351,7 @@
           const sentence = parts.slice(3).join(' ') || `Remember: ___ (${zh})`;
           newItems.push({
             id: Date.now() + index,
-            chapter: 'Unit 2',
+            chapter: 'Unit 1',
             word,
             pos,
             zh,
@@ -357,31 +363,30 @@
       });
 
       if (newItems.length === 0) {
-        alert('未解析到有效題目，請確認格式：單字 詞性 中文');
+        alert('格式不符，請確認每行具備：單字 詞性 中文');
         return;
       }
 
       const updated = [...currentQuestions, ...newItems];
       db.ref('questions').set(updated).then(() => {
         document.getElementById('batch-input').value = '';
-        alert(`成功批次匯入 ${newItems.length} 題並同步至雲端！`);
+        alert(`成功將 ${newItems.length} 筆資料同步至雲端題庫！`);
       });
     });
 
-    // 圖片 OCR 辨識匯入
+    // 圖片 OCR 辨識
     document.getElementById('start-ocr-btn').addEventListener('click', async () => {
       const fileInput = document.getElementById('ocr-file-input');
       const statusEl = document.getElementById('ocr-status');
-      const chapter = document.getElementById('ocr-chapter').value.trim() || 'Unit 2';
 
       if (!fileInput.files || fileInput.files.length === 0) {
-        alert('請先選擇一張照片或圖片！');
+        alert('請先選取圖片檔案！');
         return;
       }
 
       const file = fileInput.files[0];
       statusEl.style.display = 'block';
-      statusEl.innerText = '正在使用 AI 辨識圖片中的單字文字，請稍候...';
+      statusEl.innerText = '正在使用 AI 辨識圖片文字，請稍候...';
 
       try {
         const result = await Tesseract.recognize(file, 'eng+chi_tra', {
@@ -392,19 +397,18 @@
           }
         });
 
-        const recognizedText = result.data.text;
-        statusEl.innerText = '辨識完成！已自動將文字填入下方「批次文字匯入」區，請檢閱後點擊匯入。';
-        document.getElementById('batch-input').value = recognizedText;
+        statusEl.innerText = '辨識完成！已填入批次文字區，請檢查後按「批次寫入雲端題庫」。';
+        document.getElementById('batch-input').value = result.data.text;
       } catch (err) {
-        statusEl.innerText = '辨識失敗：' + err.message;
+        statusEl.innerText = '辨識發生錯誤：' + err.message;
       }
     });
 
-    // 恢復預設 25 題
+    // 恢復 25 題
     document.getElementById('reset-default-btn').addEventListener('click', () => {
-      if (confirm('這將會把雲端題庫重置為內建的 25 題，是否繼續？')) {
+      if (confirm('確定要將雲端題庫恢復為出廠的 25 題嗎？')) {
         db.ref('questions').set(DEFAULT_BASE_QUESTIONS).then(() => {
-          alert('已成功恢復 25 題至雲端！');
+          alert('已恢復出廠 25 題！');
         });
       }
     });
