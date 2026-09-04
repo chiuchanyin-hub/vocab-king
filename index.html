@@ -753,28 +753,9 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('add-student-btn').addEventListener('click', () => {
-      const acc = document.getElementById('new-stu-acc').value.trim();
-      const pwd = document.getElementById('new-stu-pwd').value.trim();
-      const name = document.getElementById('new-stu-name').value.trim();
-
-      if (!acc || !pwd || !name) {
-        alert('請完整填寫學生帳號、密碼與姓名！');
-        return;
-      }
-      if (currentStudents.some(s => s.acc.toLowerCase() === acc.toLowerCase())) {
-        alert('此學生帳號已存在！');
-        return;
-      }
-
-      const updated = [...currentStudents, { acc, pwd, name }];
-      db.ref('students').set(updated).then(() => {
-        document.getElementById('new-stu-acc').value = '';
-        document.getElementById('new-stu-pwd').value = '';
-        document.getElementById('new-stu-name').value = '';
-        alert('學生帳號已成功儲存至雲端！');
-      });
-    });
+      document.getElementById('student-login-btn').addEventListener('click', () => {
+        const acc = document.getElementById('student-acc-input').value.trim().toLowerCase();
+        const pwd = document.getElementById('student-pwd-input').value.trim();
 
         const found = studentAccounts.find(s => {
           const dbAcc = String(s.acc || '').trim().toLowerCase();
