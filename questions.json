@@ -215,4 +215,28 @@
       "word": "chew",
       "pos": "n.",
       "isPhrase": false,
-      "zh":
+      "zh": "咀嚼；嚼勁",
+      "sentence": "Give the steak a good ___ before swallowing.",
+      "options": [
+        "chew",
+        "taste",
+        "look",
+        "smell"
+      ]
+    }
+  ],
+  "students": [
+    {
+      "acc": "roger",
+      "pwd": "1209",
+      "name": "羅傑",
+      "perm": "高中"
+    },
+    {
+      "acc": "student",
+      "pwd": "1234",
+      "name": "測試生",
+      "perm": "國中"
+    }
+  ]
+}
