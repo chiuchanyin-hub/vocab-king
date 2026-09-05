@@ -167,7 +167,7 @@
         <div id="game-feedback" class="feedback-box"></div>
       </main>
 
-      <!-- ================= 頁籤 2：片語特訓 (待建置) ================= -->
+      <!-- ================= 頁籤 2：片語特訓 ================= -->
       <main id="view-phrase" class="view-panel">
         <div class="chapter-selector-bar">
           <button class="btn-back-lobby btn-secondary" style="padding:6px 10px; font-size:0.75rem; border-radius:8px;">🏠 回大廳</button>
@@ -178,7 +178,7 @@
         </div>
       </main>
 
-      <!-- ================= 頁籤 3：克漏字對戰 (AI 句子填空) ================= -->
+      <!-- ================= 頁籤 3：克漏字對戰 ================= -->
       <main id="view-cloze" class="view-panel arena-bg">
         <div class="cloze-top-control">
           <button class="btn-back-lobby btn-secondary" style="padding:6px 10px; font-size:0.75rem; background:#cbd5e1; color:#334155; border-radius:8px;">🏠 回大廳</button>
@@ -213,7 +213,7 @@
         <button id="next-cloze-btn" class="btn-next-action" style="display:none; margin-top:10px; width:100%;">NEXT 下一題 ➔</button>
       </main>
 
-      <!-- ================= 頁籤 4：不熟區 (待建置) ================= -->
+      <!-- ================= 頁籤 4：不熟區 ================= -->
       <main id="view-mistakes" class="view-panel">
         <div class="chapter-selector-bar">
           <button class="btn-back-lobby btn-secondary" style="padding:6px 10px; font-size:0.75rem; border-radius:8px;">🏠 回大廳</button>
@@ -240,22 +240,32 @@
     let currentWordIndex = 0;
     let wordScore = 0;
 
-    // 計時器變數
     let timerInterval;
     let timeLeft = 15;
     let isTimeUp = false;
 
     window.addEventListener('DOMContentLoaded', () => {
       
-      // 1. 學生登入
-      document.getElementById('student-login-btn').addEventListener('click', () => {
+      // 1. 學生登入機制 (加入 Enter 鍵防呆)
+      function attemptLogin() {
+        const errEl = document.getElementById('student-login-err');
+        errEl.style.display = 'none';
+
         const acc = document.getElementById('student-acc-input').value.trim().toLowerCase();
         const pwd = document.getElementById('student-pwd-input').value.trim();
-        const studentAccounts = JSON.parse(localStorage.getItem('student_accounts') || JSON.stringify([
-          { acc: "Roger", pwd: "1209", name: "羅傑", perm: "高中" }
-        ]));
+        
+        let studentAccounts = [];
+        try {
+          studentAccounts = JSON.parse(localStorage.getItem('student_accounts'));
+          if (!Array.isArray(studentAccounts)) studentAccounts = null;
+        } catch(e) {}
+        
+        if (!studentAccounts) {
+          studentAccounts = [{ acc: "Roger", pwd: "1209", name: "羅傑", perm: "高中" }];
+        }
 
         const found = studentAccounts.find(s => String(s.acc || '').trim().toLowerCase() === acc && String(s.pwd || '').trim() === pwd);
+        
         if (found) {
           loggedInStudent = found;
           loggedInStudent.perm = loggedInStudent.perm || "高中"; 
@@ -264,13 +274,17 @@
           document.getElementById('view-student-lobby').style.display = 'flex';
           document.getElementById('lobby-student-name').innerText = found.name;
           document.getElementById('lobby-perm-tag').innerText = `權限範圍：${loggedInStudent.perm === '國中' ? '📚 國中專用' : '📖 高中與進階題庫'}`;
-          document.getElementById('student-login-err').style.display = 'none';
 
           initLobbyCategories();
         } else {
-          document.getElementById('student-login-err').style.display = 'block';
+          errEl.style.display = 'block';
+          errEl.innerText = "帳號或密碼錯誤！";
         }
-      });
+      }
+
+      document.getElementById('student-login-btn').addEventListener('click', attemptLogin);
+      document.getElementById('student-pwd-input').addEventListener('keypress', (e) => { if(e.key === 'Enter') attemptLogin(); });
+      document.getElementById('student-acc-input').addEventListener('keypress', (e) => { if(e.key === 'Enter') attemptLogin(); });
 
       // 2. 登出
       document.getElementById('lobby-logout-btn').addEventListener('click', () => {
@@ -283,7 +297,10 @@
 
       // 3. 初始化大廳下拉選單
       function initLobbyCategories() {
-        const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
+        let allQuestions = [];
+        try { allQuestions = JSON.parse(localStorage.getItem('app_all_questions')) || DEFAULT_BASE_QUESTIONS; } 
+        catch(e) { allQuestions = DEFAULT_BASE_QUESTIONS; }
+
         const allCats = [...new Set(allQuestions.map(q => q.category || "高中學測"))];
         let allowedCats = loggedInStudent.perm === '國中' ? allCats.filter(c => c === '國中') : allCats.filter(c => c !== '國中');
         if (allowedCats.length === 0) allowedCats = loggedInStudent.perm === '國中' ? ['國中'] : ['高中學測'];
@@ -294,7 +311,10 @@
       }
 
       function updateLobbyFolders() {
-        const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
+        let allQuestions = [];
+        try { allQuestions = JSON.parse(localStorage.getItem('app_all_questions')) || DEFAULT_BASE_QUESTIONS; } 
+        catch(e) { allQuestions = DEFAULT_BASE_QUESTIONS; }
+
         const cat = document.getElementById('lobby-category-select').value;
         const filtered = allQuestions.filter(q => (q.category || "高中學測") === cat);
         const folders = ["全部章節", ...new Set(filtered.map(q => q.folder || q.chapter || "Unit 1"))];
@@ -306,21 +326,19 @@
       document.getElementById('lobby-start-btn').addEventListener('click', () => {
         currentLobbyCategory = document.getElementById('lobby-category-select').value;
         const selectedFolder = document.getElementById('lobby-folder-select').value;
-        const selectedModeId = document.getElementById('lobby-mode-select').value; // view-game 或 view-cloze
+        const selectedModeId = document.getElementById('lobby-mode-select').value; 
         
         document.getElementById('view-student-lobby').style.display = 'none';
         document.getElementById('view-student-main').style.display = 'flex';
         document.getElementById('cur-student-name').innerText = loggedInStudent.name;
         document.getElementById('cur-category-tag').innerText = currentLobbyCategory;
 
-        // 同步子選單
         updateChapterDropdowns();
         ['game-chapter-filter', 'cloze-chapter-filter'].forEach(id => {
           const dd = document.getElementById(id);
           if (dd && [...dd.options].some(o => o.value === selectedFolder)) dd.value = selectedFolder;
         });
 
-        // 觸發頁籤切換
         const targetTabBtn = document.querySelector(`.nav-btn[data-target="${selectedModeId}"]`);
         if (targetTabBtn) targetTabBtn.click();
       });
@@ -328,16 +346,14 @@
       // 5. 綁定「回大廳」按鈕
       document.querySelectorAll('.btn-back-lobby').forEach(btn => {
         btn.addEventListener('click', () => {
-          clearInterval(timerInterval); // 停止計時
+          clearInterval(timerInterval);
           document.getElementById('view-student-main').style.display = 'none';
           document.getElementById('view-student-lobby').style.display = 'flex';
           initLobbyCategories();
         });
       });
 
-      // ==========================================
-      // 頁籤切換邏輯 (上方導覽列)
-      // ==========================================
+      // 6. 頁籤切換邏輯
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -347,7 +363,7 @@
           const targetId = btn.getAttribute('data-target');
           document.getElementById(targetId).classList.add('active');
 
-          clearInterval(timerInterval); // 切換頁籤重置時間
+          clearInterval(timerInterval); 
           filterWordList();
 
           if (targetId === 'view-game') startNewWordSession();
@@ -355,13 +371,10 @@
         });
       });
 
-      // 單元篩選連動
       document.getElementById('game-chapter-filter').addEventListener('change', () => { filterWordList(); startNewWordSession(); });
       document.getElementById('cloze-chapter-filter').addEventListener('change', () => { filterWordList(); startNewClozeSession(); });
 
-      // ==========================================
-      // 計時器倒數邏輯
-      // ==========================================
+      // 計時器
       function startTimer(mode) {
         clearInterval(timerInterval);
         timeLeft = 15;
@@ -439,7 +452,7 @@
         document.getElementById('submit-btn').style.display = 'block';
         document.getElementById('next-question-btn').style.display = 'none';
 
-        startTimer('game'); // 啟動計時
+        startTimer('game');
       }
 
       function updateSlotsDisplay() {
@@ -475,7 +488,7 @@
 
       function submitWordAnswer() {
         if (!activeWordList.length) return;
-        clearInterval(timerInterval); // 停止計時
+        clearInterval(timerInterval); 
 
         const input = document.getElementById('answer-input');
         const userAns = input.value.trim().toLowerCase();
@@ -505,7 +518,7 @@
       };
 
       // ==========================================
-      // 【頁籤 3】克漏字對戰 (AI 句子與選項)
+      // 【頁籤 3】克漏字對戰
       // ==========================================
       document.getElementById('next-cloze-btn').addEventListener('click', () => { currentWordIndex++; loadClozeQuestion(); });
 
@@ -530,17 +543,15 @@
         document.getElementById('cloze-chapter-tag').innerText = q.folder || q.chapter || "Unit 1";
         document.getElementById('cloze-pos-tag').innerText = q.pos;
 
-        // 顯示來自 AI 的 sentence (如果沒有就自己組)
         let sentenceText = q.sentence || `The meaning of this word is ___ .`;
         document.getElementById('cloze-sentence').innerHTML = sentenceText.replace('___', '<span style="color:var(--danger);">___</span>');
         document.getElementById('cloze-zh').innerText = `中文提示：${q.zh}`;
 
-        // 處理 4 個選項
         const box = document.getElementById('cloze-options-container');
         box.innerHTML = '';
         let opts = q.options && q.options.length >= 4 ? [...q.options] : [q.word, "option A", "option B", "option C"];
-        if (!opts.includes(q.word)) opts[0] = q.word; // 保證有正確答案
-        opts = opts.sort(() => 0.5 - Math.random()); // 隨機打亂
+        if (!opts.includes(q.word)) opts[0] = q.word; 
+        opts = opts.sort(() => 0.5 - Math.random()); 
 
         opts.forEach(opt => {
           const btn = document.createElement('button');
@@ -580,9 +591,12 @@
         document.getElementById('next-cloze-btn').style.display = 'block';
       }
 
-      // 共用：更新選單內容
+      // 共用下拉選單更新
       function updateChapterDropdowns() {
-        const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
+        let allQuestions = [];
+        try { allQuestions = JSON.parse(localStorage.getItem('app_all_questions')) || DEFAULT_BASE_QUESTIONS; } 
+        catch(e) { allQuestions = DEFAULT_BASE_QUESTIONS; }
+        
         const filtered = allQuestions.filter(q => (q.category || "高中學測") === currentLobbyCategory);
         const chapters = ["全部章節", ...new Set(filtered.map(q => q.folder || q.chapter || "Unit 1"))];
         
@@ -597,7 +611,10 @@
       }
 
       function filterWordList() {
-        const allQuestions = JSON.parse(localStorage.getItem('app_all_questions') || JSON.stringify(DEFAULT_BASE_QUESTIONS));
+        let allQuestions = [];
+        try { allQuestions = JSON.parse(localStorage.getItem('app_all_questions')) || DEFAULT_BASE_QUESTIONS; } 
+        catch(e) { allQuestions = DEFAULT_BASE_QUESTIONS; }
+
         const viewId = document.querySelector('.view-panel.active').id;
         const filterId = viewId === 'view-game' ? 'game-chapter-filter' : 'cloze-chapter-filter';
         const f = document.getElementById(filterId)?.value || "全部章節";
