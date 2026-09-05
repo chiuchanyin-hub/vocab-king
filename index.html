@@ -130,6 +130,7 @@
           <label for="game-chapter-filter" style="margin-left:auto;">🎯 單元：</label>
           <select id="game-chapter-filter" class="chapter-dropdown"></select>
         </div>
+
         <div class="game-status-bar">
           <span id="game-progress-tag" class="pill pill-level">進度：0 / 0</span>
           <span id="score-display" class="pill pill-score">積分：0</span>
@@ -138,17 +139,20 @@
           </div>
         </div>
         <div class="timer-progress-bar"><div id="game-timer-fill" class="timer-fill"></div></div>
+
         <div class="card quiz-card">
           <div style="display:flex; justify-content:center; gap:6px;">
             <span id="quiz-chapter" class="chapter-tag">Unit 1</span>
             <span id="quiz-pos" class="pos-tag">詞性</span>
           </div>
           <h2 id="quiz-chinese" class="chinese-prompt">題目載入中...</h2>
+          <!-- 這裡加回聽發音按鈕 -->
           <div class="hint-audio-bar">
             <span id="quiz-hint" class="hint-text">提示資訊</span>
             <button type="button" id="game-sound-btn" class="btn-sound-hint">🔊 聽發音</button>
           </div>
         </div>
+
         <div class="pure-dashed-zone" onclick="focusHiddenInput()">
           <div id="letter-slots-container" class="slots-flex-row"></div>
           <input type="text" id="answer-input" class="ghost-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
@@ -210,6 +214,7 @@
              <span id="cloze-pos-tag" class="pos-tag" style="background:#312e81; color:#a5b4fc;">n.</span>
           </div>
           <h2 id="cloze-sentence" style="font-size:1.35rem; line-height:1.6; color:#f8fafc; font-weight:800;">題目載入中...</h2>
+          <!-- 克漏字保留隱藏狀態不顯示中文 -->
           <p id="cloze-zh" style="display:none; color:#94a3b8; font-weight:700; margin-top:14px; font-size:1.1rem;"></p>
         </div>
         <div id="cloze-options-container" class="answers-stack"></div>
@@ -250,30 +255,31 @@
     let currentPhraseIndex = 0;
     let phraseScore = 0;
 
-    // 不熟區變數
     let mistakesArray = JSON.parse(localStorage.getItem('student_mistakes') || '[]');
 
     let timerInterval;
     let timeLeft = 15;
     let isTimeUp = false;
-    let pronunciationTimeout = null; // 【發音：新增計時器變數】
+
+    // 發音專用計時器
+    let pronunciationTimeout = null;
 
     window.addEventListener('DOMContentLoaded', () => {
       
       updateMistakeBadge();
 
       // ==========================================
-      // 【新增發音核心函數】
+      // 發音核心函數
       // ==========================================
       function playWordAudio(word, playCount = 1) {
         if (!window.speechSynthesis) return;
-        window.speechSynthesis.cancel(); // 停止先前的發音
+        window.speechSynthesis.cancel(); 
         let count = 0;
         function speak() {
           if (count >= playCount) return;
           const utterance = new SpeechSynthesisUtterance(word);
           utterance.lang = 'en-US';
-          utterance.rate = 0.85; // 放慢語速適合學生
+          utterance.rate = 0.85; 
           utterance.onend = () => {
             count++;
             if (count < playCount) {
@@ -285,7 +291,7 @@
         speak();
       }
 
-      // 綁定手動發音按鈕
+      // 綁定手動聽發音按鈕
       document.getElementById('game-sound-btn').addEventListener('click', () => {
         if (activeWordList.length > 0) {
           playWordAudio(activeWordList[currentWordIndex].word, 1);
@@ -341,8 +347,8 @@
         document.getElementById('view-student-login').style.display = 'flex';
         document.getElementById('student-acc-input').value = '';
         document.getElementById('student-pwd-input').value = '';
-        
-        // 離開或登出時停止發音
+
+        // 登出時停止發音
         clearTimeout(pronunciationTimeout);
         if(window.speechSynthesis) window.speechSynthesis.cancel();
       });
@@ -399,7 +405,7 @@
           clearInterval(timerInterval);
           clearTimeout(pronunciationTimeout);
           if(window.speechSynthesis) window.speechSynthesis.cancel();
-          
+
           document.getElementById('view-student-main').style.display = 'none';
           document.getElementById('view-student-lobby').style.display = 'flex';
           initLobbyCategories();
@@ -419,7 +425,7 @@
           clearInterval(timerInterval); 
           clearTimeout(pronunciationTimeout);
           if(window.speechSynthesis) window.speechSynthesis.cancel();
-          
+
           filterWordList();
 
           if (targetId === 'view-game') startNewWordSession();
@@ -486,7 +492,7 @@
       }
 
       // ==========================================
-      // 【頁籤 1】單字挑戰邏輯 (加入進入2秒後自動發音2次)
+      // 【頁籤 1】單字挑戰邏輯 
       // ==========================================
       document.getElementById('next-question-btn').addEventListener('click', () => { currentWordIndex++; loadWordQuestion(); });
       document.getElementById('submit-btn').addEventListener('click', submitWordAnswer);
@@ -533,10 +539,9 @@
 
         startTimer('game');
 
-        // 【發音：進入題目第2秒開始發音，發2次】
+        // 第2秒自動發音2次
         clearTimeout(pronunciationTimeout);
         if(window.speechSynthesis) window.speechSynthesis.cancel();
-        
         pronunciationTimeout = setTimeout(() => {
           const currentView = document.querySelector('.view-panel.active');
           if (currentView && currentView.id === 'view-game' && !document.getElementById('answer-input').disabled) {
@@ -580,7 +585,7 @@
         if (!activeWordList.length) return;
         clearInterval(timerInterval); 
         
-        // 【發音：作答後立刻切斷正在播放的聲音】
+        // 作答後停止念單字
         clearTimeout(pronunciationTimeout);
         if(window.speechSynthesis) window.speechSynthesis.cancel();
 
@@ -714,6 +719,7 @@
         let sentenceText = q.sentence || `The meaning of this word is ___ .`;
         document.getElementById('cloze-sentence').innerHTML = sentenceText.replace('___', '<span style="color:var(--danger);">___</span>');
         
+        // 確保中文被隱藏
         document.getElementById('cloze-zh').innerText = ""; 
 
         const box = document.getElementById('cloze-options-container');
