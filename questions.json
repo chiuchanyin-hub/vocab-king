@@ -1,299 +1,218 @@
-[
-  {
-    "id": 1,
-    "word": "cue",
-    "pos": "n.",
-    "zh": "提示；線索",
-    "level": 1,
-    "sentence": "My teacher nodded at me, and that was my ___ to start speaking.",
-    "options": ["cue", "finance", "prime", "rebel"]
-  },
-  {
-    "id": 2,
-    "word": "on cue",
-    "pos": "phr.",
-    "zh": "恰好在此時；正當那時",
-    "level": 2,
-    "sentence": "We were talking about what to do during an earthquake and then an earthquake took place right ___.",
-    "options": ["on cue", "in prime", "with percent", "for finance"]
-  },
-  {
-    "id": 3,
-    "word": "take your cue from",
-    "pos": "phr.",
-    "zh": "照某人的樣子做；仿效某人",
-    "level": 3,
-    "sentence": "___ your older sister and finish your homework now.",
-    "options": ["Take your cue from", "Declare war on", "Rebel against", "Insure with"]
-  },
-  {
-    "id": 4,
-    "word": "declare",
-    "pos": "v.",
-    "zh": "宣布；宣稱；申報",
-    "level": 1,
-    "sentence": "The government decided to ___ the day a public holiday.",
-    "options": ["declare", "divorce", "disappoint", "finance"]
-  },
-  {
-    "id": 5,
-    "word": "declaration",
-    "pos": "n.",
-    "zh": "宣告；聲明；申報",
-    "level": 2,
-    "sentence": "The man made a formal ___ that he had nothing to do with the robbery.",
-    "options": ["declaration", "percentage", "rebellion", "insurance"]
-  },
-  {
-    "id": 6,
-    "word": "declare war",
-    "pos": "phr.",
-    "zh": "宣戰",
-    "level": 3,
-    "sentence": "The government refused to ___ despite severe border tensions.",
-    "options": ["declare war", "take cue", "in prime", "be 100 percent"]
-  },
-  {
-    "id": 7,
-    "word": "disappoint",
-    "pos": "v.",
-    "zh": "使失望；使沮喪",
-    "level": 1,
-    "sentence": "I didn't want to ___ Lydia, so I went to her party even though I didn't feel well.",
-    "options": ["disappoint", "declare", "insure", "finance"]
-  },
-  {
-    "id": 8,
-    "word": "disappointment",
-    "pos": "n.",
-    "zh": "失望；掃興",
-    "level": 2,
-    "sentence": "You can see the ___ in her eyes as she heard the bad news.",
-    "options": ["disappointment", "rebellion", "percentage", "declaration"]
-  },
-  {
-    "id": 9,
-    "word": "to one's disappointment",
-    "pos": "phr.",
-    "zh": "讓某人失望的是……",
-    "level": 3,
-    "sentence": "___, the girl he likes didn't show up at the party.",
-    "options": ["To Steven's disappointment", "In his prime", "On his cue", "With his finance"]
-  },
-  {
-    "id": 10,
-    "word": "divorce",
-    "pos": "v.",
-    "zh": "離婚；使分離",
-    "level": 1,
-    "sentence": "Fredrick's parents decided to ___ five years ago.",
-    "options": ["divorce", "declare", "insure", "reject"]
-  },
-  {
-    "id": 11,
-    "word": "finance",
-    "pos": "v./n.",
-    "zh": "資助；提供資金 / 財務；金融",
-    "level": 1,
-    "sentence": "Several experts in ___ predicted the collapse of the housing market.",
-    "options": ["finance", "insurance", "intellect", "rebellion"]
-  },
-  {
-    "id": 12,
-    "word": "financial",
-    "pos": "adj.",
-    "zh": "財務的；金融的",
-    "level": 1,
-    "sentence": "Fred is having ___ problems right now, so you shouldn't ask him for money.",
-    "options": ["financial", "rebellious", "divorced", "intellectual"]
-  },
-  {
-    "id": 13,
-    "word": "corporate finance",
-    "pos": "phr.",
-    "zh": "企業財務",
-    "level": 3,
-    "sentence": "She specialized in ___ and helps companies manage large capital funds.",
-    "options": ["corporate finance", "health insurance", "prime time", "intellectual property"]
-  },
-  {
-    "id": 14,
-    "word": "insurance",
-    "pos": "n.",
-    "zh": "保險；保險業",
-    "level": 1,
-    "sentence": "Doug's ___ will pay for some of the repairs to his car.",
-    "options": ["insurance", "declaration", "rejection", "finance"]
-  },
-  {
-    "id": 15,
-    "word": "insure",
-    "pos": "v.",
-    "zh": "為……投保",
-    "level": 2,
-    "sentence": "It is important to ___ your house against fire and flood damage.",
-    "options": ["insure", "divorce", "disappoint", "declare"]
-  },
-  {
-    "id": 16,
-    "word": "health insurance card",
-    "pos": "phr.",
-    "zh": "健保卡",
-    "level": 2,
-    "sentence": "You need to show your ___ before receiving medical treatment.",
-    "options": ["health insurance card", "corporate finance bill", "declaration note", "rejection form"]
-  },
-  {
-    "id": 17,
-    "word": "intellectual",
-    "pos": "adj./n.",
-    "zh": "智力的；智能的 / 知識分子",
-    "level": 2,
-    "sentence": "This is an ___ game that challenges players' critical thinking.",
-    "options": ["intellectual", "financial", "rebellious", "divorced"]
-  },
-  {
-    "id": 18,
-    "word": "intellect",
-    "pos": "n.",
-    "zh": "思維能力；理解力；智力",
-    "level": 2,
-    "sentence": "He was admired not only for his kindness but also for his supreme ___.",
-    "options": ["intellect", "insurance", "rebellion", "percentage"]
-  },
-  {
-    "id": 19,
-    "word": "intellectual property",
-    "pos": "phr.",
-    "zh": "智慧財產權",
-    "level": 3,
-    "sentence": "Software source code is strictly protected by ___ laws.",
-    "options": ["intellectual property", "life insurance", "prime minister", "corporate finance"]
-  },
-  {
-    "id": 20,
-    "word": "intelligent",
-    "pos": "adj.",
-    "zh": "有才智的；聰明的",
-    "level": 1,
-    "sentence": "The student is highly ___ and excels in various subjects.",
-    "options": ["intelligent", "rebellious", "disappointed", "divorced"]
-  },
-  {
-    "id": 21,
-    "word": "percent",
-    "pos": "n.",
-    "zh": "百分之……",
-    "level": 1,
-    "sentence": "About twenty ___ of the world's population lives in China.",
-    "options": ["percent", "rebel", "cue", "prime"]
-  },
-  {
-    "id": 22,
-    "word": "be 100 percent with",
-    "pos": "phr.",
-    "zh": "百分之百、完全同意某人",
-    "level": 3,
-    "sentence": "You have my support, and I ___ you in pursuing your dreams.",
-    "options": ["am 100 percent with", "take my cue from", "declare war on", "rebel against"]
-  },
-  {
-    "id": 23,
-    "word": "percentage",
-    "pos": "n.",
-    "zh": "百分比；比率",
-    "level": 2,
-    "sentence": "He spends a large ___ of his income on rent.",
-    "options": ["percentage", "insurance", "rebellion", "declaration"]
-  },
-  {
-    "id": 24,
-    "word": "prime",
-    "pos": "adj.",
-    "zh": "首要的；最具代表性的；一流的",
-    "level": 1,
-    "sentence": "Our ___ concern is making sure that our customers are happy.",
-    "options": ["prime", "intellectual", "rebellious", "financial"]
-  },
-  {
-    "id": 25,
-    "word": "prime minister",
-    "pos": "phr.",
-    "zh": "首相；總理",
-    "level": 2,
-    "sentence": "The ___ held a press conference regarding the new economic treaty.",
-    "options": ["prime minister", "intellectual property", "health insurance", "corporate finance"]
-  },
-  {
-    "id": 26,
-    "word": "prime time",
-    "pos": "phr.",
-    "zh": "黃金時段",
-    "level": 2,
-    "sentence": "The show is broadcast during television ___ to reach the largest audience.",
-    "options": ["prime time", "cue slot", "rebel hour", "rejection phase"]
-  },
-  {
-    "id": 27,
-    "word": "in the prime of life",
-    "pos": "phr.",
-    "zh": "在壯年期；正值盛年",
-    "level": 3,
-    "sentence": "The boxer never lost a fight while he was ___.",
-    "options": ["in the prime of life", "on cue", "with 100 percent", "under rejection"]
-  },
-  {
-    "id": 28,
-    "word": "rebel",
-    "pos": "v./n.",
-    "zh": "反抗；造反 / 反抗者",
-    "level": 1,
-    "sentence": "Teenagers sometimes ___ against their parents.",
-    "options": ["rebel", "insure", "finance", "declare"]
-  },
-  {
-    "id": 29,
-    "word": "rebellion",
-    "pos": "n.",
-    "zh": "反叛；叛亂",
-    "level": 2,
-    "sentence": "The military forces managed to put down the armed ___.",
-    "options": ["rebellion", "percentage", "declaration", "disappointment"]
-  },
-  {
-    "id": 30,
-    "word": "rebellious",
-    "pos": "adj.",
-    "zh": "叛逆的",
-    "level": 2,
-    "sentence": "She has a ___ streak and dislikes following outdated social rules.",
-    "options": ["rebellious", "intellectual", "financial", "intelligent"]
-  },
-  {
-    "id": 31,
-    "word": "rebel against",
-    "pos": "phr.",
-    "zh": "反抗……",
-    "level": 2,
-    "sentence": "Ann decided to ___ tradition and became the first girl to attend university.",
-    "options": ["rebel against", "take cue from", "declare war on", "insure with"]
-  },
-  {
-    "id": 32,
-    "word": "rejection",
-    "pos": "n.",
-    "zh": "拒絕",
-    "level": 1,
-    "sentence": "Although I was hopeful, I received a letter of ___ for my job application.",
-    "options": ["rejection", "insurance", "declaration", "percentage"]
-  },
-  {
-    "id": 33,
-    "word": "reject",
-    "pos": "v.",
-    "zh": "拒絕；不接受",
-    "level": 1,
-    "sentence": "The university decided to ___ the proposal due to lack of merit.",
-    "options": ["reject", "divorce", "declare", "finance"]
-  }
-]
+{
+  "questions": [
+    {
+      "id": 202402001,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "abandon",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "遺棄；放棄",
+      "sentence": "Due to the flood, many people had to ___ their cars in the street.",
+      "options": [
+        "abandon",
+        "abolish",
+        "absorb",
+        "accuse"
+      ]
+    },
+    {
+      "id": 202402002,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "abandonment",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "拋棄；放棄",
+      "sentence": "The sudden ___ of the project left the team in absolute confusion.",
+      "options": [
+        "abandonment",
+        "abundant",
+        "arrangement",
+        "appointment"
+      ]
+    },
+    {
+      "id": 202402003,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "abandoned",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "被遺棄的；廢棄的",
+      "sentence": "The rescue team found a family of puppies in the ___ building.",
+      "options": [
+        "abandoned",
+        "absolute",
+        "absorbent",
+        "accidental"
+      ]
+    },
+    {
+      "id": 202402004,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "desert",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "遺棄；離棄",
+      "sentence": "It is cruel to ___ your pets on the street when they get old or sick.",
+      "options": [
+        "desert",
+        "defend",
+        "deserve",
+        "destroy"
+      ]
+    },
+    {
+      "id": 202402005,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "quit",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "放棄；戒除",
+      "sentence": "You should ___ smoking, for the sake of your health.",
+      "options": [
+        "quit",
+        "quiet",
+        "quite",
+        "quote"
+      ]
+    },
+    {
+      "id": 202402006,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "absolute",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "完全的；絕對的",
+      "sentence": "I have ___ confidence in his ability to handle the press.",
+      "options": [
+        "absolute",
+        "abstract",
+        "abundant",
+        "academic"
+      ]
+    },
+    {
+      "id": 202402007,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "absolutely",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "絕對地；完全地",
+      "sentence": "The teacher was ___ right about the importance of daily practice.",
+      "options": [
+        "absolutely",
+        "abstractly",
+        "abundantly",
+        "accidentally"
+      ]
+    },
+    {
+      "id": 395810234,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "appreciation",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "感謝；欣賞；增值",
+      "sentence": "To show our ___ for your help, we bought you these flowers.",
+      "options": [
+        "appreciation",
+        "confidence",
+        "communication",
+        "reservation"
+      ]
+    },
+    {
+      "id": 395810235,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "appreciate",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "感激；欣賞",
+      "sentence": "I highly ___ your timely assistance in this matter.",
+      "options": [
+        "appreciate",
+        "anticipate",
+        "associate",
+        "accumulate"
+      ]
+    },
+    {
+      "id": 395810236,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "chew",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "咀嚼；嚼碎",
+      "sentence": "Experts say you should ___ each bite of food thirty-five times.",
+      "options": [
+        "chew",
+        "swallow",
+        "digest",
+        "absorb"
+      ]
+    },
+    {
+      "id": 395810237,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "chewy",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "有嚼勁的；耐嚼的",
+      "sentence": "The cookies are soft and ___ in the middle.",
+      "options": [
+        "chewy",
+        "crunchy",
+        "stale",
+        "liquid"
+      ]
+    },
+    {
+      "id": 395810238,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "chew up",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "咬爛；嚼碎",
+      "sentence": "Lisa's baby ___ the piece of paper before Lisa could take it away from him.",
+      "options": [
+        "chewed up",
+        "blew up",
+        "tore down",
+        "gave up"
+      ]
+    },
+    {
+      "id": 395810239,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "chew out",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "厲聲責罵",
+      "sentence": "My wife really ___ me out for losing my house keys.",
+      "options": [
+        "chewed",
+        "ruled",
+        "called",
+        "passed"
+      ]
+    },
+    {
+      "id": 395810240,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "chew",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh":
