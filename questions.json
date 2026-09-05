@@ -2399,6 +2399,7446 @@
         "communicative",
         "chewy"
       ]
+    },
+    {
+      "id": 1788616961729,
+      "category": "國中",
+      "folder": "1",
+      "word": "about",
+      "pos": "prep.",
+      "isPhrase": false,
+      "zh": "有關",
+      "sentence": "The student needs to learn the word ___ (有關).",
+      "options": [
+        "across",
+        "actor",
+        "accident",
+        "about"
+      ]
+    },
+    {
+      "id": 1788616961730,
+      "category": "國中",
+      "folder": "1",
+      "word": "above",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "在上方",
+      "sentence": "The student needs to learn the word ___ (在上方).",
+      "options": [
+        "absent",
+        "adult",
+        "admire",
+        "above"
+      ]
+    },
+    {
+      "id": 1788616961731,
+      "category": "國中",
+      "folder": "1",
+      "word": "abroad",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "在國外",
+      "sentence": "The student needs to learn the word ___ (在國外).",
+      "options": [
+        "adult",
+        "action",
+        "abroad",
+        "about"
+      ]
+    },
+    {
+      "id": 1788616961732,
+      "category": "國中",
+      "folder": "1",
+      "word": "absent",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "缺席的",
+      "sentence": "The student needs to learn the word ___ (缺席的).",
+      "options": [
+        "absent",
+        "add",
+        "address",
+        "action"
+      ]
+    },
+    {
+      "id": 1788616961733,
+      "category": "國中",
+      "folder": "1",
+      "word": "accept",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "接受",
+      "sentence": "The student needs to learn the word ___ (接受).",
+      "options": [
+        "adult",
+        "about",
+        "actually",
+        "accept"
+      ]
+    },
+    {
+      "id": 1788616961734,
+      "category": "國中",
+      "folder": "1",
+      "word": "accident",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "意外",
+      "sentence": "The student needs to learn the word ___ (意外).",
+      "options": [
+        "action",
+        "actually",
+        "above",
+        "accident"
+      ]
+    },
+    {
+      "id": 1788616961735,
+      "category": "國中",
+      "folder": "1",
+      "word": "across",
+      "pos": "prep.",
+      "isPhrase": false,
+      "zh": "在...對面",
+      "sentence": "The student needs to learn the word ___ (在...對面).",
+      "options": [
+        "abroad",
+        "across",
+        "add",
+        "address"
+      ]
+    },
+    {
+      "id": 1788616961736,
+      "category": "國中",
+      "folder": "1",
+      "word": "act",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "行為",
+      "sentence": "The student needs to learn the word ___ (行為).",
+      "options": [
+        "across",
+        "act",
+        "absent",
+        "add"
+      ]
+    },
+    {
+      "id": 1788616961737,
+      "category": "國中",
+      "folder": "1",
+      "word": "action",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "活動",
+      "sentence": "The student needs to learn the word ___ (活動).",
+      "options": [
+        "action",
+        "actor",
+        "adult",
+        "advertisement"
+      ]
+    },
+    {
+      "id": 1788616961738,
+      "category": "國中",
+      "folder": "1",
+      "word": "active",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "積極的",
+      "sentence": "The student needs to learn the word ___ (積極的).",
+      "options": [
+        "act",
+        "about",
+        "active",
+        "activity"
+      ]
+    },
+    {
+      "id": 1788616961739,
+      "category": "國中",
+      "folder": "1",
+      "word": "activity",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "活動",
+      "sentence": "The student needs to learn the word ___ (活動).",
+      "options": [
+        "advertisement",
+        "activity",
+        "actress",
+        "address"
+      ]
+    },
+    {
+      "id": 1788616961740,
+      "category": "國中",
+      "folder": "1",
+      "word": "actor",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "男演員",
+      "sentence": "The student needs to learn the word ___ (男演員).",
+      "options": [
+        "add",
+        "actor",
+        "active",
+        "absent"
+      ]
+    },
+    {
+      "id": 1788616961741,
+      "category": "國中",
+      "folder": "1",
+      "word": "actress",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "女演員",
+      "sentence": "The student needs to learn the word ___ (女演員).",
+      "options": [
+        "address",
+        "actress",
+        "across",
+        "about"
+      ]
+    },
+    {
+      "id": 1788616961742,
+      "category": "國中",
+      "folder": "1",
+      "word": "actually",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "確實",
+      "sentence": "The student needs to learn the word ___ (確實).",
+      "options": [
+        "accident",
+        "absent",
+        "actually",
+        "actor"
+      ]
+    },
+    {
+      "id": 1788616961743,
+      "category": "國中",
+      "folder": "1",
+      "word": "add",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "增加",
+      "sentence": "The student needs to learn the word ___ (增加).",
+      "options": [
+        "add",
+        "address",
+        "advertisement",
+        "about"
+      ]
+    },
+    {
+      "id": 1788616961744,
+      "category": "國中",
+      "folder": "1",
+      "word": "address",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "地址",
+      "sentence": "The student needs to learn the word ___ (地址).",
+      "options": [
+        "abroad",
+        "address",
+        "above",
+        "about"
+      ]
+    },
+    {
+      "id": 1788616961745,
+      "category": "國中",
+      "folder": "1",
+      "word": "admire",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "欽佩",
+      "sentence": "The student needs to learn the word ___ (欽佩).",
+      "options": [
+        "absent",
+        "add",
+        "admire",
+        "accept"
+      ]
+    },
+    {
+      "id": 1788616961746,
+      "category": "國中",
+      "folder": "1",
+      "word": "adult",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "成人",
+      "sentence": "The student needs to learn the word ___ (成人).",
+      "options": [
+        "accident",
+        "about",
+        "adult",
+        "address"
+      ]
+    },
+    {
+      "id": 1788616961747,
+      "category": "國中",
+      "folder": "1",
+      "word": "advertisement",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "廣告",
+      "sentence": "The student needs to learn the word ___ (廣告).",
+      "options": [
+        "advertisement",
+        "admire",
+        "absent",
+        "actor"
+      ]
+    },
+    {
+      "id": 1788616971648,
+      "category": "國中",
+      "folder": "2",
+      "word": "advise",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "勸告",
+      "sentence": "The student needs to learn the word ___ (勸告).",
+      "options": [
+        "alive",
+        "ahead",
+        "album",
+        "advise"
+      ]
+    },
+    {
+      "id": 1788616971649,
+      "category": "國中",
+      "folder": "2",
+      "word": "affect",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "影響",
+      "sentence": "The student needs to learn the word ___ (影響).",
+      "options": [
+        "affect",
+        "age",
+        "afternoon",
+        "airport"
+      ]
+    },
+    {
+      "id": 1788616971650,
+      "category": "國中",
+      "folder": "2",
+      "word": "afraid",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "害怕的",
+      "sentence": "The student needs to learn the word ___ (害怕的).",
+      "options": [
+        "afternoon",
+        "afraid",
+        "against",
+        "alarm"
+      ]
+    },
+    {
+      "id": 1788616971651,
+      "category": "國中",
+      "folder": "2",
+      "word": "after",
+      "pos": "conj.",
+      "isPhrase": false,
+      "zh": "在...之後",
+      "sentence": "The student needs to learn the word ___ (在...之後).",
+      "options": [
+        "airport",
+        "after",
+        "airplane",
+        "against"
+      ]
+    },
+    {
+      "id": 1788616971652,
+      "category": "國中",
+      "folder": "2",
+      "word": "afternoon",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "下午",
+      "sentence": "The student needs to learn the word ___ (下午).",
+      "options": [
+        "afternoon",
+        "after",
+        "air",
+        "again"
+      ]
+    },
+    {
+      "id": 1788616971653,
+      "category": "國中",
+      "folder": "2",
+      "word": "again",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "再度",
+      "sentence": "The student needs to learn the word ___ (再度).",
+      "options": [
+        "alike",
+        "affect",
+        "advise",
+        "again"
+      ]
+    },
+    {
+      "id": 1788616971654,
+      "category": "國中",
+      "folder": "2",
+      "word": "against",
+      "pos": "prep.",
+      "isPhrase": false,
+      "zh": "靠著",
+      "sentence": "The student needs to learn the word ___ (靠著).",
+      "options": [
+        "against",
+        "album",
+        "alarm",
+        "ahead"
+      ]
+    },
+    {
+      "id": 1788616971655,
+      "category": "國中",
+      "folder": "2",
+      "word": "age",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "年齡",
+      "sentence": "The student needs to learn the word ___ (年齡).",
+      "options": [
+        "affect",
+        "after",
+        "age",
+        "ago"
+      ]
+    },
+    {
+      "id": 1788616971656,
+      "category": "國中",
+      "folder": "2",
+      "word": "ago",
+      "pos": "adv....",
+      "isPhrase": false,
+      "zh": "之前",
+      "sentence": "The student needs to learn the word ___ (之前).",
+      "options": [
+        "ago",
+        "airplane",
+        "alive",
+        "age"
+      ]
+    },
+    {
+      "id": 1788616971657,
+      "category": "國中",
+      "folder": "2",
+      "word": "agree",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "同意",
+      "sentence": "The student needs to learn the word ___ (同意).",
+      "options": [
+        "alarm",
+        "aim",
+        "agree",
+        "afraid"
+      ]
+    },
+    {
+      "id": 1788616971658,
+      "category": "國中",
+      "folder": "2",
+      "word": "ahead",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "向前",
+      "sentence": "The student needs to learn the word ___ (向前).",
+      "options": [
+        "age",
+        "ahead",
+        "airport",
+        "afraid"
+      ]
+    },
+    {
+      "id": 1788616971659,
+      "category": "國中",
+      "folder": "2",
+      "word": "aim",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "目標",
+      "sentence": "The student needs to learn the word ___ (目標).",
+      "options": [
+        "air",
+        "aim",
+        "ahead",
+        "advise"
+      ]
+    },
+    {
+      "id": 1788616971660,
+      "category": "國中",
+      "folder": "2",
+      "word": "air",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "空氣",
+      "sentence": "The student needs to learn the word ___ (空氣).",
+      "options": [
+        "afternoon",
+        "air",
+        "airport",
+        "album"
+      ]
+    },
+    {
+      "id": 1788616971661,
+      "category": "國中",
+      "folder": "2",
+      "word": "airplane",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "飛機",
+      "sentence": "The student needs to learn the word ___ (飛機).",
+      "options": [
+        "again",
+        "affect",
+        "airplane",
+        "after"
+      ]
+    },
+    {
+      "id": 1788616971662,
+      "category": "國中",
+      "folder": "2",
+      "word": "airport",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "機場",
+      "sentence": "The student needs to learn the word ___ (機場).",
+      "options": [
+        "affect",
+        "after",
+        "airport",
+        "air"
+      ]
+    },
+    {
+      "id": 1788616971663,
+      "category": "國中",
+      "folder": "2",
+      "word": "alarm",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "警報器",
+      "sentence": "The student needs to learn the word ___ (警報器).",
+      "options": [
+        "alarm",
+        "air",
+        "after",
+        "advise"
+      ]
+    },
+    {
+      "id": 1788616971664,
+      "category": "國中",
+      "folder": "2",
+      "word": "album",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "相簿",
+      "sentence": "The student needs to learn the word ___ (相簿).",
+      "options": [
+        "album",
+        "advise",
+        "alarm",
+        "ahead"
+      ]
+    },
+    {
+      "id": 1788616971665,
+      "category": "國中",
+      "folder": "2",
+      "word": "alike",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "相同地",
+      "sentence": "The student needs to learn the word ___ (相同地).",
+      "options": [
+        "airport",
+        "alike",
+        "ahead",
+        "after"
+      ]
+    },
+    {
+      "id": 1788616971666,
+      "category": "國中",
+      "folder": "2",
+      "word": "alive",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "活的",
+      "sentence": "The student needs to learn the word ___ (活的).",
+      "options": [
+        "afraid",
+        "airport",
+        "age",
+        "alive"
+      ]
+    },
+    {
+      "id": 1788616982618,
+      "category": "國中",
+      "folder": "3",
+      "word": "allow",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "允許",
+      "sentence": "The student needs to learn the word ___ (允許).",
+      "options": [
+        "almost",
+        "allow",
+        "among",
+        "always"
+      ]
+    },
+    {
+      "id": 1788616982619,
+      "category": "國中",
+      "folder": "3",
+      "word": "almost",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "幾乎",
+      "sentence": "The student needs to learn the word ___ (幾乎).",
+      "options": [
+        "altogether",
+        "ankle",
+        "almost",
+        "animal"
+      ]
+    },
+    {
+      "id": 1788616982620,
+      "category": "國中",
+      "folder": "3",
+      "word": "alone",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "獨自地",
+      "sentence": "The student needs to learn the word ___ (獨自地).",
+      "options": [
+        "alone",
+        "also",
+        "animal",
+        "ankle"
+      ]
+    },
+    {
+      "id": 1788616982621,
+      "category": "國中",
+      "folder": "3",
+      "word": "along",
+      "pos": "prep.",
+      "isPhrase": false,
+      "zh": "沿著",
+      "sentence": "The student needs to learn the word ___ (沿著).",
+      "options": [
+        "alone",
+        "always",
+        "along",
+        "almost"
+      ]
+    },
+    {
+      "id": 1788616982622,
+      "category": "國中",
+      "folder": "3",
+      "word": "aloud",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "大聲地",
+      "sentence": "The student needs to learn the word ___ (大聲地).",
+      "options": [
+        "answer",
+        "aloud",
+        "among",
+        "altogether"
+      ]
+    },
+    {
+      "id": 1788616982623,
+      "category": "國中",
+      "folder": "3",
+      "word": "already",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "已經",
+      "sentence": "The student needs to learn the word ___ (已經).",
+      "options": [
+        "along",
+        "alone",
+        "already",
+        "almost"
+      ]
+    },
+    {
+      "id": 1788616982624,
+      "category": "國中",
+      "folder": "3",
+      "word": "also",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "也",
+      "sentence": "The student needs to learn the word ___ (也).",
+      "options": [
+        "also",
+        "already",
+        "angry",
+        "allow"
+      ]
+    },
+    {
+      "id": 1788616982625,
+      "category": "國中",
+      "folder": "3",
+      "word": "altogether",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "總共",
+      "sentence": "The student needs to learn the word ___ (總共).",
+      "options": [
+        "altogether",
+        "among",
+        "ambulance",
+        "also"
+      ]
+    },
+    {
+      "id": 1788616982626,
+      "category": "國中",
+      "folder": "3",
+      "word": "always",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "總是",
+      "sentence": "The student needs to learn the word ___ (總是).",
+      "options": [
+        "angry",
+        "along",
+        "always",
+        "altogether"
+      ]
+    },
+    {
+      "id": 1788616982627,
+      "category": "國中",
+      "folder": "3",
+      "word": "ambulance",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "救護車",
+      "sentence": "The student needs to learn the word ___ (救護車).",
+      "options": [
+        "along",
+        "among",
+        "already",
+        "ambulance"
+      ]
+    },
+    {
+      "id": 1788616982628,
+      "category": "國中",
+      "folder": "3",
+      "word": "among",
+      "pos": "prep.",
+      "isPhrase": false,
+      "zh": "在...之間",
+      "sentence": "The student needs to learn the word ___ (在...之間).",
+      "options": [
+        "among",
+        "along",
+        "anger",
+        "always"
+      ]
+    },
+    {
+      "id": 1788616982629,
+      "category": "國中",
+      "folder": "3",
+      "word": "ancient",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "古代的",
+      "sentence": "The student needs to learn the word ___ (古代的).",
+      "options": [
+        "allow",
+        "ancient",
+        "ankle",
+        "almost"
+      ]
+    },
+    {
+      "id": 1788616982630,
+      "category": "國中",
+      "folder": "3",
+      "word": "angel",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "天使",
+      "sentence": "The student needs to learn the word ___ (天使).",
+      "options": [
+        "ankle",
+        "already",
+        "angel",
+        "also"
+      ]
+    },
+    {
+      "id": 1788616982631,
+      "category": "國中",
+      "folder": "3",
+      "word": "anger",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "憤怒",
+      "sentence": "The student needs to learn the word ___ (憤怒).",
+      "options": [
+        "anger",
+        "allow",
+        "angry",
+        "ambulance"
+      ]
+    },
+    {
+      "id": 1788616982632,
+      "category": "國中",
+      "folder": "3",
+      "word": "angry",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "生氣的",
+      "sentence": "The student needs to learn the word ___ (生氣的).",
+      "options": [
+        "angry",
+        "ancient",
+        "also",
+        "altogether"
+      ]
+    },
+    {
+      "id": 1788616982633,
+      "category": "國中",
+      "folder": "3",
+      "word": "ankle",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "腳踝",
+      "sentence": "The student needs to learn the word ___ (腳踝).",
+      "options": [
+        "anger",
+        "answer",
+        "already",
+        "ankle"
+      ]
+    },
+    {
+      "id": 1788616982634,
+      "category": "國中",
+      "folder": "3",
+      "word": "animal",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "動物",
+      "sentence": "The student needs to learn the word ___ (動物).",
+      "options": [
+        "aloud",
+        "alone",
+        "angry",
+        "animal"
+      ]
+    },
+    {
+      "id": 1788616982635,
+      "category": "國中",
+      "folder": "3",
+      "word": "another",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "另外的",
+      "sentence": "The student needs to learn the word ___ (另外的).",
+      "options": [
+        "another",
+        "answer",
+        "ancient",
+        "aloud"
+      ]
+    },
+    {
+      "id": 1788616982636,
+      "category": "國中",
+      "folder": "3",
+      "word": "answer",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "答案",
+      "sentence": "The student needs to learn the word ___ (答案).",
+      "options": [
+        "almost",
+        "answer",
+        "already",
+        "allow"
+      ]
+    },
+    {
+      "id": 1788617062747,
+      "category": "國中",
+      "folder": "4",
+      "word": "any",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "任何的",
+      "sentence": "The student needs to learn the word ___ (任何的).",
+      "options": [
+        "any",
+        "apologize",
+        "arrange",
+        "arm"
+      ]
+    },
+    {
+      "id": 1788617062748,
+      "category": "國中",
+      "folder": "4",
+      "word": "anyone",
+      "pos": "pron.",
+      "isPhrase": false,
+      "zh": "任何人",
+      "sentence": "The student needs to learn the word ___ (任何人).",
+      "options": [
+        "anything",
+        "any",
+        "anyone",
+        "anywhere"
+      ]
+    },
+    {
+      "id": 1788617062749,
+      "category": "國中",
+      "folder": "4",
+      "word": "anything",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "任何事物",
+      "sentence": "The student needs to learn the word ___ (任何事物).",
+      "options": [
+        "April",
+        "around",
+        "armchair",
+        "anything"
+      ]
+    },
+    {
+      "id": 1788617062750,
+      "category": "國中",
+      "folder": "4",
+      "word": "anywhere",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "任何地方",
+      "sentence": "The student needs to learn the word ___ (任何地方).",
+      "options": [
+        "any",
+        "argue",
+        "anywhere",
+        "around"
+      ]
+    },
+    {
+      "id": 1788617062751,
+      "category": "國中",
+      "folder": "4",
+      "word": "apartment",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "公寓",
+      "sentence": "The student needs to learn the word ___ (公寓).",
+      "options": [
+        "any",
+        "apple",
+        "apartment",
+        "arm"
+      ]
+    },
+    {
+      "id": 1788617062752,
+      "category": "國中",
+      "folder": "4",
+      "word": "apologize",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "道歉",
+      "sentence": "The student needs to learn the word ___ (道歉).",
+      "options": [
+        "any",
+        "apologize",
+        "anywhere",
+        "appear"
+      ]
+    },
+    {
+      "id": 1788617062753,
+      "category": "國中",
+      "folder": "4",
+      "word": "appear",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "出現",
+      "sentence": "The student needs to learn the word ___ (出現).",
+      "options": [
+        "appear",
+        "anything",
+        "arrange",
+        "apartment"
+      ]
+    },
+    {
+      "id": 1788617062754,
+      "category": "國中",
+      "folder": "4",
+      "word": "apple",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "蘋果",
+      "sentence": "The student needs to learn the word ___ (蘋果).",
+      "options": [
+        "appreciate",
+        "anything",
+        "anywhere",
+        "apple"
+      ]
+    },
+    {
+      "id": 1788617062755,
+      "category": "國中",
+      "folder": "4",
+      "word": "appreciate",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "欣賞",
+      "sentence": "The student needs to learn the word ___ (欣賞).",
+      "options": [
+        "apologize",
+        "appreciate",
+        "armchair",
+        "apartment"
+      ]
+    },
+    {
+      "id": 1788617062756,
+      "category": "國中",
+      "folder": "4",
+      "word": "April",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "四月",
+      "sentence": "The student needs to learn the word ___ (四月).",
+      "options": [
+        "anywhere",
+        "armchair",
+        "April",
+        "anything"
+      ]
+    },
+    {
+      "id": 1788617062757,
+      "category": "國中",
+      "folder": "4",
+      "word": "area",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "地區",
+      "sentence": "The student needs to learn the word ___ (地區).",
+      "options": [
+        "area",
+        "anyone",
+        "army",
+        "any"
+      ]
+    },
+    {
+      "id": 1788617062758,
+      "category": "國中",
+      "folder": "4",
+      "word": "argue",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "爭論",
+      "sentence": "The student needs to learn the word ___ (爭論).",
+      "options": [
+        "apologize",
+        "argue",
+        "around",
+        "apartment"
+      ]
+    },
+    {
+      "id": 1788617062759,
+      "category": "國中",
+      "folder": "4",
+      "word": "arm",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "手臂",
+      "sentence": "The student needs to learn the word ___ (手臂).",
+      "options": [
+        "arm",
+        "army",
+        "art",
+        "appear"
+      ]
+    },
+    {
+      "id": 1788617062760,
+      "category": "國中",
+      "folder": "4",
+      "word": "armchair",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "扶手椅",
+      "sentence": "The student needs to learn the word ___ (扶手椅).",
+      "options": [
+        "apologize",
+        "arm",
+        "armchair",
+        "apartment"
+      ]
+    },
+    {
+      "id": 1788617062761,
+      "category": "國中",
+      "folder": "4",
+      "word": "army",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "軍隊",
+      "sentence": "The student needs to learn the word ___ (軍隊).",
+      "options": [
+        "apple",
+        "army",
+        "any",
+        "around"
+      ]
+    },
+    {
+      "id": 1788617062762,
+      "category": "國中",
+      "folder": "4",
+      "word": "around",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "在附近",
+      "sentence": "The student needs to learn the word ___ (在附近).",
+      "options": [
+        "armchair",
+        "appreciate",
+        "around",
+        "any"
+      ]
+    },
+    {
+      "id": 1788617062763,
+      "category": "國中",
+      "folder": "4",
+      "word": "arrange",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "安排",
+      "sentence": "The student needs to learn the word ___ (安排).",
+      "options": [
+        "arrange",
+        "art",
+        "April",
+        "apple"
+      ]
+    },
+    {
+      "id": 1788617062764,
+      "category": "國中",
+      "folder": "4",
+      "word": "arrive",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "到達",
+      "sentence": "The student needs to learn the word ___ (到達).",
+      "options": [
+        "around",
+        "appreciate",
+        "art",
+        "arrive"
+      ]
+    },
+    {
+      "id": 1788617062765,
+      "category": "國中",
+      "folder": "4",
+      "word": "art",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "藝術",
+      "sentence": "The student needs to learn the word ___ (藝術).",
+      "options": [
+        "art",
+        "area",
+        "any",
+        "armchair"
+      ]
+    },
+    {
+      "id": 1788617074161,
+      "category": "國中",
+      "folder": "5",
+      "word": "as",
+      "pos": "prep.",
+      "isPhrase": false,
+      "zh": "像,如同",
+      "sentence": "The student needs to learn the word ___ (像,如同).",
+      "options": [
+        "badminton",
+        "as",
+        "baby",
+        "bad"
+      ]
+    },
+    {
+      "id": 1788617074162,
+      "category": "國中",
+      "folder": "5",
+      "word": "ask",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "詢問",
+      "sentence": "The student needs to learn the word ___ (詢問).",
+      "options": [
+        "assume",
+        "ask",
+        "August",
+        "as"
+      ]
+    },
+    {
+      "id": 1788617074163,
+      "category": "國中",
+      "folder": "5",
+      "word": "asleep",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "睡著的",
+      "sentence": "The student needs to learn the word ___ (睡著的).",
+      "options": [
+        "asleep",
+        "assume",
+        "assistant",
+        "August"
+      ]
+    },
+    {
+      "id": 1788617074164,
+      "category": "國中",
+      "folder": "5",
+      "word": "assistant",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "助手",
+      "sentence": "The student needs to learn the word ___ (助手).",
+      "options": [
+        "assistant",
+        "ask",
+        "back",
+        "baby"
+      ]
+    },
+    {
+      "id": 1788617074165,
+      "category": "國中",
+      "folder": "5",
+      "word": "assume",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "假設",
+      "sentence": "The student needs to learn the word ___ (假設).",
+      "options": [
+        "as",
+        "baby",
+        "assume",
+        "autumn"
+      ]
+    },
+    {
+      "id": 1788617074166,
+      "category": "國中",
+      "folder": "5",
+      "word": "attack",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "攻擊",
+      "sentence": "The student needs to learn the word ___ (攻擊).",
+      "options": [
+        "as",
+        "attack",
+        "available",
+        "badminton"
+      ]
+    },
+    {
+      "id": 1788617074167,
+      "category": "國中",
+      "folder": "5",
+      "word": "attention",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "注意力",
+      "sentence": "The student needs to learn the word ___ (注意力).",
+      "options": [
+        "baby",
+        "badminton",
+        "attention",
+        "away"
+      ]
+    },
+    {
+      "id": 1788617074168,
+      "category": "國中",
+      "folder": "5",
+      "word": "August",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "八月",
+      "sentence": "The student needs to learn the word ___ (八月).",
+      "options": [
+        "backward(s)",
+        "August",
+        "back",
+        "attack"
+      ]
+    },
+    {
+      "id": 1788617074169,
+      "category": "國中",
+      "folder": "5",
+      "word": "aunt",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "姑媽",
+      "sentence": "The student needs to learn the word ___ (姑媽).",
+      "options": [
+        "avoid",
+        "attack",
+        "aunt",
+        "asleep"
+      ]
+    },
+    {
+      "id": 1788617074170,
+      "category": "國中",
+      "folder": "5",
+      "word": "autumn",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "秋天",
+      "sentence": "The student needs to learn the word ___ (秋天).",
+      "options": [
+        "autumn",
+        "bad",
+        "assume",
+        "assistant"
+      ]
+    },
+    {
+      "id": 1788617074171,
+      "category": "國中",
+      "folder": "5",
+      "word": "available",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "可獲得的",
+      "sentence": "The student needs to learn the word ___ (可獲得的).",
+      "options": [
+        "available",
+        "assume",
+        "August",
+        "avoid"
+      ]
+    },
+    {
+      "id": 1788617074172,
+      "category": "國中",
+      "folder": "5",
+      "word": "avoid",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "避免",
+      "sentence": "The student needs to learn the word ___ (避免).",
+      "options": [
+        "asleep",
+        "August",
+        "avoid",
+        "ask"
+      ]
+    },
+    {
+      "id": 1788617074173,
+      "category": "國中",
+      "folder": "5",
+      "word": "away",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "不在",
+      "sentence": "The student needs to learn the word ___ (不在).",
+      "options": [
+        "away",
+        "backward(s)",
+        "avoid",
+        "baby"
+      ]
+    },
+    {
+      "id": 1788617074174,
+      "category": "國中",
+      "folder": "5",
+      "word": "baby",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "嬰兒",
+      "sentence": "The student needs to learn the word ___ (嬰兒).",
+      "options": [
+        "August",
+        "away",
+        "baby",
+        "as"
+      ]
+    },
+    {
+      "id": 1788617074175,
+      "category": "國中",
+      "folder": "5",
+      "word": "baby",
+      "pos": "sitter n.",
+      "isPhrase": false,
+      "zh": "保母",
+      "sentence": "The student needs to learn the word ___ (保母).",
+      "options": [
+        "away",
+        "baby",
+        "autumn",
+        "as"
+      ]
+    },
+    {
+      "id": 1788617074176,
+      "category": "國中",
+      "folder": "5",
+      "word": "back",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "背部",
+      "sentence": "The student needs to learn the word ___ (背部).",
+      "options": [
+        "asleep",
+        "baby",
+        "away",
+        "back"
+      ]
+    },
+    {
+      "id": 1788617074177,
+      "category": "國中",
+      "folder": "5",
+      "word": "backward(s)",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "向後地",
+      "sentence": "The student needs to learn the word ___ (向後地).",
+      "options": [
+        "assistant",
+        "backward(s)",
+        "aunt",
+        "as"
+      ]
+    },
+    {
+      "id": 1788617074178,
+      "category": "國中",
+      "folder": "5",
+      "word": "bad",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "壞的",
+      "sentence": "The student needs to learn the word ___ (壞的).",
+      "options": [
+        "bad",
+        "baby",
+        "baby",
+        "aunt"
+      ]
+    },
+    {
+      "id": 1788617074179,
+      "category": "國中",
+      "folder": "5",
+      "word": "badminton",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "羽毛球",
+      "sentence": "The student needs to learn the word ___ (羽毛球).",
+      "options": [
+        "badminton",
+        "back",
+        "attention",
+        "bad"
+      ]
+    },
+    {
+      "id": 1788617088669,
+      "category": "國中",
+      "folder": "6",
+      "word": "bake",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "烘烤",
+      "sentence": "The student needs to learn the word ___ (烘烤).",
+      "options": [
+        "banana",
+        "bake",
+        "barbecue",
+        "basketball"
+      ]
+    },
+    {
+      "id": 1788617088670,
+      "category": "國中",
+      "folder": "6",
+      "word": "bakery",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "麵包店",
+      "sentence": "The student needs to learn the word ___ (麵包店).",
+      "options": [
+        "bakery",
+        "basic",
+        "bank",
+        "basement"
+      ]
+    },
+    {
+      "id": 1788617088671,
+      "category": "國中",
+      "folder": "6",
+      "word": "balcony",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "陽臺",
+      "sentence": "The student needs to learn the word ___ (陽臺).",
+      "options": [
+        "base",
+        "balcony",
+        "bakery",
+        "bat"
+      ]
+    },
+    {
+      "id": 1788617088672,
+      "category": "國中",
+      "folder": "6",
+      "word": "ball",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "球",
+      "sentence": "The student needs to learn the word ___ (球).",
+      "options": [
+        "bat",
+        "bakery",
+        "barbecue",
+        "ball"
+      ]
+    },
+    {
+      "id": 1788617088673,
+      "category": "國中",
+      "folder": "6",
+      "word": "balloon",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "氣球",
+      "sentence": "The student needs to learn the word ___ (氣球).",
+      "options": [
+        "balloon",
+        "bakery",
+        "bat",
+        "bark"
+      ]
+    },
+    {
+      "id": 1788617088674,
+      "category": "國中",
+      "folder": "6",
+      "word": "banana",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "香蕉",
+      "sentence": "The student needs to learn the word ___ (香蕉).",
+      "options": [
+        "ball",
+        "band",
+        "banana",
+        "bake"
+      ]
+    },
+    {
+      "id": 1788617088675,
+      "category": "國中",
+      "folder": "6",
+      "word": "band",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "樂團",
+      "sentence": "The student needs to learn the word ___ (樂團).",
+      "options": [
+        "bath",
+        "band",
+        "barber",
+        "bake"
+      ]
+    },
+    {
+      "id": 1788617088676,
+      "category": "國中",
+      "folder": "6",
+      "word": "bank",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "銀行",
+      "sentence": "The student needs to learn the word ___ (銀行).",
+      "options": [
+        "bakery",
+        "bank",
+        "bake",
+        "band"
+      ]
+    },
+    {
+      "id": 1788617088677,
+      "category": "國中",
+      "folder": "6",
+      "word": "barbecue",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "火烤",
+      "sentence": "The student needs to learn the word ___ (火烤).",
+      "options": [
+        "baseball",
+        "bark",
+        "barbecue",
+        "band"
+      ]
+    },
+    {
+      "id": 1788617088678,
+      "category": "國中",
+      "folder": "6",
+      "word": "barber",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "理髮師",
+      "sentence": "The student needs to learn the word ___ (理髮師).",
+      "options": [
+        "ball",
+        "barber",
+        "bark",
+        "barbecue"
+      ]
+    },
+    {
+      "id": 1788617088679,
+      "category": "國中",
+      "folder": "6",
+      "word": "bark",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "吠叫",
+      "sentence": "The student needs to learn the word ___ (吠叫).",
+      "options": [
+        "barbecue",
+        "bark",
+        "ball",
+        "bank"
+      ]
+    },
+    {
+      "id": 1788617088680,
+      "category": "國中",
+      "folder": "6",
+      "word": "base",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "基礎",
+      "sentence": "The student needs to learn the word ___ (基礎).",
+      "options": [
+        "base",
+        "basic",
+        "bark",
+        "bat"
+      ]
+    },
+    {
+      "id": 1788617088681,
+      "category": "國中",
+      "folder": "6",
+      "word": "baseball",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "棒球",
+      "sentence": "The student needs to learn the word ___ (棒球).",
+      "options": [
+        "baseball",
+        "band",
+        "barbecue",
+        "bakery"
+      ]
+    },
+    {
+      "id": 1788617088682,
+      "category": "國中",
+      "folder": "6",
+      "word": "basement",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "地下室",
+      "sentence": "The student needs to learn the word ___ (地下室).",
+      "options": [
+        "basement",
+        "balloon",
+        "basket",
+        "baseball"
+      ]
+    },
+    {
+      "id": 1788617088683,
+      "category": "國中",
+      "folder": "6",
+      "word": "basic",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "基礎的",
+      "sentence": "The student needs to learn the word ___ (基礎的).",
+      "options": [
+        "balcony",
+        "basic",
+        "bat",
+        "banana"
+      ]
+    },
+    {
+      "id": 1788617088684,
+      "category": "國中",
+      "folder": "6",
+      "word": "basket",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "籃子",
+      "sentence": "The student needs to learn the word ___ (籃子).",
+      "options": [
+        "basketball",
+        "barbecue",
+        "basket",
+        "basic"
+      ]
+    },
+    {
+      "id": 1788617088685,
+      "category": "國中",
+      "folder": "6",
+      "word": "basketball",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "籃球",
+      "sentence": "The student needs to learn the word ___ (籃球).",
+      "options": [
+        "basketball",
+        "basic",
+        "basket",
+        "baseball"
+      ]
+    },
+    {
+      "id": 1788617088686,
+      "category": "國中",
+      "folder": "6",
+      "word": "bat",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "蝙蝠",
+      "sentence": "The student needs to learn the word ___ (蝙蝠).",
+      "options": [
+        "basement",
+        "basketball",
+        "bat",
+        "balloon"
+      ]
+    },
+    {
+      "id": 1788617088687,
+      "category": "國中",
+      "folder": "6",
+      "word": "bath",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "沐浴",
+      "sentence": "The student needs to learn the word ___ (沐浴).",
+      "options": [
+        "barber",
+        "bath",
+        "bake",
+        "ball"
+      ]
+    },
+    {
+      "id": 1788617101053,
+      "category": "國中",
+      "folder": "7",
+      "word": "bathroom",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "浴室",
+      "sentence": "The student needs to learn the word ___ (浴室).",
+      "options": [
+        "beer",
+        "bathroom",
+        "bean",
+        "become"
+      ]
+    },
+    {
+      "id": 1788617101054,
+      "category": "國中",
+      "folder": "7",
+      "word": "beach",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "沙灘",
+      "sentence": "The student needs to learn the word ___ (沙灘).",
+      "options": [
+        "beautiful",
+        "bathroom",
+        "beach",
+        "beginner"
+      ]
+    },
+    {
+      "id": 1788617101055,
+      "category": "國中",
+      "folder": "7",
+      "word": "bean",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "豆子",
+      "sentence": "The student needs to learn the word ___ (豆子).",
+      "options": [
+        "beef",
+        "bean",
+        "beginning",
+        "beautiful"
+      ]
+    },
+    {
+      "id": 1788617101056,
+      "category": "國中",
+      "folder": "7",
+      "word": "bear",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "熊",
+      "sentence": "The student needs to learn the word ___ (熊).",
+      "options": [
+        "bean",
+        "bear",
+        "become",
+        "because"
+      ]
+    },
+    {
+      "id": 1788617101057,
+      "category": "國中",
+      "folder": "7",
+      "word": "beard",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "鬍鬚",
+      "sentence": "The student needs to learn the word ___ (鬍鬚).",
+      "options": [
+        "beef",
+        "beard",
+        "beach",
+        "bathroom"
+      ]
+    },
+    {
+      "id": 1788617101058,
+      "category": "國中",
+      "folder": "7",
+      "word": "beat",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "拍打",
+      "sentence": "The student needs to learn the word ___ (拍打).",
+      "options": [
+        "beard",
+        "beat",
+        "before",
+        "become"
+      ]
+    },
+    {
+      "id": 1788617101059,
+      "category": "國中",
+      "folder": "7",
+      "word": "beautiful",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "美麗的",
+      "sentence": "The student needs to learn the word ___ (美麗的).",
+      "options": [
+        "beef",
+        "bee",
+        "beach",
+        "beautiful"
+      ]
+    },
+    {
+      "id": 1788617101060,
+      "category": "國中",
+      "folder": "7",
+      "word": "beauty",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "美貌",
+      "sentence": "The student needs to learn the word ___ (美貌).",
+      "options": [
+        "bathroom",
+        "beauty",
+        "begin",
+        "become"
+      ]
+    },
+    {
+      "id": 1788617101061,
+      "category": "國中",
+      "folder": "7",
+      "word": "because",
+      "pos": "conj.",
+      "isPhrase": false,
+      "zh": "因為",
+      "sentence": "The student needs to learn the word ___ (因為).",
+      "options": [
+        "because",
+        "become",
+        "beer",
+        "beard"
+      ]
+    },
+    {
+      "id": 1788617101062,
+      "category": "國中",
+      "folder": "7",
+      "word": "become",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "成為",
+      "sentence": "The student needs to learn the word ___ (成為).",
+      "options": [
+        "beach",
+        "before",
+        "bathroom",
+        "become"
+      ]
+    },
+    {
+      "id": 1788617101063,
+      "category": "國中",
+      "folder": "7",
+      "word": "bed",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "床",
+      "sentence": "The student needs to learn the word ___ (床).",
+      "options": [
+        "before",
+        "bed",
+        "bathroom",
+        "bear"
+      ]
+    },
+    {
+      "id": 1788617101064,
+      "category": "國中",
+      "folder": "7",
+      "word": "bedroom",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "臥室",
+      "sentence": "The student needs to learn the word ___ (臥室).",
+      "options": [
+        "beat",
+        "bean",
+        "bedroom",
+        "bear"
+      ]
+    },
+    {
+      "id": 1788617101066,
+      "category": "國中",
+      "folder": "7",
+      "word": "bee",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "蜜蜂",
+      "sentence": "The student needs to learn the word ___ (蜜蜂).",
+      "options": [
+        "begin",
+        "bear",
+        "bean",
+        "bee"
+      ]
+    },
+    {
+      "id": 1788617101067,
+      "category": "國中",
+      "folder": "7",
+      "word": "beef",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "牛肉",
+      "sentence": "The student needs to learn the word ___ (牛肉).",
+      "options": [
+        "beauty",
+        "bathroom",
+        "beef",
+        "bedroom"
+      ]
+    },
+    {
+      "id": 1788617101068,
+      "category": "國中",
+      "folder": "7",
+      "word": "beer",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "啤酒",
+      "sentence": "The student needs to learn the word ___ (啤酒).",
+      "options": [
+        "before",
+        "beach",
+        "beer",
+        "bathroom"
+      ]
+    },
+    {
+      "id": 1788617101069,
+      "category": "國中",
+      "folder": "7",
+      "word": "before",
+      "pos": "conj.",
+      "isPhrase": false,
+      "zh": "在...之前",
+      "sentence": "The student needs to learn the word ___ (在...之前).",
+      "options": [
+        "bedroom",
+        "beautiful",
+        "before",
+        "beard"
+      ]
+    },
+    {
+      "id": 1788617101070,
+      "category": "國中",
+      "folder": "7",
+      "word": "begin",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "開始",
+      "sentence": "The student needs to learn the word ___ (開始).",
+      "options": [
+        "begin",
+        "beer",
+        "become",
+        "beautiful"
+      ]
+    },
+    {
+      "id": 1788617101071,
+      "category": "國中",
+      "folder": "7",
+      "word": "beginner",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "初學者",
+      "sentence": "The student needs to learn the word ___ (初學者).",
+      "options": [
+        "beginner",
+        "beach",
+        "bean",
+        "beat"
+      ]
+    },
+    {
+      "id": 1788617101072,
+      "category": "國中",
+      "folder": "7",
+      "word": "beginning",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "開始",
+      "sentence": "The student needs to learn the word ___ (開始).",
+      "options": [
+        "beginning",
+        "bear",
+        "bed",
+        "beat"
+      ]
+    },
+    {
+      "id": 1788617113517,
+      "category": "國中",
+      "folder": "8",
+      "word": "behind",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "在之後",
+      "sentence": "The student needs to learn the word ___ (在之後).",
+      "options": [
+        "belt",
+        "behind",
+        "bite",
+        "besides"
+      ]
+    },
+    {
+      "id": 1788617113518,
+      "category": "國中",
+      "folder": "8",
+      "word": "believe",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "相信",
+      "sentence": "The student needs to learn the word ___ (相信).",
+      "options": [
+        "behind",
+        "bell",
+        "black",
+        "believe"
+      ]
+    },
+    {
+      "id": 1788617113519,
+      "category": "國中",
+      "folder": "8",
+      "word": "bell",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "鈴",
+      "sentence": "The student needs to learn the word ___ (鈴).",
+      "options": [
+        "belong",
+        "bell",
+        "birthday",
+        "bicycle"
+      ]
+    },
+    {
+      "id": 1788617113520,
+      "category": "國中",
+      "folder": "8",
+      "word": "belong",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "屬於",
+      "sentence": "The student needs to learn the word ___ (屬於).",
+      "options": [
+        "between",
+        "belong",
+        "behind",
+        "big"
+      ]
+    },
+    {
+      "id": 1788617113521,
+      "category": "國中",
+      "folder": "8",
+      "word": "below",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "在下面",
+      "sentence": "The student needs to learn the word ___ (在下面).",
+      "options": [
+        "birthday",
+        "belong",
+        "believe",
+        "below"
+      ]
+    },
+    {
+      "id": 1788617113522,
+      "category": "國中",
+      "folder": "8",
+      "word": "belt",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "皮帶",
+      "sentence": "The student needs to learn the word ___ (皮帶).",
+      "options": [
+        "believe",
+        "belt",
+        "belong",
+        "bitter"
+      ]
+    },
+    {
+      "id": 1788617113523,
+      "category": "國中",
+      "folder": "8",
+      "word": "bench",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "長凳",
+      "sentence": "The student needs to learn the word ___ (長凳).",
+      "options": [
+        "besides",
+        "bite",
+        "bench",
+        "bell"
+      ]
+    },
+    {
+      "id": 1788617113524,
+      "category": "國中",
+      "folder": "8",
+      "word": "besides",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "此外",
+      "sentence": "The student needs to learn the word ___ (此外).",
+      "options": [
+        "beyond",
+        "besides",
+        "behind",
+        "between"
+      ]
+    },
+    {
+      "id": 1788617113525,
+      "category": "國中",
+      "folder": "8",
+      "word": "between",
+      "pos": "prep.",
+      "isPhrase": false,
+      "zh": "在...之間",
+      "sentence": "The student needs to learn the word ___ (在...之間).",
+      "options": [
+        "between",
+        "birthday",
+        "bell",
+        "below"
+      ]
+    },
+    {
+      "id": 1788617113526,
+      "category": "國中",
+      "folder": "8",
+      "word": "beyond",
+      "pos": "prep.",
+      "isPhrase": false,
+      "zh": "超出",
+      "sentence": "The student needs to learn the word ___ (超出).",
+      "options": [
+        "bicycle",
+        "beyond",
+        "behind",
+        "bench"
+      ]
+    },
+    {
+      "id": 1788617113527,
+      "category": "國中",
+      "folder": "8",
+      "word": "bicycle",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "腳踏車",
+      "sentence": "The student needs to learn the word ___ (腳踏車).",
+      "options": [
+        "bitter",
+        "bicycle",
+        "between",
+        "behind"
+      ]
+    },
+    {
+      "id": 1788617113528,
+      "category": "國中",
+      "folder": "8",
+      "word": "big",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "大的",
+      "sentence": "The student needs to learn the word ___ (大的).",
+      "options": [
+        "bird",
+        "bite",
+        "big",
+        "bill"
+      ]
+    },
+    {
+      "id": 1788617113529,
+      "category": "國中",
+      "folder": "8",
+      "word": "bill",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "帳單;鈔票",
+      "sentence": "The student needs to learn the word ___ (帳單;鈔票).",
+      "options": [
+        "black",
+        "besides",
+        "bill",
+        "bench"
+      ]
+    },
+    {
+      "id": 1788617113530,
+      "category": "國中",
+      "folder": "8",
+      "word": "biology",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "生物學",
+      "sentence": "The student needs to learn the word ___ (生物學).",
+      "options": [
+        "biology",
+        "besides",
+        "black",
+        "birthday"
+      ]
+    },
+    {
+      "id": 1788617113531,
+      "category": "國中",
+      "folder": "8",
+      "word": "bird",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "鳥",
+      "sentence": "The student needs to learn the word ___ (鳥).",
+      "options": [
+        "beyond",
+        "bird",
+        "bicycle",
+        "belt"
+      ]
+    },
+    {
+      "id": 1788617113532,
+      "category": "國中",
+      "folder": "8",
+      "word": "birthday",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "生日",
+      "sentence": "The student needs to learn the word ___ (生日).",
+      "options": [
+        "bill",
+        "biology",
+        "birthday",
+        "bird"
+      ]
+    },
+    {
+      "id": 1788617113533,
+      "category": "國中",
+      "folder": "8",
+      "word": "bite",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "咬",
+      "sentence": "The student needs to learn the word ___ (咬).",
+      "options": [
+        "believe",
+        "bitter",
+        "behind",
+        "bite"
+      ]
+    },
+    {
+      "id": 1788617113534,
+      "category": "國中",
+      "folder": "8",
+      "word": "bitter",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "痛苦的",
+      "sentence": "The student needs to learn the word ___ (痛苦的).",
+      "options": [
+        "bitter",
+        "bench",
+        "bicycle",
+        "behind"
+      ]
+    },
+    {
+      "id": 1788617113535,
+      "category": "國中",
+      "folder": "8",
+      "word": "black",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "黑的",
+      "sentence": "The student needs to learn the word ___ (黑的).",
+      "options": [
+        "bench",
+        "birthday",
+        "besides",
+        "black"
+      ]
+    },
+    {
+      "id": 1788617124478,
+      "category": "國中",
+      "folder": "9",
+      "word": "blame",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "責怪",
+      "sentence": "The student needs to learn the word ___ (責怪).",
+      "options": [
+        "blame",
+        "cap",
+        "brother",
+        "cheese"
+      ]
+    },
+    {
+      "id": 1788617124479,
+      "category": "國中",
+      "folder": "9",
+      "word": "blank",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "空白的",
+      "sentence": "The student needs to learn the word ___ (空白的).",
+      "options": [
+        "blank",
+        "brunch",
+        "cheer",
+        "brother"
+      ]
+    },
+    {
+      "id": 1788617124480,
+      "category": "國中",
+      "folder": "9",
+      "word": "blanket",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "毯子",
+      "sentence": "The student needs to learn the word ___ (毯子).",
+      "options": [
+        "blanket",
+        "brown",
+        "block",
+        "chess"
+      ]
+    },
+    {
+      "id": 1788617124481,
+      "category": "國中",
+      "folder": "9",
+      "word": "blind",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "失明的",
+      "sentence": "The student needs to learn the word ___ (失明的).",
+      "options": [
+        "block",
+        "brother",
+        "blind",
+        "car"
+      ]
+    },
+    {
+      "id": 1788617124482,
+      "category": "國中",
+      "folder": "9",
+      "word": "block",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "街區",
+      "sentence": "The student needs to learn the word ___ (街區).",
+      "options": [
+        "block",
+        "blame",
+        "brother",
+        "blank"
+      ]
+    },
+    {
+      "id": 1788617124483,
+      "category": "國中",
+      "folder": "9",
+      "word": "broad",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "寬闊的",
+      "sentence": "The student needs to learn the word ___ (寬闊的).",
+      "options": [
+        "broad",
+        "broadcast",
+        "captain",
+        "block"
+      ]
+    },
+    {
+      "id": 1788617124484,
+      "category": "國中",
+      "folder": "9",
+      "word": "broadcast",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "廣播",
+      "sentence": "The student needs to learn the word ___ (廣播).",
+      "options": [
+        "car",
+        "broadcast",
+        "brunch",
+        "candy"
+      ]
+    },
+    {
+      "id": 1788617124485,
+      "category": "國中",
+      "folder": "9",
+      "word": "brother",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "兄弟",
+      "sentence": "The student needs to learn the word ___ (兄弟).",
+      "options": [
+        "cheer",
+        "brother",
+        "blanket",
+        "broadcast"
+      ]
+    },
+    {
+      "id": 1788617124486,
+      "category": "國中",
+      "folder": "9",
+      "word": "brown",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "棕色的",
+      "sentence": "The student needs to learn the word ___ (棕色的).",
+      "options": [
+        "candy",
+        "blind",
+        "broad",
+        "brown"
+      ]
+    },
+    {
+      "id": 1788617124487,
+      "category": "國中",
+      "folder": "9",
+      "word": "brunch",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "早午餐",
+      "sentence": "The student needs to learn the word ___ (早午餐).",
+      "options": [
+        "brother",
+        "blame",
+        "broad",
+        "brunch"
+      ]
+    },
+    {
+      "id": 1788617124488,
+      "category": "國中",
+      "folder": "9",
+      "word": "candy",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "糖果",
+      "sentence": "The student needs to learn the word ___ (糖果).",
+      "options": [
+        "broad",
+        "card",
+        "candy",
+        "blame"
+      ]
+    },
+    {
+      "id": 1788617124489,
+      "category": "國中",
+      "folder": "9",
+      "word": "cap",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "帽子",
+      "sentence": "The student needs to learn the word ___ (帽子).",
+      "options": [
+        "broadcast",
+        "cap",
+        "blank",
+        "blame"
+      ]
+    },
+    {
+      "id": 1788617124490,
+      "category": "國中",
+      "folder": "9",
+      "word": "captain",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "隊長",
+      "sentence": "The student needs to learn the word ___ (隊長).",
+      "options": [
+        "broadcast",
+        "chess",
+        "blame",
+        "captain"
+      ]
+    },
+    {
+      "id": 1788617124491,
+      "category": "國中",
+      "folder": "9",
+      "word": "car",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "車子",
+      "sentence": "The student needs to learn the word ___ (車子).",
+      "options": [
+        "car",
+        "brown",
+        "blanket",
+        "cheese"
+      ]
+    },
+    {
+      "id": 1788617124492,
+      "category": "國中",
+      "folder": "9",
+      "word": "card",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "卡片",
+      "sentence": "The student needs to learn the word ___ (卡片).",
+      "options": [
+        "block",
+        "cheese",
+        "card",
+        "blind"
+      ]
+    },
+    {
+      "id": 1788617124493,
+      "category": "國中",
+      "folder": "9",
+      "word": "cheer",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "歡呼",
+      "sentence": "The student needs to learn the word ___ (歡呼).",
+      "options": [
+        "blind",
+        "cheese",
+        "blanket",
+        "cheer"
+      ]
+    },
+    {
+      "id": 1788617124494,
+      "category": "國中",
+      "folder": "9",
+      "word": "cheese",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "起司",
+      "sentence": "The student needs to learn the word ___ (起司).",
+      "options": [
+        "cheese",
+        "brown",
+        "block",
+        "blanket"
+      ]
+    },
+    {
+      "id": 1788617124495,
+      "category": "國中",
+      "folder": "9",
+      "word": "chemical",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "化學的",
+      "sentence": "The student needs to learn the word ___ (化學的).",
+      "options": [
+        "chemical",
+        "blind",
+        "candy",
+        "cheese"
+      ]
+    },
+    {
+      "id": 1788617124496,
+      "category": "國中",
+      "folder": "9",
+      "word": "chess",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "西洋棋",
+      "sentence": "The student needs to learn the word ___ (西洋棋).",
+      "options": [
+        "brother",
+        "cheer",
+        "captain",
+        "chess"
+      ]
+    },
+    {
+      "id": 1788617136984,
+      "category": "國中",
+      "folder": "10",
+      "word": "blood",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "血",
+      "sentence": "The student needs to learn the word ___ (血).",
+      "options": [
+        "childish",
+        "blood",
+        "child",
+        "bucket"
+      ]
+    },
+    {
+      "id": 1788617136985,
+      "category": "國中",
+      "folder": "10",
+      "word": "brush",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "刷子",
+      "sentence": "The student needs to learn the word ___ (刷子).",
+      "options": [
+        "brush",
+        "blood",
+        "buffet",
+        "child"
+      ]
+    },
+    {
+      "id": 1788617136986,
+      "category": "國中",
+      "folder": "10",
+      "word": "care",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "關心",
+      "sentence": "The student needs to learn the word ___ (關心).",
+      "options": [
+        "bloody",
+        "child",
+        "care",
+        "cartoon"
+      ]
+    },
+    {
+      "id": 1788617136987,
+      "category": "國中",
+      "folder": "10",
+      "word": "chief",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "首領",
+      "sentence": "The student needs to learn the word ___ (首領).",
+      "options": [
+        "blood",
+        "chief",
+        "care",
+        "carrot"
+      ]
+    },
+    {
+      "id": 1788617136988,
+      "category": "國中",
+      "folder": "10",
+      "word": "bloody",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "血腥的",
+      "sentence": "The student needs to learn the word ___ (血腥的).",
+      "options": [
+        "blood",
+        "bloody",
+        "carpet",
+        "brush"
+      ]
+    },
+    {
+      "id": 1788617136989,
+      "category": "國中",
+      "folder": "10",
+      "word": "bucket",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "桶子",
+      "sentence": "The student needs to learn the word ___ (桶子).",
+      "options": [
+        "bug",
+        "brush",
+        "bucket",
+        "chief"
+      ]
+    },
+    {
+      "id": 1788617136990,
+      "category": "國中",
+      "folder": "10",
+      "word": "careful",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "小心的",
+      "sentence": "The student needs to learn the word ___ (小心的).",
+      "options": [
+        "child",
+        "bug",
+        "careful",
+        "boat"
+      ]
+    },
+    {
+      "id": 1788617136991,
+      "category": "國中",
+      "folder": "10",
+      "word": "child",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "小孩",
+      "sentence": "The student needs to learn the word ___ (小孩).",
+      "options": [
+        "child",
+        "cartoon",
+        "careful",
+        "bucket"
+      ]
+    },
+    {
+      "id": 1788617136992,
+      "category": "國中",
+      "folder": "10",
+      "word": "blow",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "吹",
+      "sentence": "The student needs to learn the word ___ (吹).",
+      "options": [
+        "bloody",
+        "carrot",
+        "blow",
+        "carry"
+      ]
+    },
+    {
+      "id": 1788617136993,
+      "category": "國中",
+      "folder": "10",
+      "word": "buffet",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "自助餐",
+      "sentence": "The student needs to learn the word ___ (自助餐).",
+      "options": [
+        "carrot",
+        "child",
+        "buffet",
+        "cartoon"
+      ]
+    },
+    {
+      "id": 1788617136994,
+      "category": "國中",
+      "folder": "10",
+      "word": "careless",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "粗心的",
+      "sentence": "The student needs to learn the word ___ (粗心的).",
+      "options": [
+        "child",
+        "carrot",
+        "careless",
+        "care"
+      ]
+    },
+    {
+      "id": 1788617136995,
+      "category": "國中",
+      "folder": "10",
+      "word": "childish",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "幼稚的",
+      "sentence": "The student needs to learn the word ___ (幼稚的).",
+      "options": [
+        "brush",
+        "childish",
+        "cartoon",
+        "blood"
+      ]
+    },
+    {
+      "id": 1788617136996,
+      "category": "國中",
+      "folder": "10",
+      "word": "bug",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "昆蟲",
+      "sentence": "The student needs to learn the word ___ (昆蟲).",
+      "options": [
+        "bug",
+        "blow",
+        "buffet",
+        "bloody"
+      ]
+    },
+    {
+      "id": 1788617136997,
+      "category": "國中",
+      "folder": "10",
+      "word": "carpet",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "地毯",
+      "sentence": "The student needs to learn the word ___ (地毯).",
+      "options": [
+        "brush",
+        "carpet",
+        "careful",
+        "child"
+      ]
+    },
+    {
+      "id": 1788617136998,
+      "category": "國中",
+      "folder": "10",
+      "word": "carrot",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "胡蘿蔔",
+      "sentence": "The student needs to learn the word ___ (胡蘿蔔).",
+      "options": [
+        "bucket",
+        "carrot",
+        "careful",
+        "childish"
+      ]
+    },
+    {
+      "id": 1788617136999,
+      "category": "國中",
+      "folder": "10",
+      "word": "carry",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "拿,運送",
+      "sentence": "The student needs to learn the word ___ (拿,運送).",
+      "options": [
+        "brush",
+        "carry",
+        "chief",
+        "careless"
+      ]
+    },
+    {
+      "id": 1788617137000,
+      "category": "國中",
+      "folder": "10",
+      "word": "cartoon",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "卡通",
+      "sentence": "The student needs to learn the word ___ (卡通).",
+      "options": [
+        "cartoon",
+        "bloody",
+        "blue",
+        "bucket"
+      ]
+    },
+    {
+      "id": 1788617137001,
+      "category": "國中",
+      "folder": "10",
+      "word": "blue",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "藍的",
+      "sentence": "The student needs to learn the word ___ (藍的).",
+      "options": [
+        "blue",
+        "childish",
+        "bloody",
+        "bug"
+      ]
+    },
+    {
+      "id": 1788617137002,
+      "category": "國中",
+      "folder": "10",
+      "word": "boat",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "船",
+      "sentence": "The student needs to learn the word ___ (船).",
+      "options": [
+        "child",
+        "boat",
+        "blood",
+        "careless"
+      ]
+    },
+    {
+      "id": 100000001,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "coward",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "懦夫；膽小鬼",
+      "sentence": "The boys called Theo a ___ when he wouldn't climb the tree.",
+      "options": [
+        "coward",
+        "hero",
+        "leader",
+        "genius"
+      ]
+    },
+    {
+      "id": 100000002,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "cowardly",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "膽小的；怯懦的",
+      "sentence": "It was ___ of him to run away and leave his friends behind.",
+      "options": [
+        "cowardly",
+        "brave",
+        "polite",
+        "friendly"
+      ]
+    },
+    {
+      "id": 100000003,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "crack",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "(使)破裂；破解(密碼)",
+      "sentence": "The man ___ the code that was being used to send messages.",
+      "options": [
+        "cracked",
+        "fixed",
+        "locked",
+        "copied"
+      ]
+    },
+    {
+      "id": 100000004,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "cracker",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "薄脆餅乾",
+      "sentence": "She likes to eat soup with cheese and a crispy ___.",
+      "options": [
+        "cracker",
+        "candy",
+        "sausage",
+        "butter"
+      ]
+    },
+    {
+      "id": 100000005,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "crackdown",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "掃蕩；鎮壓",
+      "sentence": "The police announced a firm ___ on illegal parking in the downtown area.",
+      "options": [
+        "crackdown",
+        "celebration",
+        "exhibition",
+        "agreement"
+      ]
+    },
+    {
+      "id": 100000006,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "crack up",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "捧腹大笑",
+      "sentence": "Mandy ___ as I told her the very funny story.",
+      "options": [
+        "cracked up",
+        "gave up",
+        "showed off",
+        "turned down"
+      ]
+    },
+    {
+      "id": 100000007,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "crack",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "縫隙、裂痕；劈啪聲",
+      "sentence": "When the rock hit the car window, it left a ___ in the middle of the glass.",
+      "options": [
+        "crack",
+        "hole",
+        "shadow",
+        "flame"
+      ]
+    },
+    {
+      "id": 100000008,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "diligence",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "勤勉；勤奮",
+      "sentence": "The company's success is due to the ___ of its workers.",
+      "options": [
+        "diligence",
+        "laziness",
+        "arrogance",
+        "ignorance"
+      ]
+    },
+    {
+      "id": 100000009,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "diligent",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "勤勉的；勤勞的",
+      "sentence": "If you are ___ in your studies, you will do well in school.",
+      "options": [
+        "diligent",
+        "careless",
+        "greedy",
+        "jealous"
+      ]
+    },
+    {
+      "id": 100000010,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "disgust",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "(使)作嘔；(使)厭惡",
+      "sentence": "The smell of rotting meat outside the restaurant ___ me.",
+      "options": [
+        "disgusted",
+        "delighted",
+        "attracted",
+        "comforted"
+      ]
+    },
+    {
+      "id": 100000011,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "disgusted",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "感到厭惡的",
+      "sentence": "Jack was ___ with himself for all the terrible things he had done.",
+      "options": [
+        "disgusted",
+        "satisfied",
+        "excited",
+        "proud"
+      ]
+    },
+    {
+      "id": 100000012,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "disgusting",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "令人噁心的",
+      "sentence": "Leaving food waste on the carpet for days is a very ___ habit.",
+      "options": [
+        "disgusting",
+        "pleasant",
+        "charming",
+        "peaceful"
+      ]
+    },
+    {
+      "id": 100000013,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "be disgusted with",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "對某人/事物感到厭惡",
+      "sentence": "Jack ___ himself for all the terrible things he had done.",
+      "options": [
+        "was disgusted with",
+        "was proud of",
+        "was interested in",
+        "was familiar with"
+      ]
+    },
+    {
+      "id": 100000014,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "disgust",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "作嘔；厭惡",
+      "sentence": "I felt ___ the first time I smelled stinky tofu.",
+      "options": [
+        "disgust",
+        "joy",
+        "pride",
+        "relief"
+      ]
+    },
+    {
+      "id": 100000001,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "embassy",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "大使館",
+      "sentence": "A bomb exploded outside the ___ , but no one was hurt.",
+      "options": [
+        "embassy",
+        "ambassador",
+        "diplomat",
+        "facility"
+      ]
+    },
+    {
+      "id": 100000002,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "ambassador",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "大使；使節",
+      "sentence": "The president appointed a new ___ to represent the nation abroad.",
+      "options": [
+        "ambassador",
+        "embassy",
+        "diplomat",
+        "freshman"
+      ]
+    },
+    {
+      "id": 100000003,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "diplomat",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "外交官",
+      "sentence": "The experienced ___ spent years negotiating peaceful agreements between the two countries.",
+      "options": [
+        "diplomat",
+        "ambassador",
+        "sophomore",
+        "grammar"
+      ]
+    },
+    {
+      "id": 100000004,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "enlarge",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "擴大；放大",
+      "sentence": "We ___ the room by tearing down two walls.",
+      "options": [
+        "enlarge",
+        "enlargement",
+        "facility",
+        "grammar"
+      ]
+    },
+    {
+      "id": 100000005,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "enlargement",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "擴大；放大",
+      "sentence": "The ___ of the photograph revealed the details that were not visible in the smaller version.",
+      "options": [
+        "enlargement",
+        "enlarge",
+        "facility",
+        "freshman"
+      ]
+    },
+    {
+      "id": 100000006,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "facility",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "(有特定用途的)場所；設施、用具(複數)",
+      "sentence": "The firefighters spent time at a training ___ where they practiced putting out different types of fires.",
+      "options": [
+        "facility",
+        "embassy",
+        "grammar",
+        "freshman"
+      ]
+    },
+    {
+      "id": 100000007,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "shopping facility",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "購物機構",
+      "sentence": "The new residential area provides a modern ___ for local residents.",
+      "options": [
+        "shopping facility",
+        "medical facility",
+        "sports facility",
+        "grammatical error"
+      ]
+    },
+    {
+      "id": 100000008,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "freshman",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "(中學、大學的)一年級生；新鮮人",
+      "sentence": "When I was a college ___ , I studied Chinese literature.",
+      "options": [
+        "freshman",
+        "sophomore",
+        "junior",
+        "senior"
+      ]
+    },
+    {
+      "id": 100000009,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "sophomore",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "大二生；高二生",
+      "sentence": "After finishing her first year, she felt much more confident as a ___ .",
+      "options": [
+        "sophomore",
+        "freshman",
+        "junior",
+        "senior"
+      ]
+    },
+    {
+      "id": 100000010,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "junior",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "大三生；高三生",
+      "sentence": "As a ___ in high school, he started preparing for university entrance exams.",
+      "options": [
+        "junior",
+        "freshman",
+        "sophomore",
+        "senior"
+      ]
+    },
+    {
+      "id": 100000011,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "senior",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "大四生；高四生",
+      "sentence": "The ___ students were excited to graduate at the end of the school year.",
+      "options": [
+        "senior",
+        "freshman",
+        "sophomore",
+        "junior"
+      ]
+    },
+    {
+      "id": 100000012,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "grammar",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "文法；語法",
+      "sentence": "This course is designed to give students a strong foundation in Spanish ___ .",
+      "options": [
+        "grammar",
+        "grammatical",
+        "embassy",
+        "facility"
+      ]
+    },
+    {
+      "id": 100000013,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "grammatical",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "文法的；語法的",
+      "sentence": "The report is sprinkled with spelling and ___ errors.",
+      "options": [
+        "grammatical",
+        "grammar",
+        "diplomat",
+        "enlargement"
+      ]
+    },
+    {
+      "id": 160100001,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "graph",
+      "pos": "n., v.",
+      "isPhrase": false,
+      "zh": "圖表；以圖表呈現",
+      "sentence": "The ___ displayed the trend of increasing sales over the past year.",
+      "options": [
+        "graph",
+        "diagram",
+        "horizon",
+        "instruction"
+      ]
+    },
+    {
+      "id": 160100002,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "graphic",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "繪畫的；圖像的",
+      "sentence": "The designer added several ___ elements to make the poster visually appealing.",
+      "options": [
+        "graphic",
+        "horizontal",
+        "imposing",
+        "instructed"
+      ]
+    },
+    {
+      "id": 160100003,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "diagram",
+      "pos": "n., v.",
+      "isPhrase": false,
+      "zh": "圖表；示意圖；以圖表說明",
+      "sentence": "The speaker will ___ his points using charts and illustrations during the presentation.",
+      "options": [
+        "diagram",
+        "impose",
+        "instruct",
+        "broaden"
+      ]
+    },
+    {
+      "id": 170100001,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "horizon",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "地平線；眼界",
+      "sentence": "The boat sailed toward the sun, which was setting on the ___.",
+      "options": [
+        "horizon",
+        "diagram",
+        "instruction",
+        "restriction"
+      ]
+    },
+    {
+      "id": 170100002,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "horizontal",
+      "pos": "adj., n.",
+      "isPhrase": false,
+      "zh": "水平的；橫向的",
+      "sentence": "Please draw a straight ___ line across the top of the paper.",
+      "options": [
+        "horizontal",
+        "graphic",
+        "imposing",
+        "instructed"
+      ]
+    },
+    {
+      "id": 170100003,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "on the horizon",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "即將到來",
+      "sentence": "With the big math test ___, Ralph started studying more.",
+      "options": [
+        "on the horizon",
+        "out of control",
+        "in detail",
+        "by chance"
+      ]
+    },
+    {
+      "id": 180100001,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "impose",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "強制執行；把……強加於",
+      "sentence": "The government has decided to ___ travel restrictions because of the disease outbreak.",
+      "options": [
+        "impose",
+        "instruct",
+        "diagram",
+        "broaden"
+      ]
+    },
+    {
+      "id": 180100002,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "impose a tax on",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "對……課稅",
+      "sentence": "The government decided to ___ imported vehicles to support local brands.",
+      "options": [
+        "impose a tax on",
+        "broaden horizons on",
+        "make a diagram of",
+        "give instruction to"
+      ]
+    },
+    {
+      "id": 190100001,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "instruct",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "指示；吩咐；指導",
+      "sentence": "The sales manager ___ed his team to learn more about the company's products.",
+      "options": [
+        "instruct",
+        "impose",
+        "diagram",
+        "graph"
+      ]
+    },
+    {
+      "id": 190100002,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "instruction",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "指導；教學",
+      "sentence": "Professor Nell provided clear ___ in proper English writing for his students.",
+      "options": [
+        "instruction",
+        "horizon",
+        "diagram",
+        "restriction"
+      ]
+    },
+    {
+      "id": 1788617352370,
+      "category": "國中",
+      "folder": "11",
+      "word": "boil",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "燒開",
+      "sentence": "The student needs to learn the word ___ (燒開).",
+      "options": [
+        "boil",
+        "boss",
+        "book",
+        "box"
+      ]
+    },
+    {
+      "id": 1788617352371,
+      "category": "國中",
+      "folder": "11",
+      "word": "bomb",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "炸彈",
+      "sentence": "The student needs to learn the word ___ (炸彈).",
+      "options": [
+        "bomb",
+        "boss",
+        "bookcase",
+        "bow"
+      ]
+    },
+    {
+      "id": 1788617352372,
+      "category": "國中",
+      "folder": "11",
+      "word": "bone",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "骨頭",
+      "sentence": "The student needs to learn the word ___ (骨頭).",
+      "options": [
+        "both",
+        "bomb",
+        "bone",
+        "boil"
+      ]
+    },
+    {
+      "id": 1788617352373,
+      "category": "國中",
+      "folder": "11",
+      "word": "book",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "書",
+      "sentence": "The student needs to learn the word ___ (書).",
+      "options": [
+        "bomb",
+        "bow",
+        "bone",
+        "book"
+      ]
+    },
+    {
+      "id": 1788617352374,
+      "category": "國中",
+      "folder": "11",
+      "word": "bookcase",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "書櫥",
+      "sentence": "The student needs to learn the word ___ (書櫥).",
+      "options": [
+        "bomb",
+        "box",
+        "bookcase",
+        "boil"
+      ]
+    },
+    {
+      "id": 1788617352375,
+      "category": "國中",
+      "folder": "11",
+      "word": "bored",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "厭倦的",
+      "sentence": "The student needs to learn the word ___ (厭倦的).",
+      "options": [
+        "boil",
+        "bone",
+        "bored",
+        "bomb"
+      ]
+    },
+    {
+      "id": 1788617352376,
+      "category": "國中",
+      "folder": "11",
+      "word": "born",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "天生的",
+      "sentence": "The student needs to learn the word ___ (天生的).",
+      "options": [
+        "born",
+        "bowling",
+        "boil",
+        "bone"
+      ]
+    },
+    {
+      "id": 1788617352377,
+      "category": "國中",
+      "folder": "11",
+      "word": "borrow",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "借",
+      "sentence": "The student needs to learn the word ___ (借).",
+      "options": [
+        "book",
+        "borrow",
+        "box",
+        "boss"
+      ]
+    },
+    {
+      "id": 1788617352378,
+      "category": "國中",
+      "folder": "11",
+      "word": "boss",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "老闆",
+      "sentence": "The student needs to learn the word ___ (老闆).",
+      "options": [
+        "boss",
+        "both",
+        "bother",
+        "bottle"
+      ]
+    },
+    {
+      "id": 1788617352379,
+      "category": "國中",
+      "folder": "11",
+      "word": "both",
+      "pos": "pron.",
+      "isPhrase": false,
+      "zh": "兩者",
+      "sentence": "The student needs to learn the word ___ (兩者).",
+      "options": [
+        "bone",
+        "both",
+        "boss",
+        "box"
+      ]
+    },
+    {
+      "id": 1788617352380,
+      "category": "國中",
+      "folder": "11",
+      "word": "bother",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "使煩惱",
+      "sentence": "The student needs to learn the word ___ (使煩惱).",
+      "options": [
+        "bookcase",
+        "bowl",
+        "bother",
+        "bone"
+      ]
+    },
+    {
+      "id": 1788617352381,
+      "category": "國中",
+      "folder": "11",
+      "word": "bottle",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "瓶子",
+      "sentence": "The student needs to learn the word ___ (瓶子).",
+      "options": [
+        "boy",
+        "boss",
+        "bottle",
+        "bored"
+      ]
+    },
+    {
+      "id": 1788617352382,
+      "category": "國中",
+      "folder": "11",
+      "word": "bottom",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "底部",
+      "sentence": "The student needs to learn the word ___ (底部).",
+      "options": [
+        "bomb",
+        "bottom",
+        "borrow",
+        "boy"
+      ]
+    },
+    {
+      "id": 1788617352383,
+      "category": "國中",
+      "folder": "11",
+      "word": "bow",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "弓",
+      "sentence": "The student needs to learn the word ___ (弓).",
+      "options": [
+        "born",
+        "bone",
+        "bow",
+        "both"
+      ]
+    },
+    {
+      "id": 1788617352384,
+      "category": "國中",
+      "folder": "11",
+      "word": "bowl",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "碗",
+      "sentence": "The student needs to learn the word ___ (碗).",
+      "options": [
+        "bowling",
+        "bowl",
+        "boil",
+        "box"
+      ]
+    },
+    {
+      "id": 1788617352385,
+      "category": "國中",
+      "folder": "11",
+      "word": "bowling",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "保齡球",
+      "sentence": "The student needs to learn the word ___ (保齡球).",
+      "options": [
+        "bookcase",
+        "borrow",
+        "born",
+        "bowling"
+      ]
+    },
+    {
+      "id": 1788617352386,
+      "category": "國中",
+      "folder": "11",
+      "word": "box",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "箱子",
+      "sentence": "The student needs to learn the word ___ (箱子).",
+      "options": [
+        "brain",
+        "bottle",
+        "both",
+        "box"
+      ]
+    },
+    {
+      "id": 1788617352387,
+      "category": "國中",
+      "folder": "11",
+      "word": "boy",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "男孩",
+      "sentence": "The student needs to learn the word ___ (男孩).",
+      "options": [
+        "boy",
+        "bookcase",
+        "bone",
+        "borrow"
+      ]
+    },
+    {
+      "id": 1788617352388,
+      "category": "國中",
+      "folder": "11",
+      "word": "brain",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "腦",
+      "sentence": "The student needs to learn the word ___ (腦).",
+      "options": [
+        "boy",
+        "box",
+        "boil",
+        "brain"
+      ]
+    },
+    {
+      "id": 100000001,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "instructor",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "指導員；教師；教練",
+      "sentence": "Sam works as a tennis ___ during the summer months.",
+      "options": [
+        "instructor",
+        "inspector",
+        "inventor",
+        "investor"
+      ]
+    },
+    {
+      "id": 100000002,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "lean",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "使傾斜；倚靠",
+      "sentence": "I ___ forward so that I could hear what he was saying.",
+      "options": [
+        "leaned",
+        "learned",
+        "leaped",
+        "leaked"
+      ]
+    },
+    {
+      "id": 100000003,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "lean on",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "倚靠；依賴",
+      "sentence": "Casey and I are good friends, and she knows that she can ___ me.",
+      "options": [
+        "lean on",
+        "turn on",
+        "keep on",
+        "pass on"
+      ]
+    },
+    {
+      "id": 100000004,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "lean",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "瘦的；無(少)脂肪的",
+      "sentence": "Rebecca works out every day so that she can get a ___ body.",
+      "options": [
+        "lean",
+        "keen",
+        "mean",
+        "weak"
+      ]
+    },
+    {
+      "id": 100000005,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "lean meat",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "瘦肉",
+      "sentence": "Eating ___ is a good source of protein for people on a diet.",
+      "options": [
+        "lean meat",
+        "raw meat",
+        "dry meat",
+        "hard meat"
+      ]
+    },
+    {
+      "id": 100000006,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "makeup",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "化妝品；彌補",
+      "sentence": "To look like Spiderman, Jessica put a lot of red and black ___ on her face.",
+      "options": [
+        "makeup",
+        "outline",
+        "feature",
+        "posture"
+      ]
+    },
+    {
+      "id": 100000007,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "makeup exam",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "補考",
+      "sentence": "If you missed the final test yesterday, you need to take a ___.",
+      "options": [
+        "makeup exam",
+        "oral exam",
+        "entrance exam",
+        "placement test"
+      ]
+    },
+    {
+      "id": 100000008,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "put on makeup",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "化妝 (指動作)",
+      "sentence": "Before Sally went to the party, she ___ and styled her hair.",
+      "options": [
+        "put on makeup",
+        "took off clothes",
+        "made a decision",
+        "set up a goal"
+      ]
+    },
+    {
+      "id": 100000009,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "manual",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "手冊；簡介",
+      "sentence": "The instructions in the ___ are too complicated.",
+      "options": [
+        "manual",
+        "journal",
+        "signal",
+        "channel"
+      ]
+    },
+    {
+      "id": 100000010,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "user's manual",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "使用手冊",
+      "sentence": "Please check the ___ to learn how to operate this new machine.",
+      "options": [
+        "user's manual",
+        "travel guide",
+        "shopping list",
+        "price tag"
+      ]
+    },
+    {
+      "id": 100000011,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "manual",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "手工的；用手操作的；體力的",
+      "sentence": "The craftsman created a beautiful wooden sculpture using ___ tools and techniques.",
+      "options": [
+        "manual",
+        "mental",
+        "annual",
+        "casual"
+      ]
+    },
+    {
+      "id": 100000012,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "manual skill",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "手工技巧",
+      "sentence": "Making delicate pottery requires a high level of ___.",
+      "options": [
+        "manual skill",
+        "mental power",
+        "social worker",
+        "physical fitness"
+      ]
+    },
+    {
+      "id": 100000013,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "manual car",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "手排車",
+      "sentence": "Some drivers prefer driving a ___ because it offers more direct control over gears.",
+      "options": [
+        "manual car",
+        "sports car",
+        "electric car",
+        "used car"
+      ]
+    },
+    {
+      "id": 100000014,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "memorize",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "記住；熟記",
+      "sentence": "Erin must ___ a lot of information for science class.",
+      "options": [
+        "memorize",
+        "organize",
+        "recognize",
+        "apologize"
+      ]
+    },
+    {
+      "id": 100000015,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "memory",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "記憶；回憶",
+      "sentence": "He has a great ___ for names and faces.",
+      "options": [
+        "memory",
+        "harmony",
+        "victory",
+        "factory"
+      ]
+    },
+    {
+      "id": 24010001,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "memorize",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "背誦；記住",
+      "sentence": "Through constant repetition, Carla ___ the entire poem.",
+      "options": [
+        "memorized",
+        "recognized",
+        "organized",
+        "summarized"
+      ]
+    },
+    {
+      "id": 24010002,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "memorable",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "難忘的；值得紀念的",
+      "sentence": "Seeing her son take his first step made the day very ___ for Ashley.",
+      "options": [
+        "memorable",
+        "favorable",
+        "miserable",
+        "readable"
+      ]
+    },
+    {
+      "id": 24010003,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "memorial",
+      "pos": "adj., n.",
+      "isPhrase": false,
+      "zh": "紀念的；追悼的；紀念物",
+      "sentence": "We attended a ___ service for the victims of the plane crash.",
+      "options": [
+        "memorial",
+        "material",
+        "official",
+        "original"
+      ]
+    },
+    {
+      "id": 24010004,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "murmur",
+      "pos": "v., n.",
+      "isPhrase": false,
+      "zh": "低聲說；喃喃細語；低語聲",
+      "sentence": "Before the movie started, the theater was filled with a low ___ from the audience.",
+      "options": [
+        "murmur",
+        "mirror",
+        "terror",
+        "humor"
+      ]
+    },
+    {
+      "id": 24010005,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "needy",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "貧困的；需要關注的",
+      "sentence": "Jess's cat is ___ and often meows for attention.",
+      "options": [
+        "needy",
+        "greedy",
+        "noisy",
+        "nasty"
+      ]
+    },
+    {
+      "id": 24010006,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "the needy",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "窮人；貧困的人",
+      "sentence": "The organization collects food and clothing for ___.",
+      "options": [
+        "the needy",
+        "the wealthy",
+        "the public",
+        "the youth"
+      ]
+    },
+    {
+      "id": 24010007,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "outstanding",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "傑出的；優秀的",
+      "sentence": "Andrew is an ___ swimmer, and he wants to compete in the Olympics.",
+      "options": [
+        "outstanding",
+        "understanding",
+        "demanding",
+        "surrounding"
+      ]
+    },
+    {
+      "id": 1788617411081,
+      "category": "國中",
+      "folder": "12",
+      "word": "brand",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "品牌",
+      "sentence": "The student needs to learn the word ___ (品牌).",
+      "options": [
+        "button",
+        "burst",
+        "bundle",
+        "brand"
+      ]
+    },
+    {
+      "id": 1788617411082,
+      "category": "國中",
+      "folder": "12",
+      "word": "brave",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "勇敢的",
+      "sentence": "The student needs to learn the word ___ (勇敢的).",
+      "options": [
+        "bread",
+        "brand",
+        "bun",
+        "brave"
+      ]
+    },
+    {
+      "id": 1788617411083,
+      "category": "國中",
+      "folder": "12",
+      "word": "bread",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "麵包",
+      "sentence": "The student needs to learn the word ___ (麵包).",
+      "options": [
+        "brave",
+        "businessman",
+        "butter",
+        "bread"
+      ]
+    },
+    {
+      "id": 1788617411084,
+      "category": "國中",
+      "folder": "12",
+      "word": "break",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "弄壞",
+      "sentence": "The student needs to learn the word ___ (弄壞).",
+      "options": [
+        "bus",
+        "break",
+        "bundle",
+        "breakfast"
+      ]
+    },
+    {
+      "id": 1788617411085,
+      "category": "國中",
+      "folder": "12",
+      "word": "breakfast",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "早餐",
+      "sentence": "The student needs to learn the word ___ (早餐).",
+      "options": [
+        "businessman",
+        "brave",
+        "button",
+        "breakfast"
+      ]
+    },
+    {
+      "id": 1788617411086,
+      "category": "國中",
+      "folder": "12",
+      "word": "build",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "建造",
+      "sentence": "The student needs to learn the word ___ (建造).",
+      "options": [
+        "break",
+        "breakfast",
+        "burn",
+        "build"
+      ]
+    },
+    {
+      "id": 1788617411087,
+      "category": "國中",
+      "folder": "12",
+      "word": "building",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "建築物",
+      "sentence": "The student needs to learn the word ___ (建築物).",
+      "options": [
+        "button",
+        "building",
+        "butter",
+        "brand"
+      ]
+    },
+    {
+      "id": 1788617411088,
+      "category": "國中",
+      "folder": "12",
+      "word": "bun",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "圓麵包",
+      "sentence": "The student needs to learn the word ___ (圓麵包).",
+      "options": [
+        "bread",
+        "bun",
+        "bus",
+        "brave"
+      ]
+    },
+    {
+      "id": 1788617411089,
+      "category": "國中",
+      "folder": "12",
+      "word": "bundle",
+      "pos": "n.(",
+      "isPhrase": false,
+      "zh": "一)包,束",
+      "sentence": "The student needs to learn the word ___ (一)包,束).",
+      "options": [
+        "breakfast",
+        "brand",
+        "bun",
+        "bundle"
+      ]
+    },
+    {
+      "id": 1788617411090,
+      "category": "國中",
+      "folder": "12",
+      "word": "burn",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "燒",
+      "sentence": "The student needs to learn the word ___ (燒).",
+      "options": [
+        "burn",
+        "bus",
+        "bread",
+        "brand"
+      ]
+    },
+    {
+      "id": 1788617411091,
+      "category": "國中",
+      "folder": "12",
+      "word": "burst",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "爆裂",
+      "sentence": "The student needs to learn the word ___ (爆裂).",
+      "options": [
+        "burst",
+        "breakfast",
+        "business",
+        "businessman"
+      ]
+    },
+    {
+      "id": 1788617411092,
+      "category": "國中",
+      "folder": "12",
+      "word": "bus",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "公車",
+      "sentence": "The student needs to learn the word ___ (公車).",
+      "options": [
+        "bus",
+        "but",
+        "burn",
+        "businessman"
+      ]
+    },
+    {
+      "id": 1788617411093,
+      "category": "國中",
+      "folder": "12",
+      "word": "business",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "商業",
+      "sentence": "The student needs to learn the word ___ (商業).",
+      "options": [
+        "business",
+        "butter",
+        "brand",
+        "build"
+      ]
+    },
+    {
+      "id": 1788617411094,
+      "category": "國中",
+      "folder": "12",
+      "word": "businessman",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "商人",
+      "sentence": "The student needs to learn the word ___ (商人).",
+      "options": [
+        "brand",
+        "building",
+        "businessman",
+        "breakfast"
+      ]
+    },
+    {
+      "id": 1788617411095,
+      "category": "國中",
+      "folder": "12",
+      "word": "busy",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "忙碌的",
+      "sentence": "The student needs to learn the word ___ (忙碌的).",
+      "options": [
+        "busy",
+        "brave",
+        "bread",
+        "bus"
+      ]
+    },
+    {
+      "id": 1788617411096,
+      "category": "國中",
+      "folder": "12",
+      "word": "but",
+      "pos": "conj.",
+      "isPhrase": false,
+      "zh": "但是",
+      "sentence": "The student needs to learn the word ___ (但是).",
+      "options": [
+        "build",
+        "but",
+        "butterfly",
+        "break"
+      ]
+    },
+    {
+      "id": 1788617411097,
+      "category": "國中",
+      "folder": "12",
+      "word": "butter",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "奶油",
+      "sentence": "The student needs to learn the word ___ (奶油).",
+      "options": [
+        "brave",
+        "butter",
+        "busy",
+        "businessman"
+      ]
+    },
+    {
+      "id": 1788617411098,
+      "category": "國中",
+      "folder": "12",
+      "word": "butterfly",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "蝴蝶",
+      "sentence": "The student needs to learn the word ___ (蝴蝶).",
+      "options": [
+        "breakfast",
+        "break",
+        "butterfly",
+        "bread"
+      ]
+    },
+    {
+      "id": 1788617411099,
+      "category": "國中",
+      "folder": "12",
+      "word": "button",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "鈕扣",
+      "sentence": "The student needs to learn the word ___ (鈕扣).",
+      "options": [
+        "button",
+        "building",
+        "butter",
+        "busy"
+      ]
+    },
+    {
+      "id": 1788617440725,
+      "category": "國中",
+      "folder": "13",
+      "word": "by",
+      "pos": "prep.",
+      "isPhrase": false,
+      "zh": "沿;用...方法",
+      "sentence": "The student needs to learn the word ___ (沿;用...方法).",
+      "options": [
+        "ceiling",
+        "cabbage",
+        "by",
+        "case"
+      ]
+    },
+    {
+      "id": 1788617440726,
+      "category": "國中",
+      "folder": "13",
+      "word": "case",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "例子",
+      "sentence": "The student needs to learn the word ___ (例子).",
+      "options": [
+        "case",
+        "central",
+        "cable",
+        "cell"
+      ]
+    },
+    {
+      "id": 1788617440727,
+      "category": "國中",
+      "folder": "13",
+      "word": "ash",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "現金",
+      "sentence": "The student needs to learn the word ___ (現金).",
+      "options": [
+        "central",
+        "ceiling",
+        "cause",
+        "ash"
+      ]
+    },
+    {
+      "id": 1788617440728,
+      "category": "國中",
+      "folder": "13",
+      "word": "cassette",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "卡帶",
+      "sentence": "The student needs to learn the word ___ (卡帶).",
+      "options": [
+        "by",
+        "cassette",
+        "ceiling",
+        "centimeter"
+      ]
+    },
+    {
+      "id": 1788617440729,
+      "category": "國中",
+      "folder": "13",
+      "word": "castle",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "城堡",
+      "sentence": "The student needs to learn the word ___ (城堡).",
+      "options": [
+        "case",
+        "ceiling",
+        "castle",
+        "ash"
+      ]
+    },
+    {
+      "id": 1788617440730,
+      "category": "國中",
+      "folder": "13",
+      "word": "cat",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "貓",
+      "sentence": "The student needs to learn the word ___ (貓).",
+      "options": [
+        "cat",
+        "castle",
+        "by",
+        "case"
+      ]
+    },
+    {
+      "id": 1788617440731,
+      "category": "國中",
+      "folder": "13",
+      "word": "catch",
+      "pos": "v",
+      "isPhrase": false,
+      "zh": "追捕",
+      "sentence": "The student needs to learn the word ___ (追捕).",
+      "options": [
+        "cause",
+        "cat",
+        "ash",
+        "catch"
+      ]
+    },
+    {
+      "id": 1788617440732,
+      "category": "國中",
+      "folder": "13",
+      "word": "cause",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "導致",
+      "sentence": "The student needs to learn the word ___ (導致).",
+      "options": [
+        "cause",
+        "celebrate",
+        "central",
+        "cent"
+      ]
+    },
+    {
+      "id": 1788617440733,
+      "category": "國中",
+      "folder": "13",
+      "word": "ceiling",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "天花板",
+      "sentence": "The student needs to learn the word ___ (天花板).",
+      "options": [
+        "by",
+        "ceiling",
+        "cat",
+        "castle"
+      ]
+    },
+    {
+      "id": 1788617440734,
+      "category": "國中",
+      "folder": "13",
+      "word": "celebrate",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "慶祝",
+      "sentence": "The student needs to learn the word ___ (慶祝).",
+      "options": [
+        "case",
+        "cause",
+        "century",
+        "celebrate"
+      ]
+    },
+    {
+      "id": 1788617440735,
+      "category": "國中",
+      "folder": "13",
+      "word": "cell",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "細胞",
+      "sentence": "The student needs to learn the word ___ (細胞).",
+      "options": [
+        "castle",
+        "cassette",
+        "cell",
+        "case"
+      ]
+    },
+    {
+      "id": 1788617440736,
+      "category": "國中",
+      "folder": "13",
+      "word": "cent",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "分",
+      "sentence": "The student needs to learn the word ___ (分).",
+      "options": [
+        "century",
+        "cent",
+        "by",
+        "cassette"
+      ]
+    },
+    {
+      "id": 1788617440737,
+      "category": "國中",
+      "folder": "13",
+      "word": "center",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "中央",
+      "sentence": "The student needs to learn the word ___ (中央).",
+      "options": [
+        "cell",
+        "cent",
+        "center",
+        "century"
+      ]
+    },
+    {
+      "id": 1788617440738,
+      "category": "國中",
+      "folder": "13",
+      "word": "centimeter",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "公分",
+      "sentence": "The student needs to learn the word ___ (公分).",
+      "options": [
+        "ash",
+        "case",
+        "centimeter",
+        "central"
+      ]
+    },
+    {
+      "id": 1788617440739,
+      "category": "國中",
+      "folder": "13",
+      "word": "central",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "中央的",
+      "sentence": "The student needs to learn the word ___ (中央的).",
+      "options": [
+        "central",
+        "by",
+        "cabbage",
+        "center"
+      ]
+    },
+    {
+      "id": 1788617440740,
+      "category": "國中",
+      "folder": "13",
+      "word": "cabbage",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "甘藍菜",
+      "sentence": "The student needs to learn the word ___ (甘藍菜).",
+      "options": [
+        "cabbage",
+        "cat",
+        "cassette",
+        "cafeteria"
+      ]
+    },
+    {
+      "id": 1788617440741,
+      "category": "國中",
+      "folder": "13",
+      "word": "century",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "世紀",
+      "sentence": "The student needs to learn the word ___ (世紀).",
+      "options": [
+        "century",
+        "centimeter",
+        "cent",
+        "cell"
+      ]
+    },
+    {
+      "id": 1788617440743,
+      "category": "國中",
+      "folder": "13",
+      "word": "cable",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "電纜",
+      "sentence": "The student needs to learn the word ___ (電纜).",
+      "options": [
+        "ceiling",
+        "celebrate",
+        "cable",
+        "catch"
+      ]
+    },
+    {
+      "id": 1788617440744,
+      "category": "國中",
+      "folder": "13",
+      "word": "cafeteria",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "自助餐廳",
+      "sentence": "The student needs to learn the word ___ (自助餐廳).",
+      "options": [
+        "cell",
+        "ceiling",
+        "cafeteria",
+        "case"
+      ]
+    },
+    {
+      "id": 271000001,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "pace",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "步調；速度",
+      "sentence": "The ___ of the movie was too slow, so I fell asleep.",
+      "options": [
+        "pace",
+        "plum",
+        "site",
+        "recall"
+      ]
+    },
+    {
+      "id": 271000002,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "pace",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "來回走動；踱步",
+      "sentence": "Albert ___ around the room whenever he felt nervous.",
+      "options": [
+        "paced",
+        "recalled",
+        "inspected",
+        "sited"
+      ]
+    },
+    {
+      "id": 271000003,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "keep pace with",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "與……步調一致、齊頭並進",
+      "sentence": "Julie was unable to ___ the other runners.",
+      "options": [
+        "keep pace with",
+        "catch up on",
+        "make up for",
+        "put up with"
+      ]
+    },
+    {
+      "id": 281000001,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "plum",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "李子；梅子",
+      "sentence": "Grandma can make tasty ___ jam.",
+      "options": [
+        "plum",
+        "pace",
+        "site",
+        "recall"
+      ]
+    },
+    {
+      "id": 281000002,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "plum blossom",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "梅花",
+      "sentence": "The national flower of Taiwan is the ___.",
+      "options": [
+        "plum blossom",
+        "cherry blossom",
+        "lotus flower",
+        "sunflower"
+      ]
+    },
+    {
+      "id": 291000001,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "plumber",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "水管工",
+      "sentence": "I asked a ___ to come to the house and inspect the leak in the ceiling.",
+      "options": [
+        "plumber",
+        "carpenter",
+        "electrician",
+        "mechanic"
+      ]
+    },
+    {
+      "id": 291000002,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "plumbing",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "(自來水)配管工程",
+      "sentence": "Old buildings often need new ___ systems to fix leaks.",
+      "options": [
+        "plumbing",
+        "painting",
+        "paving",
+        "parking"
+      ]
+    },
+    {
+      "id": 301000001,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "recall",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "回想起；召回",
+      "sentence": "Can you ___ the address of Penelope's house? I don't remember it.",
+      "options": [
+        "recall",
+        "repair",
+        "replace",
+        "reduce"
+      ]
+    },
+    {
+      "id": 301000002,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "recall",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "回想、回憶；回收",
+      "sentence": "The drunken man has no ___ of what happened last night.",
+      "options": [
+        "recall",
+        "reason",
+        "record",
+        "report"
+      ]
+    },
+    {
+      "id": 311000001,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "site",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "位置、地點；網站",
+      "sentence": "A ___ has been chosen for the new stadium, and work will begin in the fall.",
+      "options": [
+        "site",
+        "pace",
+        "recall",
+        "leak"
+      ]
+    },
+    {
+      "id": 311000002,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "historic site",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "古蹟；歷史遺跡",
+      "sentence": "The government works hard to protect every ___ in the city.",
+      "options": [
+        "historic site",
+        "construction site",
+        "web site",
+        "camping site"
+      ]
+    },
+    {
+      "id": 311000003,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "construction site",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "建築工地",
+      "sentence": "You must wear a safety helmet when walking near a ___.",
+      "options": [
+        "construction site",
+        "historic site",
+        "web site",
+        "camping site"
+      ]
+    },
+    {
+      "id": 311000004,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "on site",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "實地；現場",
+      "sentence": "The university offers courses both ___ and online.",
+      "options": [
+        "on site",
+        "in time",
+        "at once",
+        "by chance"
+      ]
+    },
+    {
+      "id": 311000005,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "site",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "座落於；設立於",
+      "sentence": "The company plans to ___ their new factory near the port for efficient transportation.",
+      "options": [
+        "site",
+        "recall",
+        "inspect",
+        "replace"
+      ]
+    },
+    {
+      "id": 1788617457677,
+      "category": "國中",
+      "folder": "14",
+      "word": "cake",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "蛋糕",
+      "sentence": "The student needs to learn the word ___ (蛋糕).",
+      "options": [
+        "cake",
+        "childlike",
+        "calm",
+        "camera"
+      ]
+    },
+    {
+      "id": 1788617457678,
+      "category": "國中",
+      "folder": "14",
+      "word": "calendar",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "日曆",
+      "sentence": "The student needs to learn the word ___ (日曆).",
+      "options": [
+        "channel",
+        "calendar",
+        "certain",
+        "call"
+      ]
+    },
+    {
+      "id": 1788617457679,
+      "category": "國中",
+      "folder": "14",
+      "word": "call",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "呼叫",
+      "sentence": "The student needs to learn the word ___ (呼叫).",
+      "options": [
+        "change",
+        "choice",
+        "call",
+        "cereal"
+      ]
+    },
+    {
+      "id": 1788617457680,
+      "category": "國中",
+      "folder": "14",
+      "word": "calm",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "平靜的",
+      "sentence": "The student needs to learn the word ___ (平靜的).",
+      "options": [
+        "calm",
+        "call",
+        "certain",
+        "camera"
+      ]
+    },
+    {
+      "id": 1788617457681,
+      "category": "國中",
+      "folder": "14",
+      "word": "camera",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "照相機",
+      "sentence": "The student needs to learn the word ___ (照相機).",
+      "options": [
+        "channel",
+        "camera",
+        "calm",
+        "call"
+      ]
+    },
+    {
+      "id": 1788617457682,
+      "category": "國中",
+      "folder": "14",
+      "word": "cereal",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "穀類食物",
+      "sentence": "The student needs to learn the word ___ (穀類食物).",
+      "options": [
+        "cereal",
+        "childlike",
+        "chance",
+        "cake"
+      ]
+    },
+    {
+      "id": 1788617457683,
+      "category": "國中",
+      "folder": "14",
+      "word": "certain",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "確實的",
+      "sentence": "The student needs to learn the word ___ (確實的).",
+      "options": [
+        "camera",
+        "certain",
+        "call",
+        "charge"
+      ]
+    },
+    {
+      "id": 1788617457684,
+      "category": "國中",
+      "folder": "14",
+      "word": "chair",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "椅子",
+      "sentence": "The student needs to learn the word ___ (椅子).",
+      "options": [
+        "chalk",
+        "chair",
+        "chance",
+        "cereal"
+      ]
+    },
+    {
+      "id": 1788617457685,
+      "category": "國中",
+      "folder": "14",
+      "word": "chalk",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "粉筆",
+      "sentence": "The student needs to learn the word ___ (粉筆).",
+      "options": [
+        "chalk",
+        "calm",
+        "cake",
+        "calendar"
+      ]
+    },
+    {
+      "id": 1788617457686,
+      "category": "國中",
+      "folder": "14",
+      "word": "chance",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "機會",
+      "sentence": "The student needs to learn the word ___ (機會).",
+      "options": [
+        "chocolate",
+        "chalk",
+        "chinn.",
+        "chance"
+      ]
+    },
+    {
+      "id": 1788617457687,
+      "category": "國中",
+      "folder": "14",
+      "word": "change",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "改變",
+      "sentence": "The student needs to learn the word ___ (改變).",
+      "options": [
+        "change",
+        "character",
+        "cake",
+        "calendar"
+      ]
+    },
+    {
+      "id": 1788617457688,
+      "category": "國中",
+      "folder": "14",
+      "word": "channel",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "電視臺",
+      "sentence": "The student needs to learn the word ___ (電視臺).",
+      "options": [
+        "channel",
+        "charge",
+        "chance",
+        "chocolate"
+      ]
+    },
+    {
+      "id": 1788617457689,
+      "category": "國中",
+      "folder": "14",
+      "word": "character",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "性格",
+      "sentence": "The student needs to learn the word ___ (性格).",
+      "options": [
+        "cake",
+        "character",
+        "charge",
+        "certain"
+      ]
+    },
+    {
+      "id": 1788617457690,
+      "category": "國中",
+      "folder": "14",
+      "word": "charge",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "收費",
+      "sentence": "The student needs to learn the word ___ (收費).",
+      "options": [
+        "charge",
+        "calendar",
+        "cake",
+        "channel"
+      ]
+    },
+    {
+      "id": 1788617457691,
+      "category": "國中",
+      "folder": "14",
+      "word": "childlike",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "天真的",
+      "sentence": "The student needs to learn the word ___ (天真的).",
+      "options": [
+        "chance",
+        "childlike",
+        "camera",
+        "channel"
+      ]
+    },
+    {
+      "id": 1788617457692,
+      "category": "國中",
+      "folder": "14",
+      "word": "chinn.",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "下巴",
+      "sentence": "The student needs to learn the word ___ (下巴).",
+      "options": [
+        "channel",
+        "chinn.",
+        "cake",
+        "chance"
+      ]
+    },
+    {
+      "id": 1788617457693,
+      "category": "國中",
+      "folder": "14",
+      "word": "chocolate",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "巧克力",
+      "sentence": "The student needs to learn the word ___ (巧克力).",
+      "options": [
+        "change",
+        "chalk",
+        "call",
+        "chocolate"
+      ]
+    },
+    {
+      "id": 1788617457694,
+      "category": "國中",
+      "folder": "14",
+      "word": "choice",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "選擇",
+      "sentence": "The student needs to learn the word ___ (選擇).",
+      "options": [
+        "change",
+        "choice",
+        "cereal",
+        "calendar"
+      ]
+    },
+    {
+      "id": 1788617457695,
+      "category": "國中",
+      "folder": "14",
+      "word": "choose",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "選擇",
+      "sentence": "The student needs to learn the word ___ (選擇).",
+      "options": [
+        "choose",
+        "chalk",
+        "character",
+        "change"
+      ]
+    },
+    {
+      "id": 100000032,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "status",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "地位，身份；狀態、情況",
+      "sentence": "The boss wants to know the current ___ of the building project.",
+      "options": [
+        "status",
+        "system",
+        "symbol",
+        "signal"
+      ]
+    },
+    {
+      "id": 100000033,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "social status",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "社會地位",
+      "sentence": "Becoming the president of the company raised Andrew's ___.",
+      "options": [
+        "social status",
+        "status symbol",
+        "telegraph message",
+        "urgent question"
+      ]
+    },
+    {
+      "id": 100000034,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "status symbol",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "身份象徵",
+      "sentence": "Owning a expensive sports car is often considered a ___.",
+      "options": [
+        "status symbol",
+        "social status",
+        "urgent matter",
+        "systematic approach"
+      ]
+    },
+    {
+      "id": 100000035,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "systematic",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "有系統的；有條理的",
+      "sentence": "You need to plan and be ___ in your work.",
+      "options": [
+        "systematic",
+        "urgent",
+        "visible",
+        "academic"
+      ]
+    },
+    {
+      "id": 100000036,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "system",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "系統；制度",
+      "sentence": "The company introduced a new computer ___ to manage data.",
+      "options": [
+        "system",
+        "status",
+        "telegraph",
+        "telescope"
+      ]
+    },
+    {
+      "id": 100000037,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "telegraph",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "電報",
+      "sentence": "Although few people use the ___ these days, I think it would be fun to learn how to use it.",
+      "options": [
+        "telegraph",
+        "telescope",
+        "binoculars",
+        "system"
+      ]
+    },
+    {
+      "id": 100000038,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "telegraph",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "打電報；以電報通訊",
+      "sentence": "Before the invention of telephones, people would ___ messages over long distances.",
+      "options": [
+        "telegraph",
+        "urge",
+        "examine",
+        "raise"
+      ]
+    },
+    {
+      "id": 100000039,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "telescope",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "(單筒)望遠鏡",
+      "sentence": "The planet is only visible through a powerful ___.",
+      "options": [
+        "telescope",
+        "telegraph",
+        "binoculars",
+        "status"
+      ]
+    },
+    {
+      "id": 100000040,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "binoculars",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "雙筒望遠鏡",
+      "sentence": "We brought a pair of ___ to observe the birds in the forest.",
+      "options": [
+        "binoculars",
+        "telescope",
+        "telegraph",
+        "system"
+      ]
+    },
+    {
+      "id": 100000041,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "urge",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "激勵、鼓舞；力勸、極力主張",
+      "sentence": "My parents always ___ me to pursue my dreams and work hard.",
+      "options": [
+        "urge",
+        "status",
+        "system",
+        "urgent"
+      ]
+    },
+    {
+      "id": 100000042,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "urge",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "衝動；強烈的渴望",
+      "sentence": "Phil felt the ___ to cry when his girlfriend told him she wanted to break up.",
+      "options": [
+        "urge",
+        "status",
+        "system",
+        "telegraph"
+      ]
+    },
+    {
+      "id": 100000043,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "urgent",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "緊急的；迫切的",
+      "sentence": "I have an ___ question that needs to be answered right now.",
+      "options": [
+        "urgent",
+        "systematic",
+        "visible",
+        "academic"
+      ]
+    },
+    {
+      "id": 1788617521406,
+      "category": "國中",
+      "folder": "15",
+      "word": "Christmas",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "耶誕節",
+      "sentence": "The student needs to learn the word ___ (耶誕節).",
+      "options": [
+        "clever",
+        "Christmas",
+        "chubby",
+        "clear"
+      ]
+    },
+    {
+      "id": 1788617521407,
+      "category": "國中",
+      "folder": "15",
+      "word": "chubby",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "豐滿的",
+      "sentence": "The student needs to learn the word ___ (豐滿的).",
+      "options": [
+        "clock",
+        "class",
+        "chubby",
+        "clerk"
+      ]
+    },
+    {
+      "id": 1788617521408,
+      "category": "國中",
+      "folder": "15",
+      "word": "church",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "教堂",
+      "sentence": "The student needs to learn the word ___ (教堂).",
+      "options": [
+        "church",
+        "clean",
+        "class",
+        "claim"
+      ]
+    },
+    {
+      "id": 1788617521409,
+      "category": "國中",
+      "folder": "15",
+      "word": "claim",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "主張",
+      "sentence": "The student needs to learn the word ___ (主張).",
+      "options": [
+        "claim",
+        "city",
+        "classic",
+        "clean"
+      ]
+    },
+    {
+      "id": 1788617521410,
+      "category": "國中",
+      "folder": "15",
+      "word": "circle",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "圓圈",
+      "sentence": "The student needs to learn the word ___ (圓圈).",
+      "options": [
+        "classroom",
+        "clap",
+        "circle",
+        "clean"
+      ]
+    },
+    {
+      "id": 1788617521411,
+      "category": "國中",
+      "folder": "15",
+      "word": "city",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "城市",
+      "sentence": "The student needs to learn the word ___ (城市).",
+      "options": [
+        "chubby",
+        "clean",
+        "church",
+        "city"
+      ]
+    },
+    {
+      "id": 1788617521412,
+      "category": "國中",
+      "folder": "15",
+      "word": "clap",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "拍(手)",
+      "sentence": "The student needs to learn the word ___ (拍(手)).",
+      "options": [
+        "classic",
+        "church",
+        "clever",
+        "clap"
+      ]
+    },
+    {
+      "id": 1788617521413,
+      "category": "國中",
+      "folder": "15",
+      "word": "class",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "班級",
+      "sentence": "The student needs to learn the word ___ (班級).",
+      "options": [
+        "class",
+        "classic",
+        "classmate",
+        "church"
+      ]
+    },
+    {
+      "id": 1788617521414,
+      "category": "國中",
+      "folder": "15",
+      "word": "classic",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "古典的",
+      "sentence": "The student needs to learn the word ___ (古典的).",
+      "options": [
+        "clerk",
+        "chubby",
+        "classic",
+        "Christmas"
+      ]
+    },
+    {
+      "id": 1788617521415,
+      "category": "國中",
+      "folder": "15",
+      "word": "classmate",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "同學",
+      "sentence": "The student needs to learn the word ___ (同學).",
+      "options": [
+        "clever",
+        "climate",
+        "classmate",
+        "classroom"
+      ]
+    },
+    {
+      "id": 1788617521416,
+      "category": "國中",
+      "folder": "15",
+      "word": "classroom",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "班級",
+      "sentence": "The student needs to learn the word ___ (班級).",
+      "options": [
+        "clever",
+        "clear",
+        "classroom",
+        "clean"
+      ]
+    },
+    {
+      "id": 1788617521417,
+      "category": "國中",
+      "folder": "15",
+      "word": "clay",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "黏土",
+      "sentence": "The student needs to learn the word ___ (黏土).",
+      "options": [
+        "claim",
+        "church",
+        "clay",
+        "clap"
+      ]
+    },
+    {
+      "id": 1788617521418,
+      "category": "國中",
+      "folder": "15",
+      "word": "clean",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "乾淨的",
+      "sentence": "The student needs to learn the word ___ (乾淨的).",
+      "options": [
+        "clean",
+        "climate",
+        "clap",
+        "church"
+      ]
+    },
+    {
+      "id": 1788617521419,
+      "category": "國中",
+      "folder": "15",
+      "word": "clear",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "清楚的",
+      "sentence": "The student needs to learn the word ___ (清楚的).",
+      "options": [
+        "church",
+        "claim",
+        "clean",
+        "clear"
+      ]
+    },
+    {
+      "id": 1788617521420,
+      "category": "國中",
+      "folder": "15",
+      "word": "clerk",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "店員",
+      "sentence": "The student needs to learn the word ___ (店員).",
+      "options": [
+        "clerk",
+        "classroom",
+        "classmate",
+        "chubby"
+      ]
+    },
+    {
+      "id": 1788617521421,
+      "category": "國中",
+      "folder": "15",
+      "word": "clever",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "聰明的",
+      "sentence": "The student needs to learn the word ___ (聰明的).",
+      "options": [
+        "climate",
+        "clay",
+        "clever",
+        "Christmas"
+      ]
+    },
+    {
+      "id": 1788617521422,
+      "category": "國中",
+      "folder": "15",
+      "word": "climate",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "氣候",
+      "sentence": "The student needs to learn the word ___ (氣候).",
+      "options": [
+        "church",
+        "class",
+        "climate",
+        "clean"
+      ]
+    },
+    {
+      "id": 1788617521423,
+      "category": "國中",
+      "folder": "15",
+      "word": "climb",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "攀爬",
+      "sentence": "The student needs to learn the word ___ (攀爬).",
+      "options": [
+        "clerk",
+        "class",
+        "climate",
+        "climb"
+      ]
+    },
+    {
+      "id": 1788617521424,
+      "category": "國中",
+      "folder": "15",
+      "word": "clock",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "時鐘",
+      "sentence": "The student needs to learn the word ___ (時鐘).",
+      "options": [
+        "clock",
+        "classmate",
+        "circle",
+        "clever"
+      ]
+    },
+    {
+      "id": 1788617533889,
+      "category": "國中",
+      "folder": "16",
+      "word": "closet",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "櫥櫃",
+      "sentence": "The student needs to learn the word ___ (櫥櫃).",
+      "options": [
+        "closet",
+        "clothes",
+        "cancel",
+        "bright"
+      ]
+    },
+    {
+      "id": 1788617533890,
+      "category": "國中",
+      "folder": "16",
+      "word": "camp",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "紮營",
+      "sentence": "The student needs to learn the word ___ (紮營).",
+      "options": [
+        "camp",
+        "cheat",
+        "campus",
+        "coach"
+      ]
+    },
+    {
+      "id": 1788617533891,
+      "category": "國中",
+      "folder": "16",
+      "word": "clothes",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "衣服",
+      "sentence": "The student needs to learn the word ___ (衣服).",
+      "options": [
+        "club",
+        "cheap",
+        "clothes",
+        "brief"
+      ]
+    },
+    {
+      "id": 1788617533892,
+      "category": "國中",
+      "folder": "16",
+      "word": "brick",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "磚塊",
+      "sentence": "The student needs to learn the word ___ (磚塊).",
+      "options": [
+        "cancer",
+        "cheap",
+        "brick",
+        "campus"
+      ]
+    },
+    {
+      "id": 1788617533893,
+      "category": "國中",
+      "folder": "16",
+      "word": "campus",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "校園",
+      "sentence": "The student needs to learn the word ___ (校園).",
+      "options": [
+        "coach",
+        "cloud",
+        "campus",
+        "cheat"
+      ]
+    },
+    {
+      "id": 1788617533894,
+      "category": "國中",
+      "folder": "16",
+      "word": "chart",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "圖表",
+      "sentence": "The student needs to learn the word ___ (圖表).",
+      "options": [
+        "brief",
+        "camp",
+        "chart",
+        "clothes"
+      ]
+    },
+    {
+      "id": 1788617533895,
+      "category": "國中",
+      "folder": "16",
+      "word": "cloud",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "雲",
+      "sentence": "The student needs to learn the word ___ (雲).",
+      "options": [
+        "campus",
+        "chart",
+        "cancer",
+        "cloud"
+      ]
+    },
+    {
+      "id": 1788617533896,
+      "category": "國中",
+      "folder": "16",
+      "word": "canaux.",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "能夠",
+      "sentence": "The student needs to learn the word ___ (能夠).",
+      "options": [
+        "chart",
+        "bright",
+        "clothes",
+        "canaux."
+      ]
+    },
+    {
+      "id": 1788617533897,
+      "category": "國中",
+      "folder": "16",
+      "word": "bridge",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "橋",
+      "sentence": "The student needs to learn the word ___ (橋).",
+      "options": [
+        "cheap",
+        "brick",
+        "bridge",
+        "cheat"
+      ]
+    },
+    {
+      "id": 1788617533898,
+      "category": "國中",
+      "folder": "16",
+      "word": "chase",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "追趕",
+      "sentence": "The student needs to learn the word ___ (追趕).",
+      "options": [
+        "camp",
+        "cancel",
+        "chase",
+        "closet"
+      ]
+    },
+    {
+      "id": 1788617533899,
+      "category": "國中",
+      "folder": "16",
+      "word": "club",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "俱樂部",
+      "sentence": "The student needs to learn the word ___ (俱樂部).",
+      "options": [
+        "club",
+        "closet",
+        "camp",
+        "chart"
+      ]
+    },
+    {
+      "id": 1788617533900,
+      "category": "國中",
+      "folder": "16",
+      "word": "cancel",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "取消",
+      "sentence": "The student needs to learn the word ___ (取消).",
+      "options": [
+        "brief",
+        "clothes",
+        "cancel",
+        "cancer"
+      ]
+    },
+    {
+      "id": 1788617533901,
+      "category": "國中",
+      "folder": "16",
+      "word": "brief",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "短暫的",
+      "sentence": "The student needs to learn the word ___ (短暫的).",
+      "options": [
+        "cheap",
+        "brief",
+        "coach",
+        "cancel"
+      ]
+    },
+    {
+      "id": 1788617533902,
+      "category": "國中",
+      "folder": "16",
+      "word": "cheap",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "便宜的",
+      "sentence": "The student needs to learn the word ___ (便宜的).",
+      "options": [
+        "cheap",
+        "bright",
+        "closet",
+        "brief"
+      ]
+    },
+    {
+      "id": 1788617533903,
+      "category": "國中",
+      "folder": "16",
+      "word": "coach",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "教練",
+      "sentence": "The student needs to learn the word ___ (教練).",
+      "options": [
+        "camp",
+        "coach",
+        "cloud",
+        "clothes"
+      ]
+    },
+    {
+      "id": 1788617533904,
+      "category": "國中",
+      "folder": "16",
+      "word": "cancer",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "癌症",
+      "sentence": "The student needs to learn the word ___ (癌症).",
+      "options": [
+        "chase",
+        "closet",
+        "cancer",
+        "campus"
+      ]
+    },
+    {
+      "id": 1788617533906,
+      "category": "國中",
+      "folder": "16",
+      "word": "bright",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "明亮的",
+      "sentence": "The student needs to learn the word ___ (明亮的).",
+      "options": [
+        "chart",
+        "bright",
+        "cheat",
+        "closet"
+      ]
+    },
+    {
+      "id": 1788617533907,
+      "category": "國中",
+      "folder": "16",
+      "word": "cheat",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "欺騙",
+      "sentence": "The student needs to learn the word ___ (欺騙).",
+      "options": [
+        "brick",
+        "canaux.",
+        "closet",
+        "cheat"
+      ]
+    },
+    {
+      "id": 1788617533908,
+      "category": "國中",
+      "folder": "16",
+      "word": "coast",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "海岸",
+      "sentence": "The student needs to learn the word ___ (海岸).",
+      "options": [
+        "closet",
+        "cheap",
+        "coast",
+        "brick"
+      ]
+    },
+    {
+      "id": 1788617544901,
+      "category": "國中",
+      "folder": "17",
+      "word": "candle",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "蠟燭",
+      "sentence": "The student needs to learn the word ___ (蠟燭).",
+      "options": [
+        "cough",
+        "correct",
+        "candle",
+        "date"
+      ]
+    },
+    {
+      "id": 1788617544902,
+      "category": "國中",
+      "folder": "17",
+      "word": "check",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "檢查",
+      "sentence": "The student needs to learn the word ___ (檢查).",
+      "options": [
+        "coke",
+        "check",
+        "correct",
+        "candle"
+      ]
+    },
+    {
+      "id": 1788617544903,
+      "category": "國中",
+      "folder": "17",
+      "word": "coat",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "大衣",
+      "sentence": "The student needs to learn the word ___ (大衣).",
+      "options": [
+        "cockroach",
+        "coat",
+        "data",
+        "correct"
+      ]
+    },
+    {
+      "id": 1788617544904,
+      "category": "國中",
+      "folder": "17",
+      "word": "cockroach",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "蟑螂",
+      "sentence": "The student needs to learn the word ___ (蟑螂).",
+      "options": [
+        "correct",
+        "cockroach",
+        "dark",
+        "cotton"
+      ]
+    },
+    {
+      "id": 1788617544905,
+      "category": "國中",
+      "folder": "17",
+      "word": "correct",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "正確的",
+      "sentence": "The student needs to learn the word ___ (正確的).",
+      "options": [
+        "correct",
+        "coffee",
+        "data",
+        "dangerous"
+      ]
+    },
+    {
+      "id": 1788617544906,
+      "category": "國中",
+      "folder": "17",
+      "word": "dangerous",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "危險的",
+      "sentence": "The student needs to learn the word ___ (危險的).",
+      "options": [
+        "cough",
+        "dangerous",
+        "date",
+        "couch"
+      ]
+    },
+    {
+      "id": 1788617544907,
+      "category": "國中",
+      "folder": "17",
+      "word": "coffee",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "咖啡",
+      "sentence": "The student needs to learn the word ___ (咖啡).",
+      "options": [
+        "coffee",
+        "candle",
+        "cough",
+        "cold"
+      ]
+    },
+    {
+      "id": 1788617544908,
+      "category": "國中",
+      "folder": "17",
+      "word": "cost",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "花費",
+      "sentence": "The student needs to learn the word ___ (花費).",
+      "options": [
+        "data",
+        "coat",
+        "correct",
+        "cost"
+      ]
+    },
+    {
+      "id": 1788617544909,
+      "category": "國中",
+      "folder": "17",
+      "word": "dark",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "黑的",
+      "sentence": "The student needs to learn the word ___ (黑的).",
+      "options": [
+        "candle",
+        "dark",
+        "date",
+        "cold"
+      ]
+    },
+    {
+      "id": 1788617544910,
+      "category": "國中",
+      "folder": "17",
+      "word": "coin",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "硬幣",
+      "sentence": "The student needs to learn the word ___ (硬幣).",
+      "options": [
+        "cost",
+        "data",
+        "coat",
+        "coin"
+      ]
+    },
+    {
+      "id": 1788617544911,
+      "category": "國中",
+      "folder": "17",
+      "word": "coke",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "可樂",
+      "sentence": "The student needs to learn the word ___ (可樂).",
+      "options": [
+        "check",
+        "cockroach",
+        "coke",
+        "collect"
+      ]
+    },
+    {
+      "id": 1788617544912,
+      "category": "國中",
+      "folder": "17",
+      "word": "cotton",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "棉花",
+      "sentence": "The student needs to learn the word ___ (棉花).",
+      "options": [
+        "cockroach",
+        "coke",
+        "dangerous",
+        "cotton"
+      ]
+    },
+    {
+      "id": 1788617544913,
+      "category": "國中",
+      "folder": "17",
+      "word": "data",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "資料",
+      "sentence": "The student needs to learn the word ___ (資料).",
+      "options": [
+        "data",
+        "check",
+        "candle",
+        "cold"
+      ]
+    },
+    {
+      "id": 1788617544914,
+      "category": "國中",
+      "folder": "17",
+      "word": "couch",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "長沙發",
+      "sentence": "The student needs to learn the word ___ (長沙發).",
+      "options": [
+        "couch",
+        "cold",
+        "coke",
+        "data"
+      ]
+    },
+    {
+      "id": 1788617544915,
+      "category": "國中",
+      "folder": "17",
+      "word": "date",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "日期",
+      "sentence": "The student needs to learn the word ___ (日期).",
+      "options": [
+        "check",
+        "candle",
+        "date",
+        "collect"
+      ]
+    },
+    {
+      "id": 1788617544916,
+      "category": "國中",
+      "folder": "17",
+      "word": "cold",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "冷的",
+      "sentence": "The student needs to learn the word ___ (冷的).",
+      "options": [
+        "correct",
+        "cotton",
+        "cockroach",
+        "cold"
+      ]
+    },
+    {
+      "id": 1788617544917,
+      "category": "國中",
+      "folder": "17",
+      "word": "cough",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "咳嗽",
+      "sentence": "The student needs to learn the word ___ (咳嗽).",
+      "options": [
+        "cost",
+        "cough",
+        "correct",
+        "data"
+      ]
+    },
+    {
+      "id": 1788617544918,
+      "category": "國中",
+      "folder": "17",
+      "word": "collect",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "收集",
+      "sentence": "The student needs to learn the word ___ (收集).",
+      "options": [
+        "dangerous",
+        "cold",
+        "collect",
+        "cost"
+      ]
+    },
+    {
+      "id": 1788617544919,
+      "category": "國中",
+      "folder": "17",
+      "word": "count",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "計數",
+      "sentence": "The student needs to learn the word ___ (計數).",
+      "options": [
+        "coke",
+        "check",
+        "count",
+        "dangerous"
+      ]
+    },
+    {
+      "id": 1788617556189,
+      "category": "國中",
+      "folder": "18",
+      "word": "country",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "國家",
+      "sentence": "The student needs to learn the word ___ (國家).",
+      "options": [
+        "country",
+        "dinner",
+        "couple",
+        "day"
+      ]
+    },
+    {
+      "id": 1788617556190,
+      "category": "國中",
+      "folder": "18",
+      "word": "day",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "一天",
+      "sentence": "The student needs to learn the word ___ (一天).",
+      "options": [
+        "diligent",
+        "day",
+        "daughter",
+        "dawn"
+      ]
+    },
+    {
+      "id": 1788617556191,
+      "category": "國中",
+      "folder": "18",
+      "word": "daughter",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "女兒",
+      "sentence": "The student needs to learn the word ___ (女兒).",
+      "options": [
+        "colorful",
+        "daughter",
+        "comb",
+        "dinner"
+      ]
+    },
+    {
+      "id": 1788617556192,
+      "category": "國中",
+      "folder": "18",
+      "word": "dawn",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "黎明",
+      "sentence": "The student needs to learn the word ___ (黎明).",
+      "options": [
+        "day",
+        "dawn",
+        "country",
+        "difference"
+      ]
+    },
+    {
+      "id": 1788617556193,
+      "category": "國中",
+      "folder": "18",
+      "word": "difference",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "差異",
+      "sentence": "The student needs to learn the word ___ (差異).",
+      "options": [
+        "difficulty",
+        "difference",
+        "country",
+        "deaf"
+      ]
+    },
+    {
+      "id": 1788617556194,
+      "category": "國中",
+      "folder": "18",
+      "word": "different",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "不同的",
+      "sentence": "The student needs to learn the word ___ (不同的).",
+      "options": [
+        "colorful",
+        "country",
+        "dinner",
+        "different"
+      ]
+    },
+    {
+      "id": 1788617556195,
+      "category": "國中",
+      "folder": "18",
+      "word": "difficult",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "困難的",
+      "sentence": "The student needs to learn the word ___ (困難的).",
+      "options": [
+        "difficult",
+        "dawn",
+        "diligent",
+        "couple"
+      ]
+    },
+    {
+      "id": 1788617556196,
+      "category": "國中",
+      "folder": "18",
+      "word": "difficulty",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "困難",
+      "sentence": "The student needs to learn the word ___ (困難).",
+      "options": [
+        "daughter",
+        "dinner",
+        "difficulty",
+        "colorful"
+      ]
+    },
+    {
+      "id": 1788617556197,
+      "category": "國中",
+      "folder": "18",
+      "word": "dig",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "挖掘",
+      "sentence": "The student needs to learn the word ___ (挖掘).",
+      "options": [
+        "dead",
+        "courage",
+        "day",
+        "dig"
+      ]
+    },
+    {
+      "id": 1788617556198,
+      "category": "國中",
+      "folder": "18",
+      "word": "diligent",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "勤勉的",
+      "sentence": "The student needs to learn the word ___ (勤勉的).",
+      "options": [
+        "difference",
+        "diligent",
+        "deaf",
+        "color"
+      ]
+    },
+    {
+      "id": 1788617556199,
+      "category": "國中",
+      "folder": "18",
+      "word": "diplomat",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "外交官",
+      "sentence": "The student needs to learn the word ___ (外交官).",
+      "options": [
+        "couple",
+        "diplomat",
+        "dawn",
+        "country"
+      ]
+    },
+    {
+      "id": 1788617556200,
+      "category": "國中",
+      "folder": "18",
+      "word": "color",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "顏色",
+      "sentence": "The student needs to learn the word ___ (顏色).",
+      "options": [
+        "diplomat",
+        "different",
+        "day",
+        "color"
+      ]
+    },
+    {
+      "id": 1788617556201,
+      "category": "國中",
+      "folder": "18",
+      "word": "couple",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "一對",
+      "sentence": "The student needs to learn the word ___ (一對).",
+      "options": [
+        "couple",
+        "dead",
+        "day",
+        "dawn"
+      ]
+    },
+    {
+      "id": 1788617556202,
+      "category": "國中",
+      "folder": "18",
+      "word": "dead",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "死的",
+      "sentence": "The student needs to learn the word ___ (死的).",
+      "options": [
+        "difficulty",
+        "different",
+        "difficult",
+        "dead"
+      ]
+    },
+    {
+      "id": 1788617556203,
+      "category": "國中",
+      "folder": "18",
+      "word": "dinner",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "晚餐",
+      "sentence": "The student needs to learn the word ___ (晚餐).",
+      "options": [
+        "difference",
+        "daughter",
+        "dead",
+        "dinner"
+      ]
+    },
+    {
+      "id": 1788617556204,
+      "category": "國中",
+      "folder": "18",
+      "word": "colorful",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "多采多姿的",
+      "sentence": "The student needs to learn the word ___ (多采多姿的).",
+      "options": [
+        "country",
+        "deaf",
+        "day",
+        "colorful"
+      ]
+    },
+    {
+      "id": 1788617556205,
+      "category": "國中",
+      "folder": "18",
+      "word": "courage",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "勇氣",
+      "sentence": "The student needs to learn the word ___ (勇氣).",
+      "options": [
+        "couple",
+        "difference",
+        "courage",
+        "difficulty"
+      ]
+    },
+    {
+      "id": 1788617556206,
+      "category": "國中",
+      "folder": "18",
+      "word": "deaf",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "聾的",
+      "sentence": "The student needs to learn the word ___ (聾的).",
+      "options": [
+        "dawn",
+        "deaf",
+        "dig",
+        "courage"
+      ]
+    },
+    {
+      "id": 1788617556207,
+      "category": "國中",
+      "folder": "18",
+      "word": "comb",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "梳子",
+      "sentence": "The student needs to learn the word ___ (梳子).",
+      "options": [
+        "different",
+        "deaf",
+        "dead",
+        "comb"
+      ]
+    },
+    {
+      "id": 1788617568298,
+      "category": "國中",
+      "folder": "19",
+      "word": "deal",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "交易",
+      "sentence": "The student needs to learn the word ___ (交易).",
+      "options": [
+        "command",
+        "common",
+        "comment",
+        "deal"
+      ]
+    },
+    {
+      "id": 1788617568299,
+      "category": "國中",
+      "folder": "19",
+      "word": "come",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "來",
+      "sentence": "The student needs to learn the word ___ (來).",
+      "options": [
+        "company",
+        "come",
+        "common",
+        "debate"
+      ]
+    },
+    {
+      "id": 1788617568300,
+      "category": "國中",
+      "folder": "19",
+      "word": "court",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "法院;球場",
+      "sentence": "The student needs to learn the word ___ (法院;球場).",
+      "options": [
+        "decision",
+        "dear",
+        "December",
+        "court"
+      ]
+    },
+    {
+      "id": 1788617568301,
+      "category": "國中",
+      "folder": "19",
+      "word": "dear",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "親愛的",
+      "sentence": "The student needs to learn the word ___ (親愛的).",
+      "options": [
+        "dear",
+        "command",
+        "come",
+        "debate"
+      ]
+    },
+    {
+      "id": 1788617568302,
+      "category": "國中",
+      "folder": "19",
+      "word": "comfortable",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "舒服的",
+      "sentence": "The student needs to learn the word ___ (舒服的).",
+      "options": [
+        "company",
+        "death",
+        "court",
+        "comfortable"
+      ]
+    },
+    {
+      "id": 1788617568303,
+      "category": "國中",
+      "folder": "19",
+      "word": "cousin",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "表(堂)兄弟姊",
+      "sentence": "The student needs to learn the word ___ (表(堂)兄弟姊).",
+      "options": [
+        "company",
+        "cousin",
+        "cover",
+        "compare"
+      ]
+    },
+    {
+      "id": 1788617568304,
+      "category": "國中",
+      "folder": "19",
+      "word": "death",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "死亡",
+      "sentence": "The student needs to learn the word ___ (死亡).",
+      "options": [
+        "cousin",
+        "death",
+        "debate",
+        "company"
+      ]
+    },
+    {
+      "id": 1788617568305,
+      "category": "國中",
+      "folder": "19",
+      "word": "command",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "命令",
+      "sentence": "The student needs to learn the word ___ (命令).",
+      "options": [
+        "dear",
+        "deal",
+        "company",
+        "command"
+      ]
+    },
+    {
+      "id": 1788617568306,
+      "category": "國中",
+      "folder": "19",
+      "word": "debate",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "辯論",
+      "sentence": "The student needs to learn the word ___ (辯論).",
+      "options": [
+        "cowboy",
+        "debate",
+        "decide",
+        "command"
+      ]
+    },
+    {
+      "id": 1788617568307,
+      "category": "國中",
+      "folder": "19",
+      "word": "comment",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "意見",
+      "sentence": "The student needs to learn the word ___ (意見).",
+      "options": [
+        "company",
+        "comfortable",
+        "comment",
+        "cowboy"
+      ]
+    },
+    {
+      "id": 1788617568308,
+      "category": "國中",
+      "folder": "19",
+      "word": "cover",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "覆蓋",
+      "sentence": "The student needs to learn the word ___ (覆蓋).",
+      "options": [
+        "cowboy",
+        "dear",
+        "come",
+        "cover"
+      ]
+    },
+    {
+      "id": 1788617568309,
+      "category": "國中",
+      "folder": "19",
+      "word": "December",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "十二月",
+      "sentence": "The student needs to learn the word ___ (十二月).",
+      "options": [
+        "deal",
+        "cowboy",
+        "December",
+        "company"
+      ]
+    },
+    {
+      "id": 1788617568310,
+      "category": "國中",
+      "folder": "19",
+      "word": "common",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "共同的",
+      "sentence": "The student needs to learn the word ___ (共同的).",
+      "options": [
+        "cover",
+        "common",
+        "comfortable",
+        "dear"
+      ]
+    },
+    {
+      "id": 1788617568311,
+      "category": "國中",
+      "folder": "19",
+      "word": "cow",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "母牛",
+      "sentence": "The student needs to learn the word ___ (母牛).",
+      "options": [
+        "deal",
+        "company",
+        "cow",
+        "debate"
+      ]
+    },
+    {
+      "id": 1788617568312,
+      "category": "國中",
+      "folder": "19",
+      "word": "decide",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "決定",
+      "sentence": "The student needs to learn the word ___ (決定).",
+      "options": [
+        "cowboy",
+        "decide",
+        "command",
+        "cousin"
+      ]
+    },
+    {
+      "id": 1788617568313,
+      "category": "國中",
+      "folder": "19",
+      "word": "company",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "公司",
+      "sentence": "The student needs to learn the word ___ (公司).",
+      "options": [
+        "company",
+        "cowboy",
+        "December",
+        "cover"
+      ]
+    },
+    {
+      "id": 1788617568314,
+      "category": "國中",
+      "folder": "19",
+      "word": "cowboy",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "牛仔",
+      "sentence": "The student needs to learn the word ___ (牛仔).",
+      "options": [
+        "command",
+        "comfortable",
+        "cowboy",
+        "cousin"
+      ]
+    },
+    {
+      "id": 1788617568315,
+      "category": "國中",
+      "folder": "19",
+      "word": "decision",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "決定",
+      "sentence": "The student needs to learn the word ___ (決定).",
+      "options": [
+        "decide",
+        "come",
+        "court",
+        "decision"
+      ]
+    },
+    {
+      "id": 1788617568316,
+      "category": "國中",
+      "folder": "19",
+      "word": "compare",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "比較",
+      "sentence": "The student needs to learn the word ___ (比較).",
+      "options": [
+        "compare",
+        "dear",
+        "debate",
+        "cousin"
+      ]
+    },
+    {
+      "id": 1788617581037,
+      "category": "國中",
+      "folder": "20",
+      "word": "decorate",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "裝飾",
+      "sentence": "The student needs to learn the word ___ (裝飾).",
+      "options": [
+        "decorate",
+        "cream",
+        "confuse",
+        "congratulation"
+      ]
+    },
+    {
+      "id": 1788617581038,
+      "category": "國中",
+      "folder": "20",
+      "word": "complain",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "抱怨",
+      "sentence": "The student needs to learn the word ___ (抱怨).",
+      "options": [
+        "complaint",
+        "confident",
+        "crowd",
+        "complain"
+      ]
+    },
+    {
+      "id": 1788617581039,
+      "category": "國中",
+      "folder": "20",
+      "word": "crayon",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "蠟筆",
+      "sentence": "The student needs to learn the word ___ (蠟筆).",
+      "options": [
+        "decrease",
+        "crayon",
+        "decorate",
+        "cross"
+      ]
+    },
+    {
+      "id": 1788617581040,
+      "category": "國中",
+      "folder": "20",
+      "word": "decrease",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "減少",
+      "sentence": "The student needs to learn the word ___ (減少).",
+      "options": [
+        "decrease",
+        "congratulation",
+        "confident",
+        "cruel"
+      ]
+    },
+    {
+      "id": 1788617581041,
+      "category": "國中",
+      "folder": "20",
+      "word": "complaint",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "抱怨",
+      "sentence": "The student needs to learn the word ___ (抱怨).",
+      "options": [
+        "complain",
+        "complaint",
+        "computer",
+        "crowd"
+      ]
+    },
+    {
+      "id": 1788617581042,
+      "category": "國中",
+      "folder": "20",
+      "word": "crazy",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "瘋狂的",
+      "sentence": "The student needs to learn the word ___ (瘋狂的).",
+      "options": [
+        "crazy",
+        "crowd",
+        "computer",
+        "decrease"
+      ]
+    },
+    {
+      "id": 1788617581043,
+      "category": "國中",
+      "folder": "20",
+      "word": "complete",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "完整的",
+      "sentence": "The student needs to learn the word ___ (完整的).",
+      "options": [
+        "crime",
+        "complete",
+        "computer",
+        "crayon"
+      ]
+    },
+    {
+      "id": 1788617581044,
+      "category": "國中",
+      "folder": "20",
+      "word": "cream",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "乳液",
+      "sentence": "The student needs to learn the word ___ (乳液).",
+      "options": [
+        "cream",
+        "crayon",
+        "conflict",
+        "complete"
+      ]
+    },
+    {
+      "id": 1788617581045,
+      "category": "國中",
+      "folder": "20",
+      "word": "computer",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "電腦",
+      "sentence": "The student needs to learn the word ___ (電腦).",
+      "options": [
+        "computer",
+        "cruel",
+        "confident",
+        "confuse"
+      ]
+    },
+    {
+      "id": 1788617581046,
+      "category": "國中",
+      "folder": "20",
+      "word": "create",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "創造",
+      "sentence": "The student needs to learn the word ___ (創造).",
+      "options": [
+        "complete",
+        "decorate",
+        "create",
+        "complain"
+      ]
+    },
+    {
+      "id": 1788617581047,
+      "category": "國中",
+      "folder": "20",
+      "word": "concern",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "擔心",
+      "sentence": "The student needs to learn the word ___ (擔心).",
+      "options": [
+        "confident",
+        "crayon",
+        "complain",
+        "concern"
+      ]
+    },
+    {
+      "id": 1788617581048,
+      "category": "國中",
+      "folder": "20",
+      "word": "crime",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "罪",
+      "sentence": "The student needs to learn the word ___ (罪).",
+      "options": [
+        "crime",
+        "congratulation",
+        "confident",
+        "crayon"
+      ]
+    },
+    {
+      "id": 1788617581049,
+      "category": "國中",
+      "folder": "20",
+      "word": "confident",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "有自信的",
+      "sentence": "The student needs to learn the word ___ (有自信的).",
+      "options": [
+        "confident",
+        "computer",
+        "decorate",
+        "create"
+      ]
+    },
+    {
+      "id": 1788617581050,
+      "category": "國中",
+      "folder": "20",
+      "word": "cross",
+      "pos": "v",
+      "isPhrase": false,
+      "zh": "穿過",
+      "sentence": "The student needs to learn the word ___ (穿過).",
+      "options": [
+        "cream",
+        "confuse",
+        "cross",
+        "crazy"
+      ]
+    },
+    {
+      "id": 1788617581051,
+      "category": "國中",
+      "folder": "20",
+      "word": "conflict",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "衝突",
+      "sentence": "The student needs to learn the word ___ (衝突).",
+      "options": [
+        "conflict",
+        "computer",
+        "complain",
+        "crime"
+      ]
+    },
+    {
+      "id": 1788617581052,
+      "category": "國中",
+      "folder": "20",
+      "word": "crowd",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "人群",
+      "sentence": "The student needs to learn the word ___ (人群).",
+      "options": [
+        "confident",
+        "cream",
+        "crowd",
+        "concern"
+      ]
+    },
+    {
+      "id": 1788617581053,
+      "category": "國中",
+      "folder": "20",
+      "word": "confuse",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "使迷惑",
+      "sentence": "The student needs to learn the word ___ (使迷惑).",
+      "options": [
+        "complete",
+        "congratulation",
+        "confuse",
+        "create"
+      ]
+    },
+    {
+      "id": 1788617581054,
+      "category": "國中",
+      "folder": "20",
+      "word": "cruel",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "殘忍的",
+      "sentence": "The student needs to learn the word ___ (殘忍的).",
+      "options": [
+        "cruel",
+        "decrease",
+        "crazy",
+        "decorate"
+      ]
+    },
+    {
+      "id": 1788617581055,
+      "category": "國中",
+      "folder": "20",
+      "word": "congratulation",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "道賀",
+      "sentence": "The student needs to learn the word ___ (道賀).",
+      "options": [
+        "crowd",
+        "decrease",
+        "complete",
+        "congratulation"
+      ]
     }
   ],
   "students": [
@@ -2406,6 +9846,12 @@
       "acc": "Roger",
       "pwd": "1209",
       "name": "劉承軒",
+      "perm": "高中"
+    },
+    {
+      "acc": "Hans",
+      "pwd": "0817",
+      "name": "陳翰司",
       "perm": "高中"
     }
   ]
