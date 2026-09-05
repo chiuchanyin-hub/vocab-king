@@ -171,6 +171,25 @@
   </div>
 
   <script>
+    // ====== 新增：開機自動全自動雲端同步載入機制 ======
+    async function initAutoSyncCloud() {
+      try {
+        const response = await fetch('data.json?v=' + Date.now());
+        if (response.ok) {
+          const cloudData = await response.json();
+          if (cloudData.questions && cloudData.questions.length > 0) {
+            localStorage.setItem('app_all_questions', JSON.stringify(cloudData.questions));
+          }
+          if (cloudData.students && cloudData.students.length > 0) {
+            localStorage.setItem('student_accounts', JSON.stringify(cloudData.students));
+          }
+        }
+      } catch (e) {
+        console.log("使用本機快取離線運行");
+      }
+    }
+    initAutoSyncCloud(); // 立即在最上方執行自動同步
+
     const DEFAULT_BASE_QUESTIONS = [
       {"id": 1, "category": "高中學測", "folder": "Unit 1", "word": "cue", "pos": "n.", "isPhrase": false, "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
       {"id": 2, "category": "Level 4", "folder": "Unit 2", "word": "approach", "pos": "n./v.", "isPhrase": false, "zh": "接近；方法", "sentence": "The government decided to ___ the issue carefully.", "options": ["approach", "divorce", "disappoint", "finance"]}
@@ -271,7 +290,7 @@
     });
 
     // ----------------------------------------------------
-    // 📸 AI 拍照建題功能 (已更新為 gemini-3.6-flash 端點)
+    // 📸 AI 拍照建題功能 (Gemini 3.6 Flash)
     // ----------------------------------------------------
     function fileToBase64(file) {
       return new Promise((resolve, reject) => {
@@ -298,7 +317,6 @@
     "options": ["正確單字", "干擾項1", "干擾項2", "干擾項3"]
   }
 ]`;
-      // 使用 gemini-3.6-flash 模型端點
       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
