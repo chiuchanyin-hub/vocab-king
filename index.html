@@ -95,10 +95,14 @@
         <select id="lobby-category-select" class="admin-input-full" style="font-size:1rem; padding:12px;"></select>
         <label style="font-weight:800; font-size:0.95rem; color:#334155; margin-bottom:6px; display:block; margin-top:16px;">2. 章節 / 資料夾：</label>
         <select id="lobby-folder-select" class="admin-input-full" style="font-size:1rem; padding:12px;"></select>
+        
         <label style="font-weight:800; font-size:0.95rem; color:#334155; margin-bottom:6px; display:block; margin-top:16px;">3. 選擇訓練模式：</label>
         <select id="lobby-mode-select" class="admin-input-full" style="font-size:1rem; padding:12px;">
+          <!-- 這次完整保留四個選項，完美對應上方四個頁籤！ -->
           <option value="view-game">👑 單字挑戰 (拼寫作答)</option>
+          <option value="view-phrase">🧩 片語特訓</option>
           <option value="view-cloze">⚔️ 克漏字對戰 (依據 AI 例句)</option>
+          <option value="view-mistakes">📖 不熟區</option>
         </select>
         
         <button id="lobby-start-btn" class="btn-primary" style="margin-top: 24px; font-size:1.1rem; padding:14px; background:#10b981;">🚀 進入訓練區</button>
@@ -246,7 +250,7 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       
-      // 1. 學生登入機制 (加入 Enter 鍵防呆)
+      // 1. 學生登入機制
       function attemptLogin() {
         const errEl = document.getElementById('student-login-err');
         errEl.style.display = 'none';
@@ -326,7 +330,7 @@
       document.getElementById('lobby-start-btn').addEventListener('click', () => {
         currentLobbyCategory = document.getElementById('lobby-category-select').value;
         const selectedFolder = document.getElementById('lobby-folder-select').value;
-        const selectedModeId = document.getElementById('lobby-mode-select').value; 
+        const selectedModeId = document.getElementById('lobby-mode-select').value; // view-game, view-phrase 等
         
         document.getElementById('view-student-lobby').style.display = 'none';
         document.getElementById('view-student-main').style.display = 'flex';
@@ -339,6 +343,7 @@
           if (dd && [...dd.options].some(o => o.value === selectedFolder)) dd.value = selectedFolder;
         });
 
+        // 觸發該模式的導覽列按鈕點擊事件，自動連動 UI 切換
         const targetTabBtn = document.querySelector(`.nav-btn[data-target="${selectedModeId}"]`);
         if (targetTabBtn) targetTabBtn.click();
       });
