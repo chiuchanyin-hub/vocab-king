@@ -1,38 +1,6 @@
 {
   "questions": [
     {
-      "id": 1,
-      "category": "高中學測",
-      "folder": "Unit 1",
-      "word": "cue",
-      "pos": "n.",
-      "isPhrase": false,
-      "zh": "提示；線索",
-      "sentence": "My teacher nodded at me, and that was my ___ to start speaking.",
-      "options": [
-        "cue",
-        "finance",
-        "prime",
-        "rebel"
-      ]
-    },
-    {
-      "id": 2,
-      "category": "Level 4",
-      "folder": "Unit 2",
-      "word": "approach",
-      "pos": "n./v.",
-      "isPhrase": false,
-      "zh": "接近；方法",
-      "sentence": "The government decided to ___ the issue carefully.",
-      "options": [
-        "approach",
-        "divorce",
-        "disappoint",
-        "finance"
-      ]
-    },
-    {
       "id": 1788612111853,
       "category": "高中學測",
       "folder": "Day1",
@@ -959,13 +927,1485 @@
         "different",
         "carry"
       ]
+    },
+    {
+      "id": 1788612262659,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "dirty",
+      "pos": "adj./v.",
+      "isPhrase": false,
+      "zh": "骯髒的",
+      "sentence": "The student needs to learn the word ___ (骯髒的).",
+      "options": [
+        "flower",
+        "dirty",
+        "evening",
+        "dollar"
+      ]
+    },
+    {
+      "id": 1788612262660,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "dollar",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "美元",
+      "sentence": "The student needs to learn the word ___ (美元).",
+      "options": [
+        "dollar",
+        "hit",
+        "flower",
+        "father"
+      ]
+    },
+    {
+      "id": 1788612262661,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "dream",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "夢",
+      "sentence": "The student needs to learn the word ___ (夢).",
+      "options": [
+        "dream",
+        "grade",
+        "first",
+        "dollar"
+      ]
+    },
+    {
+      "id": 1788612262662,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "enter",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "進入",
+      "sentence": "The student needs to learn the word ___ (進入).",
+      "options": [
+        "grade",
+        "dirty",
+        "healthy",
+        "enter"
+      ]
+    },
+    {
+      "id": 1788612262663,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "evening",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "晚上",
+      "sentence": "The student needs to learn the word ___ (晚上).",
+      "options": [
+        "evening",
+        "history",
+        "grade",
+        "dirty"
+      ]
+    },
+    {
+      "id": 1788612262664,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "ever",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "曾經",
+      "sentence": "The student needs to learn the word ___ (曾經).",
+      "options": [
+        "ham",
+        "enter",
+        "hit",
+        "ever"
+      ]
+    },
+    {
+      "id": 1788612262665,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "father",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "父親",
+      "sentence": "The student needs to learn the word ___ (父親).",
+      "options": [
+        "enter",
+        "father",
+        "fork",
+        "group"
+      ]
+    },
+    {
+      "id": 1788612262666,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "first",
+      "pos": "n./adv./adj.",
+      "isPhrase": false,
+      "zh": "第一的",
+      "sentence": "The student needs to learn the word ___ (第一的).",
+      "options": [
+        "dream",
+        "enter",
+        "hit",
+        "first"
+      ]
+    },
+    {
+      "id": 1788612262667,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "flower",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "花",
+      "sentence": "The student needs to learn the word ___ (花).",
+      "options": [
+        "food",
+        "dollar",
+        "dirty",
+        "flower"
+      ]
+    },
+    {
+      "id": 1788612262668,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "food",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "食物",
+      "sentence": "The student needs to learn the word ___ (食物).",
+      "options": [
+        "food",
+        "history",
+        "group",
+        "dream"
+      ]
+    },
+    {
+      "id": 1788612262669,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "fork",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "叉",
+      "sentence": "The student needs to learn the word ___ (叉).",
+      "options": [
+        "fork",
+        "father",
+        "dollar",
+        "healthy"
+      ]
+    },
+    {
+      "id": 1788612262670,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "friend",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "朋友",
+      "sentence": "The student needs to learn the word ___ (朋友).",
+      "options": [
+        "ham",
+        "friend",
+        "grade",
+        "dollar"
+      ]
+    },
+    {
+      "id": 1788612262671,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "grade",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "年級",
+      "sentence": "The student needs to learn the word ___ (年級).",
+      "options": [
+        "dollar",
+        "grade",
+        "hit",
+        "dream"
+      ]
+    },
+    {
+      "id": 1788612262672,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "grass",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "草",
+      "sentence": "The student needs to learn the word ___ (草).",
+      "options": [
+        "ham",
+        "grass",
+        "group",
+        "first"
+      ]
+    },
+    {
+      "id": 1788612262673,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "group",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "團體",
+      "sentence": "The student needs to learn the word ___ (團體).",
+      "options": [
+        "dream",
+        "first",
+        "enter",
+        "group"
+      ]
+    },
+    {
+      "id": 1788612262674,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "ham",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "火腿",
+      "sentence": "The student needs to learn the word ___ (火腿).",
+      "options": [
+        "hit",
+        "dollar",
+        "ham",
+        "dirty"
+      ]
+    },
+    {
+      "id": 1788612262675,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "headache",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "頭痛",
+      "sentence": "The student needs to learn the word ___ (頭痛).",
+      "options": [
+        "ham",
+        "enter",
+        "headache",
+        "dirty"
+      ]
+    },
+    {
+      "id": 1788612262676,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "healthy",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "健康",
+      "sentence": "The student needs to learn the word ___ (健康).",
+      "options": [
+        "healthy",
+        "dirty",
+        "friend",
+        "first"
+      ]
+    },
+    {
+      "id": 1788612262677,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "history",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "歷史",
+      "sentence": "The student needs to learn the word ___ (歷史).",
+      "options": [
+        "evening",
+        "grass",
+        "grade",
+        "history"
+      ]
+    },
+    {
+      "id": 1788612262678,
+      "category": "高中學測",
+      "folder": "Day4",
+      "word": "hit",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "打",
+      "sentence": "The student needs to learn the word ___ (打).",
+      "options": [
+        "hit",
+        "evening",
+        "group",
+        "father"
+      ]
+    },
+    {
+      "id": 1788612278735,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "hurt",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "傷害",
+      "sentence": "The student needs to learn the word ___ (傷害).",
+      "options": [
+        "hurt",
+        "nice",
+        "neck",
+        "kite"
+      ]
+    },
+    {
+      "id": 1788612278736,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "kite",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "風箏",
+      "sentence": "The student needs to learn the word ___ (風箏).",
+      "options": [
+        "not",
+        "lot",
+        "kite",
+        "hurt"
+      ]
+    },
+    {
+      "id": 1788612278737,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "less",
+      "pos": "pron./adv./adj./prep.",
+      "isPhrase": false,
+      "zh": "較少的",
+      "sentence": "The student needs to learn the word ___ (較少的).",
+      "options": [
+        "less",
+        "hurt",
+        "kite",
+        "monkey"
+      ]
+    },
+    {
+      "id": 1788612278738,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "live",
+      "pos": "v./adj.",
+      "isPhrase": false,
+      "zh": "居住",
+      "sentence": "The student needs to learn the word ___ (居住).",
+      "options": [
+        "off",
+        "mountain",
+        "live",
+        "neck"
+      ]
+    },
+    {
+      "id": 1788612278739,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "lot",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "很多",
+      "sentence": "The student needs to learn the word ___ (很多).",
+      "options": [
+        "lot",
+        "nice",
+        "nature",
+        "mountain"
+      ]
+    },
+    {
+      "id": 1788612278740,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "magic",
+      "pos": "adj./n.",
+      "isPhrase": false,
+      "zh": "魔法",
+      "sentence": "The student needs to learn the word ___ (魔法).",
+      "options": [
+        "live",
+        "off",
+        "notice",
+        "magic"
+      ]
+    },
+    {
+      "id": 1788612278741,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "man",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "男人",
+      "sentence": "The student needs to learn the word ___ (男人).",
+      "options": [
+        "mean",
+        "man",
+        "may",
+        "magic"
+      ]
+    },
+    {
+      "id": 1788612278742,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "may",
+      "pos": "aux.",
+      "isPhrase": false,
+      "zh": "可能",
+      "sentence": "The student needs to learn the word ___ (可能).",
+      "options": [
+        "mean",
+        "may",
+        "less",
+        "off"
+      ]
+    },
+    {
+      "id": 1788612278743,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "mean",
+      "pos": "v./adj.",
+      "isPhrase": false,
+      "zh": "意思是",
+      "sentence": "The student needs to learn the word ___ (意思是).",
+      "options": [
+        "mean",
+        "kite",
+        "man",
+        "not"
+      ]
+    },
+    {
+      "id": 1788612278744,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "middle",
+      "pos": "adj./n.",
+      "isPhrase": false,
+      "zh": "中間",
+      "sentence": "The student needs to learn the word ___ (中間).",
+      "options": [
+        "off",
+        "middle",
+        "nature",
+        "nice"
+      ]
+    },
+    {
+      "id": 1788612278745,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "modern",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "現代的",
+      "sentence": "The student needs to learn the word ___ (現代的).",
+      "options": [
+        "kite",
+        "mean",
+        "modern",
+        "neck"
+      ]
+    },
+    {
+      "id": 1788612278746,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "monkey",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "猴",
+      "sentence": "The student needs to learn the word ___ (猴).",
+      "options": [
+        "mountain",
+        "monkey",
+        "may",
+        "modern"
+      ]
+    },
+    {
+      "id": 1788612278747,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "mountain",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "山",
+      "sentence": "The student needs to learn the word ___ (山).",
+      "options": [
+        "live",
+        "mountain",
+        "man",
+        "magic"
+      ]
+    },
+    {
+      "id": 1788612278748,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "nature",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "自然",
+      "sentence": "The student needs to learn the word ___ (自然).",
+      "options": [
+        "nature",
+        "mountain",
+        "man",
+        "magic"
+      ]
+    },
+    {
+      "id": 1788612278749,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "neck",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "脖子",
+      "sentence": "The student needs to learn the word ___ (脖子).",
+      "options": [
+        "neck",
+        "live",
+        "new",
+        "hurt"
+      ]
+    },
+    {
+      "id": 1788612278750,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "new",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "新的",
+      "sentence": "The student needs to learn the word ___ (新的).",
+      "options": [
+        "notice",
+        "may",
+        "new",
+        "magic"
+      ]
+    },
+    {
+      "id": 1788612278751,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "nice",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "好的",
+      "sentence": "The student needs to learn the word ___ (好的).",
+      "options": [
+        "monkey",
+        "modern",
+        "middle",
+        "nice"
+      ]
+    },
+    {
+      "id": 1788612278752,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "not",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "不是",
+      "sentence": "The student needs to learn the word ___ (不是).",
+      "options": [
+        "not",
+        "magic",
+        "nature",
+        "live"
+      ]
+    },
+    {
+      "id": 1788612278753,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "notice",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "注意",
+      "sentence": "The student needs to learn the word ___ (注意).",
+      "options": [
+        "notice",
+        "may",
+        "less",
+        "magic"
+      ]
+    },
+    {
+      "id": 1788612278754,
+      "category": "高中學測",
+      "folder": "Day5",
+      "word": "off",
+      "pos": "adv./prep./adj.",
+      "isPhrase": false,
+      "zh": "離開",
+      "sentence": "The student needs to learn the word ___ (離開).",
+      "options": [
+        "hurt",
+        "monkey",
+        "man",
+        "off"
+      ]
+    },
+    {
+      "id": 100000001,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "abandon",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "遺棄；放棄",
+      "sentence": "Due to the flood, many people had to ___ their cars in the street.",
+      "options": [
+        "abandon",
+        "desert",
+        "impose",
+        "recall"
+      ]
+    },
+    {
+      "id": 100000002,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "abandonment",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "拋棄；放棄",
+      "sentence": "The sudden ___ of the project surprised all team members.",
+      "options": [
+        "abandonment",
+        "appreciation",
+        "facility",
+        "confidence"
+      ]
+    },
+    {
+      "id": 100000003,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "abandoned",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "被遺棄的；廢棄的",
+      "sentence": "They found shelter in an ___ house during the rainstorm.",
+      "options": [
+        "abandoned",
+        "outstanding",
+        "urgent",
+        "systematic"
+      ]
+    },
+    {
+      "id": 100000004,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "desert",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "遺棄；拋棄",
+      "sentence": "Steve's friends ___ him when he needed them most.",
+      "options": [
+        "deserted",
+        "instructed",
+        "memorized",
+        "urged"
+      ]
+    },
+    {
+      "id": 100000005,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "quit",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "自願放棄；停止做某事",
+      "sentence": "You should ___ smoking, for the sake of your health.",
+      "options": [
+        "quit",
+        "lean",
+        "pace",
+        "murmur"
+      ]
+    },
+    {
+      "id": 100000006,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "absolute",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "完全的；絕對的；十足的",
+      "sentence": "I have ___ confidence in his ability to handle the press.",
+      "options": [
+        "absolute",
+        "needy",
+        "systematic",
+        "urgent"
+      ]
+    },
+    {
+      "id": 100000007,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "absolutely",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "絕對地、完全地",
+      "sentence": "You are ___ right about that decision.",
+      "options": [
+        "absolutely",
+        "urgently",
+        "needily",
+        "manually"
+      ]
+    },
+    {
+      "id": 100000008,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "appreciation",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "欣賞；感謝",
+      "sentence": "She expressed her deep ___ for all their generous help.",
+      "options": [
+        "appreciation",
+        "communication",
+        "facility",
+        "diligence"
+      ]
+    },
+    {
+      "id": 100000009,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "chew",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "咀嚼",
+      "sentence": "You should ___ your food well before swallowing it.",
+      "options": [
+        "chew",
+        "recall",
+        "urge",
+        "impose"
+      ]
+    },
+    {
+      "id": 100000010,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "communication",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "溝通；通訊",
+      "sentence": "Good ___ is key to solving misunderstandings.",
+      "options": [
+        "communication",
+        "abandonment",
+        "embassy",
+        "horizon"
+      ]
+    },
+    {
+      "id": 100000011,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "confidence",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "信心；自信",
+      "sentence": "Practice will help build your ___ when speaking in public.",
+      "options": [
+        "confidence",
+        "grammar",
+        "diligence",
+        "status"
+      ]
+    },
+    {
+      "id": 100000012,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "coward",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "懦夫；膽小鬼",
+      "sentence": "He was accused of being a ___ for running away from trouble.",
+      "options": [
+        "coward",
+        "plumber",
+        "freshman",
+        "site"
+      ]
+    },
+    {
+      "id": 100000013,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "crack",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "裂縫；縫隙",
+      "sentence": "There is a small ___ on the glass window.",
+      "options": [
+        "crack",
+        "pace",
+        "plum",
+        "status"
+      ]
+    },
+    {
+      "id": 100000014,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "diligence",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "勤勉；勤奮",
+      "sentence": "Her success was due to her constant ___ and hard work.",
+      "options": [
+        "diligence",
+        "communication",
+        "embassy",
+        "facility"
+      ]
+    },
+    {
+      "id": 100000015,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "disgusted",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "感到厭惡的",
+      "sentence": "Everyone felt ___ by the rotten smell in the kitchen.",
+      "options": [
+        "disgusted",
+        "outstanding",
+        "urgent",
+        "absolute"
+      ]
+    },
+    {
+      "id": 100000016,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "embassy",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "大使館",
+      "sentence": "They visited the ___ to apply for a tourist visa.",
+      "options": [
+        "embassy",
+        "facility",
+        "horizon",
+        "status"
+      ]
+    },
+    {
+      "id": 100000017,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "enlarge",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "放大；擴大",
+      "sentence": "They plan to ___ the dining room to hold more guests.",
+      "options": [
+        "enlarge",
+        "impose",
+        "memorize",
+        "recall"
+      ]
+    },
+    {
+      "id": 100000018,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "facility",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "設施；設備",
+      "sentence": "The hotel features a modern fitness ___ for guests.",
+      "options": [
+        "facility",
+        "diligence",
+        "embassy",
+        "grammar"
+      ]
+    },
+    {
+      "id": 100000019,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "freshman",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "一年級新生",
+      "sentence": "As a college ___, he took time to adapt to campus life.",
+      "options": [
+        "freshman",
+        "plumber",
+        "coward",
+        "site"
+      ]
+    },
+    {
+      "id": 100000020,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "grammar",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "文法",
+      "sentence": "Correct ___ is essential for effective formal writing.",
+      "options": [
+        "grammar",
+        "graph",
+        "horizon",
+        "makeup"
+      ]
+    },
+    {
+      "id": 100000021,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "horizon",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "地平線；視野",
+      "sentence": "The sun gradually sank below the ocean ___.",
+      "options": [
+        "horizon",
+        "embassy",
+        "status",
+        "site"
+      ]
+    },
+    {
+      "id": 100000022,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "impose",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "強加；課徵",
+      "sentence": "The government decided to ___ stricter laws on traffic safety.",
+      "options": [
+        "impose",
+        "instruct",
+        "memorize",
+        "urge"
+      ]
+    },
+    {
+      "id": 100000023,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "instruct",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "指示；教導",
+      "sentence": "The manager will ___ the staff on how to use the new system.",
+      "options": [
+        "instruct",
+        "impose",
+        "recall",
+        "enlarge"
+      ]
+    },
+    {
+      "id": 100000024,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "lean",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "傾斜；依靠",
+      "sentence": "Please do not ___ against the newly painted door.",
+      "options": [
+        "lean",
+        "chew",
+        "pace",
+        "urge"
+      ]
+    },
+    {
+      "id": 100000025,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "makeup",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "化妝品",
+      "sentence": "She applied some light ___ before going out.",
+      "options": [
+        "makeup",
+        "grammar",
+        "facility",
+        "horizon"
+      ]
+    },
+    {
+      "id": 100000026,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "manual",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "使用手冊；指南",
+      "sentence": "Read the instruction ___ carefully before assembling the chair.",
+      "options": [
+        "manual",
+        "status",
+        "site",
+        "graph"
+      ]
+    },
+    {
+      "id": 100000027,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "memorize",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "背誦；記住",
+      "sentence": "Students are required to ___ the poem for the test.",
+      "options": [
+        "memorize",
+        "instruct",
+        "recall",
+        "impose"
+      ]
+    },
+    {
+      "id": 100000028,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "murmur",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "低語；私語",
+      "sentence": "She began to ___ a prayer softly to herself.",
+      "options": [
+        "murmur",
+        "chew",
+        "lean",
+        "recall"
+      ]
+    },
+    {
+      "id": 100000029,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "needy",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "貧困的；需要幫助的",
+      "sentence": "The organization provides food and clothes to ___ children.",
+      "options": [
+        "needy",
+        "outstanding",
+        "urgent",
+        "systematic"
+      ]
+    },
+    {
+      "id": 100000030,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "outstanding",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "傑出的；優秀的",
+      "sentence": "He won an award for his ___ contribution to science.",
+      "options": [
+        "outstanding",
+        "needy",
+        "urgent",
+        "disgusted"
+      ]
+    },
+    {
+      "id": 100000031,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "pace",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "步調；速度",
+      "sentence": "He walked at a fast ___ to catch the morning train.",
+      "options": [
+        "pace",
+        "crack",
+        "plum",
+        "status"
+      ]
+    },
+    {
+      "id": 100000032,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "plumber",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "水管工人",
+      "sentence": "We hired a ___ to repair the leaking pipe in the sink.",
+      "options": [
+        "plumber",
+        "freshman",
+        "coward",
+        "site"
+      ]
+    },
+    {
+      "id": 100000033,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "recall",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "回想；召回",
+      "sentence": "I cannot ___ where I placed my spectacles.",
+      "options": [
+        "recall",
+        "memorize",
+        "instruct",
+        "urge"
+      ]
+    },
+    {
+      "id": 100000034,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "site",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "地點；遺址；網站",
+      "sentence": "The historic ___ attracts thousands of tourists each year.",
+      "options": [
+        "site",
+        "status",
+        "horizon",
+        "pace"
+      ]
+    },
+    {
+      "id": 100000035,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "status",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "地位；狀態",
+      "sentence": "She worked hard to achieve high social ___ in her field.",
+      "options": [
+        "status",
+        "site",
+        "horizon",
+        "manual"
+      ]
+    },
+    {
+      "id": 100000036,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "systematic",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "有系統的；條理分明的",
+      "sentence": "They conducted a ___ review of the entire business process.",
+      "options": [
+        "systematic",
+        "outstanding",
+        "urgent",
+        "absolute"
+      ]
+    },
+    {
+      "id": 100000037,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "telegraph",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "電報",
+      "sentence": "Before telephones, people relied on the ___ to send long-distance messages.",
+      "options": [
+        "telegraph",
+        "manual",
+        "graph",
+        "status"
+      ]
+    },
+    {
+      "id": 100000038,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "urge",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "敦促；力勸",
+      "sentence": "Doctors ___ patients to drink plenty of water during summer.",
+      "options": [
+        "urge",
+        "impose",
+        "recall",
+        "instruct"
+      ]
+    },
+    {
+      "id": 100000039,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "urgent",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "緊急的；迫切的",
+      "sentence": "The police received an ___ call regarding an accident.",
+      "options": [
+        "urgent",
+        "outstanding",
+        "needy",
+        "systematic"
+      ]
+    },
+    {
+      "id": 400000001,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "appreciation",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "感謝；鑑賞；增值",
+      "sentence": "To show our ___ for your help, we bought you these flowers.",
+      "options": [
+        "appreciation",
+        "communication",
+        "confidence",
+        "hesitation"
+      ]
+    },
+    {
+      "id": 400000002,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "appreciate",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "感激；欣賞",
+      "sentence": "I really ___ all the support you have given me over the past few years.",
+      "options": [
+        "appreciate",
+        "communicate",
+        "calculate",
+        "hesitate"
+      ]
+    },
+    {
+      "id": 400000003,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "show appreciation",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "表達感謝",
+      "sentence": "We sent a gift card to ___ for her hard work.",
+      "options": [
+        "show appreciation",
+        "chew out",
+        "keep in touch",
+        "make a scene"
+      ]
+    },
+    {
+      "id": 400000004,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "chew",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "咀嚼；嚼碎",
+      "sentence": "Experts say you should ___ each bite of food thirty-five times.",
+      "options": [
+        "chew",
+        "swallow",
+        "digest",
+        "absorb"
+      ]
+    },
+    {
+      "id": 400000005,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "chewy",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "有嚼勁的；耐嚼的",
+      "sentence": "The steak was so ___ that my jaws hurt after eating it.",
+      "options": [
+        "chewy",
+        "crispy",
+        "juicy",
+        "smooth"
+      ]
+    },
+    {
+      "id": 400000006,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "chew up",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "咬爛；嚼碎",
+      "sentence": "Lisa's baby ___ the piece of paper before Lisa could take it away from him.",
+      "options": [
+        "chewed up",
+        "chewed out",
+        "gave up",
+        "turned down"
+      ]
+    },
+    {
+      "id": 400000007,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "chew out",
+      "pos": "phr.",
+      "isPhrase": true,
+      "zh": "嚴聲責罵",
+      "sentence": "My wife really ___ me for losing my house keys.",
+      "options": [
+        "chewed out",
+        "chewed up",
+        "turned out",
+        "checked out"
+      ]
+    },
+    {
+      "id": 400000008,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "communication",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "溝通；傳達；交流",
+      "sentence": "Sign language is a form of ___ used by people who can't hear.",
+      "options": [
+        "communication",
+        "appreciation",
+        "confidence",
+        "impression"
+      ]
+    },
+    {
+      "id": 400000009,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "communicate",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "溝通；傳播",
+      "sentence": "They use gestures to ___ with each other when they don't speak the same language.",
+      "options": [
+        "communicate",
+        "appreciate",
+        "concentrate",
+        "calculate"
+      ]
+    },
+    {
+      "id": 400000010,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "communicative",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "善於溝通的；愛交際的",
+      "sentence": "He is a very ___ person who easily makes friends wherever he goes.",
+      "options": [
+        "communicative",
+        "confidential",
+        "chewy",
+        "hesitant"
+      ]
+    },
+    {
+      "id": 400000011,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "confidence",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "信心",
+      "sentence": "You should have more ___ in yourself and your ability to solve the problem.",
+      "options": [
+        "confidence",
+        "appreciation",
+        "communication",
+        "hesitation"
+      ]
+    },
+    {
+      "id": 400000012,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "confident",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "有信心的；自信的",
+      "sentence": "She feels ___ that she will pass the exam with excellent grades.",
+      "options": [
+        "confident",
+        "confidential",
+        "communicative",
+        "appreciative"
+      ]
+    },
+    {
+      "id": 400000013,
+      "category": "Level 4",
+      "folder": "Unit 2",
+      "word": "confidential",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "機密的；祕密的",
+      "sentence": "These documents are strictly ___ and must not be shared with anyone.",
+      "options": [
+        "confidential",
+        "confident",
+        "communicative",
+        "chewy"
+      ]
     }
   ],
   "students": [
     {
       "acc": "Roger",
       "pwd": "1209",
-      "name": "羅傑",
+      "name": "劉承軒",
       "perm": "高中"
     }
   ]
