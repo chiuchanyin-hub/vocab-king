@@ -210,7 +210,7 @@
              <span id="cloze-pos-tag" class="pos-tag" style="background:#312e81; color:#a5b4fc;">n.</span>
           </div>
           <h2 id="cloze-sentence" style="font-size:1.35rem; line-height:1.6; color:#f8fafc; font-weight:800;">題目載入中...</h2>
-          <!-- 句子中文翻譯區 -->
+          <!-- 這裡專門用來顯示整句中文翻譯 -->
           <p id="cloze-zh" style="display:none; color:#38bdf8; font-weight:700; margin-top:14px; font-size:1.05rem; line-height:1.5;"></p>
         </div>
         <div id="cloze-options-container" class="answers-stack"></div>
@@ -663,7 +663,7 @@
       }
 
       // ==========================================
-      // 【頁籤 3】克漏字對戰 (答題後直接將英文句子翻譯成中文顯示)
+      // 【頁籤 3】克漏字對戰 (答題後將整句例句翻譯成中文)
       // ==========================================
       document.getElementById('next-cloze-btn').addEventListener('click', () => { currentWordIndex++; loadClozeQuestion(); });
 
@@ -692,7 +692,6 @@
         let sentenceText = q.sentence || `The meaning of this word is ___ .`;
         document.getElementById('cloze-sentence').innerHTML = sentenceText.replace('___', '<span style="color:var(--danger);">___</span>');
         
-        // 進入題目時隱藏中文
         document.getElementById('cloze-zh').innerHTML = ""; 
         document.getElementById('cloze-zh').style.display = "none";
 
@@ -714,18 +713,18 @@
         startTimer('cloze');
       }
 
-      // 自動將整段例句翻譯成繁體中文並直接呈現
+      // 替換為完整例句翻譯（使用標準的線上翻譯源或現有字串）
       async function renderSentenceTranslation(q) {
         const zhEl = document.getElementById('cloze-zh');
         zhEl.style.display = 'block';
 
-        // 如果資料庫本身已經有包含例句中文翻譯
+        // 如果資料庫已經有例句中文翻譯
         if (q.sentence_zh) {
           zhEl.innerText = `中文翻譯：${q.sentence_zh}`;
           return;
         }
 
-        // 把 ___ 填入正確答案組成完整英文句子
+        // 把 ___ 替換為正確單字組合成完整英文句子
         const fullSentence = (q.sentence || '').replace(/___/g, q.word);
         zhEl.innerText = '中文翻譯：翻譯載入中...';
 
@@ -736,11 +735,10 @@
             const translated = data[0].map(item => item[0]).join('');
             zhEl.innerText = `中文翻譯：${translated}`;
           } else {
-            zhEl.innerText = `中文翻譯：${q.zh}`;
+            zhEl.innerText = `中文翻譯：(無法取得翻譯)`;
           }
         } catch (e) {
-          // 備援方案
-          zhEl.innerText = `中文翻譯：${q.zh}`;
+          zhEl.innerText = `中文翻譯：(無法取得翻譯)`;
         }
       }
 
@@ -759,7 +757,7 @@
           addMistake(q); 
         }
 
-        renderSentenceTranslation(q);
+        renderSentenceTranslation(q); // 顯示整句翻譯而不是單字翻譯
         document.getElementById('next-cloze-btn').style.display = 'block';
       }
 
@@ -772,7 +770,7 @@
         allBtns.forEach(b => { if (b.innerText === q.word) b.classList.add('correct'); });
         addMistake(q); 
 
-        renderSentenceTranslation(q);
+        renderSentenceTranslation(q); // 顯示整句翻譯而不是單字翻譯
         document.getElementById('next-cloze-btn').style.display = 'block';
       }
 
