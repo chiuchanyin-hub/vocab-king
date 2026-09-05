@@ -267,7 +267,7 @@
           if (count >= playCount) return;
           const utterance = new SpeechSynthesisUtterance(word);
           utterance.lang = 'en-US';
-          utterance.rate = 0.4; 
+          utterance.rate = 0.5; 
           utterance.onend = () => {
             count++;
             if (count < playCount) {
