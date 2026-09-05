@@ -230,29 +230,27 @@
   </div>
 
   <script>
-    <script>
-    // ====== 新增：開機自動全自動雲端同步載入機制 ======
+  <script>
+    // ====== 絕對安全背景同步防呆機制（絕不卡死手機與無痕模式） ======
     async function initAutoSyncCloud() {
       try {
         const response = await fetch('questions.json?v=' + Date.now());
         if (response.ok) {
           const cloudData = await response.json();
-          if (cloudData.questions && cloudData.questions.length > 0) {
+          if (cloudData && cloudData.questions && cloudData.questions.length > 0) {
             localStorage.setItem('app_all_questions', JSON.stringify(cloudData.questions));
           }
-          if (cloudData.students && cloudData.students.length > 0) {
+          if (cloudData && cloudData.students && cloudData.students.length > 0) {
             localStorage.setItem('student_accounts', JSON.stringify(cloudData.students));
           }
         }
       } catch (e) {
-        console.log("使用本機快取離線運行");
+        console.log("背景同步略過，安全維持本機運行");
       }
     }
-    initAutoSyncCloud(); // 立即在最上方執行自動同步
+    // 獨立於背景執行，絕不阻塞手機畫面或導致按鈕失效
+    setTimeout(initAutoSyncCloud, 100);
 
-    const DEFAULT_BASE_QUESTIONS = [
-      {"id": 1, "category": "高中學測", "folder": "Unit 1", "word": "cue", "pos": "n.", "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
-// ... (下方其餘原有程式碼保持不變)
     const DEFAULT_BASE_QUESTIONS = [
       {"id": 1, "category": "高中學測", "folder": "Unit 1", "word": "cue", "pos": "n.", "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
       {"id": 2, "category": "高中學測", "folder": "Unit 1", "word": "declare", "pos": "v.", "zh": "宣布；宣稱", "sentence": "The government decided to ___ the day a public holiday.", "options": ["declare", "divorce", "disappoint", "finance"]},
