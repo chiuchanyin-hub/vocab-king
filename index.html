@@ -210,7 +210,8 @@
              <span id="cloze-pos-tag" class="pos-tag" style="background:#312e81; color:#a5b4fc;">n.</span>
           </div>
           <h2 id="cloze-sentence" style="font-size:1.35rem; line-height:1.6; color:#f8fafc; font-weight:800;">題目載入中...</h2>
-          <p id="cloze-zh" style="display:none; color:#94a3b8; font-weight:700; margin-top:14px; font-size:1.1rem;"></p>
+          <!-- 句子中文翻譯區 -->
+          <p id="cloze-zh" style="display:none; color:#38bdf8; font-weight:700; margin-top:14px; font-size:1.05rem; line-height:1.5;"></p>
         </div>
         <div id="cloze-options-container" class="answers-stack"></div>
         <button id="next-cloze-btn" class="btn-next-action" style="display:none; margin-top:10px; width:100%;">NEXT 下一題 ➔</button>
@@ -223,11 +224,8 @@
           <span style="font-weight:800; color:#334155; margin-left:auto;">我的錯題本</span>
           <button id="clear-mistakes-btn" class="btn-secondary" style="margin-left:auto; background:#fee2e2; color:#ef4444; font-size:0.75rem;">🗑️ 全部清空</button>
         </div>
-        <div id="mistakes-list-container" style="display:flex; flex-direction:column; gap:10px; overflow-y:auto; flex:1; padding-bottom:20px;">
-          <!-- 錯題卡片動態產生於此 -->
-        </div>
+        <div id="mistakes-list-container" style="display:flex; flex-direction:column; gap:10px; overflow-y:auto; flex:1; padding-bottom:20px;"></div>
       </main>
-
     </div>
   </div>
 
@@ -241,7 +239,6 @@
     let loggedInStudent = null;
     let currentLobbyCategory = "高中學測";
     
-    // 題庫變數
     let activeWordList = [];
     let currentWordIndex = 0;
     let wordScore = 0;
@@ -256,16 +253,12 @@
     let timeLeft = 15;
     let isTimeUp = false;
 
-    // 發音專用計時器
     let pronunciationTimeout = null;
 
     window.addEventListener('DOMContentLoaded', () => {
       
       updateMistakeBadge();
 
-      // ==========================================
-      // 發音核心函數
-      // ==========================================
       function playWordAudio(word, playCount = 1) {
         if (!window.speechSynthesis) return;
         window.speechSynthesis.cancel(); 
@@ -278,7 +271,7 @@
           utterance.onend = () => {
             count++;
             if (count < playCount) {
-              setTimeout(speak, 600); // 間隔 0.6 秒後重複
+              setTimeout(speak, 600); 
             }
           };
           window.speechSynthesis.speak(utterance);
@@ -286,14 +279,12 @@
         speak();
       }
 
-      // 綁定手動聽發音按鈕
       document.getElementById('game-sound-btn').addEventListener('click', () => {
         if (activeWordList.length > 0) {
           playWordAudio(activeWordList[currentWordIndex].word, 1);
         }
       });
 
-      // ================= 1. 學生登入機制 =================
       function attemptLogin() {
         const errEl = document.getElementById('student-login-err');
         errEl.style.display = 'none';
@@ -343,12 +334,10 @@
         document.getElementById('student-acc-input').value = '';
         document.getElementById('student-pwd-input').value = '';
 
-        // 登出時停止發音
         clearTimeout(pronunciationTimeout);
         if(window.speechSynthesis) window.speechSynthesis.cancel();
       });
 
-      // ================= 2. 大廳邏輯 =================
       function initLobbyCategories() {
         let allQuestions = [];
         try { allQuestions = JSON.parse(localStorage.getItem('app_all_questions')) || DEFAULT_BASE_QUESTIONS; } 
@@ -407,7 +396,6 @@
         });
       });
 
-      // ================= 3. 頁籤切換與計時器 =================
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -469,9 +457,6 @@
         if (fillEl) fillEl.style.width = (timeLeft / 15 * 100) + '%';
       }
 
-      // ==========================================
-      // 不熟區紀錄函數
-      // ==========================================
       function updateMistakeBadge() {
         const badge = document.getElementById('mistake-badge');
         if (badge) badge.innerText = mistakesArray.length;
@@ -486,9 +471,6 @@
         }
       }
 
-      // ==========================================
-      // 【頁籤 1】單字挑戰邏輯 (加入進入2秒後自動發音2次)
-      // ==========================================
       document.getElementById('next-question-btn').addEventListener('click', () => { currentWordIndex++; loadWordQuestion(); });
       document.getElementById('submit-btn').addEventListener('click', submitWordAnswer);
       document.getElementById('answer-input').addEventListener('input', updateSlotsDisplay);
@@ -534,7 +516,6 @@
 
         startTimer('game');
 
-        // 第2秒自動發音2次
         clearTimeout(pronunciationTimeout);
         if(window.speechSynthesis) window.speechSynthesis.cancel();
         pronunciationTimeout = setTimeout(() => {
@@ -580,7 +561,6 @@
         if (!activeWordList.length) return;
         clearInterval(timerInterval); 
         
-        // 作答後停止念單字
         clearTimeout(pronunciationTimeout);
         if(window.speechSynthesis) window.speechSynthesis.cancel();
 
@@ -613,9 +593,6 @@
         if (inp && !inp.disabled) { inp.focus(); updateSlotsDisplay(); }
       };
 
-      // ==========================================
-      // 【頁籤 2】片語特訓
-      // ==========================================
       document.getElementById('next-phrase-btn').addEventListener('click', () => { currentPhraseIndex++; loadPhraseQuestion(); });
 
       function startNewPhraseSession() {
@@ -686,7 +663,7 @@
       }
 
       // ==========================================
-      // 【頁籤 3】克漏字對戰 (新增答題後顯示中文翻譯)
+      // 【頁籤 3】克漏字對戰 (答題後直接將英文句子翻譯成中文顯示)
       // ==========================================
       document.getElementById('next-cloze-btn').addEventListener('click', () => { currentWordIndex++; loadClozeQuestion(); });
 
@@ -716,7 +693,7 @@
         document.getElementById('cloze-sentence').innerHTML = sentenceText.replace('___', '<span style="color:var(--danger);">___</span>');
         
         // 進入題目時隱藏中文
-        document.getElementById('cloze-zh').innerText = ""; 
+        document.getElementById('cloze-zh').innerHTML = ""; 
         document.getElementById('cloze-zh').style.display = "none";
 
         const box = document.getElementById('cloze-options-container');
@@ -737,6 +714,36 @@
         startTimer('cloze');
       }
 
+      // 自動將整段例句翻譯成繁體中文並直接呈現
+      async function renderSentenceTranslation(q) {
+        const zhEl = document.getElementById('cloze-zh');
+        zhEl.style.display = 'block';
+
+        // 如果資料庫本身已經有包含例句中文翻譯
+        if (q.sentence_zh) {
+          zhEl.innerText = `中文翻譯：${q.sentence_zh}`;
+          return;
+        }
+
+        // 把 ___ 填入正確答案組成完整英文句子
+        const fullSentence = (q.sentence || '').replace(/___/g, q.word);
+        zhEl.innerText = '中文翻譯：翻譯載入中...';
+
+        try {
+          const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=zh-TW&dt=t&q=${encodeURIComponent(fullSentence)}`);
+          const data = await res.json();
+          if (data && data[0]) {
+            const translated = data[0].map(item => item[0]).join('');
+            zhEl.innerText = `中文翻譯：${translated}`;
+          } else {
+            zhEl.innerText = `中文翻譯：${q.zh}`;
+          }
+        } catch (e) {
+          // 備援方案
+          zhEl.innerText = `中文翻譯：${q.zh}`;
+        }
+      }
+
       function handleClozeClick(selected, correctWord, clickedBtn, box, q) {
         clearInterval(timerInterval);
         const allBtns = box.querySelectorAll('button');
@@ -752,10 +759,7 @@
           addMistake(q); 
         }
 
-        // 【新增：答題後顯示中文】
-        document.getElementById('cloze-zh').innerText = `中文翻譯：${q.zh}`;
-        document.getElementById('cloze-zh').style.display = 'block';
-
+        renderSentenceTranslation(q);
         document.getElementById('next-cloze-btn').style.display = 'block';
       }
 
@@ -768,10 +772,7 @@
         allBtns.forEach(b => { if (b.innerText === q.word) b.classList.add('correct'); });
         addMistake(q); 
 
-        // 【新增：時間到後顯示中文】
-        document.getElementById('cloze-zh').innerText = `中文翻譯：${q.zh}`;
-        document.getElementById('cloze-zh').style.display = 'block';
-
+        renderSentenceTranslation(q);
         document.getElementById('next-cloze-btn').style.display = 'block';
       }
 
