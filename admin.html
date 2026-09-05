@@ -174,7 +174,7 @@
     // ====== 新增：開機自動全自動雲端同步載入機制 ======
     async function initAutoSyncCloud() {
       try {
-        const response = await fetch('data.json?v=' + Date.now());
+        const response = await fetch('questions.json?v=' + Date.now());
         if (response.ok) {
           const cloudData = await response.json();
           if (cloudData.questions && cloudData.questions.length > 0) {
