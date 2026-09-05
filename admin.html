@@ -72,7 +72,7 @@
         </div>
       </div>
 
-      <!-- 區塊 1：📸 AI 拍照建題 -->
+      <!-- 區塊 1：📸 AI 拍照建題 (已修復並連接 Gemini API) -->
       <div class="section-card" style="border:2px dashed #6366f1;">
         <h3 style="color:#4338ca;">📸 課本照片智慧辨識（Gemini 拍照自動建題）</h3>
         <div class="form-row">
@@ -271,7 +271,7 @@
     });
 
     // ----------------------------------------------------
-    // 📸 AI 拍照建題功能 (Gemini API 整合版)
+    // 📸 AI 拍照建題功能 (已連結 Gemini 2.0 Flash 視覺辨識)
     // ----------------------------------------------------
     function fileToBase64(file) {
       return new Promise((resolve, reject) => {
@@ -298,7 +298,7 @@
     "options": ["正確單字", "干擾項1", "干擾項2", "干擾項3"]
   }
 ]`;
-      // 使用已驗證成功且支援多模態視覺辨識的穩定模型端點
+      // 使用穩定且支援視覺辨識的 gemini-2.0-flash 端點
       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
