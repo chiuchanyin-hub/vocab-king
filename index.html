@@ -130,7 +130,6 @@
           <label for="game-chapter-filter" style="margin-left:auto;">🎯 單元：</label>
           <select id="game-chapter-filter" class="chapter-dropdown"></select>
         </div>
-
         <div class="game-status-bar">
           <span id="game-progress-tag" class="pill pill-level">進度：0 / 0</span>
           <span id="score-display" class="pill pill-score">積分：0</span>
@@ -139,20 +138,17 @@
           </div>
         </div>
         <div class="timer-progress-bar"><div id="game-timer-fill" class="timer-fill"></div></div>
-
         <div class="card quiz-card">
           <div style="display:flex; justify-content:center; gap:6px;">
             <span id="quiz-chapter" class="chapter-tag">Unit 1</span>
             <span id="quiz-pos" class="pos-tag">詞性</span>
           </div>
           <h2 id="quiz-chinese" class="chinese-prompt">題目載入中...</h2>
-          <!-- 這裡加回聽發音按鈕 -->
           <div class="hint-audio-bar">
             <span id="quiz-hint" class="hint-text">提示資訊</span>
             <button type="button" id="game-sound-btn" class="btn-sound-hint">🔊 聽發音</button>
           </div>
         </div>
-
         <div class="pure-dashed-zone" onclick="focusHiddenInput()">
           <div id="letter-slots-container" class="slots-flex-row"></div>
           <input type="text" id="answer-input" class="ghost-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
@@ -214,7 +210,6 @@
              <span id="cloze-pos-tag" class="pos-tag" style="background:#312e81; color:#a5b4fc;">n.</span>
           </div>
           <h2 id="cloze-sentence" style="font-size:1.35rem; line-height:1.6; color:#f8fafc; font-weight:800;">題目載入中...</h2>
-          <!-- 克漏字保留隱藏狀態不顯示中文 -->
           <p id="cloze-zh" style="display:none; color:#94a3b8; font-weight:700; margin-top:14px; font-size:1.1rem;"></p>
         </div>
         <div id="cloze-options-container" class="answers-stack"></div>
@@ -492,7 +487,7 @@
       }
 
       // ==========================================
-      // 【頁籤 1】單字挑戰邏輯 
+      // 【頁籤 1】單字挑戰邏輯 (加入進入2秒後自動發音2次)
       // ==========================================
       document.getElementById('next-question-btn').addEventListener('click', () => { currentWordIndex++; loadWordQuestion(); });
       document.getElementById('submit-btn').addEventListener('click', submitWordAnswer);
@@ -691,7 +686,7 @@
       }
 
       // ==========================================
-      // 【頁籤 3】克漏字對戰
+      // 【頁籤 3】克漏字對戰 (新增答題後顯示中文翻譯)
       // ==========================================
       document.getElementById('next-cloze-btn').addEventListener('click', () => { currentWordIndex++; loadClozeQuestion(); });
 
@@ -705,6 +700,7 @@
         if (!activeWordList.length) {
           document.getElementById('cloze-sentence').innerText = "此單元無克漏字題目";
           document.getElementById('cloze-zh').innerText = "";
+          document.getElementById('cloze-zh').style.display = "none";
           document.getElementById('cloze-options-container').innerHTML = '';
           clearInterval(timerInterval);
           return;
@@ -719,8 +715,9 @@
         let sentenceText = q.sentence || `The meaning of this word is ___ .`;
         document.getElementById('cloze-sentence').innerHTML = sentenceText.replace('___', '<span style="color:var(--danger);">___</span>');
         
-        // 確保中文被隱藏
+        // 進入題目時隱藏中文
         document.getElementById('cloze-zh').innerText = ""; 
+        document.getElementById('cloze-zh').style.display = "none";
 
         const box = document.getElementById('cloze-options-container');
         box.innerHTML = '';
@@ -754,6 +751,11 @@
           allBtns.forEach(b => { if (b.innerText === correctWord) b.classList.add('correct'); });
           addMistake(q); 
         }
+
+        // 【新增：答題後顯示中文】
+        document.getElementById('cloze-zh').innerText = `中文翻譯：${q.zh}`;
+        document.getElementById('cloze-zh').style.display = 'block';
+
         document.getElementById('next-cloze-btn').style.display = 'block';
       }
 
@@ -765,6 +767,11 @@
         
         allBtns.forEach(b => { if (b.innerText === q.word) b.classList.add('correct'); });
         addMistake(q); 
+
+        // 【新增：時間到後顯示中文】
+        document.getElementById('cloze-zh').innerText = `中文翻譯：${q.zh}`;
+        document.getElementById('cloze-zh').style.display = 'block';
+
         document.getElementById('next-cloze-btn').style.display = 'block';
       }
 
