@@ -144,7 +144,10 @@
             <span id="quiz-pos" class="pos-tag">詞性</span>
           </div>
           <h2 id="quiz-chinese" class="chinese-prompt">題目載入中...</h2>
-          <div class="hint-audio-bar"><span id="quiz-hint" class="hint-text">提示資訊</span></div>
+          <div class="hint-audio-bar">
+            <span id="quiz-hint" class="hint-text">提示資訊</span>
+            <button type="button" id="game-sound-btn" class="btn-sound-hint">🔊 聽發音</button>
+          </div>
         </div>
         <div class="pure-dashed-zone" onclick="focusHiddenInput()">
           <div id="letter-slots-container" class="slots-flex-row"></div>
@@ -253,10 +256,41 @@
     let timerInterval;
     let timeLeft = 15;
     let isTimeUp = false;
+    let pronunciationTimeout = null; // 【發音：新增計時器變數】
 
     window.addEventListener('DOMContentLoaded', () => {
       
       updateMistakeBadge();
+
+      // ==========================================
+      // 【新增發音核心函數】
+      // ==========================================
+      function playWordAudio(word, playCount = 1) {
+        if (!window.speechSynthesis) return;
+        window.speechSynthesis.cancel(); // 停止先前的發音
+        let count = 0;
+        function speak() {
+          if (count >= playCount) return;
+          const utterance = new SpeechSynthesisUtterance(word);
+          utterance.lang = 'en-US';
+          utterance.rate = 0.85; // 放慢語速適合學生
+          utterance.onend = () => {
+            count++;
+            if (count < playCount) {
+              setTimeout(speak, 600); // 間隔 0.6 秒後重複
+            }
+          };
+          window.speechSynthesis.speak(utterance);
+        }
+        speak();
+      }
+
+      // 綁定手動發音按鈕
+      document.getElementById('game-sound-btn').addEventListener('click', () => {
+        if (activeWordList.length > 0) {
+          playWordAudio(activeWordList[currentWordIndex].word, 1);
+        }
+      });
 
       // ================= 1. 學生登入機制 =================
       function attemptLogin() {
@@ -307,6 +341,10 @@
         document.getElementById('view-student-login').style.display = 'flex';
         document.getElementById('student-acc-input').value = '';
         document.getElementById('student-pwd-input').value = '';
+        
+        // 離開或登出時停止發音
+        clearTimeout(pronunciationTimeout);
+        if(window.speechSynthesis) window.speechSynthesis.cancel();
       });
 
       // ================= 2. 大廳邏輯 =================
@@ -359,6 +397,9 @@
       document.querySelectorAll('.btn-back-lobby').forEach(btn => {
         btn.addEventListener('click', () => {
           clearInterval(timerInterval);
+          clearTimeout(pronunciationTimeout);
+          if(window.speechSynthesis) window.speechSynthesis.cancel();
+          
           document.getElementById('view-student-main').style.display = 'none';
           document.getElementById('view-student-lobby').style.display = 'flex';
           initLobbyCategories();
@@ -376,6 +417,9 @@
           document.getElementById(targetId).classList.add('active');
 
           clearInterval(timerInterval); 
+          clearTimeout(pronunciationTimeout);
+          if(window.speechSynthesis) window.speechSynthesis.cancel();
+          
           filterWordList();
 
           if (targetId === 'view-game') startNewWordSession();
@@ -442,7 +486,7 @@
       }
 
       // ==========================================
-      // 【頁籤 1】單字挑戰邏輯
+      // 【頁籤 1】單字挑戰邏輯 (加入進入2秒後自動發音2次)
       // ==========================================
       document.getElementById('next-question-btn').addEventListener('click', () => { currentWordIndex++; loadWordQuestion(); });
       document.getElementById('submit-btn').addEventListener('click', submitWordAnswer);
@@ -488,6 +532,17 @@
         document.getElementById('next-question-btn').style.display = 'none';
 
         startTimer('game');
+
+        // 【發音：進入題目第2秒開始發音，發2次】
+        clearTimeout(pronunciationTimeout);
+        if(window.speechSynthesis) window.speechSynthesis.cancel();
+        
+        pronunciationTimeout = setTimeout(() => {
+          const currentView = document.querySelector('.view-panel.active');
+          if (currentView && currentView.id === 'view-game' && !document.getElementById('answer-input').disabled) {
+            playWordAudio(q.word, 2);
+          }
+        }, 2000);
       }
 
       function updateSlotsDisplay() {
@@ -524,6 +579,10 @@
       function submitWordAnswer() {
         if (!activeWordList.length) return;
         clearInterval(timerInterval); 
+        
+        // 【發音：作答後立刻切斷正在播放的聲音】
+        clearTimeout(pronunciationTimeout);
+        if(window.speechSynthesis) window.speechSynthesis.cancel();
 
         const input = document.getElementById('answer-input');
         const userAns = input.value.trim().toLowerCase();
@@ -627,7 +686,7 @@
       }
 
       // ==========================================
-      // 【頁籤 3】克漏字對戰 (修正移除中文提示)
+      // 【頁籤 3】克漏字對戰
       // ==========================================
       document.getElementById('next-cloze-btn').addEventListener('click', () => { currentWordIndex++; loadClozeQuestion(); });
 
@@ -655,7 +714,6 @@
         let sentenceText = q.sentence || `The meaning of this word is ___ .`;
         document.getElementById('cloze-sentence').innerHTML = sentenceText.replace('___', '<span style="color:var(--danger);">___</span>');
         
-        // 移除中文提示，不再指派文字，保持隱藏狀態
         document.getElementById('cloze-zh').innerText = ""; 
 
         const box = document.getElementById('cloze-options-container');
