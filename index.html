@@ -71,7 +71,7 @@
 </head>
 <body>
   <div class="app-shell">
-    <!-- ================= 學生登入介面 (原有功能鎖死) ================= -->
+    <!-- ================= 學生登入介面 ================= -->
     <div id="view-student-login" class="student-login-view">
       <div style="font-size:3.5rem; margin-bottom:10px;">👑</div>
       <h2 style="color:#0f172a; margin-bottom:6px;">高中單字挑戰王</h2>
@@ -84,7 +84,7 @@
       </div>
     </div>
 
-    <!-- ================= 學生大廳 (原有功能鎖死) ================= -->
+    <!-- ================= 學生大廳 ================= -->
     <div id="view-student-lobby" style="display:none; flex-direction:column; padding: 30px 24px; flex:1; align-items:center; justify-content:center;">
       <h2 style="color:#0f172a; margin-bottom:8px; font-size:1.8rem;">👋 歡迎，<span id="lobby-student-name" style="color:var(--primary);"></span></h2>
       <p id="lobby-perm-tag" style="color:#10b981; font-weight:700; font-size:0.95rem; margin-bottom: 24px;"></p>
@@ -107,7 +107,7 @@
       <button id="lobby-logout-btn" class="btn-secondary" style="margin-top: 20px; width:100%; padding:12px;">登出換人</button>
     </div>
 
-    <!-- ================= 學生主操作畫面 (含頁籤切換) ================= -->
+    <!-- ================= 學生主操作畫面 ================= -->
     <div id="view-student-main" style="display:none; flex-direction:column; flex:1;">
       <header class="app-nav">
         <div class="nav-tabs-group">
@@ -123,7 +123,7 @@
         <span id="cur-category-tag" style="color:#10b981; font-weight:800;">高中學測</span>
       </div>
 
-      <!-- ================= 頁籤 1：單字挑戰王 (原有功能鎖死) ================= -->
+      <!-- ================= 頁籤 1：單字挑戰王 ================= -->
       <main id="view-game" class="view-panel active">
         <div class="chapter-selector-bar">
           <button class="btn-back-lobby btn-secondary" style="padding:6px 10px; font-size:0.75rem; background:#cbd5e1; color:#334155; margin-right:8px; border-radius:8px;">🏠 回大廳</button>
@@ -157,7 +157,7 @@
         <div id="game-feedback" class="feedback-box"></div>
       </main>
 
-      <!-- ================= 頁籤 2：🧩 片語特訓 (新增功能) ================= -->
+      <!-- ================= 頁籤 2：🧩 片語特訓 ================= -->
       <main id="view-phrase" class="view-panel">
         <div class="chapter-selector-bar">
           <button class="btn-back-lobby btn-secondary" style="padding:6px 10px; font-size:0.75rem; background:#cbd5e1; color:#334155; margin-right:8px; border-radius:8px;">🏠 回大廳</button>
@@ -185,7 +185,7 @@
         <button id="next-phrase-btn" class="btn-next-action" style="display:none; margin-top:10px; width:100%;">NEXT 下一題 ➔</button>
       </main>
 
-      <!-- ================= 頁籤 3：克漏字對戰 (原有功能鎖死) ================= -->
+      <!-- ================= 頁籤 3：克漏字對戰 ================= -->
       <main id="view-cloze" class="view-panel arena-bg">
         <div class="cloze-top-control">
           <button class="btn-back-lobby btn-secondary" style="padding:6px 10px; font-size:0.75rem; background:#cbd5e1; color:#334155; border-radius:8px;">🏠 回大廳</button>
@@ -207,13 +207,13 @@
              <span id="cloze-pos-tag" class="pos-tag" style="background:#312e81; color:#a5b4fc;">n.</span>
           </div>
           <h2 id="cloze-sentence" style="font-size:1.35rem; line-height:1.6; color:#f8fafc; font-weight:800;">題目載入中...</h2>
-          <p id="cloze-zh" style="color:#94a3b8; font-weight:700; margin-top:14px; font-size:1.1rem;"></p>
+          <p id="cloze-zh" style="display:none; color:#94a3b8; font-weight:700; margin-top:14px; font-size:1.1rem;"></p>
         </div>
         <div id="cloze-options-container" class="answers-stack"></div>
         <button id="next-cloze-btn" class="btn-next-action" style="display:none; margin-top:10px; width:100%;">NEXT 下一題 ➔</button>
       </main>
 
-      <!-- ================= 頁籤 4：📖 不熟區 (新增功能) ================= -->
+      <!-- ================= 頁籤 4：📖 不熟區 ================= -->
       <main id="view-mistakes" class="view-panel">
         <div class="chapter-selector-bar">
           <button class="btn-back-lobby btn-secondary" style="padding:6px 10px; font-size:0.75rem; background:#cbd5e1; color:#334155; margin-right:8px; border-radius:8px;">🏠 回大廳</button>
@@ -247,7 +247,7 @@
     let currentPhraseIndex = 0;
     let phraseScore = 0;
 
-    // 不熟區變數 (新增)
+    // 不熟區變數
     let mistakesArray = JSON.parse(localStorage.getItem('student_mistakes') || '[]');
 
     let timerInterval;
@@ -256,10 +256,9 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       
-      // 更新錯題 Badge (新增)
       updateMistakeBadge();
 
-      // ================= 1. 學生登入機制 (原有功能鎖死) =================
+      // ================= 1. 學生登入機制 =================
       function attemptLogin() {
         const errEl = document.getElementById('student-login-err');
         errEl.style.display = 'none';
@@ -310,7 +309,7 @@
         document.getElementById('student-pwd-input').value = '';
       });
 
-      // ================= 2. 大廳邏輯 (原有功能鎖死) =================
+      // ================= 2. 大廳邏輯 =================
       function initLobbyCategories() {
         let allQuestions = [];
         try { allQuestions = JSON.parse(localStorage.getItem('app_all_questions')) || DEFAULT_BASE_QUESTIONS; } 
@@ -366,7 +365,7 @@
         });
       });
 
-      // ================= 3. 頁籤切換與計時器 (原有功能鎖死 + 擴充) =================
+      // ================= 3. 頁籤切換與計時器 =================
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -381,14 +380,14 @@
 
           if (targetId === 'view-game') startNewWordSession();
           if (targetId === 'view-cloze') startNewClozeSession();
-          if (targetId === 'view-phrase') startNewPhraseSession(); // (新增)
-          if (targetId === 'view-mistakes') renderMistakes();      // (新增)
+          if (targetId === 'view-phrase') startNewPhraseSession(); 
+          if (targetId === 'view-mistakes') renderMistakes();      
         });
       });
 
       document.getElementById('game-chapter-filter').addEventListener('change', () => { filterWordList(); startNewWordSession(); });
       document.getElementById('cloze-chapter-filter').addEventListener('change', () => { filterWordList(); startNewClozeSession(); });
-      document.getElementById('phrase-chapter-filter').addEventListener('change', () => { filterWordList(); startNewPhraseSession(); }); // (新增)
+      document.getElementById('phrase-chapter-filter').addEventListener('change', () => { filterWordList(); startNewPhraseSession(); }); 
 
       function startTimer(mode) {
         clearInterval(timerInterval);
@@ -404,7 +403,7 @@
             isTimeUp = true;
             if (mode === 'game') submitWordAnswer();
             if (mode === 'cloze') handleClozeTimeout();
-            if (mode === 'phrase') handlePhraseTimeout(); // (新增)
+            if (mode === 'phrase') handlePhraseTimeout(); 
           }
         }, 1000);
       }
@@ -426,7 +425,7 @@
       }
 
       // ==========================================
-      // 【新增共用函數】不熟區紀錄
+      // 不熟區紀錄函數
       // ==========================================
       function updateMistakeBadge() {
         const badge = document.getElementById('mistake-badge');
@@ -435,7 +434,6 @@
 
       function addMistake(q) {
         if (!q) return;
-        // 如果還不在錯題本內，就加入
         if (!mistakesArray.some(m => m.word === q.word)) {
           mistakesArray.push(q);
           localStorage.setItem('student_mistakes', JSON.stringify(mistakesArray));
@@ -444,7 +442,7 @@
       }
 
       // ==========================================
-      // 【頁籤 1】單字挑戰邏輯 (原有功能鎖死 + 紀錄錯題)
+      // 【頁籤 1】單字挑戰邏輯
       // ==========================================
       document.getElementById('next-question-btn').addEventListener('click', () => { currentWordIndex++; loadWordQuestion(); });
       document.getElementById('submit-btn').addEventListener('click', submitWordAnswer);
@@ -531,7 +529,7 @@
         const userAns = input.value.trim().toLowerCase();
         const target = activeWordList[currentWordIndex].word.trim().toLowerCase();
         const fb = document.getElementById('game-feedback');
-        const q = activeWordList[currentWordIndex]; // 取得當前題目
+        const q = activeWordList[currentWordIndex]; 
 
         input.disabled = true;
 
@@ -543,7 +541,7 @@
         } else {
           fb.className = 'feedback-box error';
           fb.innerHTML = isTimeUp ? `⏰ 時間到！正解：${target}` : `❌ 錯誤！正解：${target}`;
-          addMistake(q); // (新增) 答錯加入不熟區
+          addMistake(q); 
         }
 
         updateSlotsDisplay();
@@ -557,7 +555,7 @@
       };
 
       // ==========================================
-      // 【頁籤 2】片語特訓 (新增功能)
+      // 【頁籤 2】片語特訓
       // ==========================================
       document.getElementById('next-phrase-btn').addEventListener('click', () => { currentPhraseIndex++; loadPhraseQuestion(); });
 
@@ -612,7 +610,7 @@
         } else {
           clickedBtn.classList.add('wrong');
           allBtns.forEach(b => { if (b.innerText === correctWord) b.classList.add('correct'); });
-          addMistake(q); // (新增) 答錯加入不熟區
+          addMistake(q); 
         }
         document.getElementById('next-phrase-btn').style.display = 'block';
       }
@@ -624,12 +622,12 @@
         const q = activePhraseList[currentPhraseIndex];
         
         allBtns.forEach(b => { if (b.innerText === q.word) b.classList.add('correct'); });
-        addMistake(q); // (新增) 答錯加入不熟區
+        addMistake(q); 
         document.getElementById('next-phrase-btn').style.display = 'block';
       }
 
       // ==========================================
-      // 【頁籤 3】克漏字對戰 (原有功能鎖死 + 紀錄錯題)
+      // 【頁籤 3】克漏字對戰 (修正移除中文提示)
       // ==========================================
       document.getElementById('next-cloze-btn').addEventListener('click', () => { currentWordIndex++; loadClozeQuestion(); });
 
@@ -656,7 +654,9 @@
 
         let sentenceText = q.sentence || `The meaning of this word is ___ .`;
         document.getElementById('cloze-sentence').innerHTML = sentenceText.replace('___', '<span style="color:var(--danger);">___</span>');
-        document.getElementById('cloze-zh').innerText = `中文提示：${q.zh}`;
+        
+        // 移除中文提示，不再指派文字，保持隱藏狀態
+        document.getElementById('cloze-zh').innerText = ""; 
 
         const box = document.getElementById('cloze-options-container');
         box.innerHTML = '';
@@ -688,7 +688,7 @@
         } else {
           clickedBtn.classList.add('wrong');
           allBtns.forEach(b => { if (b.innerText === correctWord) b.classList.add('correct'); });
-          addMistake(q); // (新增) 答錯加入不熟區
+          addMistake(q); 
         }
         document.getElementById('next-cloze-btn').style.display = 'block';
       }
@@ -700,12 +700,12 @@
         const q = activeWordList[currentWordIndex];
         
         allBtns.forEach(b => { if (b.innerText === q.word) b.classList.add('correct'); });
-        addMistake(q); // (新增) 答錯加入不熟區
+        addMistake(q); 
         document.getElementById('next-cloze-btn').style.display = 'block';
       }
 
       // ==========================================
-      // 【頁籤 4】不熟區 (新增功能)
+      // 【頁籤 4】不熟區 
       // ==========================================
       document.getElementById('clear-mistakes-btn').addEventListener('click', () => {
         if(confirm('確定要清空所有不熟的單字嗎？')) {
@@ -782,12 +782,10 @@
         const viewId = document.querySelector('.view-panel.active').id;
         
         if (viewId === 'view-phrase') {
-           // 片語：篩選含有空白或連字號的項目，或 isPhrase 為 true
            const f = document.getElementById('phrase-chapter-filter')?.value || "全部章節";
            const base = allQuestions.filter(q => (q.isPhrase || q.word.trim().includes(' ') || q.word.includes('-')) && (q.category || "高中學測") === currentLobbyCategory);
            activePhraseList = f === "全部章節" ? [...base] : base.filter(q => (q.folder || q.chapter || "Unit 1") === f);
         } else {
-           // 單字挑戰 / 克漏字：排除片語
            const filterId = viewId === 'view-game' ? 'game-chapter-filter' : 'cloze-chapter-filter';
            const f = document.getElementById(filterId)?.value || "全部章節";
            const base = allQuestions.filter(q => !q.isPhrase && !q.word.trim().includes(' ') && (q.category || "高中學測") === currentLobbyCategory);
