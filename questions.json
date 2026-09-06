@@ -128031,6 +128031,998 @@
         "zoom",
         "vocational"
       ]
+    },
+    {
+      "id": 1788699649599,
+      "category": "Rich",
+      "folder": "W1",
+      "word": "advise",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "建議；忠告；勸告",
+      "sentence": "Since your boss is so awful, I would ___ you to quit your job.",
+      "options": [
+        "advise",
+        "affect",
+        "afford",
+        "accuse"
+      ]
+    },
+    {
+      "id": 1788699676426,
+      "category": "Rich",
+      "folder": "W1",
+      "word": "adviser",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "顧問；忠告者",
+      "sentence": "As a specialist in environmental policy, she is the government's ___ on the pollution problem.",
+      "options": [
+        "adviser",
+        "affair",
+        "actor",
+        "author"
+      ]
+    },
+    {
+      "id": 1788699723882,
+      "category": "Rich",
+      "folder": "W1",
+      "word": "affair",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "事務；外遇；事件",
+      "sentence": "It eventually came to light that the politician had had an ___ with his secretary.",
+      "options": [
+        "affair",
+        "effort",
+        "affect",
+        "offer"
+      ]
+    },
+    {
+      "id": 1788699715871,
+      "category": "Rich",
+      "folder": "W1",
+      "word": "affect",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "影響；侵襲；打動",
+      "sentence": "It goes without saying that the amount of rain ___ the growth of crops.",
+      "options": [
+        "affects",
+        "affords",
+        "advises",
+        "allows"
+      ]
+    },
+    {
+      "id": 1788699688307,
+      "category": "Rich",
+      "folder": "W1",
+      "word": "afford",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "負擔得起；提供",
+      "sentence": "I cannot ___ to purchase a new car; I don't have enough money.",
+      "options": [
+        "afford",
+        "affect",
+        "advise",
+        "allow"
+      ]
+    },
+    {
+      "id": 1788699911009,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "afterward",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "之後",
+      "sentence": "The man was severely injured in last weekend's tragic car accident and died shortly ___.",
+      "options": [
+        "afterwards",
+        "ahead",
+        "alone",
+        "aloud"
+      ]
+    },
+    {
+      "id": 1788699909048,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "against",
+      "pos": "prep.",
+      "isPhrase": false,
+      "zh": "反對；違反；靠著；對...不利；以...為背景",
+      "sentence": "This legislator is strongly ___ the proposal to raise the electricity rate.",
+      "options": [
+        "against",
+        "about",
+        "above",
+        "across"
+      ]
+    },
+    {
+      "id": 1788699907952,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "agreeable",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "欣然同意的；令人愉悅的；宜人的；適合的；可以接受的",
+      "sentence": "An ___ person is usually pleasant and easy to get along with, but don't expect that he or she will always say \"yes\" to everything.",
+      "options": [
+        "agreeable",
+        "ambitious",
+        "alive",
+        "alone"
+      ]
+    },
+    {
+      "id": 1788699891045,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "agriculture",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "農業；農藝，農學",
+      "sentence": "Modern ___ relies heavily on technological innovations to increase crop yields and efficiency.",
+      "options": [
+        "agriculture",
+        "ambulance",
+        "ambassador",
+        "album"
+      ]
+    },
+    {
+      "id": 1788699961440,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "ahead",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "在前面；領先；未來；今後",
+      "sentence": "The teacher told me to move ___ to the front of the class.",
+      "options": [
+        "ahead",
+        "aloud",
+        "altogether",
+        "alike"
+      ]
+    },
+    {
+      "id": 1788699896668,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "aid",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "幫助；支持；援助，救助",
+      "sentence": "The government provided financial ___ to families affected by the disaster.",
+      "options": [
+        "aid",
+        "aim",
+        "alarm",
+        "album"
+      ]
+    },
+    {
+      "id": 1788699941410,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "aim",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "目標；意圖；瞄準",
+      "sentence": "Setting a realistic ___ is the first step toward achieving your dreams.",
+      "options": [
+        "aim",
+        "aid",
+        "alarm",
+        "airline"
+      ]
+    },
+    {
+      "id": 1788699973227,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "aircraft",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "飛機；航空器（單複數同形）",
+      "sentence": "Our ___ carrier gives us a great advantage in this war.",
+      "options": [
+        "aircraft",
+        "airline",
+        "ambulance",
+        "agriculture"
+      ]
+    },
+    {
+      "id": 1788699919600,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "airline",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "航空公司；航線",
+      "sentence": "The angry passengers argued furiously with the ___ staff because their flight was cancelled without any reason.",
+      "options": [
+        "airline",
+        "aircraft",
+        "ambassador",
+        "alphabet"
+      ]
+    },
+    {
+      "id": 1788699968704,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "alarm",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "警報（器）；鬧鐘；驚恐",
+      "sentence": "The fire ___ went off and everyone ran out of the burning building.",
+      "options": [
+        "alarm",
+        "album",
+        "almond",
+        "allowance"
+      ]
+    },
+    {
+      "id": 1788699916842,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "album",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "專輯；黏貼簿（相簿、集郵冊、簽名簿）",
+      "sentence": "The boy band plans to release their long-awaited new ___ next week.",
+      "options": [
+        "album",
+        "almond",
+        "alphabet",
+        "ambulance"
+      ]
+    },
+    {
+      "id": 1788699973457,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "alike",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "相似的，類似的；相像的",
+      "sentence": "The two paintings look ___, but one is an original, and the other is a copy.",
+      "options": [
+        "alike",
+        "alive",
+        "alone",
+        "aloud"
+      ]
+    },
+    {
+      "id": 1788699971498,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "alive",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "活（著）的；在世的；仍然存在的",
+      "sentence": "As digital reading is changing our traditional way of reading, book towns like Hay-on-Wye are particularly important to keep the printed word ___.",
+      "options": [
+        "alive",
+        "alike",
+        "alone",
+        "aloud"
+      ]
+    },
+    {
+      "id": 1788699890250,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "allowance",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "津貼；限額；零用錢",
+      "sentence": "She receives an ___ of one hundred dollars a week.",
+      "options": [
+        "allowance",
+        "ambulance",
+        "amazement",
+        "ambition"
+      ]
+    },
+    {
+      "id": 1788699928752,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "almond",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "杏仁；扁桃樹",
+      "sentence": "California produces over 80% of the world's ___ despite drought conditions facing this agriculture-based state.",
+      "options": [
+        "almonds",
+        "albums",
+        "alphabets",
+        "ambulances"
+      ]
+    },
+    {
+      "id": 1788699956588,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "alone",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "單獨（的），獨自（的）",
+      "sentence": "As the thunderstorm raged outside, Jack took comfort in knowing he was not ___ in the house.",
+      "options": [
+        "alone",
+        "alike",
+        "alive",
+        "aloud"
+      ]
+    },
+    {
+      "id": 1788699948239,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "aloud",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "出聲地",
+      "sentence": "The woman reads the letter ___ in her beautiful voice, which her father loves to hear.",
+      "options": [
+        "aloud",
+        "alone",
+        "alike",
+        "ahead"
+      ]
+    },
+    {
+      "id": 1788699891458,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "alphabet",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "(全套) 字母",
+      "sentence": "Anyone who has studied English knows that there are twenty-six letters in the English ___.",
+      "options": [
+        "alphabet",
+        "album",
+        "almond",
+        "ambassador"
+      ]
+    },
+    {
+      "id": 1788699960596,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "altogether",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "完全地；大體上；合計地",
+      "sentence": "The project was ___ a success despite some initial setbacks.",
+      "options": [
+        "altogether",
+        "aloud",
+        "ahead",
+        "afterward"
+      ]
+    },
+    {
+      "id": 1788699951119,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "amaze",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "使驚訝",
+      "sentence": "Her beautiful voice ___ me during the singing contest.",
+      "options": [
+        "amazed",
+        "aimed",
+        "alarmed",
+        "aided"
+      ]
+    },
+    {
+      "id": 1788699909485,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "amazement",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "驚訝",
+      "sentence": "To his ___, his securely locked car had been skillfully stolen without triggering any alarms.",
+      "options": [
+        "amazement",
+        "allowance",
+        "ambition",
+        "agriculture"
+      ]
+    },
+    {
+      "id": 1788699908957,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "ambassador",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "大使",
+      "sentence": "The ___ negotiated a crucial trade agreement that benefited both nations economically.",
+      "options": [
+        "ambassador",
+        "ambulance",
+        "alphabet",
+        "aircraft"
+      ]
+    },
+    {
+      "id": 1788699970136,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "ambition",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "雄心；抱負；志向；野心",
+      "sentence": "Her lifelong ___ was to become an excellent teacher and inspire as many students as she can.",
+      "options": [
+        "ambition",
+        "amazement",
+        "allowance",
+        "agriculture"
+      ]
+    },
+    {
+      "id": 1788699938322,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "ambitious",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "雄心勃勃的；有抱負的；志向遠大的",
+      "sentence": "Peter is an ___ young man who wants to be the general manager of this company in five years.",
+      "options": [
+        "ambitious",
+        "agreeable",
+        "alike",
+        "alive"
+      ]
+    },
+    {
+      "id": 1788699953675,
+      "category": "Rich",
+      "folder": "W2",
+      "word": "ambulance",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "救護車",
+      "sentence": "Today's ___ have special equipment that helps save lives, and they are driven by trained medical workers.",
+      "options": [
+        "ambulances",
+        "ambassadors",
+        "airlines",
+        "aircrafts"
+      ]
+    },
+    {
+      "id": 1788699958065,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "among",
+      "pos": "prep.",
+      "isPhrase": false,
+      "zh": "在...中；為...所環繞；在...（群體）中；在三者或以上數量的人或物之間",
+      "sentence": "The sound of crying could be heard ___ the wreckage after the explosion.",
+      "options": [
+        "among",
+        "amount",
+        "ancient",
+        "angel"
+      ]
+    },
+    {
+      "id": 1788699922541,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "amount",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "數量；總額",
+      "sentence": "My father spends a large ___ of money on our education every year.",
+      "options": [
+        "amount",
+        "among",
+        "anger",
+        "ankle"
+      ]
+    },
+    {
+      "id": 1788699947192,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "ancient",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "古代的；古老的；年代久遠的；非常老舊的",
+      "sentence": "The ruins of ___ structures are now important tourist attractions in Greece.",
+      "options": [
+        "ancient",
+        "anxious",
+        "annual",
+        "anyhow"
+      ]
+    },
+    {
+      "id": 1788700012611,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "angel",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "天使；天使般的人，善人，仁慈的人",
+      "sentence": "As religion figured prominently in medieval Europe, we can often see ___ in Renaissance art.",
+      "options": [
+        "angels",
+        "angles",
+        "ankles",
+        "apes"
+      ]
+    },
+    {
+      "id": 1788699948325,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "anger",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "怒，憤怒；怒火",
+      "sentence": "Lisa's ___ at the delayed flight grew as she waited for hours at the airport.",
+      "options": [
+        "anger",
+        "angel",
+        "ankle",
+        "anxiety"
+      ]
+    },
+    {
+      "id": 1788699919307,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "ankle",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "踝關節；踝",
+      "sentence": "The doctor advised him to rest his ___ for a couple of days and to put ice on it.",
+      "options": [
+        "ankle",
+        "angle",
+        "angel",
+        "ape"
+      ]
+    },
+    {
+      "id": 1788699968454,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "announce",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "宣稱；公布",
+      "sentence": "When the winner of the championship was ___, everyone was as excited as could be.",
+      "options": [
+        "announced",
+        "apologized",
+        "appealed",
+        "applied"
+      ]
+    },
+    {
+      "id": 1788699941781,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "announcement",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "公告，佈告；通告；聲明",
+      "sentence": "The president made an unexpected ___ that sent the stock market plummeting this morning.",
+      "options": [
+        "announcement",
+        "appearance",
+        "application",
+        "appreciation"
+      ]
+    },
+    {
+      "id": 1788700005979,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "annual",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "每年的；一年的",
+      "sentence": "The family trip to Boston has become an ___ event in my family.",
+      "options": [
+        "annual",
+        "ancient",
+        "anxious",
+        "anyway"
+      ]
+    },
+    {
+      "id": 1788699928947,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "anxiety",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "焦慮；不安；擔心",
+      "sentence": "Harry had an ___ attack when he imagined the results of his exam.",
+      "options": [
+        "anxiety",
+        "anger",
+        "appetite",
+        "appearance"
+      ]
+    },
+    {
+      "id": 1788699919571,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "anxious",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "焦慮的；不安的；擔心的；渴望做某事的",
+      "sentence": "It came as no surprise that the applicants were ___ about the results of the interviews.",
+      "options": [
+        "anxious",
+        "ancient",
+        "annual",
+        "anyhow"
+      ]
+    },
+    {
+      "id": 1788699965242,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "anyhow",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "不管怎樣；無論如何",
+      "sentence": "The instructions were unclear, but I managed to fix it ___.",
+      "options": [
+        "anyhow",
+        "anytime",
+        "anyway",
+        "anywhere"
+      ]
+    },
+    {
+      "id": 1788699931900,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "anytime",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "在任何時候",
+      "sentence": "The rules of the game may change ___, so keep an eye on the updates.",
+      "options": [
+        "anytime",
+        "anyhow",
+        "anyway",
+        "anywhere"
+      ]
+    },
+    {
+      "id": 1788699926709,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "anyway",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "不管怎樣；無論如何；仍然",
+      "sentence": "Tom knew it was risky, but he did it ___ because he believed in himself.",
+      "options": [
+        "anyway",
+        "anyhow",
+        "anytime",
+        "anywhere"
+      ]
+    },
+    {
+      "id": 1788699981874,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "anywhere",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "在（或去）任何地方；隨便哪個地方",
+      "sentence": "The dog ran off, and we had no idea how to find it ___ in the neighborhood.",
+      "options": [
+        "anywhere",
+        "anyhow",
+        "anytime",
+        "anyway"
+      ]
+    },
+    {
+      "id": 1788699936338,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "apart",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "（指空間或時間）相隔，相距；成零碎",
+      "sentence": "The twins are very much alike; it's very difficult to tell them ___.",
+      "options": [
+        "apart",
+        "ape",
+        "aloud",
+        "alone"
+      ]
+    },
+    {
+      "id": 1788699957556,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "ape",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "猿；無尾猿；類人猿",
+      "sentence": "It is believed that an ___'s intelligence is often comparable to that of a young child.",
+      "options": [
+        "ape",
+        "angel",
+        "ankle",
+        "apple"
+      ]
+    },
+    {
+      "id": 1788699995021,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "apologize",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "道歉；認錯；謝罪",
+      "sentence": "He ___ that he could not afford to pay them 25 rupees as he had promised, but said he would give them five rupees each week without fail.",
+      "options": [
+        "apologized",
+        "announced",
+        "appealed",
+        "applied"
+      ]
+    },
+    {
+      "id": 1788699940471,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "appeal",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "（向公眾）呼籲，懇求；申訴；有吸引力",
+      "sentence": "They ___ to the government for affordable housing.",
+      "options": [
+        "appealed",
+        "apologized",
+        "applied",
+        "approved"
+      ]
+    },
+    {
+      "id": 1788699957613,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "appearance",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "外貌；儀表；出現",
+      "sentence": "Never judge people by their ___ only.",
+      "options": [
+        "appearance",
+        "appetite",
+        "applicant",
+        "application"
+      ]
+    },
+    {
+      "id": 1788699931189,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "appetite",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "食慾；胃口",
+      "sentence": "If you eat a lot of candy before supper, it will spoil your ___.",
+      "options": [
+        "appetite",
+        "appearance",
+        "applicant",
+        "application"
+      ]
+    },
+    {
+      "id": 1788699990399,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "applicant",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "應徵者；申請者",
+      "sentence": "Due to the yearly bonus system, the 100 vacant positions in this high-tech company have attracted many ___ from around the island.",
+      "options": [
+        "applicants",
+        "appearances",
+        "appetites",
+        "applications"
+      ]
+    },
+    {
+      "id": 1788700001043,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "application",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "申請；應徵；運用；塗抹",
+      "sentence": "I made five ___ for the job but didn't get a reply from them.",
+      "options": [
+        "applications",
+        "appearances",
+        "appetites",
+        "applicants"
+      ]
+    },
+    {
+      "id": 1788699980360,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "apply",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "應用；申請；適用；致力於",
+      "sentence": "Sarah is ___ to Microsoft for an engineering position.",
+      "options": [
+        "applying",
+        "appealing",
+        "apologizing",
+        "approving"
+      ]
+    },
+    {
+      "id": 1788699932941,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "appreciate",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "賞識；欣賞；感激",
+      "sentence": "He doesn't know how to ___ French poetry.",
+      "options": [
+        "appreciate",
+        "approach",
+        "approve",
+        "argue"
+      ]
+    },
+    {
+      "id": 1788699924238,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "appreciation",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "賞識；鑑識；感激",
+      "sentence": "A thorough ___ of literature helps people understand different cultures and perspectives.",
+      "options": [
+        "appreciation",
+        "application",
+        "approval",
+        "apron"
+      ]
+    },
+    {
+      "id": 1788699931504,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "approach",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "靠近，接近",
+      "sentence": "He ___ the front door and knocked loudly.",
+      "options": [
+        "approached",
+        "appreciated",
+        "approved",
+        "argued"
+      ]
+    },
+    {
+      "id": 1788699922664,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "approve",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "贊成；同意；批准；認可",
+      "sentence": "At first, her relatives did not ___ of her marriage.",
+      "options": [
+        "approve",
+        "appreciate",
+        "approach",
+        "argue"
+      ]
+    },
+    {
+      "id": 1788699968780,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "approval",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "贊同；批准",
+      "sentence": "She showed her ___ by nodding her head.",
+      "options": [
+        "approval",
+        "appreciation",
+        "application",
+        "apron"
+      ]
+    },
+    {
+      "id": 1788699929274,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "apron",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "圍裙",
+      "sentence": "All the bakery staff wore colorful ___ while preparing delicious pastries.",
+      "options": [
+        "aprons",
+        "arches",
+        "armies",
+        "approvals"
+      ]
+    },
+    {
+      "id": 1788699981341,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "arch",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "拱；拱形；拱形物；拱形結構",
+      "sentence": "As a landmark in northern Taiwan, the Kwan-tu Bridge has three huge ___.",
+      "options": [
+        "arches",
+        "aprons",
+        "armies",
+        "arguments"
+      ]
+    },
+    {
+      "id": 1788699933522,
+      "category": "Rich",
+      "folder": "W3",
+      "word": "argue",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "爭論；爭吵；爭辯；論證；說理",
+      "sentence": "The siblings often ___ with each other over who gets to control the television remote.",
+      "options": [
+        "argue",
+        "approve",
+        "approach",
+        "appreciate"
+      ]
     }
   ],
   "students": [
