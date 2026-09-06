@@ -129535,6 +129535,454 @@
         "attitudes",
         "associations"
       ]
+    },
+    {
+      "id": 1788700129031,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "attractive",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "吸引人的；有魅力的",
+      "sentence": "Special lighting makes meat and vegetable displays more ___.",
+      "options": [
+        "attractive",
+        "average",
+        "awake",
+        "awful"
+      ]
+    },
+    {
+      "id": 1788700114250,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "audience",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "觀眾；聽眾",
+      "sentence": "This is not a traditional play; it encourages ___ members to play a part in each scene.",
+      "options": [
+        "audience",
+        "author",
+        "avenue",
+        "automobile"
+      ]
+    },
+    {
+      "id": 1788700042805,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "author",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "作者，作家；著者",
+      "sentence": "The ___ of the article provided deep insights into climate change.",
+      "options": [
+        "author",
+        "audience",
+        "award",
+        "avenue"
+      ]
+    },
+    {
+      "id": 1788700103323,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "automatic",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "自動的",
+      "sentence": "The coffee machine has an ___ timer to start brewing every morning.",
+      "options": [
+        "automatic",
+        "attractive",
+        "awful",
+        "awkward"
+      ]
+    },
+    {
+      "id": 1788700045616,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "automobile",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "汽車",
+      "sentence": "The ___ industry is moving toward electric vehicles for a greener future.",
+      "options": [
+        "automobile",
+        "audience",
+        "avenue",
+        "author"
+      ]
+    },
+    {
+      "id": 1788700075002,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "available",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "有效的；可用的；可獲得的；有空的",
+      "sentence": "The meeting room is ___ for team discussions, brainstorming sessions, and collaborative planning throughout the week.",
+      "options": [
+        "available",
+        "attractive",
+        "automatic",
+        "aware"
+      ]
+    },
+    {
+      "id": 1788700096586,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "avenue",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "(兩邊有樹或高樓的)大街；(鄉間寬闊的)林蔭大道；方法；途徑",
+      "sentence": "In autumn, the trees along the ___ turn brilliant shades of red and gold.",
+      "options": [
+        "avenue",
+        "audience",
+        "award",
+        "author"
+      ]
+    },
+    {
+      "id": 1788700076782,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "average",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "平均的；普通的；平常的；中等的",
+      "sentence": "Typhoon Maggie brought to I-lan County a huge amount of rainfall, much greater than the ___ rainfall of the season in the area.",
+      "options": [
+        "average",
+        "available",
+        "awful",
+        "awkward"
+      ]
+    },
+    {
+      "id": 1788700122565,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "avoid",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "避免，避開；逃避",
+      "sentence": "You must try to ___ making the same mistakes.",
+      "options": [
+        "avoid",
+        "awake",
+        "award",
+        "awaken"
+      ]
+    },
+    {
+      "id": 1788700044535,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "awake",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "醒著的",
+      "sentence": "The soldiers stayed wide ___ during their night watch.",
+      "options": [
+        "awake",
+        "aware",
+        "awful",
+        "average"
+      ]
+    },
+    {
+      "id": 1788700036730,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "awaken",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "(使)醒來；喚醒",
+      "sentence": "Depending on your pet's mood, the picture will capture an interested, curious expression or possibly a look of annoyance, especially if you've ___ it from a nap.",
+      "options": [
+        "awakened",
+        "avoided",
+        "awarded",
+        "awakens"
+      ]
+    },
+    {
+      "id": 1788700119081,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "award",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "給予，授予",
+      "sentence": "Sophia was ___ first prize for her breathtaking violin performance.",
+      "options": [
+        "awarded",
+        "avoided",
+        "awakened",
+        "aware"
+      ]
+    },
+    {
+      "id": 1788700091072,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "aware",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "意識到的；注意到",
+      "sentence": "A good salesperson is ___ of his strengths and weaknesses, and constantly tries to improve his selling skills.",
+      "options": [
+        "aware",
+        "awake",
+        "awful",
+        "average"
+      ]
+    },
+    {
+      "id": 1788700117353,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "awful",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "極壞的；糟糕的；可怕的",
+      "sentence": "The smell from the garbage can was ___.",
+      "options": [
+        "awful",
+        "awkward",
+        "aware",
+        "attractive"
+      ]
+    },
+    {
+      "id": 1788700094045,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "awkward",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "笨拙的；尷尬的；棘手的",
+      "sentence": "She felt ___ at the party because she didn't know anyone and stood alone.",
+      "options": [
+        "awkward",
+        "awful",
+        "aware",
+        "awake"
+      ]
+    },
+    {
+      "id": 1788700131423,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "background",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "出身背景；學歷；經歷；(畫、相片的)背景；背景音樂；(事件的)背景",
+      "sentence": "She behaved elegantly as she came from a royal ___.",
+      "options": [
+        "background",
+        "backpack",
+        "bacon",
+        "bakery"
+      ]
+    },
+    {
+      "id": 1788700119850,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "backpack",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "背包",
+      "sentence": "Danny showed his gentleness by carrying the heaviest ___ for the ladies.",
+      "options": [
+        "backpack",
+        "background",
+        "baggage",
+        "bait"
+      ]
+    },
+    {
+      "id": 1788700083144,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "backward",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "落後的；遲緩的；向後的",
+      "sentence": "People still think of it as a ___ country.",
+      "options": [
+        "backward",
+        "badly",
+        "awful",
+        "awkward"
+      ]
+    },
+    {
+      "id": 1788700065960,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "backwards",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "向後地；倒退地；來來回回",
+      "sentence": "Amy turned and walked ___ as she left.",
+      "options": [
+        "backwards",
+        "badly",
+        "awkwardly",
+        "automatically"
+      ]
+    },
+    {
+      "id": 1788700057408,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "bacon",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "培根",
+      "sentence": "We had ___ and eggs for breakfast.",
+      "options": [
+        "bacon",
+        "bakery",
+        "baggage",
+        "bait"
+      ]
+    },
+    {
+      "id": 1788700109374,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "bacteria",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "細菌",
+      "sentence": "___ multiply on the surface of the decayed raw meat.",
+      "options": [
+        "Bacteria",
+        "Baggage",
+        "Bacon",
+        "Balance"
+      ]
+    },
+    {
+      "id": 1788700050054,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "badly",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "拙劣地；有害地；嚴重地；非常",
+      "sentence": "The equipment malfunctioned because it was ___ maintained.",
+      "options": [
+        "badly",
+        "backwards",
+        "awkwardly",
+        "automatically"
+      ]
+    },
+    {
+      "id": 1788700044247,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "badminton",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "羽毛球",
+      "sentence": "___ requires quick reflexes, agility, and strategic thinking to outplay the opponent.",
+      "options": [
+        "Badminton",
+        "Background",
+        "Backpack",
+        "Bakery"
+      ]
+    },
+    {
+      "id": 1788700070970,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "baggage",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "行李",
+      "sentence": "Security officers scanned the ___ for any prohibited items.",
+      "options": [
+        "baggage",
+        "backpack",
+        "bacon",
+        "bait"
+      ]
+    },
+    {
+      "id": 1788700106670,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "bait",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "餌；引誘物，誘餌，圈套",
+      "sentence": "Fresh ___ increases the chances of attracting larger fish.",
+      "options": [
+        "bait",
+        "bacon",
+        "baggage",
+        "balance"
+      ]
+    },
+    {
+      "id": 1788700117413,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "bake",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "烘；烤",
+      "sentence": "He enjoys ___ cakes and experimenting with different flavors.",
+      "options": [
+        "baking",
+        "baiting",
+        "balancing",
+        "barking"
+      ]
+    },
+    {
+      "id": 1788700046090,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "bakery",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "麵包店",
+      "sentence": "The local ___ sells freshly baked bread and pastries every morning.",
+      "options": [
+        "bakery",
+        "baggage",
+        "backpack",
+        "bacon"
+      ]
+    },
+    {
+      "id": 1788700056394,
+      "category": "Rich",
+      "folder": "W5",
+      "word": "balance",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "平衡",
+      "sentence": "It is hard for students to ___ academic performance and extracurricular activities.",
+      "options": [
+        "balance",
+        "bake",
+        "bait",
+        "avoid"
+      ]
     }
   ],
   "students": [
