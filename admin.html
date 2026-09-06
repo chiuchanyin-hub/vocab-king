@@ -22,6 +22,7 @@
     .btn-excel { background: #10b981; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; }
     .btn-secondary { background: #e2e8f0; color: #334155; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; }
     .btn-ai { background: linear-gradient(135deg, #6366f1, #a855f7); color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; }
+    .btn-github { background: #24292e; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
     .form-row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
     .form-control { width: 100%; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; outline: none; margin-bottom: 8px; font-size: 0.9rem; }
     .item-card { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; background: #ffffff; }
@@ -72,6 +73,20 @@
         </div>
       </div>
 
+      <!-- 區塊 0.5：🐙 GitHub 雲端一鍵同步設定 -->
+      <div class="section-card" style="border:2px solid #24292e; background:#f6f8fa;">
+        <h3 style="color:#24292e;">🐙 GitHub 雲端自動同步設定</h3>
+        <div class="form-row">
+          <input type="text" id="gh-owner" placeholder="GitHub 用戶名 (例如: your-username)" class="form-control" style="flex:1; margin-bottom:0;" />
+          <input type="text" id="gh-repo" placeholder="倉庫名稱 (例如: vocabulary-game)" class="form-control" style="flex:1; margin-bottom:0;" />
+        </div>
+        <div class="form-row" style="margin-top:8px; margin-bottom:0;">
+          <input type="password" id="gh-token" placeholder="GitHub Personal Access Token (PAT)" class="form-control" style="flex:1; margin-bottom:0;" />
+          <button id="save-gh-config-btn" class="btn-secondary" style="white-space:nowrap;">儲存 GitHub 設定</button>
+        </div>
+        <div id="gh-status" style="font-size:0.75rem; margin-top:6px; color:#586069; font-weight:700;"></div>
+      </div>
+
       <!-- 區塊 1：📸 AI 拍照建題 -->
       <div class="section-card" style="border:2px dashed #6366f1;">
         <h3 style="color:#4338ca;">📸 課本照片智慧辨識（Gemini 拍照自動建題）</h3>
@@ -80,6 +95,7 @@
             <option value="國中">📚 國中</option>
             <option value="高中學測" selected>📖 高中學測</option>
             <option value="Level 4">🌟 Level 4</option>
+            <option value="Rich">💎 Rich</option>
           </select>
           <input type="text" id="ocr-folder" placeholder="資料夾/單元 (如: Unit 2)" value="Unit 2" class="form-control" style="flex:1; margin-bottom:0;" />
           <input type="file" id="ocr-file" accept="image/*" class="form-control" style="flex:1.5; margin-bottom:0;" />
@@ -104,6 +120,7 @@
               <option value="國中">📚 國中</option>
               <option value="高中學測" selected>📖 高中學測</option>
               <option value="Level 4">🌟 Level 4</option>
+              <option value="Rich">💎 Rich</option>
             </select>
             <input type="text" id="manual-folder" placeholder="資料夾/單元 (例如: Unit 1)" class="form-control" style="flex:1;" required />
           </div>
@@ -116,26 +133,26 @@
         </form>
       </div>
 
-      <!-- 區塊 3：📊 Excel 檔案批次匯入題庫 -->
+      <!-- 區塊 3：📊 Excel 檔案批次匯入題庫 (全新 20 行版) -->
       <div class="section-card" style="border:2px solid #10b981; background:#f0fdf4;">
-        <h3 style="color:#065f46;">📊 透過 Excel 檔案批次匯入題庫</h3>
-        <div class="form-row">
-          <select id="excel-category" class="form-control" style="flex:1; background:white;">
-            <option value="國中">📚 國中</option>
-            <option value="高中學測" selected>📖 高中學測</option>
-            <option value="Level 4">🌟 Level 4</option>
-          </select>
-          <input type="text" id="excel-folder" placeholder="預設資料夾/單元 (若空白將自動每20字分 CH1, CH2...)" class="form-control" style="flex:1; background:white;" />
-          <input type="file" id="excel-file-input" accept=".xlsx, .xls" class="form-control" style="flex:1.5; background:white;" />
+        <h3 style="color:#065f46; margin-bottom:12px;">📊 透過 Excel 檔案批次匯入題庫 (最多支援 20 檔)</h3>
+        
+        <div id="excel-upload-rows" style="max-height: 380px; overflow-y: auto; padding-right: 8px; margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px;">
+          <!-- JS 會自動在這裡產生 20 行輸入框 -->
         </div>
-        <button id="import-excel-btn" class="btn-excel" style="width:100%; margin-top:6px;">📥 匯入 Excel 題庫</button>
+
+        <button id="import-excel-btn" class="btn-excel" style="width:100%;">📥 批次匯入所有已選擇的 Excel 題庫</button>
       </div>
 
       <!-- 區塊 4：🗑️ 題目管理與分類檢視 -->
       <div class="section-card" style="border:2px solid #4338ca;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
           <h3 style="margin-bottom:0; color:#4338ca;">🗑️ 題目管理與分類檢視 (<span id="total-count-text">0</span> 題)</h3>
-          <button id="btn-restore-default" class="btn-secondary" style="font-size:0.8rem; padding:6px 10px;">↺ 恢復預設題庫</button>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button id="btn-push-github" class="btn-github" style="font-size:0.8rem; padding:6px 12px;">🚀 一鍵上傳更新到 GitHub</button>
+            <button id="btn-export-json" class="btn-excel" style="font-size:0.8rem; padding:6px 12px; background:#4338ca;">💾 下載 JSON 備份</button>
+            <button id="btn-restore-default" class="btn-secondary" style="font-size:0.8rem; padding:6px 10px;">↺ 恢復預設題庫</button>
+          </div>
         </div>
         <div class="form-row">
           <select id="filter-category-select" class="form-control" style="flex:1; font-weight:700;">
@@ -143,6 +160,7 @@
             <option value="國中">國中</option>
             <option value="高中學測">高中學測</option>
             <option value="Level 4">Level 4</option>
+            <option value="Rich">Rich</option>
           </select>
           <select id="filter-folder-select" class="form-control" style="flex:1; font-weight:700;">
             <option value="全部資料夾">全部資料夾/單元</option>
@@ -161,7 +179,7 @@
           <input type="text" id="stu-name" placeholder="學生姓名 (例: 羅傑)" required style="flex:1;" class="form-control" />
           <select id="stu-perm" class="form-control" style="flex:1;">
             <option value="國中">📚 國中權限</option>
-            <option value="高中" selected>📖 高中權限 (高中+Level 4)</option>
+            <option value="高中" selected>📖 高中權限 (高中+Level 4+Rich)</option>
           </select>
           <button type="submit" class="btn-primary" style="flex:1; height:42px;">➕ 建立帳號</button>
         </form>
@@ -171,7 +189,30 @@
   </div>
 
   <script>
-    // ====== 新增：開機自動全自動雲端同步載入機制 ======
+    // ==========================================
+    // 動態產生 20 行 Excel 上傳區塊
+    // ==========================================
+    const excelRowsContainer = document.getElementById('excel-upload-rows');
+    if (excelRowsContainer) {
+      let excelRowsHTML = '';
+      for(let i = 1; i <= 20; i++) {
+        excelRowsHTML += `
+          <div class="form-row" style="margin-bottom:0; align-items:center; background:white; padding:8px; border:1px solid var(--border); border-radius:8px;">
+            <span style="font-weight:800; color:#065f46; width:24px; text-align:center;">${i}.</span>
+            <select id="excel-category-${i}" class="form-control" style="flex:1; margin-bottom:0;">
+              <option value="國中">📚 國中</option>
+              <option value="高中學測" selected>📖 高中學測</option>
+              <option value="Level 4">🌟 Level 4</option>
+              <option value="Rich">💎 Rich</option>
+            </select>
+            <input type="text" id="excel-folder-${i}" placeholder="單元 (若空白則依序分 CH1...)" class="form-control" style="flex:1.2; margin-bottom:0;" />
+            <input type="file" id="excel-file-input-${i}" accept=".xlsx, .xls" class="form-control" style="flex:1.5; margin-bottom:0; padding:6px;" />
+          </div>
+        `;
+      }
+      excelRowsContainer.innerHTML = excelRowsHTML;
+    }
+
     async function initAutoSyncCloud() {
       try {
         const response = await fetch('questions.json?v=' + Date.now());
@@ -188,7 +229,7 @@
         console.log("使用本機快取離線運行");
       }
     }
-    initAutoSyncCloud(); // 立即在最上方執行自動同步
+    initAutoSyncCloud();
 
     const DEFAULT_BASE_QUESTIONS = [
       {"id": 1, "category": "高中學測", "folder": "Unit 1", "word": "cue", "pos": "n.", "isPhrase": false, "zh": "提示；線索", "sentence": "My teacher nodded at me, and that was my ___ to start speaking.", "options": ["cue", "finance", "prime", "rebel"]},
@@ -242,6 +283,7 @@
         loadLocalData();
         renderAllDashboard();
         checkApiKeyStatus();
+        checkGitHubConfigStatus();
       } else {
         document.getElementById('auth-err').style.display = 'block';
       }
@@ -265,9 +307,6 @@
       renderQuestions();
     }
 
-    // ----------------------------------------------------
-    // API KEY 狀態檢查與儲存
-    // ----------------------------------------------------
     function checkApiKeyStatus() {
       const key = localStorage.getItem('gemini_api_key') || '';
       const statusEl = document.getElementById('api-key-status');
@@ -289,9 +328,111 @@
       checkApiKeyStatus();
     });
 
-    // ----------------------------------------------------
-    // 📸 AI 拍照建題功能 (Gemini 3.6 Flash)
-    // ----------------------------------------------------
+    // GitHub 設定管理
+    function checkGitHubConfigStatus() {
+      const owner = localStorage.getItem('gh_owner') || '';
+      const repo = localStorage.getItem('gh_repo') || '';
+      const token = localStorage.getItem('gh_token') || '';
+
+      if (owner) document.getElementById('gh-owner').value = owner;
+      if (repo) document.getElementById('gh-repo').value = repo;
+      if (token) document.getElementById('gh-token').value = token;
+
+      const statusEl = document.getElementById('gh-status');
+      if (owner && repo && token) {
+        statusEl.innerHTML = "✅ GitHub 雲端同步設定已就緒";
+        statusEl.style.color = "#10b981";
+      } else {
+        statusEl.innerHTML = "⚠️ 請填寫 GitHub 用戶名、倉庫名稱與 PAT 權杖以啟用一鍵上傳";
+        statusEl.style.color = "#b45309";
+      }
+    }
+
+    document.getElementById('save-gh-config-btn').addEventListener('click', () => {
+      const owner = document.getElementById('gh-owner').value.trim();
+      const repo = document.getElementById('gh-repo').value.trim();
+      const token = document.getElementById('gh-token').value.trim();
+
+      if (!owner || !repo || !token) {
+        return alert("請完整填寫 GitHub 用戶名、倉庫名稱與 Token！");
+      }
+
+      localStorage.setItem('gh_owner', owner);
+      localStorage.setItem('gh_repo', repo);
+      localStorage.setItem('gh_token', token);
+      alert("🎉 GitHub 設定儲存成功！");
+      checkGitHubConfigStatus();
+    });
+
+    // 一鍵上傳到 GitHub 功能
+    document.getElementById('btn-push-github').addEventListener('click', async () => {
+      const owner = localStorage.getItem('gh_owner');
+      const repo = localStorage.getItem('gh_repo');
+      const token = localStorage.getItem('gh_token');
+
+      if (!owner || !repo || !token) {
+        return alert("請先在上方「GitHub 雲端自動同步設定」填寫並儲存您的 GitHub 資訊與 Token！");
+      }
+
+      if (!confirm("確定要將最新的題庫與學生帳號一鍵上傳更新到 GitHub 上的 questions.json 嗎？")) return;
+
+      const btn = document.getElementById('btn-push-github');
+      btn.innerText = "⏳ 上傳同步中...";
+      btn.disabled = true;
+
+      const exportData = {
+        questions: questions,
+        students: students
+      };
+      const jsonContent = JSON.stringify(exportData, null, 2);
+      const contentEncoded = btoa(unescape(encodeURIComponent(jsonContent))); // 支援中文編碼
+
+      const filePath = "questions.json";
+      const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+
+      try {
+        // 1. 先取得目前的 file SHA
+        let fileSha = "";
+        const getRes = await fetch(apiUrl, {
+          headers: {
+            "Authorization": `token ${token}`,
+            "Accept": "application/vnd.github.v3+json"
+          }
+        });
+        if (getRes.ok) {
+          const fileData = await getRes.json();
+          fileSha = fileData.sha;
+        }
+
+        // 2. 透過 PUT 請求更新/建立 questions.json
+        const putRes = await fetch(apiUrl, {
+          method: "PUT",
+          headers: {
+            "Authorization": `token ${token}`,
+            "Content-Type": "application/json",
+            "Accept": "application/vnd.github.v3+json"
+          },
+          body: JSON.stringify({
+            message: "Update questions.json via Admin Console [skip ci]",
+            content: contentEncoded,
+            sha: fileSha ? fileSha : undefined
+          })
+        });
+
+        if (putRes.ok) {
+          alert("🎉 成功！最新題庫已透過 GitHub API 自動更新至雲端！");
+        } else {
+          const errJson = await putRes.json();
+          alert("上傳失敗: " + (errJson.message || "請檢查 GitHub Token 權限或倉庫名稱是否正確。"));
+        }
+      } catch (err) {
+        alert("連線失敗: " + err.message);
+      } finally {
+        btn.innerText = "🚀 一鍵上傳更新到 GitHub";
+        btn.disabled = false;
+      }
+    });
+
     function fileToBase64(file) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -378,9 +519,6 @@
       document.getElementById('ocr-file').value = '';
     });
 
-    // ----------------------------------------------------
-    // ✍️ 手動新增單字處理
-    // ----------------------------------------------------
     document.getElementById('manual-add-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const category = document.getElementById('manual-category').value;
@@ -417,89 +555,126 @@
       document.getElementById('manual-word').value = '';
       document.getElementById('manual-pos').value = '';
       document.getElementById('manual-zh').value = '';
-      alert(`✅ 成功手動新增單字 "${word}" 至 [${category} / ${folder}]！`);
+      alert(`✅ 成功手手新增單字 "${word}" 至 [${category} / ${folder}]！`);
     });
 
-    // ----------------------------------------------------
-    // 📊 Excel 檔案匯入處理
-    // ----------------------------------------------------
-    document.getElementById('import-excel-btn').addEventListener('click', () => {
-      const fileInput = document.getElementById('excel-file-input');
-      const file = fileInput.files[0];
-      if (!file) return alert("請先選擇要上傳的 Excel 檔案！");
+    // ==========================================
+    // 全新：非同步解析單一 Excel 檔案 Promise
+    // ==========================================
+    function processSingleExcel(file, category, customFolder) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          try {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+            const firstSheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[firstSheetName];
+            
+            const rawRows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+            if (rawRows.length <= 3) return resolve([]); 
 
-      const category = document.getElementById('excel-category').value;
-      const customFolder = document.getElementById('excel-folder').value.trim();
+            const dataRows = rawRows.slice(3);
+            let parsed = [];
+            let newCount = 0;
 
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        try {
-          const data = new Uint8Array(e.target.result);
-          const workbook = XLSX.read(data, { type: 'array' });
-          const firstSheetName = workbook.SheetNames[0];
-          const worksheet = workbook.Sheets[firstSheetName];
-          
-          const rawRows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-          if (rawRows.length <= 3) return alert("Excel 檔案內容過少或格式不符！");
+            dataRows.forEach((row, index) => {
+              if (!row || row.length < 4) return;
+              const wordVal = String(row[1] || "").trim();
+              const posVal = String(row[2] || "").trim();
+              const zhVal = String(row[3] || "").trim();
 
-          const dataRows = rawRows.slice(3);
-          let newCount = 0;
+              if (!wordVal || wordVal === 'undefined' || wordVal === 'NaN') return;
 
-          dataRows.forEach((row, index) => {
-            if (!row || row.length < 4) return;
-            const wordVal = String(row[1] || "").trim();
-            const posVal = String(row[2] || "").trim();
-            const zhVal = String(row[3] || "").trim();
+              let assignedFolder = customFolder;
+              if (!assignedFolder) {
+                const chNum = Math.floor(newCount / 20) + 1;
+                assignedFolder = `CH${chNum}`;
+              }
 
-            if (!wordVal || wordVal === 'undefined' || wordVal === 'NaN') return;
+              const allWordsPool = dataRows.map(r => String(r[1] || "").trim()).filter(w => w && w !== wordVal);
+              let distractors = ["apple", "banana", "student", "computer"];
+              if (allWordsPool.length >= 3) {
+                const shuffled = [...allWordsPool].sort(() => 0.5 - Math.random());
+                distractors = shuffled.slice(0, 3);
+              }
+              let options = [wordVal, ...distractors];
+              options.sort(() => Math.random() - 0.5);
 
-            let assignedFolder = customFolder;
-            if (!assignedFolder) {
-              const chNum = Math.floor(newCount / 20) + 1;
-              assignedFolder = `CH${chNum}`;
-            }
+              parsed.push({
+                id: Date.now() + Math.floor(Math.random() * 100000) + index,
+                category: category,
+                folder: assignedFolder,
+                word: wordVal,
+                pos: posVal || "n.",
+                isPhrase: wordVal.includes(' ') || wordVal.includes('-'),
+                zh: zhVal,
+                sentence: `The student needs to learn the word ___ (${zhVal}).`,
+                options: options
+              });
+              newCount++;
+            });
+            resolve(parsed);
+          } catch(err) {
+            reject(err);
+          }
+        };
+        reader.onerror = reject;
+        reader.readAsArrayBuffer(file);
+      });
+    }
 
-            const allWordsPool = dataRows.map(r => String(r[1] || "").trim()).filter(w => w && w !== wordVal);
-            let distractors = ["apple", "banana", "student", "computer"];
-            if (allWordsPool.length >= 3) {
-              const shuffled = [...allWordsPool].sort(() => 0.5 - Math.random());
-              distractors = shuffled.slice(0, 3);
-            }
-            let options = [wordVal, ...distractors];
-            options.sort(() => Math.random() - 0.5);
+    // ==========================================
+    // 全新：20 行 Excel 批次合併上傳事件
+    // ==========================================
+    document.getElementById('import-excel-btn').addEventListener('click', async () => {
+      const promises = [];
+      
+      for(let i = 1; i <= 20; i++) {
+        const fileInput = document.getElementById(`excel-file-input-${i}`);
+        if (fileInput && fileInput.files.length > 0) {
+          const file = fileInput.files[0];
+          const category = document.getElementById(`excel-category-${i}`).value;
+          let customFolder = document.getElementById(`excel-folder-${i}`).value.trim();
+          promises.push(processSingleExcel(file, category, customFolder));
+        }
+      }
 
-            const newQ = {
-              id: Date.now() + index,
-              category: category,
-              folder: assignedFolder,
-              word: wordVal,
-              pos: posVal || "n.",
-              isPhrase: wordVal.includes(' ') || wordVal.includes('-'),
-              zh: zhVal,
-              sentence: `The student needs to learn the word ___ (${zhVal}).`,
-              options: options
-            };
+      if (promises.length === 0) return alert("請至少在其中一列選擇要上傳的 Excel 檔案！");
 
-            questions.push(newQ);
-            newCount++;
-          });
+      const btn = document.getElementById('import-excel-btn');
+      const originalText = btn.innerText;
+      btn.innerText = "⏳ 題庫批次處理與合併中，請稍候...";
+      btn.disabled = true;
 
-          if (newCount === 0) return alert("未能成功解析任何單字。");
+      try {
+        const allResults = await Promise.all(promises);
+        let totalNewQuestions = [];
+        allResults.forEach(res => { totalNewQuestions = totalNewQuestions.concat(res); });
 
+        if (totalNewQuestions.length > 0) {
+          questions = [...questions, ...totalNewQuestions];
           saveQuestions();
           renderAllDashboard();
-          fileInput.value = "";
-          alert(`🎉 成功從 Excel 匯入 ${newCount} 筆題目至 [${category}]！`);
-        } catch (err) {
-          alert("解析 Excel 失敗: " + err.message);
+          
+          for(let i = 1; i <= 20; i++) {
+            const fInput = document.getElementById(`excel-file-input-${i}`);
+            const dInput = document.getElementById(`excel-folder-${i}`);
+            if (fInput) fInput.value = '';
+            if (dInput) dInput.value = '';
+          }
+          alert(`🎉 成功從 ${promises.length} 個檔案批次匯入 ${totalNewQuestions.length} 題單字！`);
+        } else {
+          alert("選取的檔案中沒有找到有效的單字資料。");
         }
-      };
-      reader.readAsArrayBuffer(file);
+      } catch(err) {
+        alert("解析 Excel 發生錯誤，請確認檔案格式是否正確: " + err.message);
+      } finally {
+        btn.innerText = originalText;
+        btn.disabled = false;
+      }
     });
 
-    // ----------------------------------------------------
-    // 🗑️ 題目管理與刪除
-    // ----------------------------------------------------
     window.deleteQuestionItem = function(targetId) {
       if (confirm("確定要刪除此題目嗎？")) {
         questions = questions.filter(q => String(q.id) !== String(targetId));
@@ -507,6 +682,21 @@
         renderQuestions();
       }
     };
+
+    document.getElementById('btn-export-json').addEventListener('click', () => {
+      const exportData = {
+        questions: questions,
+        students: students
+      };
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportData, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", "questions.json");
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      alert("✅ 已成功下載 questions.json 備份！");
+    });
 
     document.getElementById('btn-restore-default').addEventListener('click', () => {
       if (confirm("確定重設為預設題庫？")) {
@@ -570,9 +760,6 @@
       });
     }
 
-    // ----------------------------------------------------
-    // 👥 學生管理
-    // ----------------------------------------------------
     function renderStudents() {
       const container = document.getElementById('student-list');
       container.innerHTML = '';
