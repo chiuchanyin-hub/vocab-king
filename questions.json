@@ -129023,6 +129023,518 @@
         "approach",
         "appreciate"
       ]
+    },
+    {
+      "id": 1788700032000,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "argument",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "爭論；爭執；辯論",
+      "sentence": "My brother got into a bad ___ with his best friend last night.",
+      "options": [
+        "argument",
+        "arrangement",
+        "article",
+        "artist"
+      ]
+    },
+    {
+      "id": 1788700027238,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "armed",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "使用武器的，用武力的",
+      "sentence": "The notorious gang leader was ___ and dangerous, striking fear into the hearts of local residents.",
+      "options": [
+        "armed",
+        "artistic",
+        "artificial",
+        "asleep"
+      ]
+    },
+    {
+      "id": 1788700020352,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "army",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "（某國的）陸軍，軍隊；團體；隊伍；大群",
+      "sentence": "To develop the new software, the company hired an ___ of engineers.",
+      "options": [
+        "army",
+        "arrow",
+        "article",
+        "artist"
+      ]
+    },
+    {
+      "id": 1788700052192,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "arrange",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "排列；布置；安排",
+      "sentence": "Mom ___ the clothes in her closet by color.",
+      "options": [
+        "arranged",
+        "arrested",
+        "arrived",
+        "assigned"
+      ]
+    },
+    {
+      "id": 1788700024006,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "arrangement",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "安排；籌劃；約定；安排",
+      "sentence": "Home exchanges are not new. At least one group, Intervac, has been facilitating such an ___ since 1953.",
+      "options": [
+        "arrangement",
+        "argument",
+        "assignment",
+        "assistance"
+      ]
+    },
+    {
+      "id": 1788700048072,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "arrest",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "逮捕；拘捕",
+      "sentence": "The drug dealer was ___ by the police while he was selling cocaine to a high school student.",
+      "options": [
+        "arrested",
+        "arranged",
+        "assigned",
+        "assisted"
+      ]
+    },
+    {
+      "id": 1788700075779,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "arrival",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "到達；到來；來臨",
+      "sentence": "The ___ of spring brings blooming flowers and warmer weather.",
+      "options": [
+        "arrival",
+        "arrow",
+        "article",
+        "artist"
+      ]
+    },
+    {
+      "id": 1788700080927,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "arrow",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "（指示方向的）箭號，箭頭",
+      "sentence": "The warrior's quiver was filled with sharp ___, ready for battle.",
+      "options": [
+        "arrows",
+        "articles",
+        "artists",
+        "ashes"
+      ]
+    },
+    {
+      "id": 1788700020588,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "article",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "（報紙或雜誌上的）文章，報導",
+      "sentence": "While scrolling through my news feed, I found an interesting ___ about the history of artificial intelligence.",
+      "options": [
+        "article",
+        "argument",
+        "arrangement",
+        "assignment"
+      ]
+    },
+    {
+      "id": 1788700010498,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "artificial",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "人工的；人造的",
+      "sentence": "The organic food products are made of natural ingredients, with no ___ flavors added.",
+      "options": [
+        "artificial",
+        "artistic",
+        "armed",
+        "asleep"
+      ]
+    },
+    {
+      "id": 1788700019076,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "artist",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "藝術家；大師",
+      "sentence": "He was trained to be an ___ though he wanted to be a poet.",
+      "options": [
+        "artist",
+        "article",
+        "arrow",
+        "assistant"
+      ]
+    },
+    {
+      "id": 1788700043868,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "artistic",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "藝術的；有藝術技巧或鑑賞力的",
+      "sentence": "Opinion about the ___ merit of her paintings has been mixed.",
+      "options": [
+        "artistic",
+        "artificial",
+        "armed",
+        "asleep"
+      ]
+    },
+    {
+      "id": 1788700059872,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "ash",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "灰燼；骨灰；廢墟",
+      "sentence": "The old farmhouse caught fire and was burned to ___ within hours.",
+      "options": [
+        "ashes",
+        "arrows",
+        "articles",
+        "artists"
+      ]
+    },
+    {
+      "id": 1788700078853,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "aside",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "在旁邊；到（或向）一邊",
+      "sentence": "Thankfully, the team was able to put its problems ___ to record its first home victory of the season.",
+      "options": [
+        "aside",
+        "asleep",
+        "anyway",
+        "anywhere"
+      ]
+    },
+    {
+      "id": 1788700037629,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "asleep",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "睡著的；（手、腳等）麻木的",
+      "sentence": "He was so tired that he soon fell ___.",
+      "options": [
+        "asleep",
+        "aside",
+        "artificial",
+        "artistic"
+      ]
+    },
+    {
+      "id": 1788700039883,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "aspirin",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "阿斯匹林",
+      "sentence": "The doctor advised me not to take more than 8 ___ in one day.",
+      "options": [
+        "aspirins",
+        "articles",
+        "arrows",
+        "artists"
+      ]
+    },
+    {
+      "id": 1788700029845,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "assign",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "分派；指派；派遣",
+      "sentence": "Our teacher ___ us 100 pages of reading for homework.",
+      "options": [
+        "assigned",
+        "arranged",
+        "arrested",
+        "assisted"
+      ]
+    },
+    {
+      "id": 1788699997732,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "assignment",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "作業，功課；（被派遣到某地做的）工作",
+      "sentence": "He was given a very difficult ___.",
+      "options": [
+        "assignment",
+        "arrangement",
+        "argument",
+        "assistance"
+      ]
+    },
+    {
+      "id": 1788700022027,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "assist",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "援助；幫助",
+      "sentence": "Do you need anybody to ___ you in your work?",
+      "options": [
+        "assist",
+        "assign",
+        "arrange",
+        "arrest"
+      ]
+    },
+    {
+      "id": 1788700056169,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "assistance",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "援助",
+      "sentence": "Whenever I am in trouble, she always comes to my ___.",
+      "options": [
+        "assistance",
+        "assignment",
+        "arrangement",
+        "argument"
+      ]
+    },
+    {
+      "id": 1788699993908,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "assistant",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "助手",
+      "sentence": "Jane is the best ___ I have ever had. I cannot imagine running my office without her help.",
+      "options": [
+        "assistant",
+        "artist",
+        "athlete",
+        "applicant"
+      ]
+    },
+    {
+      "id": 1788700026683,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "associate",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "聯想；結交",
+      "sentence": "In many cultures, red is usually ___ with danger.",
+      "options": [
+        "associated",
+        "assumed",
+        "attempted",
+        "attended"
+      ]
+    },
+    {
+      "id": 1788700035269,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "association",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "協會；社團；關連",
+      "sentence": "The National ___ of Teachers now has over 10,000 members.",
+      "options": [
+        "Association",
+        "Assignment",
+        "Arrangement",
+        "Assistance"
+      ]
+    },
+    {
+      "id": 1788700057100,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "assume",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "擔任；假定；想當然地認為；假裝",
+      "sentence": "It is rumored that he will ___ the position.",
+      "options": [
+        "assume",
+        "associate",
+        "attempt",
+        "attend"
+      ]
+    },
+    {
+      "id": 1788700060089,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "athlete",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "運動家（選手）",
+      "sentence": "As a young ___, Mia dreams of competing in the Olympics.",
+      "options": [
+        "athlete",
+        "artist",
+        "assistant",
+        "applicant"
+      ]
+    },
+    {
+      "id": 1788700000091,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "athletic",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "跟運動有關的；強壯的；擅長運動的",
+      "sentence": "Jack doesn't look ___, but he is, in fact, excellent at sports, especially baseball.",
+      "options": [
+        "athletic",
+        "artistic",
+        "artificial",
+        "asleep"
+      ]
+    },
+    {
+      "id": 1788699999920,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "attempt",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "（尤指為完成難事而進行）努力，嘗試",
+      "sentence": "The detective ___ to solve the mystery before anyone else got hurt.",
+      "options": [
+        "attempted",
+        "assumed",
+        "associated",
+        "attended"
+      ]
+    },
+    {
+      "id": 1788700092319,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "attend",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "出席，參加；到場；經常去，定期去",
+      "sentence": "They ___ the concert of their favorite band and had an amazing time.",
+      "options": [
+        "attended",
+        "attempted",
+        "assumed",
+        "associated"
+      ]
+    },
+    {
+      "id": 1788700013033,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "attention",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "注意（力）",
+      "sentence": "Please pay ___ to what I am saying.",
+      "options": [
+        "attention",
+        "attitude",
+        "attraction",
+        "association"
+      ]
+    },
+    {
+      "id": 1788700079007,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "attitude",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "態度",
+      "sentence": "Mr. Johnson was disappointed at his students for having a passive learning ___.",
+      "options": [
+        "attitude",
+        "attention",
+        "attraction",
+        "association"
+      ]
+    },
+    {
+      "id": 1788700086809,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "attract",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "吸引",
+      "sentence": "Every year, they ___ hundreds and thousands of tourists from different countries.",
+      "options": [
+        "attract",
+        "attend",
+        "attempt",
+        "assume"
+      ]
+    },
+    {
+      "id": 1788700075711,
+      "category": "Rich",
+      "folder": "W4",
+      "word": "attraction",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "有吸引力的事物；（尤指兩性間的）迷戀或喜愛",
+      "sentence": "It is common for tourist ___ to be crowded with people during holidays.",
+      "options": [
+        "attractions",
+        "attentions",
+        "attitudes",
+        "associations"
+      ]
     }
   ],
   "students": [
