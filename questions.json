@@ -129983,6 +129983,438 @@
         "bait",
         "avoid"
       ]
+    },
+    {
+      "id": 1788700204919,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "baggage",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "行李",
+      "sentence": "Security officers scanned the ___ for any prohibited items.",
+      "options": [
+        "baggage",
+        "balcony",
+        "ballet",
+        "balloon"
+      ]
+    },
+    {
+      "id": 1788700223699,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "bait",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "餌；引誘物，誘餌，圈套",
+      "sentence": "Fresh ___ increases the chances of attracting larger fish.",
+      "options": [
+        "bait",
+        "bake",
+        "bang",
+        "bark"
+      ]
+    },
+    {
+      "id": 1788700210342,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "bake",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "烘；烤",
+      "sentence": "He enjoys ___ cakes and experimenting with different flavors.",
+      "options": [
+        "baking",
+        "bathing",
+        "banging",
+        "barking"
+      ]
+    },
+    {
+      "id": 1788700200760,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "bakery",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "麵包店",
+      "sentence": "The local ___ sells freshly baked bread and pastries every morning.",
+      "options": [
+        "bakery",
+        "balcony",
+        "barber",
+        "banker"
+      ]
+    },
+    {
+      "id": 1788700161172,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "balance",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "平衡",
+      "sentence": "It is hard for students to ___ academic performance and extracurricular activities.",
+      "options": [
+        "balance",
+        "battle",
+        "bathe",
+        "bark"
+      ]
+    },
+    {
+      "id": 1788700145843,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "balcony",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "陽臺；露臺",
+      "sentence": "She leaned over the ___ railing, watching the street below.",
+      "options": [
+        "balcony",
+        "ballet",
+        "balloon",
+        "bamboo"
+      ]
+    },
+    {
+      "id": 1788700137801,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "ballet",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "芭蕾舞",
+      "sentence": "The ___ dancer gave a bewilderingly elegant performance.",
+      "options": [
+        "ballet",
+        "balcony",
+        "balloon",
+        "barber"
+      ]
+    },
+    {
+      "id": 1788700148222,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "balloon",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "氣球",
+      "sentence": "An airship is like a ___ filled with gas.",
+      "options": [
+        "balloon",
+        "ballet",
+        "bamboo",
+        "barrel"
+      ]
+    },
+    {
+      "id": 1788700227392,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "bamboo",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "竹；竹子",
+      "sentence": "Pandas rely on ___ as their primary food source, consuming up to 40 pounds of it daily.",
+      "options": [
+        "bamboo",
+        "balloon",
+        "balcony",
+        "barber"
+      ]
+    },
+    {
+      "id": 1788700181523,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "bang",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "發出碰的一聲；猛烈撞擊",
+      "sentence": "He accidentally ___ his knee against the table and winced in pain.",
+      "options": [
+        "banged",
+        "baked",
+        "barked",
+        "bathed"
+      ]
+    },
+    {
+      "id": 1788700143982,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "banker",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "銀行家",
+      "sentence": "Bill and Sam decided to kidnap the son of a ___ to compensate for their business loss.",
+      "options": [
+        "banker",
+        "barber",
+        "baker",
+        "bartender"
+      ]
+    },
+    {
+      "id": 1788700194308,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "bar",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "棒；條；酒吧",
+      "sentence": "She likes to eat chocolate ___ because she has a sweet tooth.",
+      "options": [
+        "bars",
+        "barns",
+        "bays",
+        "barks"
+      ]
+    },
+    {
+      "id": 1788700182134,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "barbecue",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "燒烤",
+      "sentence": "He marinated the chicken overnight to give it a rich flavor when it was grilled at the ___.",
+      "options": [
+        "barbecue",
+        "balcony",
+        "basement",
+        "battle"
+      ]
+    },
+    {
+      "id": 1788700203473,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "barber",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "理髮師",
+      "sentence": "I asked the ___ to cut my hair very short.",
+      "options": [
+        "barber",
+        "banker",
+        "baker",
+        "beggar"
+      ]
+    },
+    {
+      "id": 1788700175331,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "bare",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "空的；赤裸的；(櫥櫃或房間)空無一物的",
+      "sentence": "Upon the super typhoon warning, Nancy rushed to the supermarket—only to find the shelves almost ___ and the stock nearly gone.",
+      "options": [
+        "bare",
+        "basic",
+        "base",
+        "backward"
+      ]
+    },
+    {
+      "id": 1788700218412,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "barely",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "幾乎不",
+      "sentence": "After spending most of her salary on rent and food, Amelia ___ had any money left for entertainment and other expenses.",
+      "options": [
+        "barely",
+        "badly",
+        "basically",
+        "backwards"
+      ]
+    },
+    {
+      "id": 1788700218182,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "bark",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "吠叫",
+      "sentence": "Researchers in Japan have installed on a train a speaker that ___ like a dog and snorts like a deer in order to prevent collisions with animals on the tracks.",
+      "options": [
+        "barks",
+        "bangs",
+        "bakes",
+        "bathes"
+      ]
+    },
+    {
+      "id": 1788700141662,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "barn",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "穀倉；廠舍",
+      "sentence": "He is feeding the horses in the ___.",
+      "options": [
+        "barn",
+        "bar",
+        "bay",
+        "barrel"
+      ]
+    },
+    {
+      "id": 1788700221861,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "barrel",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "桶",
+      "sentence": "How much is a ___ of oil?",
+      "options": [
+        "barrel",
+        "barn",
+        "bar",
+        "bay"
+      ]
+    },
+    {
+      "id": 1788700229481,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "base",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "基地；基礎；基底",
+      "sentence": "Dried fish heads and spines are exported to West Africa, where they are used as the ___ of a protein-rich soup.",
+      "options": [
+        "base",
+        "basis",
+        "basic",
+        "basement"
+      ]
+    },
+    {
+      "id": 1788700196969,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "basement",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "地下室",
+      "sentence": "Since the typhoon, the ___ has been filled with water. We have to remove the water as soon as possible.",
+      "options": [
+        "basement",
+        "balcony",
+        "barbecue",
+        "basis"
+      ]
+    },
+    {
+      "id": 1788700190597,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "basic",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "基本的；基礎的",
+      "sentence": "Although Capoeira appears dancelike, many of its ___ techniques are similar to those in other martial arts.",
+      "options": [
+        "basic",
+        "bare",
+        "base",
+        "backward"
+      ]
+    },
+    {
+      "id": 1788700198462,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "basics",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "基礎；基本原理",
+      "sentence": "Understanding the ___ of grammar is essential for improving writing skills.",
+      "options": [
+        "basics",
+        "bases",
+        "barrels",
+        "barns"
+      ]
+    },
+    {
+      "id": 1788700211422,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "basis",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "基礎；準則",
+      "sentence": "Today, apples are regularly eaten the world over and form the ___ for multi-million dollar industries.",
+      "options": [
+        "basis",
+        "base",
+        "basic",
+        "basement"
+      ]
+    },
+    {
+      "id": 1788700192669,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "bathe",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "把...浸入...；給...洗澡；沉浸在...；洗澡",
+      "sentence": "After a long day at work, she decided to ___ in the warm sunlight streaming through the window.",
+      "options": [
+        "bathe",
+        "bake",
+        "bang",
+        "bark"
+      ]
+    },
+    {
+      "id": 1788700159714,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "battle",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "戰鬥；戰役",
+      "sentence": "This dietary need has led to a constant ___ to keep the deer separate from the unforgiving nature of tons of onrushing rolling stock.",
+      "options": [
+        "battle",
+        "barrel",
+        "barn",
+        "base"
+      ]
+    },
+    {
+      "id": 1788700144003,
+      "category": "Rich",
+      "folder": "W6",
+      "word": "bay",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "海灣；限定區域；月桂樹",
+      "sentence": "The ship anchored in the ___ to avoid the approaching storm.",
+      "options": [
+        "bay",
+        "bar",
+        "barn",
+        "base"
+      ]
     }
   ],
   "students": [
