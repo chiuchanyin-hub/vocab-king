@@ -143,13 +143,22 @@
 
         <button id="import-excel-btn" class="btn-excel" style="width:100%;">📥 批次匯入所有已選擇的 Excel 題庫</button>
       </div>
-<!-- 區塊 3.5：📄 JSON 檔案匯入 -->
+
+      <!-- 區塊 3.5：📄 JSON 檔案匯入 -->
       <div class="section-card" style="border:2px solid #eab308; background:#fefce8;">
         <h3 style="color:#ca8a04;">📄 透過 JSON 檔案匯入單字題庫</h3>
         <div class="form-row">
-          <input type="file" id="jsonFileInput" accept=".json" class="form-control" style="margin-bottom:0; flex:1;" />
+          <select id="json-category" class="form-control" style="flex:1; margin-bottom:0;">
+            <option value="國中">📚 國中</option>
+            <option value="高中學測" selected>📖 高中學測</option>
+            <option value="Level 4">🌟 Level 4</option>
+            <option value="Rich">💎 Rich</option>
+          </select>
+          <input type="text" id="json-folder" placeholder="資料夾/單元 (如: Unit 2)" value="Unit 2" class="form-control" style="flex:1; margin-bottom:0;" />
+          <input type="file" id="jsonFileInput" accept=".json" class="form-control" style="margin-bottom:0; flex:1.5; padding:6px;" />
         </div>
       </div>
+
       <!-- 區塊 4：🗑️ 題目管理與分類檢視 -->
       <div class="section-card" style="border:2px solid #4338ca;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
@@ -681,11 +690,14 @@
       }
     });
 // ==========================================
-    // 新增：JSON 檔案讀取功能 (不影響其他程式碼)
+    // 新增：JSON 檔案讀取功能 (包含分類與單元覆蓋)
     // ==========================================
     document.getElementById('jsonFileInput').addEventListener('change', function(event) {
       const file = event.target.files[0];
       if (!file) return;
+
+      const selectedCategory = document.getElementById('json-category').value;
+      const selectedFolder = document.getElementById('json-folder').value.trim() || "未分類";
 
       const reader = new FileReader();
       
@@ -694,11 +706,18 @@
           const importedData = JSON.parse(e.target.result);
           
           if (importedData.questions && Array.isArray(importedData.questions)) {
-            // 將解析出來的 questions 加入現有的題庫中
-            questions.push(...importedData.questions);
+            // 替換掉原本 JSON 內的分類與資料夾，強制套用下拉選單的設定，並重新產生唯一 ID
+            const newQuestions = importedData.questions.map((q, idx) => ({
+              ...q,
+              id: Date.now() + idx + Math.floor(Math.random() * 100000), 
+              category: selectedCategory,
+              folder: selectedFolder
+            }));
+
+            questions.push(...newQuestions);
             saveQuestions();
             renderAllDashboard();
-            alert(`🎉 成功透過 JSON 匯入 ${importedData.questions.length} 題單字！`);
+            alert(`🎉 成功透過 JSON 匯入 ${newQuestions.length} 題單字至 [${selectedCategory} / ${selectedFolder}]！`);
           } else {
             alert("匯入失敗：檔案內沒有找到 questions 陣列，請確認 JSON 格式。");
           }
