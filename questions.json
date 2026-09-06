@@ -121903,6 +121903,6134 @@
         "narrate",
         "mound"
       ]
+    },
+    {
+      "id": 1788698148959,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "narrator",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "旁白",
+      "sentence": "The student needs to learn the word ___ (旁白).",
+      "options": [
+        "narrator",
+        "nucleus",
+        "oasis",
+        "obsess"
+      ]
+    },
+    {
+      "id": 1788698191977,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "nationalism",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "民族主義",
+      "sentence": "The student needs to learn the word ___ (民族主義).",
+      "options": [
+        "nationalism",
+        "narrator",
+        "oblige",
+        "navigate"
+      ]
+    },
+    {
+      "id": 1788698185266,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "navigate",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "導航",
+      "sentence": "The student needs to learn the word ___ (導航).",
+      "options": [
+        "novice",
+        "oatmeal",
+        "oath",
+        "navigate"
+      ]
+    },
+    {
+      "id": 1788698193037,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "navigation",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "導航",
+      "sentence": "The student needs to learn the word ___ (導航).",
+      "options": [
+        "navigation",
+        "nucleus",
+        "novice",
+        "octopus"
+      ]
+    },
+    {
+      "id": 1788698111499,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "nickel",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "鎳",
+      "sentence": "The student needs to learn the word ___ (鎳).",
+      "options": [
+        "nickel",
+        "nostril",
+        "oath",
+        "odor"
+      ]
+    },
+    {
+      "id": 1788698128400,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "nostril",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "鼻孔",
+      "sentence": "The student needs to learn the word ___ (鼻孔).",
+      "options": [
+        "nucleus",
+        "nostril",
+        "occurrence",
+        "obstinate"
+      ]
+    },
+    {
+      "id": 1788698189458,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "notable",
+      "pos": "adj./n.",
+      "isPhrase": false,
+      "zh": "值得注意的",
+      "sentence": "The student needs to learn the word ___ (值得注意的).",
+      "options": [
+        "navigation",
+        "nourish(ment)",
+        "nurture",
+        "notable"
+      ]
+    },
+    {
+      "id": 1788698187196,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "nourish(ment)",
+      "pos": "v./(n.)",
+      "isPhrase": false,
+      "zh": "營養）",
+      "sentence": "The student needs to learn the word ___ (營養）).",
+      "options": [
+        "nurture",
+        "navigation",
+        "nourish(ment)",
+        "narrator"
+      ]
+    },
+    {
+      "id": 1788698165573,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "novice",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "新手",
+      "sentence": "The student needs to learn the word ___ (新手).",
+      "options": [
+        "notable",
+        "navigate",
+        "occurrence",
+        "novice"
+      ]
+    },
+    {
+      "id": 1788698133405,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "nucleus",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "核",
+      "sentence": "The student needs to learn the word ___ (核).",
+      "options": [
+        "nucleus",
+        "nourish(ment)",
+        "oasis",
+        "nickel"
+      ]
+    },
+    {
+      "id": 1788698192597,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "nurture",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "培育",
+      "sentence": "The student needs to learn the word ___ (培育).",
+      "options": [
+        "narrator",
+        "nurture",
+        "navigation",
+        "novice"
+      ]
+    },
+    {
+      "id": 1788698165042,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "oasis",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "綠洲",
+      "sentence": "The student needs to learn the word ___ (綠洲).",
+      "options": [
+        "navigation",
+        "oasis",
+        "nucleus",
+        "notable"
+      ]
+    },
+    {
+      "id": 1788698109038,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "oath",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "誓言",
+      "sentence": "The student needs to learn the word ___ (誓言).",
+      "options": [
+        "notable",
+        "nurture",
+        "oath",
+        "obstinate"
+      ]
+    },
+    {
+      "id": 1788698128295,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "oatmeal",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "麥片",
+      "sentence": "The student needs to learn the word ___ (麥片).",
+      "options": [
+        "notable",
+        "oblige",
+        "nourish(ment)",
+        "oatmeal"
+      ]
+    },
+    {
+      "id": 1788698120791,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "oblige",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "必須",
+      "sentence": "The student needs to learn the word ___ (必須).",
+      "options": [
+        "oblige",
+        "oath",
+        "nickel",
+        "obstinate"
+      ]
+    },
+    {
+      "id": 1788698177034,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "obsess",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "纏住",
+      "sentence": "The student needs to learn the word ___ (纏住).",
+      "options": [
+        "novice",
+        "nickel",
+        "obsess",
+        "narrator"
+      ]
+    },
+    {
+      "id": 1788698166720,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "obstinate",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "頑固",
+      "sentence": "The student needs to learn the word ___ (頑固).",
+      "options": [
+        "notable",
+        "obstinate",
+        "odor",
+        "obsess"
+      ]
+    },
+    {
+      "id": 1788698120908,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "occurrence",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "發生",
+      "sentence": "The student needs to learn the word ___ (發生).",
+      "options": [
+        "occurrence",
+        "navigation",
+        "notable",
+        "obsess"
+      ]
+    },
+    {
+      "id": 1788698177189,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "octopus",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "章魚",
+      "sentence": "The student needs to learn the word ___ (章魚).",
+      "options": [
+        "odor",
+        "oblige",
+        "novice",
+        "octopus"
+      ]
+    },
+    {
+      "id": 1788698155353,
+      "category": "高中學測",
+      "folder": "Day 281",
+      "word": "odor",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "氣味",
+      "sentence": "The student needs to learn the word ___ (氣味).",
+      "options": [
+        "navigation",
+        "odor",
+        "navigate",
+        "occurrence"
+      ]
+    },
+    {
+      "id": 1788698167932,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "offshore",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "離岸",
+      "sentence": "The student needs to learn the word ___ (離岸).",
+      "options": [
+        "orphanage",
+        "offshore",
+        "outlaw",
+        "offspring"
+      ]
+    },
+    {
+      "id": 1788698169753,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "offspring",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "後代",
+      "sentence": "The student needs to learn the word ___ (後代).",
+      "options": [
+        "offspring",
+        "orderly",
+        "ounce",
+        "oppression"
+      ]
+    },
+    {
+      "id": 1788698171760,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "operative",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "操作",
+      "sentence": "The student needs to learn the word ___ (操作).",
+      "options": [
+        "outlaw",
+        "orphanage",
+        "ounce",
+        "operative"
+      ]
+    },
+    {
+      "id": 1788698101260,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "oppress",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "壓迫",
+      "sentence": "The student needs to learn the word ___ (壓迫).",
+      "options": [
+        "oppress",
+        "oppression",
+        "operative",
+        "outlook"
+      ]
+    },
+    {
+      "id": 1788698097777,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "oppression",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "壓迫",
+      "sentence": "The student needs to learn the word ___ (壓迫).",
+      "options": [
+        "outbreak",
+        "oppression",
+        "offshore",
+        "oppress"
+      ]
+    },
+    {
+      "id": 1788698156845,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "ordeal",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "考驗",
+      "sentence": "The student needs to learn the word ___ (考驗).",
+      "options": [
+        "orphanage",
+        "ordeal",
+        "organizer",
+        "operative"
+      ]
+    },
+    {
+      "id": 1788698109507,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "orderly",
+      "pos": "adj./n.",
+      "isPhrase": false,
+      "zh": "秩序",
+      "sentence": "The student needs to learn the word ___ (秩序).",
+      "options": [
+        "ornament",
+        "orderly",
+        "outgoing",
+        "originate"
+      ]
+    },
+    {
+      "id": 1788698185901,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "organizer",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "主辦單位",
+      "sentence": "The student needs to learn the word ___ (主辦單位).",
+      "options": [
+        "outbreak",
+        "outgoing",
+        "offspring",
+        "organizer"
+      ]
+    },
+    {
+      "id": 1788698181097,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "orient",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "東方",
+      "sentence": "The student needs to learn the word ___ (東方).",
+      "options": [
+        "orient",
+        "orderly",
+        "ornament",
+        "offshore"
+      ]
+    },
+    {
+      "id": 1788698179935,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "oriental",
+      "pos": "adj./n.",
+      "isPhrase": false,
+      "zh": "東方",
+      "sentence": "The student needs to learn the word ___ (東方).",
+      "options": [
+        "ornament",
+        "organizer",
+        "oriental",
+        "offshore"
+      ]
+    },
+    {
+      "id": 1788698117863,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "originate",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "起源",
+      "sentence": "The student needs to learn the word ___ (起源).",
+      "options": [
+        "orphanage",
+        "originate",
+        "orderly",
+        "organizer"
+      ]
+    },
+    {
+      "id": 1788698193208,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "ornament",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "裝飾品",
+      "sentence": "The student needs to learn the word ___ (裝飾品).",
+      "options": [
+        "operative",
+        "offspring",
+        "ornament",
+        "offshore"
+      ]
+    },
+    {
+      "id": 1788698163201,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "orphanage",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "孤兒院",
+      "sentence": "The student needs to learn the word ___ (孤兒院).",
+      "options": [
+        "orphanage",
+        "oppression",
+        "orient",
+        "orderly"
+      ]
+    },
+    {
+      "id": 1788698145233,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "orthodox",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "正統",
+      "sentence": "The student needs to learn the word ___ (正統).",
+      "options": [
+        "operative",
+        "offshore",
+        "orthodox",
+        "orient"
+      ]
+    },
+    {
+      "id": 1788698109207,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "ounce",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "盎司",
+      "sentence": "The student needs to learn the word ___ (盎司).",
+      "options": [
+        "outgoing",
+        "oppress",
+        "ordeal",
+        "ounce"
+      ]
+    },
+    {
+      "id": 1788698191993,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "outbreak",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "爆發",
+      "sentence": "The student needs to learn the word ___ (爆發).",
+      "options": [
+        "outbreak",
+        "ornament",
+        "organizer",
+        "orderly"
+      ]
+    },
+    {
+      "id": 1788698191102,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "outgoing",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "外向",
+      "sentence": "The student needs to learn the word ___ (外向).",
+      "options": [
+        "outgoing",
+        "oppression",
+        "outlook",
+        "outbreak"
+      ]
+    },
+    {
+      "id": 1788698173926,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "outlaw",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "取締",
+      "sentence": "The student needs to learn the word ___ (取締).",
+      "options": [
+        "outlaw",
+        "oriental",
+        "offshore",
+        "ordeal"
+      ]
+    },
+    {
+      "id": 1788698131746,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "outlook",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "前景",
+      "sentence": "The student needs to learn the word ___ (前景).",
+      "options": [
+        "outlook",
+        "outlaw",
+        "offshore",
+        "offspring"
+      ]
+    },
+    {
+      "id": 1788698161823,
+      "category": "高中學測",
+      "folder": "Day 282",
+      "word": "outnumber",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "人數佔優",
+      "sentence": "The student needs to learn the word ___ (人數佔優).",
+      "options": [
+        "offspring",
+        "outnumber",
+        "ounce",
+        "orderly"
+      ]
+    },
+    {
+      "id": 1788698163972,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "outrage",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "暴行",
+      "sentence": "The student needs to learn the word ___ (暴行).",
+      "options": [
+        "ozone",
+        "outrage",
+        "oyster",
+        "outrageous"
+      ]
+    },
+    {
+      "id": 1788698106332,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "outrageous",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "令人憤慨",
+      "sentence": "The student needs to learn the word ___ (令人憤慨).",
+      "options": [
+        "overwork",
+        "outrageous",
+        "overflow",
+        "outrage"
+      ]
+    },
+    {
+      "id": 1788698155206,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "outright",
+      "pos": "adj./adv.",
+      "isPhrase": false,
+      "zh": "直接",
+      "sentence": "The student needs to learn the word ___ (直接).",
+      "options": [
+        "outskirts",
+        "overhear",
+        "outright",
+        "overflow"
+      ]
+    },
+    {
+      "id": 1788698134343,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "outset",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "開端",
+      "sentence": "The student needs to learn the word ___ (開端).",
+      "options": [
+        "overflow",
+        "overhear",
+        "outset",
+        "outrage"
+      ]
+    },
+    {
+      "id": 1788698174408,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "outskirts",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "郊區",
+      "sentence": "The student needs to learn the word ___ (郊區).",
+      "options": [
+        "outskirts",
+        "outrage",
+        "ozone",
+        "outset"
+      ]
+    },
+    {
+      "id": 1788698172154,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "outward",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "向外",
+      "sentence": "The student needs to learn the word ___ (向外).",
+      "options": [
+        "outward",
+        "outright",
+        "overflow",
+        "pastime"
+      ]
+    },
+    {
+      "id": 1788698114628,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "overdo",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "過度",
+      "sentence": "The student needs to learn the word ___ (過度).",
+      "options": [
+        "outset",
+        "overflow",
+        "overdo",
+        "pastime"
+      ]
+    },
+    {
+      "id": 1788698099669,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "overflow",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "溢出",
+      "sentence": "The student needs to learn the word ___ (溢出).",
+      "options": [
+        "peacock",
+        "overflow",
+        "overlap",
+        "ozone"
+      ]
+    },
+    {
+      "id": 1788698127705,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "overhear",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "無意中聽到",
+      "sentence": "The student needs to learn the word ___ (無意中聽到).",
+      "options": [
+        "outskirts",
+        "paradox",
+        "overhear",
+        "overdo"
+      ]
+    },
+    {
+      "id": 1788698107180,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "overlap",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "重疊",
+      "sentence": "The student needs to learn the word ___ (重疊).",
+      "options": [
+        "outrage",
+        "oyster",
+        "overlap",
+        "pastime"
+      ]
+    },
+    {
+      "id": 1788698104086,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "overwork",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "過度勞累",
+      "sentence": "The student needs to learn the word ___ (過度勞累).",
+      "options": [
+        "patriotic",
+        "outskirts",
+        "overflow",
+        "overwork"
+      ]
+    },
+    {
+      "id": 1788698166790,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "oyster",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "牡蠣",
+      "sentence": "The student needs to learn the word ___ (牡蠣).",
+      "options": [
+        "paradox",
+        "outrageous",
+        "oyster",
+        "overdo"
+      ]
+    },
+    {
+      "id": 1788698183914,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "ozone",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "臭氧",
+      "sentence": "The student needs to learn the word ___ (臭氧).",
+      "options": [
+        "ozone",
+        "overlap",
+        "pastime",
+        "outset"
+      ]
+    },
+    {
+      "id": 1788698166962,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "paddle",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "槳",
+      "sentence": "The student needs to learn the word ___ (槳).",
+      "options": [
+        "peacock",
+        "outright",
+        "paddle",
+        "ozone"
+      ]
+    },
+    {
+      "id": 1788698182928,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "paperback",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "平裝",
+      "sentence": "The student needs to learn the word ___ (平裝).",
+      "options": [
+        "outrage",
+        "overdo",
+        "pastime",
+        "paperback"
+      ]
+    },
+    {
+      "id": 1788698147761,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "paradox",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "悖論",
+      "sentence": "The student needs to learn the word ___ (悖論).",
+      "options": [
+        "paradox",
+        "outrage",
+        "outward",
+        "overwork"
+      ]
+    },
+    {
+      "id": 1788698119001,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "pastime",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "消遣",
+      "sentence": "The student needs to learn the word ___ (消遣).",
+      "options": [
+        "pastime",
+        "outright",
+        "oyster",
+        "outset"
+      ]
+    },
+    {
+      "id": 1788698153175,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "patriot",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "愛國者",
+      "sentence": "The student needs to learn the word ___ (愛國者).",
+      "options": [
+        "paradox",
+        "overdo",
+        "ozone",
+        "patriot"
+      ]
+    },
+    {
+      "id": 1788698127488,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "patriotic",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "愛國",
+      "sentence": "The student needs to learn the word ___ (愛國).",
+      "options": [
+        "patriotic",
+        "oyster",
+        "peacock",
+        "overflow"
+      ]
+    },
+    {
+      "id": 1788698134562,
+      "category": "高中學測",
+      "folder": "Day 283",
+      "word": "peacock",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "孔雀",
+      "sentence": "The student needs to learn the word ___ (孔雀).",
+      "options": [
+        "patriotic",
+        "outrageous",
+        "oyster",
+        "peacock"
+      ]
+    },
+    {
+      "id": 1788698156315,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "pebble",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "卵石",
+      "sentence": "The student needs to learn the word ___ (卵石).",
+      "options": [
+        "perch",
+        "pickpocket",
+        "petrol",
+        "pebble"
+      ]
+    },
+    {
+      "id": 1788698128409,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "peek",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "窺視",
+      "sentence": "The student needs to learn the word ___ (窺視).",
+      "options": [
+        "peek",
+        "pianist",
+        "perch",
+        "pilgrim"
+      ]
+    },
+    {
+      "id": 1788698165069,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "pending",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "待辦的",
+      "sentence": "The student needs to learn the word ___ (待辦的).",
+      "options": [
+        "pending",
+        "pinch",
+        "persevere",
+        "pebble"
+      ]
+    },
+    {
+      "id": 1788698141729,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "peninsula",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "半島",
+      "sentence": "The student needs to learn the word ___ (半島).",
+      "options": [
+        "peninsula",
+        "persistence",
+        "perish",
+        "pebble"
+      ]
+    },
+    {
+      "id": 1788698161721,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "perch",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "棲息",
+      "sentence": "The student needs to learn the word ___ (棲息).",
+      "options": [
+        "persistent",
+        "perch",
+        "petroleum",
+        "pharmacy"
+      ]
+    },
+    {
+      "id": 1788698140405,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "peril",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "危險",
+      "sentence": "The student needs to learn the word ___ (危險).",
+      "options": [
+        "pickpocket",
+        "peril",
+        "pending",
+        "peninsula"
+      ]
+    },
+    {
+      "id": 1788698147316,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "perish",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "淪",
+      "sentence": "The student needs to learn the word ___ (淪).",
+      "options": [
+        "permissible",
+        "petrol",
+        "persistence",
+        "perish"
+      ]
+    },
+    {
+      "id": 1788698189349,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "permissible",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "允許的",
+      "sentence": "The student needs to learn the word ___ (允許的).",
+      "options": [
+        "perch",
+        "pilgrim",
+        "pebble",
+        "permissible"
+      ]
+    },
+    {
+      "id": 1788698189726,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "persevere",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "堅持不懈",
+      "sentence": "The student needs to learn the word ___ (堅持不懈).",
+      "options": [
+        "persevere",
+        "peek",
+        "pebble",
+        "pickpocket"
+      ]
+    },
+    {
+      "id": 1788698189264,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "persistence",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "持久性",
+      "sentence": "The student needs to learn the word ___ (持久性).",
+      "options": [
+        "pickpocket",
+        "pianist",
+        "persistence",
+        "peril"
+      ]
+    },
+    {
+      "id": 1788698151155,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "persistent",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "執著的",
+      "sentence": "The student needs to learn the word ___ (執著的).",
+      "options": [
+        "peninsula",
+        "pimple",
+        "persistent",
+        "peril"
+      ]
+    },
+    {
+      "id": 1788698142960,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "petrol",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "汽油",
+      "sentence": "The student needs to learn the word ___ (汽油).",
+      "options": [
+        "perish",
+        "peninsula",
+        "pebble",
+        "petrol"
+      ]
+    },
+    {
+      "id": 1788698148502,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "petroleum",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "石油",
+      "sentence": "The student needs to learn the word ___ (石油).",
+      "options": [
+        "petroleum",
+        "peek",
+        "pinch",
+        "pebble"
+      ]
+    },
+    {
+      "id": 1788698171788,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "pharmacist",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "藥師",
+      "sentence": "The student needs to learn the word ___ (藥師).",
+      "options": [
+        "pharmacist",
+        "peril",
+        "pilgrim",
+        "pending"
+      ]
+    },
+    {
+      "id": 1788698139611,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "pharmacy",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "藥局",
+      "sentence": "The student needs to learn the word ___ (藥局).",
+      "options": [
+        "perch",
+        "persistent",
+        "perish",
+        "pharmacy"
+      ]
+    },
+    {
+      "id": 1788698141525,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "pianist",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "鋼琴家",
+      "sentence": "The student needs to learn the word ___ (鋼琴家).",
+      "options": [
+        "pianist",
+        "peninsula",
+        "perch",
+        "pending"
+      ]
+    },
+    {
+      "id": 1788698106423,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "pickpocket",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "扒手",
+      "sentence": "The student needs to learn the word ___ (扒手).",
+      "options": [
+        "permissible",
+        "pickpocket",
+        "pilgrim",
+        "peril"
+      ]
+    },
+    {
+      "id": 1788698146375,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "pilgrim",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "朝聖",
+      "sentence": "The student needs to learn the word ___ (朝聖).",
+      "options": [
+        "petrol",
+        "persistent",
+        "pilgrim",
+        "permissible"
+      ]
+    },
+    {
+      "id": 1788698148555,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "pimple",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "疙瘩",
+      "sentence": "The student needs to learn the word ___ (疙瘩).",
+      "options": [
+        "pinch",
+        "pimple",
+        "peek",
+        "peninsula"
+      ]
+    },
+    {
+      "id": 1788698105145,
+      "category": "高中學測",
+      "folder": "Day 284",
+      "word": "pinch",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "捏",
+      "sentence": "The student needs to learn the word ___ (捏).",
+      "options": [
+        "pinch",
+        "petroleum",
+        "perish",
+        "pending"
+      ]
+    },
+    {
+      "id": 1788698166561,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "plague",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "瘟疫",
+      "sentence": "The student needs to learn the word ___ (瘟疫).",
+      "options": [
+        "plow",
+        "populate",
+        "pony",
+        "plague"
+      ]
+    },
+    {
+      "id": 1788698186912,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "playwright",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "劇作家",
+      "sentence": "The student needs to learn the word ___ (劇作家).",
+      "options": [
+        "playwright",
+        "pony",
+        "precede",
+        "precision"
+      ]
+    },
+    {
+      "id": 1788698161695,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "plow",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "犁",
+      "sentence": "The student needs to learn the word ___ (犁).",
+      "options": [
+        "polar",
+        "plow",
+        "pneumonia",
+        "preside"
+      ]
+    },
+    {
+      "id": 1788698099029,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "pneumonia",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "肺炎",
+      "sentence": "The student needs to learn the word ___ (肺炎).",
+      "options": [
+        "porter",
+        "populate",
+        "preside",
+        "pneumonia"
+      ]
+    },
+    {
+      "id": 1788698104913,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "polar",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "極性",
+      "sentence": "The student needs to learn the word ___ (極性).",
+      "options": [
+        "ponder",
+        "preside",
+        "polar",
+        "predecessor"
+      ]
+    },
+    {
+      "id": 1788698114756,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "ponder",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "思考",
+      "sentence": "The student needs to learn the word ___ (思考).",
+      "options": [
+        "ponder",
+        "polar",
+        "porter",
+        "preside"
+      ]
+    },
+    {
+      "id": 1788698170635,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "pony",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "小馬",
+      "sentence": "The student needs to learn the word ___ (小馬).",
+      "options": [
+        "predecessor",
+        "pneumonia",
+        "precede",
+        "pony"
+      ]
+    },
+    {
+      "id": 1788698124197,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "populate",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "填充",
+      "sentence": "The student needs to learn the word ___ (填充).",
+      "options": [
+        "pneumonia",
+        "predecessor",
+        "populate",
+        "polar"
+      ]
+    },
+    {
+      "id": 1788698185603,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "porter",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "搬運工",
+      "sentence": "The student needs to learn the word ___ (搬運工).",
+      "options": [
+        "poultry",
+        "porter",
+        "predecessor",
+        "pneumonia"
+      ]
+    },
+    {
+      "id": 1788698126305,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "posture",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "姿勢",
+      "sentence": "The student needs to learn the word ___ (姿勢).",
+      "options": [
+        "posture",
+        "precision",
+        "precede",
+        "pneumonia"
+      ]
+    },
+    {
+      "id": 1788698124646,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "potent",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "強效",
+      "sentence": "The student needs to learn the word ___ (強效).",
+      "options": [
+        "preach",
+        "potent",
+        "plague",
+        "playwright"
+      ]
+    },
+    {
+      "id": 1788698184702,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "poultry",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "家禽",
+      "sentence": "The student needs to learn the word ___ (家禽).",
+      "options": [
+        "predecessor",
+        "polar",
+        "poultry",
+        "premiere"
+      ]
+    },
+    {
+      "id": 1788698164784,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "preach",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "佈道",
+      "sentence": "The student needs to learn the word ___ (佈道).",
+      "options": [
+        "polar",
+        "pneumonia",
+        "preach",
+        "ponder"
+      ]
+    },
+    {
+      "id": 1788698120168,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "precede",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "先於",
+      "sentence": "The student needs to learn the word ___ (先於).",
+      "options": [
+        "precedent",
+        "precede",
+        "pneumonia",
+        "pony"
+      ]
+    },
+    {
+      "id": 1788698105738,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "precedent",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "先例",
+      "sentence": "The student needs to learn the word ___ (先例).",
+      "options": [
+        "plague",
+        "precedent",
+        "playwright",
+        "posture"
+      ]
+    },
+    {
+      "id": 1788698100552,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "precision",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "精確",
+      "sentence": "The student needs to learn the word ___ (精確).",
+      "options": [
+        "precision",
+        "polar",
+        "potent",
+        "poultry"
+      ]
+    },
+    {
+      "id": 1788698153569,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "predecessor",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "前任",
+      "sentence": "The student needs to learn the word ___ (前任).",
+      "options": [
+        "predecessor",
+        "pneumonia",
+        "plow",
+        "premiere"
+      ]
+    },
+    {
+      "id": 1788698165587,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "prehistoric",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "史前",
+      "sentence": "The student needs to learn the word ___ (史前).",
+      "options": [
+        "plague",
+        "populate",
+        "prehistoric",
+        "pony"
+      ]
+    },
+    {
+      "id": 1788698115420,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "premiere",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "首播",
+      "sentence": "The student needs to learn the word ___ (首播).",
+      "options": [
+        "premiere",
+        "plow",
+        "playwright",
+        "preach"
+      ]
+    },
+    {
+      "id": 1788698168570,
+      "category": "高中學測",
+      "folder": "Day 285",
+      "word": "preside",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "主持",
+      "sentence": "The student needs to learn the word ___ (主持).",
+      "options": [
+        "plow",
+        "precision",
+        "preside",
+        "pony"
+      ]
+    },
+    {
+      "id": 1788698141417,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "prestige",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "聲望",
+      "sentence": "The student needs to learn the word ___ (聲望).",
+      "options": [
+        "prohibition",
+        "prestige",
+        "provisional",
+        "priceless"
+      ]
+    },
+    {
+      "id": 1788698131733,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "preventive",
+      "pos": "adj./n.",
+      "isPhrase": false,
+      "zh": "預防",
+      "sentence": "The student needs to learn the word ___ (預防).",
+      "options": [
+        "psychotherapy",
+        "preventive",
+        "psychic",
+        "privatize"
+      ]
+    },
+    {
+      "id": 1788698135952,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "preview",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "預覽",
+      "sentence": "The student needs to learn the word ___ (預覽).",
+      "options": [
+        "prose",
+        "preview",
+        "propel",
+        "psychiatry"
+      ]
+    },
+    {
+      "id": 1788698193654,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "priceless",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "無價",
+      "sentence": "The student needs to learn the word ___ (無價).",
+      "options": [
+        "prohibition",
+        "priceless",
+        "psychotherapy",
+        "prosecute"
+      ]
+    },
+    {
+      "id": 1788698144642,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "privatize",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "私有化",
+      "sentence": "The student needs to learn the word ___ (私有化).",
+      "options": [
+        "provincial",
+        "psychic",
+        "privatize",
+        "prototype"
+      ]
+    },
+    {
+      "id": 1788698147234,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "probe",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "探測",
+      "sentence": "The student needs to learn the word ___ (探測).",
+      "options": [
+        "prestige",
+        "prototype",
+        "probe",
+        "preventive"
+      ]
+    },
+    {
+      "id": 1788698112256,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "procession",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "遊行",
+      "sentence": "The student needs to learn the word ___ (遊行).",
+      "options": [
+        "procession",
+        "psychiatry",
+        "prohibition",
+        "priceless"
+      ]
+    },
+    {
+      "id": 1788698133671,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "proficiency",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "熟練程度",
+      "sentence": "The student needs to learn the word ___ (熟練程度).",
+      "options": [
+        "provincial",
+        "prohibition",
+        "proficiency",
+        "priceless"
+      ]
+    },
+    {
+      "id": 1788698155922,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "prohibition",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "禁令",
+      "sentence": "The student needs to learn the word ___ (禁令).",
+      "options": [
+        "preview",
+        "privatize",
+        "prohibition",
+        "priceless"
+      ]
+    },
+    {
+      "id": 1788698141679,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "propel",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "推進",
+      "sentence": "The student needs to learn the word ___ (推進).",
+      "options": [
+        "propel",
+        "provisional",
+        "prose",
+        "proverb"
+      ]
+    },
+    {
+      "id": 1788698109146,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "prose",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "散文",
+      "sentence": "The student needs to learn the word ___ (散文).",
+      "options": [
+        "prose",
+        "psychic",
+        "prestige",
+        "provisional"
+      ]
+    },
+    {
+      "id": 1788698114998,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "prosecute",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "起訴",
+      "sentence": "The student needs to learn the word ___ (起訴).",
+      "options": [
+        "prosecute",
+        "preview",
+        "procession",
+        "priceless"
+      ]
+    },
+    {
+      "id": 1788698191981,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "prototype",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "原型",
+      "sentence": "The student needs to learn the word ___ (原型).",
+      "options": [
+        "preventive",
+        "prestige",
+        "prototype",
+        "psychic"
+      ]
+    },
+    {
+      "id": 1788698124393,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "proverb",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "諺語",
+      "sentence": "The student needs to learn the word ___ (諺語).",
+      "options": [
+        "preventive",
+        "prose",
+        "proverb",
+        "provisional"
+      ]
+    },
+    {
+      "id": 1788698119544,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "provincial",
+      "pos": "adj./n.",
+      "isPhrase": false,
+      "zh": "省",
+      "sentence": "The student needs to learn the word ___ (省).",
+      "options": [
+        "proficiency",
+        "probe",
+        "provincial",
+        "provisional"
+      ]
+    },
+    {
+      "id": 1788698187876,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "provisional",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "臨時",
+      "sentence": "The student needs to learn the word ___ (臨時).",
+      "options": [
+        "privatize",
+        "prestige",
+        "provisional",
+        "propel"
+      ]
+    },
+    {
+      "id": 1788698165998,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "psychiatry",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "精神病學",
+      "sentence": "The student needs to learn the word ___ (精神病學).",
+      "options": [
+        "prose",
+        "privatize",
+        "prosecute",
+        "psychiatry"
+      ]
+    },
+    {
+      "id": 1788698105676,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "psychic",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "精神",
+      "sentence": "The student needs to learn the word ___ (精神).",
+      "options": [
+        "psychic",
+        "prototype",
+        "proverb",
+        "privatize"
+      ]
+    },
+    {
+      "id": 1788698145287,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "psychotherapy",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "心理治療",
+      "sentence": "The student needs to learn the word ___ (心理治療).",
+      "options": [
+        "psychotherapy",
+        "prototype",
+        "privatize",
+        "prosecute"
+      ]
+    },
+    {
+      "id": 1788698155598,
+      "category": "高中學測",
+      "folder": "Day 286",
+      "word": "publicize",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "宣傳",
+      "sentence": "The student needs to learn the word ___ (宣傳).",
+      "options": [
+        "prestige",
+        "probe",
+        "publicize",
+        "preventive"
+      ]
+    },
+    {
+      "id": 1788698154172,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "puff",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "噗",
+      "sentence": "The student needs to learn the word ___ (噗).",
+      "options": [
+        "radiate",
+        "puff",
+        "purify",
+        "radish"
+      ]
+    },
+    {
+      "id": 1788698148136,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "purify",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "淨化",
+      "sentence": "The student needs to learn the word ___ (淨化).",
+      "options": [
+        "purity",
+        "qualification",
+        "radioactive",
+        "purify"
+      ]
+    },
+    {
+      "id": 1788698128424,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "purity",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "純度",
+      "sentence": "The student needs to learn the word ___ (純度).",
+      "options": [
+        "radish",
+        "ratify",
+        "purity",
+        "radiant"
+      ]
+    },
+    {
+      "id": 1788698120355,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "quake",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "地震",
+      "sentence": "The student needs to learn the word ___ (地震).",
+      "options": [
+        "radish",
+        "purity",
+        "quake",
+        "radiate"
+      ]
+    },
+    {
+      "id": 1788698117589,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "qualification",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "資格",
+      "sentence": "The student needs to learn the word ___ (資格).",
+      "options": [
+        "rap",
+        "qualification",
+        "purify",
+        "quake"
+      ]
+    },
+    {
+      "id": 1788698099017,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "radiant",
+      "pos": "adj./n.",
+      "isPhrase": false,
+      "zh": "放射狀",
+      "sentence": "The student needs to learn the word ___ (放射狀).",
+      "options": [
+        "reconcile",
+        "quake",
+        "radiant",
+        "purity"
+      ]
+    },
+    {
+      "id": 1788698129762,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "radiate",
+      "pos": "v./adj.",
+      "isPhrase": false,
+      "zh": "輻射",
+      "sentence": "The student needs to learn the word ___ (輻射).",
+      "options": [
+        "radiate",
+        "ratify",
+        "radiant",
+        "reap"
+      ]
+    },
+    {
+      "id": 1788698149490,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "radioactive",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "放射性",
+      "sentence": "The student needs to learn the word ___ (放射性).",
+      "options": [
+        "radioactive",
+        "radish",
+        "purity",
+        "quake"
+      ]
+    },
+    {
+      "id": 1788698134443,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "radish",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "蘿蔔",
+      "sentence": "The student needs to learn the word ___ (蘿蔔).",
+      "options": [
+        "purify",
+        "radish",
+        "ratify",
+        "qualification"
+      ]
+    },
+    {
+      "id": 1788698114919,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "radius",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "半徑",
+      "sentence": "The student needs to learn the word ___ (半徑).",
+      "options": [
+        "puff",
+        "radius",
+        "reckless",
+        "purify"
+      ]
+    },
+    {
+      "id": 1788698137216,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "rap",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "饒舌",
+      "sentence": "The student needs to learn the word ___ (饒舌).",
+      "options": [
+        "radish",
+        "realization",
+        "rap",
+        "radioactive"
+      ]
+    },
+    {
+      "id": 1788698118197,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "rash",
+      "pos": "n./adj.",
+      "isPhrase": false,
+      "zh": "皮疹",
+      "sentence": "The student needs to learn the word ___ (皮疹).",
+      "options": [
+        "rap",
+        "rash",
+        "reckon",
+        "redundancy"
+      ]
+    },
+    {
+      "id": 1788698130306,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "ratify",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "核准",
+      "sentence": "The student needs to learn the word ___ (核准).",
+      "options": [
+        "ratify",
+        "radioactive",
+        "puff",
+        "rash"
+      ]
+    },
+    {
+      "id": 1788698127938,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "realization",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "實現",
+      "sentence": "The student needs to learn the word ___ (實現).",
+      "options": [
+        "puff",
+        "realization",
+        "ratify",
+        "reap"
+      ]
+    },
+    {
+      "id": 1788698104218,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "reap",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "收割",
+      "sentence": "The student needs to learn the word ___ (收割).",
+      "options": [
+        "qualification",
+        "ratify",
+        "radiant",
+        "reap"
+      ]
+    },
+    {
+      "id": 1788698155210,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "reckless",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "魯莽",
+      "sentence": "The student needs to learn the word ___ (魯莽).",
+      "options": [
+        "rash",
+        "reckless",
+        "rap",
+        "reap"
+      ]
+    },
+    {
+      "id": 1788698107350,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "reckon",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "估計",
+      "sentence": "The student needs to learn the word ___ (估計).",
+      "options": [
+        "puff",
+        "reckon",
+        "radiant",
+        "recreational"
+      ]
+    },
+    {
+      "id": 1788698097392,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "reconcile",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "調和",
+      "sentence": "The student needs to learn the word ___ (調和).",
+      "options": [
+        "puff",
+        "reconcile",
+        "radish",
+        "reckon"
+      ]
+    },
+    {
+      "id": 1788698154689,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "recreational",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "休閒",
+      "sentence": "The student needs to learn the word ___ (休閒).",
+      "options": [
+        "recreational",
+        "qualification",
+        "ratify",
+        "quake"
+      ]
+    },
+    {
+      "id": 1788698142969,
+      "category": "高中學測",
+      "folder": "Day 287",
+      "word": "redundancy",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "冗餘",
+      "sentence": "The student needs to learn the word ___ (冗餘).",
+      "options": [
+        "redundancy",
+        "radish",
+        "radiant",
+        "rap"
+      ]
+    },
+    {
+      "id": 1788698191041,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "reef",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "礁",
+      "sentence": "The student needs to learn the word ___ (礁).",
+      "options": [
+        "reef",
+        "reign",
+        "relay",
+        "referendum"
+      ]
+    },
+    {
+      "id": 1788698101237,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "referendum",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "全民公投",
+      "sentence": "The student needs to learn the word ___ (全民公投).",
+      "options": [
+        "reign",
+        "renowned",
+        "resent(ment)",
+        "referendum"
+      ]
+    },
+    {
+      "id": 1788698187736,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "reflective",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "反光的",
+      "sentence": "The student needs to learn the word ___ (反光的).",
+      "options": [
+        "relic",
+        "refreshment(s)",
+        "reflective",
+        "reliance"
+      ]
+    },
+    {
+      "id": 1788698121431,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "refresh(ment)",
+      "pos": "v./(n.)",
+      "isPhrase": false,
+      "zh": "重新整理",
+      "sentence": "The student needs to learn the word ___ (重新整理).",
+      "options": [
+        "refresh(ment)",
+        "relay",
+        "reptile",
+        "rejoice"
+      ]
+    },
+    {
+      "id": 1788698131105,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "refreshment(s)",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "茶點）",
+      "sentence": "The student needs to learn the word ___ (茶點）).",
+      "options": [
+        "reptile",
+        "refreshment(s)",
+        "reproduce",
+        "reliance"
+      ]
+    },
+    {
+      "id": 1788698103833,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "refute",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "反駁",
+      "sentence": "The student needs to learn the word ___ (反駁).",
+      "options": [
+        "relentless",
+        "refute",
+        "reef",
+        "rehearse"
+      ]
+    },
+    {
+      "id": 1788698100836,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "rehabilitate",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "恢復",
+      "sentence": "The student needs to learn the word ___ (恢復).",
+      "options": [
+        "refreshment(s)",
+        "reptile",
+        "rehabilitate",
+        "referendum"
+      ]
+    },
+    {
+      "id": 1788698098254,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "rehearse",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "排練",
+      "sentence": "The student needs to learn the word ___ (排練).",
+      "options": [
+        "reflective",
+        "relic",
+        "referendum",
+        "rehearse"
+      ]
+    },
+    {
+      "id": 1788698117398,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "reign",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "在位",
+      "sentence": "The student needs to learn the word ___ (在位).",
+      "options": [
+        "reign",
+        "referendum",
+        "refresh(ment)",
+        "reef"
+      ]
+    },
+    {
+      "id": 1788698192569,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "rejoice",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "麾",
+      "sentence": "The student needs to learn the word ___ (麾).",
+      "options": [
+        "reliance",
+        "refresh(ment)",
+        "refreshment(s)",
+        "rejoice"
+      ]
+    },
+    {
+      "id": 1788698158344,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "relay",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "中繼",
+      "sentence": "The student needs to learn the word ___ (中繼).",
+      "options": [
+        "relay",
+        "reptile",
+        "rehearse",
+        "reliant"
+      ]
+    },
+    {
+      "id": 1788698104884,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "relentless",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "狠",
+      "sentence": "The student needs to learn the word ___ (狠).",
+      "options": [
+        "reef",
+        "relentless",
+        "rehearse",
+        "refresh(ment)"
+      ]
+    },
+    {
+      "id": 1788698156495,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "reliance",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "依賴",
+      "sentence": "The student needs to learn the word ___ (依賴).",
+      "options": [
+        "relay",
+        "reliance",
+        "resent(ment)",
+        "reflective"
+      ]
+    },
+    {
+      "id": 1788698176562,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "reliant",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "依賴",
+      "sentence": "The student needs to learn the word ___ (依賴).",
+      "options": [
+        "refresh(ment)",
+        "relay",
+        "reliant",
+        "reef"
+      ]
+    },
+    {
+      "id": 1788698129488,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "relic",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "遺跡",
+      "sentence": "The student needs to learn the word ___ (遺跡).",
+      "options": [
+        "relay",
+        "relic",
+        "rehearse",
+        "refresh(ment)"
+      ]
+    },
+    {
+      "id": 1788698124630,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "reminiscent",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "令人懷念的",
+      "sentence": "The student needs to learn the word ___ (令人懷念的).",
+      "options": [
+        "rehearse",
+        "rehabilitate",
+        "reminiscent",
+        "reef"
+      ]
+    },
+    {
+      "id": 1788698149760,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "renowned",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "著名",
+      "sentence": "The student needs to learn the word ___ (著名).",
+      "options": [
+        "renowned",
+        "refute",
+        "resent(ment)",
+        "rehabilitate"
+      ]
+    },
+    {
+      "id": 1788698187423,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "reproduce",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "複製",
+      "sentence": "The student needs to learn the word ___ (複製).",
+      "options": [
+        "refute",
+        "reminiscent",
+        "rehabilitate",
+        "reproduce"
+      ]
+    },
+    {
+      "id": 1788698167628,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "reptile",
+      "pos": "n./adj.",
+      "isPhrase": false,
+      "zh": "爬蟲",
+      "sentence": "The student needs to learn the word ___ (爬蟲).",
+      "options": [
+        "relic",
+        "reptile",
+        "refreshment(s)",
+        "reminiscent"
+      ]
+    },
+    {
+      "id": 1788698193976,
+      "category": "高中學測",
+      "folder": "Day 288",
+      "word": "resent(ment)",
+      "pos": "v./(n.)",
+      "isPhrase": false,
+      "zh": "怨恨）",
+      "sentence": "The student needs to learn the word ___ (怨恨）).",
+      "options": [
+        "reproduce",
+        "rehearse",
+        "relay",
+        "resent(ment)"
+      ]
+    },
+    {
+      "id": 1788698195641,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "reside",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "居住",
+      "sentence": "The student needs to learn the word ___ (居住).",
+      "options": [
+        "revelation",
+        "reside",
+        "rugged",
+        "respective"
+      ]
+    },
+    {
+      "id": 1788698170356,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "respective",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "各自",
+      "sentence": "The student needs to learn the word ___ (各自).",
+      "options": [
+        "retrieve",
+        "revelation",
+        "restraint",
+        "respective"
+      ]
+    },
+    {
+      "id": 1788698126665,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "restoration",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "恢復",
+      "sentence": "The student needs to learn the word ___ (恢復).",
+      "options": [
+        "revolt",
+        "respective",
+        "restoration",
+        "rotate"
+      ]
+    },
+    {
+      "id": 1788698164137,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "restrain",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "抑制",
+      "sentence": "The student needs to learn the word ___ (抑制).",
+      "options": [
+        "roam",
+        "restrain",
+        "rivalry",
+        "royalty"
+      ]
+    },
+    {
+      "id": 1788698148483,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "restraint",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "克制",
+      "sentence": "The student needs to learn the word ___ (克制).",
+      "options": [
+        "restraint",
+        "revolve",
+        "rigorous",
+        "retort"
+      ]
+    },
+    {
+      "id": 1788698171184,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "retort",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "反駁",
+      "sentence": "The student needs to learn the word ___ (反駁).",
+      "options": [
+        "reside",
+        "revolve",
+        "retort",
+        "revival"
+      ]
+    },
+    {
+      "id": 1788698168055,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "retrieve",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "取回",
+      "sentence": "The student needs to learn the word ___ (取回).",
+      "options": [
+        "ripple",
+        "retrieve",
+        "restrain",
+        "revival"
+      ]
+    },
+    {
+      "id": 1788698185948,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "revelation",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "啟示",
+      "sentence": "The student needs to learn the word ___ (啟示).",
+      "options": [
+        "reside",
+        "revelation",
+        "rotate",
+        "retort"
+      ]
+    },
+    {
+      "id": 1788698138117,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "revival",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "復興",
+      "sentence": "The student needs to learn the word ___ (復興).",
+      "options": [
+        "revival",
+        "respective",
+        "revive",
+        "reside"
+      ]
+    },
+    {
+      "id": 1788698184176,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "revive",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "復活",
+      "sentence": "The student needs to learn the word ___ (復活).",
+      "options": [
+        "revive",
+        "restraint",
+        "retort",
+        "revolt"
+      ]
+    },
+    {
+      "id": 1788698153447,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "revolt",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "反叛",
+      "sentence": "The student needs to learn the word ___ (反叛).",
+      "options": [
+        "roam",
+        "revive",
+        "restraint",
+        "revolt"
+      ]
+    },
+    {
+      "id": 1788698112192,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "revolve",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "圍繞",
+      "sentence": "The student needs to learn the word ___ (圍繞).",
+      "options": [
+        "revolve",
+        "rugged",
+        "rivalry",
+        "rigorous"
+      ]
+    },
+    {
+      "id": 1788698099160,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "rigorous",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "嚴格的",
+      "sentence": "The student needs to learn the word ___ (嚴格的).",
+      "options": [
+        "restrain",
+        "retrieve",
+        "reside",
+        "rigorous"
+      ]
+    },
+    {
+      "id": 1788698180506,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "ripple",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "波紋",
+      "sentence": "The student needs to learn the word ___ (波紋).",
+      "options": [
+        "roam",
+        "rugged",
+        "revive",
+        "ripple"
+      ]
+    },
+    {
+      "id": 1788698122041,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "rivalry",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "對抗",
+      "sentence": "The student needs to learn the word ___ (對抗).",
+      "options": [
+        "rivalry",
+        "retort",
+        "roam",
+        "rotate"
+      ]
+    },
+    {
+      "id": 1788698114522,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "roam",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "漫遊",
+      "sentence": "The student needs to learn the word ___ (漫遊).",
+      "options": [
+        "revolve",
+        "reside",
+        "roam",
+        "revolt"
+      ]
+    },
+    {
+      "id": 1788698149486,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "rotate",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "旋轉",
+      "sentence": "The student needs to learn the word ___ (旋轉).",
+      "options": [
+        "revelation",
+        "reside",
+        "rotate",
+        "revolt"
+      ]
+    },
+    {
+      "id": 1788698180440,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "rotation",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "旋轉",
+      "sentence": "The student needs to learn the word ___ (旋轉).",
+      "options": [
+        "revolt",
+        "roam",
+        "revive",
+        "rotation"
+      ]
+    },
+    {
+      "id": 1788698161771,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "royalty",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "皇室",
+      "sentence": "The student needs to learn the word ___ (皇室).",
+      "options": [
+        "royalty",
+        "retrieve",
+        "rugged",
+        "respective"
+      ]
+    },
+    {
+      "id": 1788698117216,
+      "category": "高中學測",
+      "folder": "Day 289",
+      "word": "rugged",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "崎嶇",
+      "sentence": "The student needs to learn the word ___ (崎嶇).",
+      "options": [
+        "rugged",
+        "revolve",
+        "retrieve",
+        "restraint"
+      ]
+    },
+    {
+      "id": 1788698106098,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "ruthless",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "無情",
+      "sentence": "The student needs to learn the word ___ (無情).",
+      "options": [
+        "seagull/gull",
+        "scorn",
+        "ruthless",
+        "sculptor"
+      ]
+    },
+    {
+      "id": 1788698194952,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "salute",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "禮砲",
+      "sentence": "The student needs to learn the word ___ (禮砲).",
+      "options": [
+        "scroll",
+        "scrutiny",
+        "serving",
+        "salute"
+      ]
+    },
+    {
+      "id": 1788698132304,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "salvage",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "打撈",
+      "sentence": "The student needs to learn the word ___ (打撈).",
+      "options": [
+        "scenic",
+        "sanitation",
+        "salvage",
+        "salute"
+      ]
+    },
+    {
+      "id": 1788698154693,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "sanitation",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "衛生",
+      "sentence": "The student needs to learn the word ___ (衛生).",
+      "options": [
+        "screwdriver",
+        "salvage",
+        "sanitation",
+        "serving"
+      ]
+    },
+    {
+      "id": 1788698179499,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "savage",
+      "pos": "adj./n./v.",
+      "isPhrase": false,
+      "zh": "野蠻的",
+      "sentence": "The student needs to learn the word ___ (野蠻的).",
+      "options": [
+        "selective",
+        "ruthless",
+        "savage",
+        "serene"
+      ]
+    },
+    {
+      "id": 1788698197104,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "scenic",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "風景優美",
+      "sentence": "The student needs to learn the word ___ (風景優美).",
+      "options": [
+        "scenic",
+        "sculptor",
+        "sanitation",
+        "salvage"
+      ]
+    },
+    {
+      "id": 1788698112704,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "scorn",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "輕蔑",
+      "sentence": "The student needs to learn the word ___ (輕蔑).",
+      "options": [
+        "seagull/gull",
+        "sanitation",
+        "scorn",
+        "salvage"
+      ]
+    },
+    {
+      "id": 1788698108626,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "scrape",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "刮",
+      "sentence": "The student needs to learn the word ___ (刮).",
+      "options": [
+        "ruthless",
+        "scrutiny",
+        "scrape",
+        "seduce"
+      ]
+    },
+    {
+      "id": 1788698159858,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "screwdriver",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "螺絲起子",
+      "sentence": "The student needs to learn the word ___ (螺絲起子).",
+      "options": [
+        "savage",
+        "serene",
+        "screwdriver",
+        "salvage"
+      ]
+    },
+    {
+      "id": 1788698154799,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "scroll",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "捲動",
+      "sentence": "The student needs to learn the word ___ (捲動).",
+      "options": [
+        "seagull/gull",
+        "sergeant",
+        "scroll",
+        "screwdriver"
+      ]
+    },
+    {
+      "id": 1788698104880,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "scrutiny",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "審查",
+      "sentence": "The student needs to learn the word ___ (審查).",
+      "options": [
+        "serial",
+        "salvage",
+        "sanitation",
+        "scrutiny"
+      ]
+    },
+    {
+      "id": 1788698114387,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "sculptor",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "雕塑家",
+      "sentence": "The student needs to learn the word ___ (雕塑家).",
+      "options": [
+        "seduce",
+        "selective",
+        "sergeant",
+        "sculptor"
+      ]
+    },
+    {
+      "id": 1788698169436,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "seagull/gull",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "海鷗",
+      "sentence": "The student needs to learn the word ___ (海鷗).",
+      "options": [
+        "scroll",
+        "seagull/gull",
+        "sanitation",
+        "sculptor"
+      ]
+    },
+    {
+      "id": 1788698102502,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "seduce",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "勾引",
+      "sentence": "The student needs to learn the word ___ (勾引).",
+      "options": [
+        "sermon",
+        "seduce",
+        "savage",
+        "seagull/gull"
+      ]
+    },
+    {
+      "id": 1788698107834,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "selective",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "選擇性",
+      "sentence": "The student needs to learn the word ___ (選擇性).",
+      "options": [
+        "scenic",
+        "salute",
+        "selective",
+        "sculptor"
+      ]
+    },
+    {
+      "id": 1788698108257,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "serene",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "安詳",
+      "sentence": "The student needs to learn the word ___ (安詳).",
+      "options": [
+        "scroll",
+        "serene",
+        "ruthless",
+        "scenic"
+      ]
+    },
+    {
+      "id": 1788698162819,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "sergeant",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "軍士",
+      "sentence": "The student needs to learn the word ___ (軍士).",
+      "options": [
+        "sculptor",
+        "sergeant",
+        "salute",
+        "seduce"
+      ]
+    },
+    {
+      "id": 1788698130745,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "serial",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "序號",
+      "sentence": "The student needs to learn the word ___ (序號).",
+      "options": [
+        "scorn",
+        "serial",
+        "scrape",
+        "salute"
+      ]
+    },
+    {
+      "id": 1788698098248,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "sermon",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "講道",
+      "sentence": "The student needs to learn the word ___ (講道).",
+      "options": [
+        "sermon",
+        "scenic",
+        "selective",
+        "sculptor"
+      ]
+    },
+    {
+      "id": 1788698106042,
+      "category": "高中學測",
+      "folder": "Day 290",
+      "word": "serving",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "服務",
+      "sentence": "The student needs to learn the word ___ (服務).",
+      "options": [
+        "scenic",
+        "serving",
+        "salute",
+        "scroll"
+      ]
+    },
+    {
+      "id": 1788698187585,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "setback",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "挫折",
+      "sentence": "The student needs to learn the word ___ (挫折).",
+      "options": [
+        "shabby",
+        "slaughter",
+        "setback",
+        "shortsighted"
+      ]
+    },
+    {
+      "id": 1788698174868,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "shabby",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "破舊",
+      "sentence": "The student needs to learn the word ___ (破舊).",
+      "options": [
+        "shaver",
+        "shortcoming",
+        "shabby",
+        "skim"
+      ]
+    },
+    {
+      "id": 1788698163432,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "sharpen",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "銳化",
+      "sentence": "The student needs to learn the word ___ (銳化).",
+      "options": [
+        "shortcoming",
+        "sharpen",
+        "slash",
+        "slaughter"
+      ]
+    },
+    {
+      "id": 1788698179843,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "shaver",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "刮鬍刀",
+      "sentence": "The student needs to learn the word ___ (刮鬍刀).",
+      "options": [
+        "shaver",
+        "shortcoming",
+        "simultaneous",
+        "shrub"
+      ]
+    },
+    {
+      "id": 1788698179673,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "shortcoming",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "缺點",
+      "sentence": "The student needs to learn the word ___ (缺點).",
+      "options": [
+        "simplicity",
+        "shortcoming",
+        "simplify",
+        "shred"
+      ]
+    },
+    {
+      "id": 1788698194348,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "shortsighted",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "短視的",
+      "sentence": "The student needs to learn the word ___ (短視的).",
+      "options": [
+        "shortsighted",
+        "slang",
+        "shaver",
+        "shrub"
+      ]
+    },
+    {
+      "id": 1788698182220,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "shred",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "撕碎",
+      "sentence": "The student needs to learn the word ___ (撕碎).",
+      "options": [
+        "shred",
+        "slaughter",
+        "shaver",
+        "shortsighted"
+      ]
+    },
+    {
+      "id": 1788698176291,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "shriek",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "尖叫",
+      "sentence": "The student needs to learn the word ___ (尖叫).",
+      "options": [
+        "shuffle",
+        "shriek",
+        "skeptical",
+        "shortsighted"
+      ]
+    },
+    {
+      "id": 1788698112773,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "shrub",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "灌木",
+      "sentence": "The student needs to learn the word ___ (灌木).",
+      "options": [
+        "shrub",
+        "slaughter",
+        "shriek",
+        "shabby"
+      ]
+    },
+    {
+      "id": 1788698190550,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "shuffle",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "洗牌",
+      "sentence": "The student needs to learn the word ___ (洗牌).",
+      "options": [
+        "setback",
+        "shuffle",
+        "slay",
+        "simultaneous"
+      ]
+    },
+    {
+      "id": 1788698131179,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "shutter",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "快門",
+      "sentence": "The student needs to learn the word ___ (快門).",
+      "options": [
+        "shortsighted",
+        "shutter",
+        "slay",
+        "sharpen"
+      ]
+    },
+    {
+      "id": 1788698194993,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "simplicity",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "簡單",
+      "sentence": "The student needs to learn the word ___ (簡單).",
+      "options": [
+        "setback",
+        "shortsighted",
+        "simplicity",
+        "slang"
+      ]
+    },
+    {
+      "id": 1788698129405,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "simplify",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "簡化",
+      "sentence": "The student needs to learn the word ___ (簡化).",
+      "options": [
+        "slash",
+        "simplify",
+        "skim",
+        "shrub"
+      ]
+    },
+    {
+      "id": 1788698107081,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "simultaneous",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "同時",
+      "sentence": "The student needs to learn the word ___ (同時).",
+      "options": [
+        "shriek",
+        "shrub",
+        "shaver",
+        "simultaneous"
+      ]
+    },
+    {
+      "id": 1788698100681,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "skeptical",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "懷疑論者",
+      "sentence": "The student needs to learn the word ___ (懷疑論者).",
+      "options": [
+        "slang",
+        "shred",
+        "skeptical",
+        "simplify"
+      ]
+    },
+    {
+      "id": 1788698112705,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "skim",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "撇去",
+      "sentence": "The student needs to learn the word ___ (撇去).",
+      "options": [
+        "simplicity",
+        "shutter",
+        "shabby",
+        "skim"
+      ]
+    },
+    {
+      "id": 1788698122870,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "slang",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "俚語",
+      "sentence": "The student needs to learn the word ___ (俚語).",
+      "options": [
+        "simplicity",
+        "slash",
+        "slang",
+        "setback"
+      ]
+    },
+    {
+      "id": 1788698130279,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "slash",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "削減",
+      "sentence": "The student needs to learn the word ___ (削減).",
+      "options": [
+        "slash",
+        "shortcoming",
+        "shred",
+        "simultaneous"
+      ]
+    },
+    {
+      "id": 1788698120968,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "slaughter",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "屠宰",
+      "sentence": "The student needs to learn the word ___ (屠宰).",
+      "options": [
+        "shaver",
+        "skeptical",
+        "slaughter",
+        "simplicity"
+      ]
+    },
+    {
+      "id": 1788698166842,
+      "category": "高中學測",
+      "folder": "Day 291",
+      "word": "slay",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "殺戮",
+      "sentence": "The student needs to learn the word ___ (殺戮).",
+      "options": [
+        "setback",
+        "simultaneous",
+        "shabby",
+        "slay"
+      ]
+    },
+    {
+      "id": 1788698124841,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "sloppy",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "邋遢",
+      "sentence": "The student needs to learn the word ___ (邋遢).",
+      "options": [
+        "sneeze",
+        "sneaky",
+        "sloppy",
+        "sociology"
+      ]
+    },
+    {
+      "id": 1788698183793,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "slum",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "貧民窟",
+      "sentence": "The student needs to learn the word ___ (貧民窟).",
+      "options": [
+        "sly",
+        "snore",
+        "slum",
+        "sociology"
+      ]
+    },
+    {
+      "id": 1788698121068,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "slump",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "暴跌",
+      "sentence": "The student needs to learn the word ___ (暴跌).",
+      "options": [
+        "sneeze",
+        "slump",
+        "sloppy",
+        "sorrowful"
+      ]
+    },
+    {
+      "id": 1788698135919,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "sly",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "狡猾",
+      "sentence": "The student needs to learn the word ___ (狡猾).",
+      "options": [
+        "slum",
+        "span",
+        "sly",
+        "sneaky"
+      ]
+    },
+    {
+      "id": 1788698192710,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "smuggle",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "走私",
+      "sentence": "The student needs to learn the word ___ (走私).",
+      "options": [
+        "span",
+        "socialism",
+        "smuggle",
+        "sneaker(s)"
+      ]
+    },
+    {
+      "id": 1788698181335,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "sneaker(s)",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "運動鞋）",
+      "sentence": "The student needs to learn the word ___ (運動鞋）).",
+      "options": [
+        "sneaker(s)",
+        "sneaky",
+        "sly",
+        "slump"
+      ]
+    },
+    {
+      "id": 1788698185914,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "sneaky",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "狡猾的",
+      "sentence": "The student needs to learn the word ___ (狡猾的).",
+      "options": [
+        "socialism",
+        "sneaky",
+        "sparrow",
+        "sociable"
+      ]
+    },
+    {
+      "id": 1788698114679,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "sneeze",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "噴嚏",
+      "sentence": "The student needs to learn the word ___ (噴嚏).",
+      "options": [
+        "slump",
+        "sneeze",
+        "sparrow",
+        "solemn"
+      ]
+    },
+    {
+      "id": 1788698098078,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "snore",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "鼾",
+      "sentence": "The student needs to learn the word ___ (鼾).",
+      "options": [
+        "snore",
+        "span",
+        "sly",
+        "sneeze"
+      ]
+    },
+    {
+      "id": 1788698098822,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "sociable",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "善於交際",
+      "sentence": "The student needs to learn the word ___ (善於交際).",
+      "options": [
+        "sneeze",
+        "sociable",
+        "snore",
+        "sneaky"
+      ]
+    },
+    {
+      "id": 1788698150987,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "socialism",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "社會主義",
+      "sentence": "The student needs to learn the word ___ (社會主義).",
+      "options": [
+        "sneaky",
+        "socialism",
+        "sly",
+        "slump"
+      ]
+    },
+    {
+      "id": 1788698099865,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "socialist",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "社會主義",
+      "sentence": "The student needs to learn the word ___ (社會主義).",
+      "options": [
+        "slump",
+        "socialist",
+        "sneeze",
+        "sneaky"
+      ]
+    },
+    {
+      "id": 1788698187187,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "sociology",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "社會學",
+      "sentence": "The student needs to learn the word ___ (社會學).",
+      "options": [
+        "sociology",
+        "socialist",
+        "smuggle",
+        "soothe"
+      ]
+    },
+    {
+      "id": 1788698117051,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "solemn",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "莊嚴",
+      "sentence": "The student needs to learn the word ___ (莊嚴).",
+      "options": [
+        "socialist",
+        "solemn",
+        "sneaky",
+        "solidarity"
+      ]
+    },
+    {
+      "id": 1788698145593,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "solidarity",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "團結",
+      "sentence": "The student needs to learn the word ___ (團結).",
+      "options": [
+        "socialist",
+        "slump",
+        "solidarity",
+        "sneaker(s)"
+      ]
+    },
+    {
+      "id": 1788698134764,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "soothe",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "舒緩",
+      "sentence": "The student needs to learn the word ___ (舒緩).",
+      "options": [
+        "sneeze",
+        "soothe",
+        "sociology",
+        "sneaky"
+      ]
+    },
+    {
+      "id": 1788698101772,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "sorrowful",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "悲傷",
+      "sentence": "The student needs to learn the word ___ (悲傷).",
+      "options": [
+        "sorrowful",
+        "solidarity",
+        "sociology",
+        "socialism"
+      ]
+    },
+    {
+      "id": 1788698107805,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "sovereign",
+      "pos": "adj./n.",
+      "isPhrase": false,
+      "zh": "主權",
+      "sentence": "The student needs to learn the word ___ (主權).",
+      "options": [
+        "sovereign",
+        "socialist",
+        "sociable",
+        "solemn"
+      ]
+    },
+    {
+      "id": 1788698107751,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "span",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "跨距",
+      "sentence": "The student needs to learn the word ___ (跨距).",
+      "options": [
+        "sparrow",
+        "solemn",
+        "sneaky",
+        "span"
+      ]
+    },
+    {
+      "id": 1788698151821,
+      "category": "高中學測",
+      "folder": "Day 292",
+      "word": "sparrow",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "麻雀",
+      "sentence": "The student needs to learn the word ___ (麻雀).",
+      "options": [
+        "slump",
+        "sneaker(s)",
+        "sparrow",
+        "slum"
+      ]
+    },
+    {
+      "id": 1788698167098,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "splendor",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "輝煌",
+      "sentence": "The student needs to learn the word ___ (輝煌).",
+      "options": [
+        "stimulation",
+        "strangle",
+        "statesman",
+        "splendor"
+      ]
+    },
+    {
+      "id": 1788698150043,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "spokeswoman",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "發言人",
+      "sentence": "The student needs to learn the word ___ (發言人).",
+      "options": [
+        "stature",
+        "spokeswoman",
+        "spotlight",
+        "stimulation"
+      ]
+    },
+    {
+      "id": 1788698171443,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "spontaneous",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "自發性的",
+      "sentence": "The student needs to learn the word ___ (自發性的).",
+      "options": [
+        "spotlight",
+        "strangle",
+        "spontaneous",
+        "stepmother"
+      ]
+    },
+    {
+      "id": 1788698185478,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "sportsmanship",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "體育精神",
+      "sentence": "The student needs to learn the word ___ (體育精神).",
+      "options": [
+        "starvation",
+        "staple",
+        "stagger",
+        "sportsmanship"
+      ]
+    },
+    {
+      "id": 1788698177697,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "spotlight",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "聚光燈",
+      "sentence": "The student needs to learn the word ___ (聚光燈).",
+      "options": [
+        "stimulation",
+        "sportsmanship",
+        "starvation",
+        "spotlight"
+      ]
+    },
+    {
+      "id": 1788698127683,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "spur",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "刺",
+      "sentence": "The student needs to learn the word ___ (刺).",
+      "options": [
+        "spur",
+        "sportsmanship",
+        "splendor",
+        "stagger"
+      ]
+    },
+    {
+      "id": 1788698115527,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "stabilize",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "穩定",
+      "sentence": "The student needs to learn the word ___ (穩定).",
+      "options": [
+        "splendor",
+        "statesman",
+        "sportsmanship",
+        "stabilize"
+      ]
+    },
+    {
+      "id": 1788698167149,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "stagger",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "錯開",
+      "sentence": "The student needs to learn the word ___ (錯開).",
+      "options": [
+        "stature",
+        "stagger",
+        "spontaneous",
+        "splendor"
+      ]
+    },
+    {
+      "id": 1788698175058,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "staple",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "主食",
+      "sentence": "The student needs to learn the word ___ (主食).",
+      "options": [
+        "stepchild",
+        "stagger",
+        "staple",
+        "strangle"
+      ]
+    },
+    {
+      "id": 1788698102474,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "starvation",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "飢餓",
+      "sentence": "The student needs to learn the word ___ (飢餓).",
+      "options": [
+        "stature",
+        "strangle",
+        "starvation",
+        "stepfather"
+      ]
+    },
+    {
+      "id": 1788698162558,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "statesman",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "政治家",
+      "sentence": "The student needs to learn the word ___ (政治家).",
+      "options": [
+        "stepchild",
+        "statesman",
+        "sportsmanship",
+        "spur"
+      ]
+    },
+    {
+      "id": 1788698171710,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "stationary",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "靜止的",
+      "sentence": "The student needs to learn the word ___ (靜止的).",
+      "options": [
+        "sportsmanship",
+        "starvation",
+        "spontaneous",
+        "stationary"
+      ]
+    },
+    {
+      "id": 1788698194303,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "stationery",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "靜止的",
+      "sentence": "The student needs to learn the word ___ (靜止的).",
+      "options": [
+        "stationery",
+        "staple",
+        "starvation",
+        "stabilize"
+      ]
+    },
+    {
+      "id": 1788698163807,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "stature",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "身材",
+      "sentence": "The student needs to learn the word ___ (身材).",
+      "options": [
+        "sportsmanship",
+        "statesman",
+        "stature",
+        "spotlight"
+      ]
+    },
+    {
+      "id": 1788698105565,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "statute",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "法令",
+      "sentence": "The student needs to learn the word ___ (法令).",
+      "options": [
+        "splendor",
+        "statute",
+        "spotlight",
+        "stepmother"
+      ]
+    },
+    {
+      "id": 1788698151975,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "stepchild",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "繼子女",
+      "sentence": "The student needs to learn the word ___ (繼子女).",
+      "options": [
+        "stepmother",
+        "stepchild",
+        "splendor",
+        "sportsmanship"
+      ]
+    },
+    {
+      "id": 1788698099739,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "stepfather",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "繼父",
+      "sentence": "The student needs to learn the word ___ (繼父).",
+      "options": [
+        "stimulation",
+        "stepfather",
+        "spotlight",
+        "sportsmanship"
+      ]
+    },
+    {
+      "id": 1788698153382,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "stepmother",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "後媽",
+      "sentence": "The student needs to learn the word ___ (後媽).",
+      "options": [
+        "spur",
+        "stepmother",
+        "splendor",
+        "stabilize"
+      ]
+    },
+    {
+      "id": 1788698118251,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "stimulation",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "刺激",
+      "sentence": "The student needs to learn the word ___ (刺激).",
+      "options": [
+        "spotlight",
+        "splendor",
+        "stationery",
+        "stimulation"
+      ]
+    },
+    {
+      "id": 1788698195751,
+      "category": "高中學測",
+      "folder": "Day 293",
+      "word": "strangle",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "扼殺",
+      "sentence": "The student needs to learn the word ___ (扼殺).",
+      "options": [
+        "spontaneous",
+        "stimulation",
+        "strangle",
+        "stabilize"
+      ]
+    },
+    {
+      "id": 1788698156585,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "stray",
+      "pos": "adj./v./n.",
+      "isPhrase": false,
+      "zh": "流浪",
+      "sentence": "The student needs to learn the word ___ (流浪).",
+      "options": [
+        "stray",
+        "superstitious",
+        "surge",
+        "suppress"
+      ]
+    },
+    {
+      "id": 1788698156394,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "stride",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "步幅",
+      "sentence": "The student needs to learn the word ___ (步幅).",
+      "options": [
+        "stride",
+        "subjective",
+        "summon",
+        "subscription"
+      ]
+    },
+    {
+      "id": 1788698101470,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "stun",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "眩暈",
+      "sentence": "The student needs to learn the word ___ (眩暈).",
+      "options": [
+        "subordinate",
+        "stun",
+        "succession",
+        "supplement"
+      ]
+    },
+    {
+      "id": 1788698141779,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "stylish",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "時髦的",
+      "sentence": "The student needs to learn the word ___ (時髦的).",
+      "options": [
+        "stylish",
+        "supplement",
+        "suppress",
+        "succession"
+      ]
+    },
+    {
+      "id": 1788698156388,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "subjective",
+      "pos": "adj./n.",
+      "isPhrase": false,
+      "zh": "主觀",
+      "sentence": "The student needs to learn the word ___ (主觀).",
+      "options": [
+        "supplement",
+        "subjective",
+        "subsidize",
+        "superintendent"
+      ]
+    },
+    {
+      "id": 1788698161165,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "subordinate",
+      "pos": "adj./n./v.",
+      "isPhrase": false,
+      "zh": "下屬",
+      "sentence": "The student needs to learn the word ___ (下屬).",
+      "options": [
+        "stray",
+        "subscribe",
+        "subordinate",
+        "superstitious"
+      ]
+    },
+    {
+      "id": 1788698102150,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "subscribe",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "訂閱",
+      "sentence": "The student needs to learn the word ___ (訂閱).",
+      "options": [
+        "subscribe",
+        "summon",
+        "stray",
+        "stride"
+      ]
+    },
+    {
+      "id": 1788698136891,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "subscription",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "訂閱",
+      "sentence": "The student needs to learn the word ___ (訂閱).",
+      "options": [
+        "subscription",
+        "subsidize",
+        "superficial",
+        "subscribe"
+      ]
+    },
+    {
+      "id": 1788698121722,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "subsidize",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "資助",
+      "sentence": "The student needs to learn the word ___ (資助).",
+      "options": [
+        "succession",
+        "subsidize",
+        "stylish",
+        "subscription"
+      ]
+    },
+    {
+      "id": 1788698132350,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "succession",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "演替",
+      "sentence": "The student needs to learn the word ___ (演替).",
+      "options": [
+        "subsidize",
+        "succession",
+        "stride",
+        "stray"
+      ]
+    },
+    {
+      "id": 1788698164820,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "successive",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "連續",
+      "sentence": "The student needs to learn the word ___ (連續).",
+      "options": [
+        "suppress",
+        "successive",
+        "superintendent",
+        "superiority"
+      ]
+    },
+    {
+      "id": 1788698182304,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "suffocate",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "窒息",
+      "sentence": "The student needs to learn the word ___ (窒息).",
+      "options": [
+        "subjective",
+        "superstitious",
+        "subordinate",
+        "suffocate"
+      ]
+    },
+    {
+      "id": 1788698113764,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "summon",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "召喚",
+      "sentence": "The student needs to learn the word ___ (召喚).",
+      "options": [
+        "suffocate",
+        "superstitious",
+        "summon",
+        "stray"
+      ]
+    },
+    {
+      "id": 1788698152197,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "superficial",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "淺",
+      "sentence": "The student needs to learn the word ___ (淺).",
+      "options": [
+        "stride",
+        "subscription",
+        "superficial",
+        "stun"
+      ]
+    },
+    {
+      "id": 1788698191162,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "superintendent",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "督學",
+      "sentence": "The student needs to learn the word ___ (督學).",
+      "options": [
+        "superficial",
+        "stylish",
+        "stray",
+        "superintendent"
+      ]
+    },
+    {
+      "id": 1788698152699,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "superiority",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "優勢",
+      "sentence": "The student needs to learn the word ___ (優勢).",
+      "options": [
+        "stun",
+        "superiority",
+        "superstitious",
+        "superficial"
+      ]
+    },
+    {
+      "id": 1788698109931,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "superstitious",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "迷信的",
+      "sentence": "The student needs to learn the word ___ (迷信的).",
+      "options": [
+        "stray",
+        "subscription",
+        "superiority",
+        "superstitious"
+      ]
+    },
+    {
+      "id": 1788698138618,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "supplement",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "補充",
+      "sentence": "The student needs to learn the word ___ (補充).",
+      "options": [
+        "supplement",
+        "stylish",
+        "subscribe",
+        "stun"
+      ]
+    },
+    {
+      "id": 1788698141334,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "suppress",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "壓制",
+      "sentence": "The student needs to learn the word ___ (壓制).",
+      "options": [
+        "summon",
+        "suppress",
+        "supplement",
+        "stray"
+      ]
+    },
+    {
+      "id": 1788698134361,
+      "category": "高中學測",
+      "folder": "Day 294",
+      "word": "surge",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "湧",
+      "sentence": "The student needs to learn the word ___ (湧).",
+      "options": [
+        "stride",
+        "superstitious",
+        "stun",
+        "surge"
+      ]
+    },
+    {
+      "id": 1788698186062,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "surgical",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "外科",
+      "sentence": "The student needs to learn the word ___ (外科).",
+      "options": [
+        "sympathize",
+        "symbolize",
+        "terrace",
+        "surgical"
+      ]
+    },
+    {
+      "id": 1788698147182,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "surname",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "姓",
+      "sentence": "The student needs to learn the word ___ (姓).",
+      "options": [
+        "symphony",
+        "suspension",
+        "surpass",
+        "surname"
+      ]
+    },
+    {
+      "id": 1788698140416,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "surpass",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "超過",
+      "sentence": "The student needs to learn the word ___ (超過).",
+      "options": [
+        "surpass",
+        "telecommunications",
+        "swamp",
+        "teller"
+      ]
+    },
+    {
+      "id": 1788698101121,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "suspense",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "懸念",
+      "sentence": "The student needs to learn the word ___ (懸念).",
+      "options": [
+        "tan",
+        "symphony",
+        "suspense",
+        "symbolize"
+      ]
+    },
+    {
+      "id": 1788698183475,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "suspension",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "暫停",
+      "sentence": "The student needs to learn the word ___ (暫停).",
+      "options": [
+        "suspense",
+        "tedious",
+        "tempo",
+        "suspension"
+      ]
+    },
+    {
+      "id": 1788698120604,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "swamp",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "沼澤",
+      "sentence": "The student needs to learn the word ___ (沼澤).",
+      "options": [
+        "terrace",
+        "surgical",
+        "symphony",
+        "swamp"
+      ]
+    },
+    {
+      "id": 1788698186481,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "symbolize",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "象徵",
+      "sentence": "The student needs to learn the word ___ (象徵).",
+      "options": [
+        "surpass",
+        "symbolize",
+        "tentative",
+        "suspense"
+      ]
+    },
+    {
+      "id": 1788698182732,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "sympathize",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "同情",
+      "sentence": "The student needs to learn the word ___ (同情).",
+      "options": [
+        "surpass",
+        "sympathize",
+        "symbolize",
+        "surgical"
+      ]
+    },
+    {
+      "id": 1788698140858,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "symphony",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "交響樂",
+      "sentence": "The student needs to learn the word ___ (交響樂).",
+      "options": [
+        "synonym",
+        "sympathize",
+        "symbolize",
+        "symphony"
+      ]
+    },
+    {
+      "id": 1788698156588,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "synonym",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "代名詞",
+      "sentence": "The student needs to learn the word ___ (代名詞).",
+      "options": [
+        "suspension",
+        "tan",
+        "symbolize",
+        "synonym"
+      ]
+    },
+    {
+      "id": 1788698104040,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "synthetic",
+      "pos": "adj./n.",
+      "isPhrase": false,
+      "zh": "合成的",
+      "sentence": "The student needs to learn the word ___ (合成的).",
+      "options": [
+        "suspense",
+        "tan",
+        "synthetic",
+        "sympathize"
+      ]
+    },
+    {
+      "id": 1788698188928,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "syrup",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "糖漿",
+      "sentence": "The student needs to learn the word ___ (糖漿).",
+      "options": [
+        "telecommunications",
+        "syrup",
+        "synonym",
+        "tenant"
+      ]
+    },
+    {
+      "id": 1788698121722,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "tan",
+      "pos": "n./adj./v.",
+      "isPhrase": false,
+      "zh": "棕褐色",
+      "sentence": "The student needs to learn the word ___ (棕褐色).",
+      "options": [
+        "tan",
+        "suspense",
+        "tedious",
+        "surgical"
+      ]
+    },
+    {
+      "id": 1788698181383,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "tedious",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "乏味",
+      "sentence": "The student needs to learn the word ___ (乏味).",
+      "options": [
+        "suspense",
+        "tempo",
+        "tan",
+        "tedious"
+      ]
+    },
+    {
+      "id": 1788698159545,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "telecommunications",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "電信",
+      "sentence": "The student needs to learn the word ___ (電信).",
+      "options": [
+        "telecommunications",
+        "tedious",
+        "synonym",
+        "tan"
+      ]
+    },
+    {
+      "id": 1788698139089,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "teller",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "出納員",
+      "sentence": "The student needs to learn the word ___ (出納員).",
+      "options": [
+        "telecommunications",
+        "sympathize",
+        "teller",
+        "suspense"
+      ]
+    },
+    {
+      "id": 1788698112330,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "tempo",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "速度",
+      "sentence": "The student needs to learn the word ___ (速度).",
+      "options": [
+        "tempo",
+        "synonym",
+        "symphony",
+        "surname"
+      ]
+    },
+    {
+      "id": 1788698129858,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "tenant",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "租戶",
+      "sentence": "The student needs to learn the word ___ (租戶).",
+      "options": [
+        "terrace",
+        "surgical",
+        "telecommunications",
+        "tenant"
+      ]
+    },
+    {
+      "id": 1788698127157,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "tentative",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "暫定的",
+      "sentence": "The student needs to learn the word ___ (暫定的).",
+      "options": [
+        "tentative",
+        "syrup",
+        "tan",
+        "tedious"
+      ]
+    },
+    {
+      "id": 1788698113058,
+      "category": "高中學測",
+      "folder": "Day 295",
+      "word": "terrace",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "陽台",
+      "sentence": "The student needs to learn the word ___ (陽台).",
+      "options": [
+        "terrace",
+        "teller",
+        "syrup",
+        "telecommunications"
+      ]
+    },
+    {
+      "id": 1788698156338,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "textile",
+      "pos": "n./adj.",
+      "isPhrase": false,
+      "zh": "紡織品",
+      "sentence": "The student needs to learn the word ___ (紡織品).",
+      "options": [
+        "textile",
+        "tiresome",
+        "tiptoe",
+        "trustee"
+      ]
+    },
+    {
+      "id": 1788698130699,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "thereafter",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "此後",
+      "sentence": "The student needs to learn the word ___ (此後).",
+      "options": [
+        "torrent",
+        "tornado",
+        "thereafter",
+        "transmit"
+      ]
+    },
+    {
+      "id": 1788698170373,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "thermometer",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "溫度計",
+      "sentence": "The student needs to learn the word ___ (溫度計).",
+      "options": [
+        "tilt",
+        "transcript",
+        "trillion",
+        "thermometer"
+      ]
+    },
+    {
+      "id": 1788698173636,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "tilt",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "傾斜",
+      "sentence": "The student needs to learn the word ___ (傾斜).",
+      "options": [
+        "trustee",
+        "tilt",
+        "textile",
+        "trek"
+      ]
+    },
+    {
+      "id": 1788698183060,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "tiptoe",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "腳尖",
+      "sentence": "The student needs to learn the word ___ (腳尖).",
+      "options": [
+        "transmit",
+        "tiresome",
+        "tiptoe",
+        "trek"
+      ]
+    },
+    {
+      "id": 1788698178414,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "tiresome",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "令人厭煩",
+      "sentence": "The student needs to learn the word ___ (令人厭煩).",
+      "options": [
+        "tiresome",
+        "tiptoe",
+        "trustee",
+        "tornado"
+      ]
+    },
+    {
+      "id": 1788698109575,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "token",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "令牌",
+      "sentence": "The student needs to learn the word ___ (令牌).",
+      "options": [
+        "trustee",
+        "token",
+        "tilt",
+        "tropic"
+      ]
+    },
+    {
+      "id": 1788698117559,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "tornado",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "龍捲風",
+      "sentence": "The student needs to learn the word ___ (龍捲風).",
+      "options": [
+        "transmit",
+        "textile",
+        "trillion",
+        "tornado"
+      ]
+    },
+    {
+      "id": 1788698153265,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "torrent",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "激流",
+      "sentence": "The student needs to learn the word ___ (激流).",
+      "options": [
+        "torrent",
+        "textile",
+        "transplant",
+        "thereafter"
+      ]
+    },
+    {
+      "id": 1788698127089,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "trademark",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "商標",
+      "sentence": "The student needs to learn the word ___ (商標).",
+      "options": [
+        "trademark",
+        "trillion",
+        "tilt",
+        "tiresome"
+      ]
+    },
+    {
+      "id": 1788698163380,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "transcript",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "文字稿",
+      "sentence": "The student needs to learn the word ___ (文字稿).",
+      "options": [
+        "trek",
+        "textile",
+        "transcript",
+        "tiptoe"
+      ]
+    },
+    {
+      "id": 1788698170297,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "transmit",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "傳送",
+      "sentence": "The student needs to learn the word ___ (傳送).",
+      "options": [
+        "transmit",
+        "tilt",
+        "token",
+        "tropic"
+      ]
+    },
+    {
+      "id": 1788698149869,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "transplant",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "移植",
+      "sentence": "The student needs to learn the word ___ (移植).",
+      "options": [
+        "transplant",
+        "trillion",
+        "trek",
+        "treasury"
+      ]
+    },
+    {
+      "id": 1788698153717,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "treasury",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "財政部",
+      "sentence": "The student needs to learn the word ___ (財政部).",
+      "options": [
+        "textile",
+        "treasury",
+        "trillion",
+        "trout"
+      ]
+    },
+    {
+      "id": 1788698126114,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "trek",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "跋涉",
+      "sentence": "The student needs to learn the word ___ (跋涉).",
+      "options": [
+        "tilt",
+        "trustee",
+        "torrent",
+        "trek"
+      ]
+    },
+    {
+      "id": 1788698133738,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "trifle",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "瑣事",
+      "sentence": "The student needs to learn the word ___ (瑣事).",
+      "options": [
+        "trifle",
+        "trillion",
+        "tiresome",
+        "trek"
+      ]
+    },
+    {
+      "id": 1788698160506,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "trillion",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "百萬",
+      "sentence": "The student needs to learn the word ___ (百萬).",
+      "options": [
+        "treasury",
+        "thermometer",
+        "trillion",
+        "tiptoe"
+      ]
+    },
+    {
+      "id": 1788698197119,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "tropic",
+      "pos": "n./adj.",
+      "isPhrase": false,
+      "zh": "熱帶",
+      "sentence": "The student needs to learn the word ___ (熱帶).",
+      "options": [
+        "tropic",
+        "thermometer",
+        "tilt",
+        "tiresome"
+      ]
+    },
+    {
+      "id": 1788698134444,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "trout",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "鱒魚",
+      "sentence": "The student needs to learn the word ___ (鱒魚).",
+      "options": [
+        "transplant",
+        "treasury",
+        "tropic",
+        "trout"
+      ]
+    },
+    {
+      "id": 1788698190136,
+      "category": "高中學測",
+      "folder": "Day 296",
+      "word": "trustee",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "受託人",
+      "sentence": "The student needs to learn the word ___ (受託人).",
+      "options": [
+        "torrent",
+        "trek",
+        "trustee",
+        "token"
+      ]
+    },
+    {
+      "id": 1788698197130,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "tuck",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "塞",
+      "sentence": "The student needs to learn the word ___ (塞).",
+      "options": [
+        "upright",
+        "upward",
+        "vanilla",
+        "tuck"
+      ]
+    },
+    {
+      "id": 1788698136428,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "turmoil",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "動盪",
+      "sentence": "The student needs to learn the word ___ (動盪).",
+      "options": [
+        "underestimate",
+        "unification",
+        "turmoil",
+        "underway"
+      ]
+    },
+    {
+      "id": 1788698143449,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "twilight",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "暮",
+      "sentence": "The student needs to learn the word ___ (暮).",
+      "options": [
+        "underpass",
+        "twilight",
+        "underway",
+        "unify"
+      ]
+    },
+    {
+      "id": 1788698123446,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "twinkle",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "閃爍",
+      "sentence": "The student needs to learn the word ___ (閃爍).",
+      "options": [
+        "turmoil",
+        "twinkle",
+        "twilight",
+        "upward"
+      ]
+    },
+    {
+      "id": 1788698197020,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "unanimous",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "一致",
+      "sentence": "The student needs to learn the word ___ (一致).",
+      "options": [
+        "underway",
+        "unanimous",
+        "upward",
+        "twilight"
+      ]
+    },
+    {
+      "id": 1788698188596,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "unconditional",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "無條件的",
+      "sentence": "The student needs to learn the word ___ (無條件的).",
+      "options": [
+        "twilight",
+        "tuck",
+        "turmoil",
+        "unconditional"
+      ]
+    },
+    {
+      "id": 1788698157541,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "underestimate",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "低估",
+      "sentence": "The student needs to learn the word ___ (低估).",
+      "options": [
+        "unify",
+        "underestimate",
+        "uprising",
+        "twilight"
+      ]
+    },
+    {
+      "id": 1788698130408,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "underpass",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "地下通道",
+      "sentence": "The student needs to learn the word ___ (地下通道).",
+      "options": [
+        "upright",
+        "turmoil",
+        "underpass",
+        "twinkle"
+      ]
+    },
+    {
+      "id": 1788698155637,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "underway",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "進行",
+      "sentence": "The student needs to learn the word ___ (進行).",
+      "options": [
+        "underestimate",
+        "underway",
+        "upright",
+        "unveil"
+      ]
+    },
+    {
+      "id": 1788698163096,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "unification",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "統一",
+      "sentence": "The student needs to learn the word ___ (統一).",
+      "options": [
+        "underestimate",
+        "unanimous",
+        "vaccine",
+        "unification"
+      ]
+    },
+    {
+      "id": 1788698136772,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "unify",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "統一",
+      "sentence": "The student needs to learn the word ___ (統一).",
+      "options": [
+        "unify",
+        "twilight",
+        "tuck",
+        "underestimate"
+      ]
+    },
+    {
+      "id": 1788698101469,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "unveil",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "揭幕",
+      "sentence": "The student needs to learn the word ___ (揭幕).",
+      "options": [
+        "unveil",
+        "usher",
+        "turmoil",
+        "tuck"
+      ]
+    },
+    {
+      "id": 1788698134159,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "upright",
+      "pos": "adv./adj./n.",
+      "isPhrase": false,
+      "zh": "直立",
+      "sentence": "The student needs to learn the word ___ (直立).",
+      "options": [
+        "utter",
+        "underway",
+        "upright",
+        "vaccine"
+      ]
+    },
+    {
+      "id": 1788698193847,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "uprising",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "起義",
+      "sentence": "The student needs to learn the word ___ (起義).",
+      "options": [
+        "underestimate",
+        "uprising",
+        "unveil",
+        "upright"
+      ]
+    },
+    {
+      "id": 1788698107114,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "upward",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "向上",
+      "sentence": "The student needs to learn the word ___ (向上).",
+      "options": [
+        "upward",
+        "tuck",
+        "turmoil",
+        "vaccine"
+      ]
+    },
+    {
+      "id": 1788698104320,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "upward/upwards",
+      "pos": "adv.",
+      "isPhrase": false,
+      "zh": "向上/向上",
+      "sentence": "The student needs to learn the word ___ (向上/向上).",
+      "options": [
+        "vanilla",
+        "upward/upwards",
+        "underway",
+        "twilight"
+      ]
+    },
+    {
+      "id": 1788698125548,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "usher",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "引座員",
+      "sentence": "The student needs to learn the word ___ (引座員).",
+      "options": [
+        "vaccine",
+        "usher",
+        "underestimate",
+        "upward/upwards"
+      ]
+    },
+    {
+      "id": 1788698124554,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "utter",
+      "pos": "adj./v.",
+      "isPhrase": false,
+      "zh": "說出",
+      "sentence": "The student needs to learn the word ___ (說出).",
+      "options": [
+        "twilight",
+        "underpass",
+        "utter",
+        "vanilla"
+      ]
+    },
+    {
+      "id": 1788698142070,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "vaccine",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "疫苗",
+      "sentence": "The student needs to learn the word ___ (疫苗).",
+      "options": [
+        "vaccine",
+        "twinkle",
+        "twilight",
+        "uprising"
+      ]
+    },
+    {
+      "id": 1788698193434,
+      "category": "高中學測",
+      "folder": "Day 297",
+      "word": "vanilla",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "香草",
+      "sentence": "The student needs to learn the word ___ (香草).",
+      "options": [
+        "vanilla",
+        "turmoil",
+        "uprising",
+        "vaccine"
+      ]
+    },
+    {
+      "id": 1788698101323,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "vanity",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "虛榮",
+      "sentence": "The student needs to learn the word ___ (虛榮).",
+      "options": [
+        "vapor",
+        "vanity",
+        "vibration",
+        "virgin"
+      ]
+    },
+    {
+      "id": 1788698118461,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "vapor",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "汽",
+      "sentence": "The student needs to learn the word ___ (汽).",
+      "options": [
+        "vapor",
+        "veil",
+        "villain",
+        "violinist"
+      ]
+    },
+    {
+      "id": 1788698187037,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "veil",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "面紗",
+      "sentence": "The student needs to learn the word ___ (面紗).",
+      "options": [
+        "vine",
+        "vanity",
+        "virgin",
+        "veil"
+      ]
+    },
+    {
+      "id": 1788698185588,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "velvet",
+      "pos": "n./adj.",
+      "isPhrase": false,
+      "zh": "天鵝絨",
+      "sentence": "The student needs to learn the word ___ (天鵝絨).",
+      "options": [
+        "velvet",
+        "veil",
+        "virgin",
+        "vanity"
+      ]
+    },
+    {
+      "id": 1788698113572,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "versatile",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "多才多藝的",
+      "sentence": "The student needs to learn the word ___ (多才多藝的).",
+      "options": [
+        "virgin",
+        "vibrate",
+        "versatile",
+        "vibration"
+      ]
+    },
+    {
+      "id": 1788698143077,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "veterinarian/vet",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "獸醫/獸醫",
+      "sentence": "The student needs to learn the word ___ (獸醫/獸醫).",
+      "options": [
+        "versatile",
+        "veil",
+        "vineyard",
+        "veterinarian/vet"
+      ]
+    },
+    {
+      "id": 1788698182088,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "veto",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "否決",
+      "sentence": "The student needs to learn the word ___ (否決).",
+      "options": [
+        "veto",
+        "velvet",
+        "veterinarian/vet",
+        "vineyard"
+      ]
+    },
+    {
+      "id": 1788698136447,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "vibrate",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "顫動",
+      "sentence": "The student needs to learn the word ___ (顫動).",
+      "options": [
+        "vigor",
+        "versatile",
+        "vibrate",
+        "veto"
+      ]
+    },
+    {
+      "id": 1788698119708,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "vibration",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "振動",
+      "sentence": "The student needs to learn the word ___ (振動).",
+      "options": [
+        "vibrate",
+        "vineyard",
+        "vibration",
+        "vine"
+      ]
+    },
+    {
+      "id": 1788698146578,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "vice",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "副",
+      "sentence": "The student needs to learn the word ___ (副).",
+      "options": [
+        "victor",
+        "vanity",
+        "vice",
+        "vineyard"
+      ]
+    },
+    {
+      "id": 1788698190396,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "victor",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "勝利者",
+      "sentence": "The student needs to learn the word ___ (勝利者).",
+      "options": [
+        "velvet",
+        "vibrate",
+        "victor",
+        "vine"
+      ]
+    },
+    {
+      "id": 1788698125535,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "vigor",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "活力",
+      "sentence": "The student needs to learn the word ___ (活力).",
+      "options": [
+        "velvet",
+        "vine",
+        "vigor",
+        "victor"
+      ]
+    },
+    {
+      "id": 1788698158771,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "vigorous",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "蓬勃",
+      "sentence": "The student needs to learn the word ___ (蓬勃).",
+      "options": [
+        "vigorous",
+        "vibrate",
+        "victor",
+        "veto"
+      ]
+    },
+    {
+      "id": 1788698189828,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "villa",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "別墅",
+      "sentence": "The student needs to learn the word ___ (別墅).",
+      "options": [
+        "vine",
+        "vigor",
+        "veil",
+        "villa"
+      ]
+    },
+    {
+      "id": 1788698119678,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "villain",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "惡棍",
+      "sentence": "The student needs to learn the word ___ (惡棍).",
+      "options": [
+        "vineyard",
+        "villain",
+        "violinist",
+        "versatile"
+      ]
+    },
+    {
+      "id": 1788698108345,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "vine",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "藤",
+      "sentence": "The student needs to learn the word ___ (藤).",
+      "options": [
+        "vineyard",
+        "vanity",
+        "veil",
+        "vine"
+      ]
+    },
+    {
+      "id": 1788698179146,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "vineyard",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "葡萄園",
+      "sentence": "The student needs to learn the word ___ (葡萄園).",
+      "options": [
+        "vineyard",
+        "villain",
+        "veto",
+        "veil"
+      ]
+    },
+    {
+      "id": 1788698125543,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "violinist",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "小提琴手",
+      "sentence": "The student needs to learn the word ___ (小提琴手).",
+      "options": [
+        "violinist",
+        "vanity",
+        "vibrate",
+        "vapor"
+      ]
+    },
+    {
+      "id": 1788698187470,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "virgin",
+      "pos": "n./adj.",
+      "isPhrase": false,
+      "zh": "處女",
+      "sentence": "The student needs to learn the word ___ (處女).",
+      "options": [
+        "vine",
+        "versatile",
+        "veil",
+        "virgin"
+      ]
+    },
+    {
+      "id": 1788698173462,
+      "category": "高中學測",
+      "folder": "Day 298",
+      "word": "vitality",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "活力",
+      "sentence": "The student needs to learn the word ___ (活力).",
+      "options": [
+        "versatile",
+        "vitality",
+        "veto",
+        "violinist"
+      ]
+    },
+    {
+      "id": 1788698111483,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "vocation",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "職業",
+      "sentence": "The student needs to learn the word ___ (職業).",
+      "options": [
+        "vocational",
+        "wag",
+        "vocation",
+        "zoom"
+      ]
+    },
+    {
+      "id": 1788698140012,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "vocational",
+      "pos": "adj.",
+      "isPhrase": false,
+      "zh": "職業",
+      "sentence": "The student needs to learn the word ___ (職業).",
+      "options": [
+        "vocational",
+        "workforce",
+        "walnut",
+        "yoga"
+      ]
+    },
+    {
+      "id": 1788698122043,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "vowel",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "母音",
+      "sentence": "The student needs to learn the word ___ (母音).",
+      "options": [
+        "vocation",
+        "vowel",
+        "ward",
+        "walnut"
+      ]
+    },
+    {
+      "id": 1788698138976,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "wag",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "搖擺",
+      "sentence": "The student needs to learn the word ___ (搖擺).",
+      "options": [
+        "wag",
+        "wrinkle",
+        "woodpecker",
+        "yogurt"
+      ]
+    },
+    {
+      "id": 1788698189233,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "walnut",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "核桃",
+      "sentence": "The student needs to learn the word ___ (核桃).",
+      "options": [
+        "ward",
+        "walnut",
+        "vocational",
+        "vocation"
+      ]
+    },
+    {
+      "id": 1788698189092,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "ward",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "病房",
+      "sentence": "The student needs to learn the word ___ (病房).",
+      "options": [
+        "widow/widower",
+        "ward",
+        "whiskey/whisky",
+        "wharf"
+      ]
+    },
+    {
+      "id": 1788698159180,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "wardrobe",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "衣櫃",
+      "sentence": "The student needs to learn the word ___ (衣櫃).",
+      "options": [
+        "woodpecker",
+        "vocational",
+        "walnut",
+        "wardrobe"
+      ]
+    },
+    {
+      "id": 1788698190815,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "warrant",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "保證",
+      "sentence": "The student needs to learn the word ___ (保證).",
+      "options": [
+        "warrant",
+        "wrestle",
+        "ward",
+        "vocational"
+      ]
+    },
+    {
+      "id": 1788698111728,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "warranty",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "保固單",
+      "sentence": "The student needs to learn the word ___ (保固單).",
+      "options": [
+        "warranty",
+        "woodpecker",
+        "wholesale",
+        "vowel"
+      ]
+    },
+    {
+      "id": 1788698132860,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "weary",
+      "pos": "adj./v.",
+      "isPhrase": false,
+      "zh": "厭倦",
+      "sentence": "The student needs to learn the word ___ (厭倦).",
+      "options": [
+        "whiskey/whisky",
+        "weary",
+        "workforce",
+        "warrant"
+      ]
+    },
+    {
+      "id": 1788698117771,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "wharf",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "碼頭",
+      "sentence": "The student needs to learn the word ___ (碼頭).",
+      "options": [
+        "warrant",
+        "wag",
+        "wharf",
+        "widow/widower"
+      ]
+    },
+    {
+      "id": 1788698106680,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "whiskey/whisky",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "威士忌",
+      "sentence": "The student needs to learn the word ___ (威士忌).",
+      "options": [
+        "vocational",
+        "whiskey/whisky",
+        "woe",
+        "vocation"
+      ]
+    },
+    {
+      "id": 1788698130273,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "wholesale",
+      "pos": "adj./adv./n./v.",
+      "isPhrase": false,
+      "zh": "批發的",
+      "sentence": "The student needs to learn the word ___ (批發的).",
+      "options": [
+        "yoga",
+        "vocation",
+        "wholesale",
+        "workforce"
+      ]
+    },
+    {
+      "id": 1788698194436,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "widow/widower",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "寡婦/鰥夫",
+      "sentence": "The student needs to learn the word ___ (寡婦/鰥夫).",
+      "options": [
+        "wag",
+        "wrinkle",
+        "widow/widower",
+        "wharf"
+      ]
+    },
+    {
+      "id": 1788698151333,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "woe",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "悲哀",
+      "sentence": "The student needs to learn the word ___ (悲哀).",
+      "options": [
+        "wrestle",
+        "ward",
+        "woe",
+        "vowel"
+      ]
+    },
+    {
+      "id": 1788698146663,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "woodpecker",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "啄木鳥",
+      "sentence": "The student needs to learn the word ___ (啄木鳥).",
+      "options": [
+        "woodpecker",
+        "woe",
+        "weary",
+        "wrinkle"
+      ]
+    },
+    {
+      "id": 1788698142425,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "workforce",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "勞動力",
+      "sentence": "The student needs to learn the word ___ (勞動力).",
+      "options": [
+        "woe",
+        "wholesale",
+        "woodpecker",
+        "workforce"
+      ]
+    },
+    {
+      "id": 1788698136873,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "wrestle",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "搏鬥",
+      "sentence": "The student needs to learn the word ___ (搏鬥).",
+      "options": [
+        "wrestle",
+        "widow/widower",
+        "ward",
+        "zoom"
+      ]
+    },
+    {
+      "id": 1788698100831,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "wrinkle",
+      "pos": "n./v.",
+      "isPhrase": false,
+      "zh": "皺紋",
+      "sentence": "The student needs to learn the word ___ (皺紋).",
+      "options": [
+        "wrestle",
+        "ward",
+        "whiskey/whisky",
+        "wrinkle"
+      ]
+    },
+    {
+      "id": 1788698190654,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "yearn",
+      "pos": "v.",
+      "isPhrase": false,
+      "zh": "嚮往",
+      "sentence": "The student needs to learn the word ___ (嚮往).",
+      "options": [
+        "weary",
+        "yearn",
+        "ward",
+        "wardrobe"
+      ]
+    },
+    {
+      "id": 1788698145499,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "yoga",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "瑜珈",
+      "sentence": "The student needs to learn the word ___ (瑜珈).",
+      "options": [
+        "yoga",
+        "wrinkle",
+        "zoom",
+        "vocational"
+      ]
+    },
+    {
+      "id": 1788698122979,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "yogurt",
+      "pos": "n.",
+      "isPhrase": false,
+      "zh": "優格",
+      "sentence": "The student needs to learn the word ___ (優格).",
+      "options": [
+        "zoom",
+        "walnut",
+        "weary",
+        "yogurt"
+      ]
+    },
+    {
+      "id": 1788698175281,
+      "category": "高中學測",
+      "folder": "Day 299",
+      "word": "zoom",
+      "pos": "v./n.",
+      "isPhrase": false,
+      "zh": "飛漲",
+      "sentence": "The student needs to learn the word ___ (飛漲).",
+      "options": [
+        "vowel",
+        "vocation",
+        "zoom",
+        "vocational"
+      ]
     }
   ],
   "students": [
